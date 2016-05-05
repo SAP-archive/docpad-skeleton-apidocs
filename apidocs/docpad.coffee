@@ -261,28 +261,12 @@ docpadConfig = {
           filename: 'meta-inf'},
           [filename:-1,service:1])
 
-    # Get all rn sorted by order meta
-    internalApiConsoles: ->
-      @getCollection("documents")
-          .findAllLive(
-            {url:{$startsWith: "/internal/apiconsoles"},
-            filename: 'meta-inf'},
-            [filename:-1,service:1])
-
-
     # Get all services sorted by order meta
     services: ->
       @getCollection("documents")
         .findAllLive(
           {url:$startsWith: "/services"},
           [order:1,service:1])
-
-    # Get all tools sorted by order meta
-    tools: ->
-      @getCollection("documents")
-        .findAllLive(
-          {url:$startsWith: "/tools"},
-          [order:1])
 
     # Get all rn sorted by order meta + paging included
     posts: ->
@@ -295,98 +279,6 @@ docpadConfig = {
           [filename:-1]).on "add", (model) ->
             model.setMetaDefaults(layout:"post")
 
-    # Get all tools sorted by order meta
-    gettingstarted: ->
-      @getCollection("documents")
-        .findAllLive(
-          {url:$startsWith: "/gettingstarted"},
-          [left_nav_area_order:1,left_nav_order:1,order:1])
-
-    internalGettingstarted: ->
-      @getCollection("documents")
-        .findAllLive(
-          {url:$startsWith: "/internal/gettingstarted"},
-          [left_nav_area_order:1,left_nav_order:1,order:1])
-
-
-    overview: ->
-      @getCollection("documents")
-        .findAllLive(
-          {url:$startsWith: "/overview"})
-
-    internalArchitecture: ->
-      @getCollection("documents")
-        .findAllLive(
-          {url:$startsWith: "/internal/architecture/"},
-          [order:1])
-
-    # Get all services sorted by order meta
-    internalServices: ->
-      @getCollection("documents")
-        .findAllLive(
-          {url:$startsWith:"/internal/services/"},
-          [order:1,service:1])
-
-    # Get all services sorted by order meta
-    internalTools: ->
-      @getCollection("documents")
-        .findAllLive({url:$startsWith:"/internal/tools/"},[order:1])
-
-    # Get all general internal docu sorted by order meta
-    internalOverview: ->
-      @getCollection("documents")
-        .findAllLive(
-          {url:$startsWith:"/internal/overview/"})
-
-    # Get all general internal docu sorted by order meta
-    internalStatuspage: ->
-      @getCollection("documents")
-      .findAllLive(
-        {url:$startsWith:"/internal/statuspage/"})
-
-    # Get all rn sorted by order meta
-    internalReleaseNotes: ->
-      @getCollection("documents")
-      .findAllLive({url:$startsWith: "/internal/rn/"},[filename:-1,service:1])
-
-    # Get all rn sorted by order meta + paging included
-    internalPosts: ->
-      @getCollection('html')
-        .findAllLive(
-          {isPagedAuto:{$ne: true},
-          basename:{$nin: ['index','release_notes','meta-inf']},
-          latest:{$exists:false},
-          filename:{$ne: 'internal_atom.xml.eco'},
-          url:{$startsWith:"/internal/rn"}},
-          [filename:-1]).on "add", (model) ->
-            model.setMetaDefaults(layout:"post")
-
-    # Get all internal docs, without sorting yet
-    internalDocumentation: ->
-      @getCollection('documents').findAllLive({
-        url: {$startsWith: '/internal/docu_guide/'}
-      })
-
-    # Collections for lunr search collects tools, gettingstarted and api
-    searchTools: ->
-      @getCollection('documents')
-        .findAllLive({
-          basename:{$ne: 'abstract'},
-          extension: {$in:['md', 'html', 'eco']},
-          title: {$exists: true},
-          url: {$startsWith: "/tools"},
-          relativeOutDirPath:{$ne: 'tools'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"tools",result:true})
-
-    searchOverview: ->
-      @getCollection('documents')
-        .findAllLive({
-          title: {$exists: true},
-          extension: {$in:['md', 'html', 'eco']},
-          url: {$startsWith: "/overview"},
-          relativeOutDirPath:{$ne: 'overview'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"overview",result:true})
-
     searchServices: ->
       @getCollection('documents')
         .findAllLive({
@@ -395,72 +287,6 @@ docpadConfig = {
           url: {$startsWith: "/services"},
           relativeOutDirPath:{$ne: 'services'}}).on "add", (model) ->
             model.setMetaDefaults({layout:"document",result:true})
-
-    searchGetStart: ->
-      @getCollection('documents')
-        .findAllLive({
-          extension: {$in:['md', 'html', 'eco']},
-          title: {$exists: true},
-          url: {$startsWith: "/gettingstarted"},
-          relativeOutDirPath:{$ne: 'gettingstarted'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"gettingstarted",result:true})
-
-    # Collections for internal lunr search collects tools, gettingstarted and api
-    internalSearchTools: ->
-      @getCollection('documents')
-        .findAllLive({
-          basename:{$ne: 'abstract'},
-          extension: {$in:['eco', 'md', 'html']},
-          filename:{$ne: 'release_notes.html.eco'},
-          title: {$exists: true},
-          url: {$startsWith: "/internal/tools"},
-          relativeOutDirPath:{$ne: 'internal/tools'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"tools",result:true})
-
-    internalSearchOverview: ->
-      @getCollection('documents')
-        .findAllLive({
-          title: {$exists: true},
-          extension: {$in:['md', 'html', 'eco']},
-          url: {$startsWith: "/internal/overview"},
-          relativeOutDirPath:{$ne: 'internal/overview'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"overview",result:true})
-
-    internalSearchServices: ->
-      @getCollection('documents')
-        .findAllLive({
-          extension: {$in:['md', 'html', 'eco']},
-          title: {$exists: true},
-          url: {$startsWith: "/internal/services"},
-          relativeOutDirPath:{$ne: 'internal/services'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"document",result:true})
-
-    internalSearchGetStart: ->
-      @getCollection('documents')
-        .findAllLive({
-          extension: {$in:['md', 'html', 'eco']},
-          title: {$exists: true},
-          url: {$startsWith: "/internal/gettingstarted"},
-          relativeOutDirPath:{$ne: 'internal/gettingstarted'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"gettingstarted",result:true})
-
-    internalDocuGuideSearch: ->
-      @getCollection('documents')
-        .findAllLive({
-          extension: {$in:['md', 'html', 'eco']},
-          title: {$exists: true},
-          url: {$startsWith: "/internal/docu_guide"},
-          relativeOutDirPath:{$ne: 'internal/docu_guide'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"docu_guide",result:true, service:'Documentation Guidelines'})
-
-    internalArchitectureSearch: ->
-      @getCollection('documents')
-        .findAllLive({
-          extension: {$in:['md', 'html', 'eco']},
-          title: {$exists: true},
-          url: {$startsWith: "/internal/architecture"},
-          relativeOutDirPath:{$ne: 'internal/architecture'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"architecture",result:true, service:'Architecture'})
 
   # =================================
   # Plugins
@@ -478,21 +304,7 @@ docpadConfig = {
     lunr:
       indexes:
         myIndex:
-          collection: ['searchOverview',
-                      'searchTools',
-                      'searchServices',
-                      'searchGetStart']
-        myInternalIndex:
-          collection: ['internalSearchOverview',
-                      'internalSearchTools',
-                      'internalSearchServices',
-                      'internalSearchGetStart',
-                      'internalDocuGuideSearch',
-                      'internalArchitectureSearch',
-                      'searchOverview',
-                      'searchTools',
-                      'searchServices',
-                      'searchGetStart']
+          collection: ['searchServices']
 
   # =================================
   # DocPad Events

@@ -30,28 +30,8 @@ layout: default
         <% end %>
         <ul role="menu" class="nav nav-pills hidden-xs" id="desktop-menu">
           <li> <a href="<%= ifInternalUrl %>/" property="dc:title" id="home-topNav">Home</a></li>
-          <li> <a href="<%= ifInternalUrl %>/overview/" property="dc:title" id="overview-topNav">Overview</a></li>
-          <% if !isExternal: %>
-            <li> <a href="<%= ifInternalUrl %>/architecture/" property="dc:title" id="architecture-topNav">Architecture</a> </li>
-          <% end %>
-          <li> <a href="<%= ifInternalUrl %>/gettingstarted/" property="dc:title" id="getting-started-topNav">Getting Started</a></li>
           <li> <a href="<%= ifInternalUrl %>/services/" property="dc:title" id="apis-topNav">API Docs</a></li>
-          <!-- <li> <a href="<%= @getSiteUrl() %>/apiconsoles/" property="dc:title" id="apis-topNav">API Consoles</a></li> -->
-          <li> <a href="<%= ifInternalUrl %>/tools/" property="dc:title" id="tools-topNav">Tools & Resources</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">News</a>
-            <ul class="dropdown-menu" style="padding: 0px 0; margin: -1px 0 0">
-              <li><a href="<%= ifInternalUrl %>/rn/">Release Notes</a></li>
-              <li><a href="<%= ifInternalUrl %>/blog/" >Blog</a></li>
-            </ul>
-          </li>
-          <!--<li> <a href="<%= @getSiteUrl() %>/experts.html" property="dc:title" id="community-topNav">Community</a></li>-->
-          <% if isExternal: %>
-            <li> <a href="https://techne.yaas.io/" target="_blank" property="dc:title" id="design-guidelines-topNav">UI Design Guidelines</a> </li>
-          <% else: %>
-            <li> <a href="<%= ifInternalUrl %>/docu_guide/" property="dc:title">Documentation Guidelines</a> </li>
-            <li> <a href="<%= ifInternalUrl %>/statuspage/" property="dc:title">Status Page</a> </li>
-          <% end %>
+          <li> <a href="<%= ifInternalUrl %>/rn/" property="dc:title">Release Notes</a></li>
         </ul>
 
       <% end %>
