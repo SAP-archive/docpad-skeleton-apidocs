@@ -16,7 +16,6 @@ title: 'Home'
       <div class="col-md-8 col-md-offset-2">
         <h1 class="jumbotron__title jumbotron__title--featured">Welcome to the Dev Portal</h1>
         <p class="jumbotron__paragraph jumbotron__paragraph--featured">The Dev Portal is a centralized information hub and a dynamic community for software developers. The documentation, toolkits, and guidelines contained in the Dev Portal help developers to quickly create services, APIs, or even build a storefront.</p>
-        <%- @partial('devportal_signup') %>
       </div>
 
     </div>
@@ -31,20 +30,6 @@ title: 'Home'
     <div class="col-md-10 col-md-offset-1">
 
       <div class="row featured-items__row">
-
-          <div class="featured-items__item featured-items__item--secondary col-md-3 col-sm-6 text-center">
-            <div class="u-animation-border u-animation-border--primary">
-              <span class="u-animation-border__left"></span>
-              <span class="u-animation-border__right"></span>
-              <span class="u-animation-border__top"></span>
-              <span class="u-animation-border__bottom"></span>
-            </div>
-            <a class="featured-items__link featured-items__link--secondary " href="gettingstarted/" title="Getting Started">
-              <img class="featured-items__img featured-items__img--secondary svg" src="/images/homepage/getting-started.svg" width="73" height="54" alt="">
-              <h3 class="featured-items__title featured-items__title--secondary">Getting Started</h3>
-              <p class="featured-items__paragraph featured-items__paragraph--secondary">Take those first steps with YaaS and create a new project, service, and storefront in minutes.</p>
-            </a>
-          </div>
 
           <div class="featured-items__item featured-items__item--secondary  col-md-3 col-sm-6 text-center">
             <div class="u-animation-border u-animation-border--primary">
@@ -67,23 +52,9 @@ title: 'Home'
               <span class="u-animation-border__top"></span>
               <span class="u-animation-border__bottom"></span>
             </div>
-            <a class="featured-items__link featured-items__link--secondary" href="tools/" title="Tools & Resources">
-              <img class="featured-items__img featured-items__img--secondary svg" src="/images/homepage/tools-resources.svg" width="55" height="81" alt="">
-              <h3 class="featured-items__title featured-items__title--secondary">Tools & Resources</h3>
-              <p class="featured-items__paragraph featured-items__paragraph--secondary">Build your YaaS project with a selection of great tools and resources, such as helpful SDKs.</p>
-            </a> 
-          </div>
-
-          <div class="featured-items__item featured-items__item--secondary  col-md-3 col-sm-6 text-center">
-            <div class="u-animation-border u-animation-border--primary">
-              <span class="u-animation-border__left"></span>
-              <span class="u-animation-border__right"></span>
-              <span class="u-animation-border__top"></span>
-              <span class="u-animation-border__bottom"></span>
-            </div>
             <a class="featured-items__link featured-items__link--secondary" href="https://techne.yaas.io/" target="_blank" title="UI Design Guidelines">
               <img class="featured-items__img featured-items__img--secondary svg" src="/images/homepage/design-guidelines.svg" width="46" height="77" alt="">
-              <h3 class="featured-items__title featured-items__title--secondary">UI Design Guidelines</h3>
+              <h3 class="featured-items__title featured-items__title--secondary">Release Notes</h3>
               <p class="featured-items__paragraph featured-items__paragraph--secondary">Follow modern, user-centric, and mobile-first design concepts, and still have the freedom to target your audience.</p>
             </a>
           </div>

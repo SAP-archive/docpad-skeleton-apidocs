@@ -16,9 +16,6 @@ isPaged: true
 
                 <p>Here you'll find release notes relating to specific services or tools. It helps to keep you informed on all the improvements we are making. You can also subscribe to an RSS feed by clicking the RSS icon.</p>
 
-                <a href="http://feeds.feedburner.com/yaas/devportal" rel="alternate" type="application/rss+xml" target="_blank" class="btn btn-primary btn-lg">SUBSCRIBE</a>
-
-
             </div>
         </div>
 

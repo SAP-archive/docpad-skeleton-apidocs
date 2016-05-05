@@ -10,22 +10,6 @@ deployment = {
   headScripts: ["/scripts/devportal-yaas-head.min.js"]
   apiNotebook: "https://apinotebook.us-east.stage.modules.yaas.io"
   feedbackService: "https://feedback.stage.yaas.io"
-  googleAnalytics: (domain) ->
-    '<script src="' + domain + '/globalresources/v3/js/yaas.ga.min.js"></script>
-     <script>
-      $(document).ready(function() {
-        sendYaaSAnalytics([
-          {
-            "id": "UA-56768310-3",
-            "name": "devportal"
-          },
-          {
-            "id": "UA-56768310-7",
-            "name": "yaas"
-          }
-        ]);
-      });
-     </script>'
 }
 
 docpadConfig = {
@@ -321,83 +305,11 @@ docpadConfig = {
       {server} = opts
       docpad = @docpad
 
-      server.get /^(\/blog\/)+[^.]+$/, (req, res) ->
-        temp = req.url.replace('/blog','')
-        res.redirect(req.protocol + '://' + req.get('Host') + '/blog/#' + temp)
-      server.get /^(\/internal\/blog\/)+[^.]+$/, (req, res) ->
-        temp = req.url.replace('/internal/blog','')
-        res.redirect(req.protocol + '://' + req.get('Host') + '/internal/blog/#' + temp)
-
-
   # =================================
   #   * Environments
   #
 
   environments:
-    dev:
-      templateData:
-        site:
-          url: "https://devportal-dev.stage.yaas.io"
-          redirUri: "https://devportal-dev.stage.yaas.io/internal/blog/"
-          redirBack: "https://devportal-dev.stage.yaas.io/internal/blog/manage"
-          scripts: deployment.scripts
-          headScripts: deployment.headScripts
-          styles: deployment.styles
-          apinotebookService : deployment.apiNotebook
-          feedbackService: deployment.feedbackService
-
-      plugins:
-        gulp: deployment.gulp
-
-    stagedev:
-      templateData:
-        site:
-          url: "https://devportal-wookiee.stage.yaas.io"
-          redirUri: "https://devportal-wookiee.stage.yaas.io/internal/blog/"
-          redirBack: "https://devportal-wookiee.stage.yaas.io/internal/blog/manage"
-          scripts: deployment.scripts
-          headScripts: deployment.headScripts
-          styles: deployment.styles
-          apinotebookService : deployment.apiNotebook
-          feedbackService: deployment.feedbackService
-
-      plugins:
-        gulp: deployment.gulp
-
-    stage_temp:
-      templateData:
-        site:
-          url: "https://devportal-temp.stage.yaas.io"
-          account: "https://api.stage.yaas.io/hybris/account/v1/"
-          adminui: "https://builder.stage.yaas.io"
-          redirUri: "https://devportal-temp.stage.yaas.io/internal/blog/"
-          redirBack: "https://devportal-temp.stage.yaas.io/internal/blog/manage"
-          scripts: deployment.scripts
-          headScripts: deployment.headScripts
-          styles: deployment.styles
-          apinotebookService : deployment.apiNotebook
-          feedbackService: deployment.feedbackService
-
-      plugins:
-        gulp: deployment.gulp
-
-    stage_temp_two:
-      templateData:
-        site:
-          url: "https://devportal-temp-two.stage.yaas.io"
-          account: "https://api.stage.yaas.io/hybris/account/v1/"
-          adminui: "https://builder.stage.yaas.io"
-          redirUri: "https://devportal-temp-two.stage.yaas.io/internal/blog/"
-          redirBack: "https://devportal-temp-two.stage.yaas.io/internal/blog/manage"
-          scripts: deployment.scripts
-          headScripts: deployment.headScripts
-          styles: deployment.styles
-          apinotebookService : deployment.apiNotebook
-          feedbackService: deployment.feedbackService
-
-      plugins:
-        gulp: deployment.gulp
-
     prod:
       templateData:
         site:
@@ -425,25 +337,6 @@ docpadConfig = {
           feedbackService: "https://feedback.yaas.io"
           builderUrl: "https://builder.yaas.io/"
           clientIdListing: "AhvOOZ7fLGgJu2PUZCOFTLsum0DqFCQH"
-
-      plugins:
-        gulp: deployment.gulp
-
-
-    stage:
-      templateData:
-        site:
-          url: "https://devportal.stage.yaas.io"
-          yaasUrl: "https://www.stage.yaas.io"
-          account: "https://api.stage.yaas.io/hybris/account/v1/"
-          adminui: "https://builder.stage.yaas.io"
-          redirUri: "https://devportal.stage.yaas.io/internal/blog/"
-          redirBack: "https://devportal.stage.yaas.io/internal/blog/manage"
-          scripts: deployment.scripts
-          headScripts: deployment.headScripts
-          styles: deployment.styles
-          apinotebookService : deployment.apiNotebook
-          feedbackService: deployment.feedbackService
 
       plugins:
         gulp: deployment.gulp

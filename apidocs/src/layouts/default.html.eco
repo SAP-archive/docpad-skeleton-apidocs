@@ -56,8 +56,6 @@
     <% end %>
     <script src="<%= @getYaasUrl() %>/globalresources/v3/js/global.novendor.min.js"></script>
 
-    <!-- google analytics -->
-    <%- @site.googleAnalytics(@getYaasUrl()) %>
 
 
   </head>

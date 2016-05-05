@@ -10,10 +10,6 @@ layout: default
   <section id="content" class="row-offcanvas row-offcanvas-left">
 
     <header class="navbar-super-holder">
-      <!-- SUPER NAVBAR -->
-        <%- @partial('super-nav') %>
-      <!-- /SUPER NAVBAR -->
-
       <% if @document.relativeDirPath != 'error' :%>
 
       <div class="navbar navbar-inverse mobile-nav">
@@ -124,11 +120,4 @@ layout: default
 </section>
 
 </div>
-<!-- SUPER FOOTER -->
-
-<% #When we display error pages, we do not want to show super footer %>
-<% if @document.relativeDirPath != 'error' :%>
-  <%- @partial('super-footer') %>
-<% end %>
-<!-- /SUPER FOOTER -->
 <a href="#content" id="back-top"><span class="glyphicon glyphicon-arrow-up "></span> Back to Top</a>

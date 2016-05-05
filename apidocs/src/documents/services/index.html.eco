@@ -18,13 +18,8 @@ layout: document
 
       </div>
     </div>
-
-    <%- @partial('devportal_signup') %>
-
   </div>
 
-  <!-- search or ask component -->
-  <%- @partial('devportal_search-or-ask') %>
 
   <!-- api steps  -->
   <div class="row featured-items featured-items--primary js-packages-icons-data is-opacity-0 u-transition-opacity">
