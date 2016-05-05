@@ -6,6 +6,7 @@ deployment = {
     writeAfter:["replaceApiReferences"]
     generateAfter: ['serviceLatest']
     docpadReady: ['validation_metadata']
+
   styles: ["/styles/devportal-yaas.css"]
   scripts: ["/scripts/devportal-yaas.min.js"]
   headScripts: ["/scripts/devportal-yaas-head.min.js"]
@@ -47,10 +48,10 @@ docpadConfig = {
 
       # Scripts
       headScripts: [
-        "/scripts/vendor/jquery-2.1.4.min.js"
-        "/scripts/vendor/bootstrap.min.js"
-        "/scripts/vendor/select2.min.js"
-        "/scripts/vendor/lscache.min.js"
+        "/bower_components/jquery/dist/jquery.min.js"
+        "/bower_components/bootstrap/dist/js/bootstrap.min.js"
+        "/bower_components/select2/select2.min.js"
+        "/bower_components/lscache/lscache.min.js"
         "/scripts/general/polyfills.js"
         '/scripts/general/jws.min.js'
         '/build/plugins/embed-hash-persistence.js'
@@ -58,7 +59,7 @@ docpadConfig = {
 
 
       navPersonalizationScripts: [
-        '/scripts/vendor/underscore-min.js'
+        '/bower_components/underscore/underscore-min.js'
         '/scripts/custom/packages-names-and-icons.js'
         #'/scripts/custom/listing.js'
       ]
