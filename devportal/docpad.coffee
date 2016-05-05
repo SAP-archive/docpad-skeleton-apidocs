@@ -370,7 +370,7 @@ docpadConfig = {
 
     # Collections for lunr search collects tools, gettingstarted and api
     searchTools: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           basename:{$ne: 'abstract'},
           extension: {$in:['md', 'html', 'eco']},
@@ -380,15 +380,16 @@ docpadConfig = {
             model.setMetaDefaults({layout:"tools",result:true})
 
     searchOverview: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           title: {$exists: true},
+          extension: {$in:['md', 'html', 'eco']},
           url: {$startsWith: "/overview"},
           relativeOutDirPath:{$ne: 'overview'}}).on "add", (model) ->
             model.setMetaDefaults({layout:"overview",result:true})
 
     searchServices: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           extension: {$in:['md', 'html', 'eco']},
           title: {$exists: true},
@@ -397,7 +398,7 @@ docpadConfig = {
             model.setMetaDefaults({layout:"document",result:true})
 
     searchGetStart: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           extension: {$in:['md', 'html', 'eco']},
           title: {$exists: true},
@@ -407,7 +408,7 @@ docpadConfig = {
 
     # Collections for internal lunr search collects tools, gettingstarted and api
     internalSearchTools: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           basename:{$ne: 'abstract'},
           extension: {$in:['eco', 'md', 'html']},
@@ -418,15 +419,16 @@ docpadConfig = {
             model.setMetaDefaults({layout:"tools",result:true})
 
     internalSearchOverview: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           title: {$exists: true},
+          extension: {$in:['md', 'html', 'eco']},
           url: {$startsWith: "/internal/overview"},
           relativeOutDirPath:{$ne: 'internal/overview'}}).on "add", (model) ->
             model.setMetaDefaults({layout:"overview",result:true})
 
     internalSearchServices: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           extension: {$in:['md', 'html', 'eco']},
           title: {$exists: true},
@@ -435,7 +437,7 @@ docpadConfig = {
             model.setMetaDefaults({layout:"document",result:true})
 
     internalSearchGetStart: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           extension: {$in:['md', 'html', 'eco']},
           title: {$exists: true},
@@ -444,7 +446,7 @@ docpadConfig = {
             model.setMetaDefaults({layout:"gettingstarted",result:true})
 
     internalDocuGuideSearch: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           extension: {$in:['md', 'html', 'eco']},
           title: {$exists: true},
@@ -453,7 +455,7 @@ docpadConfig = {
             model.setMetaDefaults({layout:"docu_guide",result:true, service:'Documentation Guidelines'})
 
     internalArchitectureSearch: ->
-      @getCollection('html')
+      @getCollection('documents')
         .findAllLive({
           extension: {$in:['md', 'html', 'eco']},
           title: {$exists: true},
