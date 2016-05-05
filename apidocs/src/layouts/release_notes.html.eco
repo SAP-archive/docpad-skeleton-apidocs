@@ -11,21 +11,16 @@ layout: generalnav
     <div class="">
 
 
-    <% types = { services: {}, tools : []} %>
+    <% types = { services: {}} %>
 
     <% for docu in @getCollection(collectionName).findAll({service:{$exists:true},basename:'meta-inf'}).toJSON(): %>
-      <% if docu.area != 'Tools': %>
         <% if @getCollection(collectionName).findAll({service: docu.service, basename:{$nin:['meta-inf','release_notes']}}).toJSON().length > 0: %>
           <% if types[docu.type][docu.area] then types[docu.type][docu.area].push(docu.service) else types[docu.type][docu.area] = [docu.service] %>
         <% end %>
-      <% else: %>
-        <% if @getCollection(collectionName).findAll({service: docu.service, basename:{$nin:['meta-inf','release_notes']}}).toJSON().length > 0 then types[docu.type].push(docu.service) %>
-      <% end %>
     <% end %>
 
     <% APIs = types.services %>
-    <% Tools = types.tools %>
-    <% typesNewName = {APIs, Tools} %>
+    <% typesNewName = {APIs} %>
 
     <div id="left_nav" class="left-nav">
       <ul class="left-nav__list">
