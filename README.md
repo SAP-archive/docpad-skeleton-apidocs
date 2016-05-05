@@ -12,8 +12,7 @@ Quickly install DocPad, clone DevPortal project and start it to see the DevPorta
   git clone ssh://git@stash.hybris.com:7999/paas/devportal.git
   cd devportal
   cd devportal
-  gulp start
-  docpad server
+  npm start
   ```
 
 Flags:
@@ -35,11 +34,11 @@ The Dev Portal relies on the following Bower Components
 **Install Bower globally**	`npm install -g bower`
 
 
-**To Install Techne**	`bower install hyTechne`
+**To Install Components**	`bower install`
 
 Bower components are installed in devportal/devportal/src/raw/bower_components/
 
-**To Update Techne**	`bower update hyTechne`
+**To Update**	`bower update hyTechne`
 
 ## UI Testing
 
