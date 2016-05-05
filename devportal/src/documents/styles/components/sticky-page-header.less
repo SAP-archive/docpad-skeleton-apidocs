@@ -1,0 +1,117 @@
+// prefixer library
+@import '../vendor/_prefixer';
+
+// devportal specific variables
+@import '../settings/_variables';
+
+// devportal specific variables
+@import '../tools/_utilities';
+
+// devportal specific variables
+@import '../tools/_helper-classes';
+
+.sticky-page-header {
+  background: #e0e9f0;
+  padding: 10px;
+  margin-left: 265px;
+  display: none;
+  position: relative;
+  .transition(all 0.25s ease-out);
+  left: 0;
+  .clearfix();
+
+  h1 {
+    display: inline-block;
+    font-size: 28px;
+    margin: 12px 10px 0 30px;
+    float: left;
+  }
+
+  .version-selector {
+    margin: 14px 0 0;
+    float: left;
+  }
+
+  .service-links {
+    text-align: right;
+    margin-left: 240px;
+    margin-right: 115px;
+    display: block;
+  }
+
+  .service-links-api-console {
+    margin-right: 0;
+  }
+
+  .service-url {
+    display: inline-block;
+    float: right;
+    margin: 12px 5px 0 0;
+    width: 40%;
+
+    input {
+      padding-right: 2px;
+    }
+
+    h3 {
+      // font-family: "Dosis";
+      font-weight: 300;
+      font-size: 14px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    input,
+    button {
+      border-radius: 0;
+      border: 1px solid #e1e1e1;
+    }
+
+    input {
+      border-right: none;
+    }
+
+    button {
+      box-shadow: none;
+      border-left: none;
+
+      &:hover {
+        border-color: #e1e1e1;
+      }
+
+      img {
+        max-width: 30px;
+      }
+    }
+
+    .dropdown-menu {
+      left: -120px;
+    }
+  }
+
+  .btn-open-console {
+    display: inline-block;
+    float: right;
+    margin: 12px 10px 0 0;
+
+  }
+
+  .raml-icon,
+  .service-icon {
+    display: none;
+  }
+
+  &-offcanvas {
+    margin-left: 265px !important;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+}
+
+.api-consol-header {
+  margin-left: 0;
+}
+
+.raml-console-body {
+  margin-top: 90px;
+}

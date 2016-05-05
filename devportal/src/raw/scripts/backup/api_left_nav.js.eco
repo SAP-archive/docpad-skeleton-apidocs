@@ -1,0 +1,42 @@
+<% listofareas = [] %>
+<% for docu in @getCollection("services").findAll(area:$exists:true).toJSON(): %>
+  <% listofareas.push docu.area %>
+<% end %>
+<% listofareas.sort() %>
+<% listofareas.reverse() %>
+
+var apiLink = document.getElementById("apis");
+$(document).ready(function () {
+
+
+    <% for item in listofareas.unique() : %>
+
+    var a<%= item %> = document.getElementById("node_<%= item %>");
+
+    <% end %>
+
+    <% for item in listofareas.unique() : %>
+
+      a<%= item %>.onclick = function() {
+        $("#areas").hide();
+        $("#areas").removeClass("open");
+        $("#list_<%= item %>").show();
+        $("#list_<%= item %>").addClass("open");
+        $("li.nav-header").addClass("back");
+        }
+
+    <% end %>
+
+    apiLink.onclick = function() {
+
+        $("#areas").show();
+        $("#areas").addClass("open");
+        <% for item in listofareas.unique() : %>
+
+        $("#list_<%= item %>").hide();
+        $("#list_<%= item %>").removeClass("open");
+
+        <% end %>
+        $("li.nav-header").removeClass("back");
+    }
+});

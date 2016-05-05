@@ -1,0 +1,38 @@
+---
+title: What is StatusPage
+order: 1
+layout: statuspage
+left_nav_area_order: 1
+area: Overview
+---
+
+<%- @partial('left-nav-collapse-control') %>
+<script>
+var base = document.createElement('base');
+base.href = '/internal/statuspage/';
+document.getElementsByTagName('head')[0].appendChild(base);
+</script>
+
+<script type="text/javascript" src="/scripts/angular/angular.js"></script>
+<script type="text/javascript" src="/scripts/angular/angular-route.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/factories/incidentHelper.js"></script>
+<script type="text/javascript" src="scripts/controllers/IncidentController.js"></script>
+<script type="text/javascript" src="scripts/factories/IncidentFactory.js"></script>
+<script type="text/javascript" src="scripts/controllers/IncidentEditController.js"></script>
+<script type="text/javascript" src="scripts/controllers/IncidentDetailController.js"></script>
+<script type="text/javascript" src="scripts/controllers/IncidentAddController.js"></script>
+<script type="text/javascript" src="scripts/controllers/IncidentUpdateController.js"></script>
+<script type="text/javascript" src="scripts/controllers/directives/IncidentFormController.js"></script>
+<script type="text/javascript" src="scripts/controllers/directives/IncidentFormDirective.js"></script>
+<script type="text/javascript" src="scripts/controllers/directives/IncidentFormHelper.js"></script>
+
+
+<script type="text/javascript" src='/scripts/angular/ui-bootstrap-tpls.js'></script>
+
+
+
+
+<div ng-app="statusPage">
+    <div ng-view></div>
+</div>

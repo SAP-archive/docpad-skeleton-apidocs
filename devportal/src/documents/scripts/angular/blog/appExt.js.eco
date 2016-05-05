@@ -1,0 +1,23 @@
+ 'use strict';
+  var app = angular.module('appExt', ['appInt', 'ngRoute', 'hljs']);
+
+  /* ************CONFIG SECTION**************** */
+  app.config(function($locationProvider, $routeProvider) {
+    $locationProvider.html5Mode(true).hashPrefix();
+    $routeProvider.
+      when('/', {
+        controller: 'PostCtrl',
+        templateUrl: 'list.html',
+        resolve: {
+          isInternal:   function(){
+              return false;
+          }
+        }
+      }).
+      when('/post/:postId', {
+        controller: 'PostDetailCtrl',
+        templateUrl: 'detail.html'
+      }).
+        otherwise({redirectTo:'/'});
+
+  });

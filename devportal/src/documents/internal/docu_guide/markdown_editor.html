@@ -1,0 +1,77 @@
+---
+layout: docu_guide
+---
+
+<div class="container bs-docs-container">
+<div class="row" >
+<div class="col-xs-12" role="main">
+<style>
+#epiceditor, #previewer {width:50%; float:left}
+#epiceditor-preview {margin-left:51%;margin-top:10px}
+#epiceditor-preview pre code{display:block}
+</style>
+
+
+
+
+<br/>
+
+<br/>
+
+<div class="panel tip"><a href="/internal/docu_guide/syntax/index.html#ExpandandCollapse">Expand and Collapse</a> feature may not work immediately after copying it to Markdown Editor. To see the results please <a href="javascript:window.location.reload();">refresh the page</a>. </div>
+
+<div id="epiceditor"></div>
+
+<div id="epiceditor-preview"></div>
+<script src="/scripts/vendor/highlight.js"></script>
+<script src="/scripts/vendor/epic/js/epiceditor.js"></script>
+<script>
+var opts = {
+  container: 'epiceditor',
+  basePath: '/scripts/vendor/epic',
+  clientSideStorage: true,
+  localStorageName: 'epic',
+  useNativeFullscreen: true,
+  parser: marked,
+  file: {
+    name: 'dflt',
+    defaultContent: 'EpicEditor is an online editor of markdown and HTML content. Just paste here, or write some text and then instantly see the result on the right. The style of the result on the right is the same as the one used by DocPad to generate documentation in the Dev Portal, so what you see here is what you get in Dev Portal. <br> <br> Our custom EpicEditor was created thanks to the following project: http://epiceditor.com',
+    autoSave: 100
+  },
+  theme: {
+    base: '/themes/base/epiceditor.css',
+    //preview: '/themes/preview/devportal-yaas-0.13.css',
+    editor: '/themes/editor/epic-dark.css'
+  },
+  button: {
+    preview: false,
+    fullscreen: false,
+    bar: "auto"
+  },
+  focusOnLoad: false,
+  shortcut: {
+    modifier: 18,
+    fullscreen: 70,
+    preview: 80
+  },
+  string: {
+    togglePreview: 'Toggle Preview Mode',
+    toggleEdit: 'Toggle Edit Mode',
+    toggleFullscreen: 'Enter Fullscreen'
+  },
+  autogrow: true
+}
+var editor = new EpicEditor(opts).load();
+editor.on('update', function () {
+document.querySelector('#epiceditor-preview').innerHTML = this.exportFile(null, 'html');
+$(document).ready(function() {
+  $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+});
+}).emit('update');
+</script>
+</div>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

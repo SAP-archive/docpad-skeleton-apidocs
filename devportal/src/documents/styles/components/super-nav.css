@@ -1,0 +1,36 @@
+.sub-nav {
+  background: #0486e0;
+}
+
+.sub-nav ul {
+  list-style: none;
+  height: 50px;
+  margin: 0;
+}
+
+.sub-nav ul li {
+  float: left;
+  display: inline-block;
+}
+
+.sub-nav ul li a {
+  display: inline-block;
+  color: #fff;
+  opacity: .5;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.sub-nav ul li a:hover {
+  opacity: 1
+}
+
+.navbar-left {
+  font-family: "Dosis";
+  font-size: 15px;
+  float: none!important;
+}
+
+#desktop-menu {
+  white-space: nowrap;
+}

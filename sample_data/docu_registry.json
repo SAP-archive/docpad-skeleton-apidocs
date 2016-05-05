@@ -1,0 +1,124 @@
+{
+    "name": "Builder",
+    "type": "tools",
+    "area": "Tools",
+    "source": [
+        {
+            "location": "ssh://git@stash.hybris.com:7999/paas/builder.git",
+            "branch_or_tag": "develop"
+        }
+    ]
+  },
+  {
+      "name": "Dev Portal",
+      "type": "tools",
+      "area": "Tools",
+      "source": [
+          {
+              "location": "ssh://git@stash.hybris.com:7999/paas/devportal.git",
+              "branch_or_tag": "develop"
+          }
+      ]
+  },
+  {
+    "name": "Prerequisites",
+    "type": "gettingstarted",
+    "area": "Prerequisites",
+    "left_nav_area":"1",
+    "left_nav_area_element": "1",
+    "source": [
+      {
+        "location": "ssh://git@stash.hybris.com:7999/paas/devportal-general-content.git",
+        "branch_or_tag": "develop"
+      }
+    ]
+  },
+  {
+    "name": "YaaS in a Nutshell",
+    "type": "overview",
+    "area": "Overview",
+    "left_nav_area":"1",
+    "left_nav_area_element": "1",
+    "source": [
+      {
+        "location": "ssh://git@stash.hybris.com:7999/paas/devportal-general-content.git",
+        "branch_or_tag": "develop"
+      }
+    ]
+  },
+  {
+    "name": "API Best Practices",
+    "type": "tools",
+    "area": "Resources",
+    "source": [
+      {
+        "location": "ssh://git@stash.hybris.com:7999/paas/devportal-general-content.git",
+        "branch_or_tag": "develop",
+        "docu_dir": "/resources/api"
+      }
+    ]
+  },
+  {
+    "name": "Feedback",
+    "type": "architecture",
+    "area": "Services",
+    "source": [
+      {
+        "location": "ssh://git@stash.hybris.com:7999/yarch/architecturedocumentation.git",
+        "branch_or_tag": "master"
+        }
+    ]
+  },
+  {
+    "name": "Logging",
+      "type": "gettingstarted",
+      "area": "DEPLOYMENT",
+      "left_nav_area":"1",
+      "left_nav_area_element": "4",
+      "source": [
+        {
+          "location": "ssh://git@stash.hybris.com:7999/idefix/idefix-devportal.git",
+          "branch_or_tag": "develop"
+        }
+      ]
+  },
+  {
+      "builder_org": "hybris",
+      "name": "Email",
+      "type": "services",
+      "area": "Email",
+      "source": [
+          {
+              "builder_identifier": "email",
+              "version": "v1",
+              "latest": true,
+              "location": "ssh://git@stash.hybris.com:7999/paas/email-service.git",
+              "branch_or_tag": "develop",
+              "raml": "email-rest-webapp/src/main/webapp/meta-data/api.raml"
+                      }
+      ]
+  },
+  {
+      "name": "API Notebook",
+      "type": "tools",
+      "area": "Tools",
+      "source": [
+          {
+              "location": "ssh://git@stash.hybris.com:7999/wookiee/apinotebook.git",
+              "branch_or_tag": "develop"
+          }
+      ]
+  },
+  {
+   "name": "Services",
+    "type": "docu_guide",
+    "area": "Document Requirements",
+    "left_nav_area":"1",
+    "left_nav_area_element": "2",
+    "source": [
+      {
+        "location": "ssh://git@stash.hybris.com:7999/wookiee/docu_guidelines.git",
+        "branch_or_tag": "develop"
+      }
+    ]
+  }

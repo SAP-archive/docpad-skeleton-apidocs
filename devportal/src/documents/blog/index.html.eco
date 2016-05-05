@@ -1,0 +1,55 @@
+  ---
+layout: 'generalnav'
+title: 'Blog Posts'
+---
+
+<script>
+var base = document.createElement('base');
+base.href = '/blog/';
+document.getElementsByTagName('head')[0].appendChild(base);
+</script>
+
+<script type='text/javascript' src='/scripts/angular/angular.js'></script>
+<script type='text/javascript' src='/scripts/angular/angular-route.js'></script>
+<script type='text/javascript' src='/scripts/angular/underscore.js'></script>
+<script type='text/javascript' src='/scripts/angular/restangular.js'></script>
+<script type='text/javascript' src='/scripts/angular/angular-sanitize.js'></script>
+<script type='text/javascript' src='/vendor/ckeditor/ckeditor.js'></script>
+<script type='text/javascript' src='/scripts/angular/angular-ckeditor.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/appInt.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/appExt.js'></script>
+<script type='text/javascript' src='/scripts/angular/ui-bootstrap-tpls.js'></script>
+
+<script type='text/javascript' src='/scripts/angular/blog/controllers/modals/ShowTipCtrl.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/controllers/PostDetailCtrl.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/controllers/PostCtrl.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/controllers/ManageCreateCtrl.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/controllers/ManageEditCtrl.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/controllers/ManageCtrl.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/controllers/AuthCtrl.js'></script>
+
+
+<script type='text/javascript' src='/scripts/angular/blog/factories/PostFactory.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/AccountFactory.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/AuthFactory.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/MetadataFactory.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/RedirectFactory.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/HelperService.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/RestAngularService.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/LsCacheFactory.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/Config.js'></script>
+<script type='text/javascript' src='/scripts/angular/blog/factories/MessageFactory.js'></script>
+
+<script type='text/javascript' src='/scripts/angular/blog/directives/CustomCompileDirective.js'></script>
+
+<script src='/vendor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js'></script>
+<link rel='stylesheet' href='/vendor/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css'>
+<script src='/scripts/angular/angular-highlightjs.min.js'></script>
+
+<!-- load mobile nav  -->
+<%- @partial('no-sidebar-mobile-nav') %>
+<div class='content-wrapper'>
+<div ng-app='appExt'>
+    <div ng-view></div>
+</div>
+</div>

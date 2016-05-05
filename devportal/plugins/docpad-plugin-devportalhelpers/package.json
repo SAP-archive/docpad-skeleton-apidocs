@@ -1,0 +1,26 @@
+{
+  "name": "docpad-plugin-partials",
+  "version": "2.9.2",
+  "description": "Nothing is wrong here. There is no mistake in a name. Such file is required by docpad, and this is just a kind of mock and this is why it is pointing to a real not related repo",
+  "license": {
+    "type": "MIT"
+  },
+  "keywords": [
+    "docpad",
+    "docpad-plugin",
+    "partials",
+    "templates",
+    "partial",
+    "templating",
+    "template"
+  ],
+  "author": {
+    "name": "Sebastian Domagala",
+    "url": "https://github.com/Sindis"
+  },
+  "engines": {
+    "node": ">=0.4"
+  },
+  "main": "./devportalhelpers.plugin.js",
+  "readme": "ERROR: No README data found!"
+}

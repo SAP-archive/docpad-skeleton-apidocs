@@ -1,0 +1,16 @@
+---
+layout: overview
+title: 'Overview'
+---
+
+<%- @partial('left-nav-collapse-control') %>
+<div class="tools-landing-wrapper">
+
+  <div class="jumbotron text-center no-top-padding">
+
+    <span class="tools-landing-sprite tools-landing-header"></span>
+
+    <h1>Internal Overview Section</h1>
+
+  </div>
+</div>

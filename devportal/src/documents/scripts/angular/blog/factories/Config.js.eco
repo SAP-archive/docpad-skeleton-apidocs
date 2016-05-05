@@ -1,0 +1,29 @@
+'use strict';
+
+
+app.factory('config', function(){
+
+    var config = {};
+    config.productService = function() { return '<%= @getProductService() %>' };
+    config.tenant = function() { return 'yaasblog'};
+    config.productEndpoint = function() { return '/products'};
+    config.accountUserInfoEndpoint = function() { return 'accounts' };
+    config.accountGetUsersRoleEndpoint = function() { return 'projects/yaasblog/members' };
+    config.accountService = function() { return '<%= @getAccountService() %>' };
+    config.accountEndpoint = function() { return 'auth/anonymous/login' };
+    config.oauthService = function() { return '<%= @getOAuthService() %>' };
+    config.oauthEndpoint = function() { return '/authorize' };
+    config.clientId = function(){ return '<%= @getClientId() %>'};
+    config.scope = function() { return 'FULL_ACCESS' },
+    config.redirect_uri = function() { return '<%= @getRedirUri() %>'};
+    config.redirect_back = function() { return '<%= @getRedirBack() %>' };
+    config.redirect_auth = function() { return '<%= @getRedirUri() %>' }
+    config.userInfoEndpoint = function() { return 'userinfo' };
+    config.productSchema = function() { return 'https://api.yaas.io/hybris/schema/v1/yaasblog/posts.v2.json' };
+    config.builderUrl = function() { return '<%= @getBaaSUrl() %>' }
+    config.AutoSaveInterval = function() { return 10000 };
+    config.getPageSize = function() { return 200 };
+
+    return config;
+
+});

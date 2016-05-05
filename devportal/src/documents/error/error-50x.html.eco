@@ -1,0 +1,151 @@
+---
+layout: generalnav
+---
+
+  <div class="container error__container">
+      <div class="error__content">
+          <h2 class="error__title">Oops, something went wrong on our side.</h2>
+          <h3 class="error__subtitle">The page you have requested is not available.</h3>
+          <p class="error__paragraph">
+            <a class="btn btn-default error__link" href="/">Back to home</a>
+          </p>
+          <div class="hidden-xs ">
+             <svg class="animated-box u-center-horizontally error__image" xml:space="preserve" viewBox="0 0 266.631 342.606" height="342.606px" width="266.631px" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Layer_1" version="1.1">
+                    <g>
+                        <defs>
+                            <ellipse ry="48.666" rx="133.315" cy="293.94" cx="133.315" id="SVGID_1_"/>
+                        </defs>
+                        <clipPath id="SVGID_2_" class="animated-box__clip-path">
+                            <use class="overflow-visible" xlink:href="#SVGID_1_"/>
+                        </clipPath>
+                        <ellipse ry="48.666" rx="133.315" cy="293.94" cx="133.315" class="animated-box__ellipse animated-box__ellipse--1" />
+                        <ellipse ry="48.666" rx="133.315" cy="300.94" cx="133.315" class="animated-box__ellipse animated-box__ellipse--2" style="clip-path:url(#SVGID_2_);"/>
+                    </g>
+                    <polyline class="animated-box__polyline" points="241.808,238.589 218.239,185.593 48.522,185.593 24.82,237.582 241.808,237.582 " />
+                    <line y2="160.138" x2="199.361" y1="160.138" x1="225.184" class="fill-none" />
+                    <line y2="131.402" x2="186.45" y1="131.402" x1="212.272" class="fill-none" />
+                    <line y2="102.667" x2="173.539" y1="102.667" x1="199.361" class="fill-none" />
+                    <path d="M209.129,147.191c0-5.022-1.378-11.546-3-14.436c-0.516-0.92-0.992-1.354-1.397-1.353
+                        c-0.807,0.002-6.309,0-6.309,0l4.398,44.181h6.308C209.129,175.584,209.129,149.073,209.129,147.191z" class="animated-box__path animated-box__path--1" />
+                    <path d="M202.821,147.191c0-5.022-1.378-11.546-3-14.436c-1.539-2.746-2.731-1.165-2.731,3.408
+                        c0,4.574,0,25.051,0,25.051l5.731,14.369C202.821,175.584,202.821,149.073,202.821,147.191z" class="animated-box__path animated-box__path--2" />
+                    <path d="M189.347,112.284c0-3.539-0.688-7.634-1.51-9.098c-0.198-0.353-0.386-0.52-0.555-0.519
+                        c-0.509,0.002-4.636,0-4.636,0l2.063,33.747h4.637C189.347,136.414,189.347,113.728,189.347,112.284z" class="animated-box__path animated-box__path--1"/>
+                    <path d="M184.71,112.284c0-3.539-0.688-7.634-1.51-9.098c-0.793-1.413-1.413,0.163-1.413,3.473
+                        s0,19.733,0,19.733l2.923,10.022C184.71,136.414,184.71,113.728,184.71,112.284z" class="animated-box__path animated-box__path--2"/>
+                    <path d="M175.868,88.784c0-2.61-0.376-5.388-0.829-6.183c-0.081-0.143-0.159-0.211-0.232-0.213
+                        c-0.325-0.01-3.06,0-3.06,0l1.065,22.585h3.056C175.868,104.973,175.868,90.003,175.868,88.784z" class="animated-box__path animated-box__path--1"/>
+                    <path d="M172.812,88.784c0-2.61-0.376-5.388-0.829-6.183c-0.441-0.774-0.789,0.626-0.789,3.109
+                        c0,2.484,0,15.815,0,15.815l1.618,3.447C172.812,104.973,172.812,90.003,172.812,88.784z" class="animated-box__path animated-box__path--2"/>
+                    <path d="M200.823,150.477c0-4.182-0.735-8.651-1.591-9.91c-0.809-1.186-1.43,0.947-1.43,4.7
+                        c0,3.754,0.621,8.029,1.43,9.627C200.088,156.594,200.823,154.66,200.823,150.477z" class="animated-box__path animated-box__path--3" />
+                    <path d="M183.747,114.255c0-3.104-0.407-6.141-0.882-6.754c-0.452-0.58-0.803,1.257-0.803,4.076
+                        s0.351,5.768,0.803,6.624C183.34,119.105,183.747,117.36,183.747,114.255z" class="animated-box__path animated-box__path--3" />
+                    <path d="M172.441,90.358c0-2.401-0.244-4.608-0.53-4.918c-0.273-0.292-0.486,1.262-0.486,3.459
+                        c0,2.197,0.213,4.36,0.486,4.851C172.197,94.268,172.441,92.76,172.441,90.358z" class="animated-box__path animated-box__path--3" />
+                    <line y2="160.138" x2="67.4" y1="160.138" x1="41.578" class="fill-none" />
+                    <line y2="131.402" x2="80.312" y1="131.402" x1="54.489" class="fill-none" />
+                    <line y2="102.667" x2="93.223" y1="102.667" x1="67.4" class="fill-none" />
+                    <path d="M54.489,213.51l-1.741-53.371c0,0-7.04-0.057-8.12,0c-0.697,0.037-1.561,0.866-2.511,2.561
+                        c-2.585,4.607-4.81,13.758-4.81,20.156c0,2.512,0,47.509,0,47.509h192.146c0,0,0-44.997,0-47.509c0-6.398-2.225-15.549-4.81-20.156
+                        c-0.95-1.695-1.813-2.524-2.511-2.561c-1.08-0.058-8.12,0-8.12,0l-1.741,53.371H54.489z" class="animated-box__path animated-box__path--1"/>
+                    <path d="M57.633,147.191c0-5.022,1.378-11.546,3-14.436c0.516-0.92,0.992-1.354,1.397-1.353
+                        c0.807,0.002,6.309,0,6.309,0l-4.398,44.181h-6.308C57.633,175.584,57.633,149.073,57.633,147.191z" class="animated-box__path animated-box__path--1" />
+                    <path d="M63.94,147.191c0-5.022,1.378-11.546,3-14.436c1.539-2.746,2.731-1.165,2.731,3.408
+                        c0,4.574,0,25.051,0,25.051l-5.731,14.369C63.94,175.584,63.94,149.073,63.94,147.191z" class="animated-box__path animated-box__path--2" />
+                    <path d="M77.415,112.284c0-3.539,0.688-7.634,1.51-9.098c0.198-0.353,0.386-0.52,0.555-0.519
+                        c0.509,0.002,4.636,0,4.636,0l-2.063,33.747h-4.637C77.415,136.414,77.415,113.728,77.415,112.284z" class="animated-box__path animated-box__path--1" />
+                    <path d="M82.052,112.284c0-3.539,0.688-7.634,1.51-9.098c0.793-1.413,1.413,0.163,1.413,3.473
+                        s0,19.733,0,19.733l-2.923,10.022C82.052,136.414,82.052,113.728,82.052,112.284z" class="animated-box__path animated-box__path--2" />
+                    <path d="M90.894,88.784c0-2.61,0.376-5.388,0.829-6.183c0.081-0.143,0.159-0.211,0.232-0.213
+                        c0.325-0.01,3.06,0,3.06,0l-1.065,22.585h-3.056C90.894,104.973,90.894,90.003,90.894,88.784z" class="animated-box__path animated-box__path--1" />
+                    <path d="M93.949,88.784c0-2.61,0.376-5.388,0.829-6.183c0.441-0.774,0.789,0.626,0.789,3.109
+                        c0,2.484,0,15.815,0,15.815l-1.618,3.447C93.949,104.973,93.949,90.003,93.949,88.784z" class="animated-box__path animated-box__path--2" />
+                    <path d="M45.404,224.273c0,0,0-38.905,0-41.417c0-6.398,2.225-15.549,4.81-20.156
+                        c2.421-4.318,4.275-3.014,4.275,2.674c0,5.689,0,36.639,0,36.639l157.783,0.312c0,0,0-31.261,0-36.951
+                        c0-5.688,1.854-6.993,4.275-2.674c2.585,4.607,4.81,13.758,4.81,20.156c0,2.512,0,41.417,0,41.417H45.404z" class="animated-box__path animated-box__path--2" />
+                    <path d="M48.522,187.24c0-5.263,1.159-11.356,2.503-13.477c1.26-1.985,2.223,0.282,2.223,4.951
+                        c0,4.669-0.963,10.412-2.223,12.967C49.682,194.413,48.522,192.503,48.522,187.24z" class="animated-box__path animated-box__path--3" />
+                    <path d="M65.938,150.477c0-4.182,0.735-8.651,1.591-9.91c0.809-1.186,1.43,0.947,1.43,4.7
+                        c0,3.754-0.621,8.029-1.43,9.627C66.674,156.594,65.938,154.66,65.938,150.477z" class="animated-box__path animated-box__path--3" />
+                    <path d="M83.015,114.255c0-3.104,0.407-6.141,0.882-6.754c0.452-0.58,0.803,1.257,0.803,4.076
+                        s-0.351,5.768-0.803,6.624C83.422,119.105,83.015,117.36,83.015,114.255z" class="animated-box__path animated-box__path--3" />
+                    <path d="M94.32,90.358c0-2.401,0.244-4.608,0.53-4.918c0.273-0.292,0.486,1.262,0.486,3.459
+                        c0,2.197-0.213,4.36-0.486,4.851C94.564,94.268,94.32,92.76,94.32,90.358z" class="animated-box__path animated-box__path--3" />
+                    <path d="M218.239,187.24c0-5.263-1.159-11.356-2.503-13.477c-1.26-1.985-2.223,0.282-2.223,4.951
+                        c0,4.669,0.963,10.412,2.223,12.967C217.08,194.413,218.239,192.503,218.239,187.24z" class="animated-box__path animated-box__path--3" />
+                    <path d="M211.121,195.044c1.222,0.037,2.86-1.862,2.86-5.409c0.116-6.913,0.041-12.428-3.95-21.189
+                        L151.863,46.84h-37.065L56.6,168.446c-3.991,8.761-4.066,14.276-3.95,21.189c0,3.535,1.628,5.435,2.847,5.409
+                        C55.961,195.034,210.662,195.03,211.121,195.044z" class="animated-box__path animated-box__path--4"/>
+                    <g class="animated-box__line-outer animated-box__line-outer--1">
+                        <line y2="46.786" x2="151.744" y1="46.786" x1="114.318" class="animated-box__belt-line animated-box__belt-line--1"/>
+                    </g>
+                    <g class="animated-box__line-outer animated-box__line-outer--2">
+                        <line y2="46.786" x2="151.744" y1="46.786" x1="114.318" class="animated-box__belt-line animated-box__belt-line--2"/>
+                    </g>
+                    <g class="animated-box__first-box">
+                        <line y2="59.659" x2="119.263" y1="41.937" x1="119.263" class="fill-none"/>
+                        <line y2="59.659" x2="147.439" y1="41.937" x1="147.439" class="fill-none"/>
+                        <line y2="46.84" x2="144.412" y1="31.113" x1="144.412" class="fill-none"/>
+                        <line y2="46.84" x2="122.238" y1="31.113" x1="122.238" class="fill-none"/>
+                        <polygon points="144.412,46.84 122.238,46.84 119.263,59.659 119.263,41.937 122.238,31.113 144.412,31.113
+                            147.439,41.937 147.439,59.659 	" class="animated-box__polygon animated-box__polygon--1"/>
+                        <polygon points="147.439,41.937 147.439,59.659 144.412,46.84 144.412,31.113 	" class="animated-box__polygon animated-box__polygon--2" />
+                        <polygon points="119.263,41.937 119.263,59.659 122.238,46.84 122.238,31.113 	" class="animated-box__polygon animated-box__polygon--2" />
+                        <rect height="17.722" width="28.177" class="animated-box__rect animated-box__rect--1" y="41.937" x="119.263"/>
+                        <polygon points="147.439,41.937 119.263,41.937 122.238,31.113 144.412,31.113 	" class="animated-box__polygon animated-box__polygon--1" />
+                        <polygon points="145.97,36.749 120.699,36.749 122.238,31.113 144.412,31.113 	" class="animated-box__polygon animated-box__polygon--1" />
+                        <polygon points="146.316,38.054 120.33,38.054 121.048,35.443 145.623,35.443 	" class="animated-box__polygon animated-box__polygon--1" />
+
+                        <ellipse ry="1.613" rx="2.271" cy="55.408" class="animated-box__ellipse animated-box__ellipse--3" cx="142.62" transform="matrix(0.9783 -0.207 0.207 0.9783 -8.3795 30.7161)"/>
+                    </g>
+                    <polygon points="103.982,41.614 162.648,41.614 162.648,36.569 148.377,22.644 118.207,22.644
+                        103.982,36.569 " class="animated-box__polygon animated-box__polygon--3" />
+                    <polygon points="103.982,36.569 162.648,36.569 148.377,22.644 118.207,22.644 " class="animated-box__polygon animated-box__polygon--4" />
+                    <line y2="34.133" x2="156.814" y1="34.133" x1="109.816" class="animated-box__line animated-box__line--1" />
+                    <polygon points="109.816,34.133 156.814,34.133 148.542,25.099 118.207,25.099 " class="animated-box__polygon animated-box__polygon--5" />
+                    <rect height="4.297" width="30.335" class="animated-box__rect animated-box__rect--2" y="20.802" x="118.207"/>
+                    <rect height="1.348" width="30.335" class="animated-box__rect animated-box__rect--3" y="20.802" x="118.207"/>
+                    <polygon points="115.401,16.738 151.229,16.738 144.389,13.422 122.253,13.422 " class="animated-box__polygon animated-box__polygon--6" />
+                    <polygon points="115.401,21.55 151.229,21.55 151.229,16.738 137.982,10.323 128.648,10.323 115.401,16.738
+                        " class="animated-box__polygon animated-box__polygon--3" />
+                    <polygon points="151.229,16.738 144.389,13.422 122.253,13.422 115.401,16.738 " class="animated-box__polygon animated-box__polygon--4" />
+                    <rect height="16.342" width="30.335" class="animated-box__rect animated-box__rect--4" x="118.207"/>
+                    <rect height="27.856" width="58.666" class="animated-box__rect animated-box__rect--5" y="41.614" x="103.982"/>
+                    <g class="animated-box__big-box--1">
+                        <line y2="331.541" x2="88.656" y1="275.669" x1="88.656" class="fill-none"/>
+                        <line y2="331.541" x2="177.974" y1="275.669" x1="177.974" class="fill-none"/>
+                        <line y2="291.054" x2="168.381" y1="241.014" x1="168.381" class="fill-none"/>
+                        <line y2="291.054" x2="98.2" y1="241.014" x1="98.2" class="fill-none"/>
+                        <polygon points="168.381,291.054 98.2,291.054 88.656,331.541 88.656,275.669 98.2,241.014 168.381,241.014
+                            177.974,275.669 177.974,331.541 	" class="animated-box__polygon animated-box__polygon--1" />
+                        <polygon points="177.974,275.669 177.974,331.541 168.381,291.054 168.381,241.014 	" class="animated-box__polygon animated-box__polygon--2" />
+                        <polygon points="88.656,275.669 88.656,331.541 98.2,291.054 98.2,241.014 	" class="animated-box__polygon animated-box__polygon--2" />
+                        <rect height="55.872" width="89.317" class="animated-box__rect animated-box__rect--1" y="275.669" x="88.656"/>
+                        <polygon points="177.974,275.669 88.656,275.669 98.2,241.014 168.381,241.014 	" class="animated-box__polygon animated-box__polygon--1" />
+                        <polygon points="173.557,259.391 93.114,259.391 98.2,241.014 168.381,241.014 	" class="animated-box__polygon animated-box__polygon--1" />
+                        <polygon points="174.637,263.486 91.993,263.486 94.238,255.297 172.4,255.297 	" class="animated-box__polygon animated-box__polygon--6" />
+                        <ellipse ry="5.062" rx="7.124" cy="317.93" cx="162.278" class="animated-box__ellipse animated-box__ellipse--3" transform="matrix(0.9784 -0.2069 0.2069 0.9784 -62.2757 40.4606)"/>
+                    </g>
+                    <g class="animated-box__big-box--2">
+                        <line y2="331.541" x2="88.656" y1="275.669" x1="88.656" class="fill-none"/>
+                        <line y2="331.541" x2="177.974" y1="275.669" x1="177.974" class="fill-none"/>
+                        <line y2="291.054" x2="168.381" y1="241.014" x1="168.381" class="fill-none"/>
+                        <line y2="291.054" x2="98.2" y1="241.014" x1="98.2" class="fill-none"/>
+                        <polygon points="168.381,291.054 98.2,291.054 88.656,331.541 88.656,275.669 98.2,241.014 168.381,241.014
+                            177.974,275.669 177.974,331.541 	" class="animated-box__polygon animated-box__polygon--1" />
+                        <polygon points="177.974,275.669 177.974,331.541 168.381,291.054 168.381,241.014 	" class="animated-box__polygon animated-box__polygon--2" />
+                        <polygon points="88.656,275.669 88.656,331.541 98.2,291.054 98.2,241.014 	" class="animated-box__polygon animated-box__polygon--2" />
+                        <rect height="55.872" width="89.317" class="animated-box__rect animated-box__rect--1" y="275.669" x="88.656"/>
+                        <polygon points="177.974,275.669 88.656,275.669 98.2,241.014 168.381,241.014 	" class="animated-box__polygon animated-box__polygon--1" />
+                        <polygon points="173.557,259.391 93.114,259.391 98.2,241.014 168.381,241.014 	" class="animated-box__polygon animated-box__polygon--1" />
+                        <polygon points="174.637,263.486 91.993,263.486 94.238,255.297 172.4,255.297 	" class="animated-box__polygon animated-box__polygon--6" />
+                        <ellipse ry="5.062" rx="7.124" cy="317.93" cx="162.278" class="animated-box__ellipse animated-box__ellipse--3" transform="matrix(0.9784 -0.2069 0.2069 0.9784 -62.2757 40.4606)"/>
+                    </g>
+
+                </svg>
+          </div>
+          <img src="<%= @getYaasUrl() %>/error/error-img/404.svg" class="visible-xs u-center-horizontally error__image" alt="An error occur" />
+      </div>
+  </div>
+<div></div><div></div>

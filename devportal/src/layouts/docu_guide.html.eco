@@ -1,0 +1,77 @@
+---
+layout: generalnav
+---
+
+
+<% collectionName = 'internalDocumentation' %>
+
+<% # Only above is unique %>
+
+<% listofareas = [] %>
+<% for docu in @getCollection(collectionName).findAll({area:{$exists:true},basename:'meta-inf'},[leftNavArea:1]).toJSON(): %>
+  <% listofareas.push docu.area %>
+<% end %>
+
+
+<div id="sidebar" class="sidebar-offcanvas" role="navigation" >
+
+  <div id="left_nav" class="hierarchy_list left-nav">
+    <ul class="nav">
+      <li class="back-link visible-xs"><a href="/internal/"> Back to Internal Home</a></li>
+      <li class="nav-header">Documentation Guidelines</li>
+
+      <% for item in listofareas.unique() : %>
+        <li class="package-header"><%= item %></li>
+
+        <li class="parent_node open">
+        <% listofavailablestarters = [] %>
+        <ul role="menu" class="nav nav-pills nav-stacked">
+          <% for docu in @getCollection(collectionName).findAll({area:item,basename:'meta-inf'},[leftNavAreaElement:1]).toJSON(): %>
+          <li>
+            <a href="/<%= docu.relativeDirPath %>/index.html" property="dc:title">
+              <%= docu.service %>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+        </li>
+      <% end %>
+
+    </ul>
+
+    <a href="/internal/docu_guide/markdown_editor.html" class="btn btn-primary markdown-editor-btn">Markdown Editor</a>
+
+  </div>
+</div>
+
+  <div class="container-fluid">
+    <div class="container-wrapper has-nav">
+
+
+
+        <% if @document.result and @document.basename != 'index' :%>
+
+        <div class="jumbotron search-header">
+
+          <h1>Search Result</h1>
+
+          <a href="/<%= @document.relativeDirPath %>/index.html" class="small"><span class="glyphicon glyphicon-play glyphicon-flipped"></span>READ FULL <strong><%= @document.type.toUpperCase() %></strong> DOCUMENTATION </a>
+
+        </div>
+
+        <div class="search-content">
+          <h1><%- @document.title %></h1>
+          <%- @content %>
+        </div>
+
+      <% else : %>
+
+        <div class="content-wrapper tools-wrapper">
+          <%- @content %>
+        </div>
+
+      <% end %>
+
+
+      </div>
+  </div>

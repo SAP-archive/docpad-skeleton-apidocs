@@ -1,0 +1,80 @@
+ 'use strict';
+
+  var app = angular.module('appInt', ['ckeditor', 'restangular','ngRoute','ngSanitize','hljs', 'ui.bootstrap']);
+
+  /* ************CONFIG SECTION**************** */
+  app.config(function($locationProvider, $routeProvider, RestangularProvider) {
+    $locationProvider.html5Mode(true).hashPrefix();
+    $routeProvider.
+      when('/', {
+        controller: 'PostCtrl',
+        templateUrl: '/blog/list.html',
+        resolve: {
+          isInternal:   function(){
+              return true;
+          }
+        }
+    }).
+    when('/index.html', {
+      redirectTo:'/'
+    }).
+      when('/post/:postId', {
+        controller: 'PostDetailCtrl',
+        templateUrl: '/blog/detail.html',
+      }).
+      when('/manage', {
+        controller: 'ManageCtrl',
+        templateUrl: '/internal/blog/managing/list.html'
+      }).
+      when('/manage/edit/:postId', {
+        controller:  'ManageEditCtrl',
+        templateUrl: '/internal/blog/managing/detail.html'
+      }).
+      when('/manage/new', {
+        controller: 'ManageCreateCtrl',//CreateCtrl,
+        templateUrl:'/internal/blog/managing/detail.html'
+      }).
+      when('/auth', {
+          controller: 'AuthCtrl',//CreateCtrl,
+          template: '',
+          resolve: {
+          token: function(){
+            return undefined;
+            }
+          }
+        }
+      ).
+      when('/:token', {
+          controller: 'AuthCtrl',//CreateCtrl,
+          template: '',
+          resolve: {
+          token: function($route){
+            return $route.current.params.token;
+            }
+          }
+        }
+      ).
+      when('/migrate/aws', {
+          controller: 'MigrationCtrl',//CreateCtrl,
+          templateUrl: '/internal/blog/managing/migration.html'
+        }
+      ).
+        otherwise({redirectTo:'/'});
+
+
+      //RestangularProvider.setBaseUrl(oauthService);
+      RestangularProvider.setBaseUrl('<%= @getProductService() %>');
+      RestangularProvider.setDefaultHeaders({ Authorization: 'Bearer '+ lscache.get('apiKey') });
+      RestangularProvider.setRestangularFields({
+        id: 'id'
+      });
+      RestangularProvider.addFullRequestInterceptor(function(elem, operation, what) {
+
+        if (operation === 'put') {
+          elem.id = undefined;
+          return elem;
+        }
+        return elem;
+      });
+
+  });

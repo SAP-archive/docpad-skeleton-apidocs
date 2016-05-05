@@ -1,0 +1,60 @@
+---
+title: Internal Tools
+layout: tools
+---
+
+<%- @partial('left-nav-collapse-control') %>
+<div class="content-wrapper tools-landing-wrapper">
+  <div class="jumbotron text-center no-top-padding">
+
+    <span class="tools-landing-sprite tools-landing-header"></span>
+
+    <h1>Tools</h1>
+
+    <p>This is a right place for documentation about tools that make internal development nice and sweet.</p>
+
+  </div>
+
+  <div class="dev-guides">
+
+
+  <br><br>
+  <% a = @getCollection('internalTools').findAll({basename: 'abstract'}).toJSON() %>
+
+  <% for docu, i in a by 2: %>
+  <div class="row">
+
+
+    <div class="col-md-6 col-sm-6 section-text">
+      <div class="row">
+        <div class="col-md-3 col-sm-3">
+          <a href="/<%=a[i].relativeDirPath%>/"><img src="/<%=a[i].relativeDirPath%>/abstract_img.png"/></a>
+        </div>
+        <div class="col-md-9 col-sm-9 ">
+          <a href="/<%=a[i].relativeDirPath%>/"><h4><%=a[i].name%></h4></a>
+          <p><%- a[i].contentRenderedWithoutLayouts %></p>
+        </div>
+      </div>
+    </div>
+    <% if a[i+1]: %>
+    <div class="col-md-6 col-sm-6 section-text">
+      <div class="row">
+        <div class="col-md-3 col-sm-3">
+          <a href="/<%=a[i+1].relativeDirPath%>/"><img src="/<%=a[i+1].relativeDirPath%>/abstract_img.png"/></a>
+        </div>
+        <div class="col-md-9 col-sm-9 ">
+          <a href="/<%=a[i+1].relativeDirPath%>/"><h4><%=a[i+1].name%></h4></a>
+          <p><%- a[i+1].contentRenderedWithoutLayouts %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+  <% end %>
+
+  <br><br><br>
+
+</div>
+
+</div>

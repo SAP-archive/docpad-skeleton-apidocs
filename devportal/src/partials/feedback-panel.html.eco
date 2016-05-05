@@ -1,0 +1,15 @@
+---
+cacheable: true
+---
+<div class="row u-center-horizontally">
+    <ul class="grid-cards" id="js-hook-feedback-panel">
+
+      <!-- js injects feedback card if possible, code in super footer partial -->
+
+      <li class="grid-cards__element">
+        <p class="grid-cards__title"><a target="_blank" href="<%- @site.experts %>/spaces/151/index.html" title="Expert forum" class="grid-cards__link">hybris Experts</a></p>
+        <p class="grid-cards__description">If you need more information about this topic, visit <a target="_blank" href="<%- @site.experts %>/spaces/151/index.html" title="Expert forum" class="grid-cards__link">hybris Experts</a> to post your own question and interact with our community and experts.</p>
+      </li>
+
+    </ul>
+</div>

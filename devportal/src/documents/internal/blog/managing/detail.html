@@ -1,0 +1,108 @@
+<!-- loading spinner -->
+<div class="spinner" ng-show="restCallEdit" >
+  <div class="spinner-container container1">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+  </div>
+  <div class="spinner-container container2">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+  </div>
+  <div class="spinner-container container3">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+  </div>
+</div>
+<div class="alert alert-danger" role="alert" ng-show="infoMessage !== ''">
+    {{ infoMessage }}
+</div>
+<div ng-show="!restCallEdit && infoMessage == ''">
+<div class="col-md-6" role="main">
+  <div class="panel warning" ng-show="authorMessage !== ''">
+    <small>
+      <custom-compile source="authorMessage"></custom-compile>
+    </small>
+  </div>
+  <div class="panel tip" ng-show="fillOut">
+    <small>You were editing this page before. Do you want to  <a href="" ng-click="CloseModifiedTips()"> resume editing </a> with your local changes or <a href="" ng-click="LoadOrginalContent()"> start all over?</a>.</small>
+  </div>
+  <div class="panel tip" ng-show="showModifiedTip">
+    <small>You were editing this page before, but in the meanwhile someone changed the content. Do you want to  <a href="" ng-click="CloseModifiedTips()"> resume editing </a> with local changes or <a href="" ng-click="LoadOrginalContent()"> start all over?</a>.</small>
+  </div>
+<form name="myForm">
+
+  <div class="form-group">
+    <br>
+    <input type="text" name="name" ng-model="post.name" required placeholder="Enter Post Title" class="form-control input-lg">
+  </div>
+
+  <div class="row clearfix">
+
+    <div class="form-group col-md-6 col-sm-6">
+      <h4>Visibility</h4>
+      <label class="radio-inline">
+        <input type="radio" name="audience" ng-model="post.mixins.post.audience" value="Visible to Internal Only" ng-required="!post.mixins.post.audience"/> Visible to Internal Only
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="audience"  ng-model="post.mixins.post.audience" value="Visible to All" ng-required="!post.mixins.post.audience"/> Visible to All
+      </label>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6" >
+      <h4>Tag</h4>
+      <label class="radio-inline">
+        <input type="radio" name="tag" value="Engineering" ng-model="post.mixins.post.tag" ng-required="!post.mixins.post.tag"> <span class="u-help-label" data-toggle="tooltip" data-placement="top" title="Technical topics that are of interest to any product and technology team.">Engineering</span>
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="tag" value="Migrations" ng-model="post.mixins.post.tag" ng-required="!post.mixins.post.tag"> <span class="u-help-label" data-toggle="tooltip" data-placement="top" title="Topics about service migrations, or other technology migrations that may affect other teams.">Migrations</span>
+      </label>
+      <br>
+      <label class="radio-inline">
+        <input type="radio" name="tag" value="News and Events" ng-model="post.mixins.post.tag" ng-required="!post.mixins.post.tag"> <span class="u-help-label" data-toggle="tooltip" data-placement="top" title="Topics covering any current news or events about YaaS in general.">News and Events</span>
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="tag" value="Post-Mortems" ng-model="post.mixins.post.tag" ng-required="!post.mixins.post.tag"> <span class="u-help-label" data-toggle="tooltip" data-placement="top" title="Topics sharing the lessons learned after a YaaS component failure.">Post-Mortems</span>
+      </label>
+    </div>
+
+  </div>
+
+  <div ckeditor="options" ng-model="post.mixins.post.content"></div>
+
+  <br><br>
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <button ng-click="ResolveSave()" ng-disabled="isClean() || myForm.$invalid" class="{{ cssClassSave }}"><div ng-show="!restCallSave">Save</div><img ng-show="restCallSave" src="/images/spinner_small.gif"></button>
+      <button ng-click="cancel()" class="btn btn-link">Cancel</button>
+    </div>
+
+    <div class="col-md-6 text-right">
+      <button ng-click="ResolveUnPublish()" ng-disable='isUnPublisher' ng-show="tempPublished" class="{{cssClassUnPublish}}">
+        <div ng-show="!restCallButton">Unpublish</div><img ng-show="restCallButton" src="/images/spinner_small.gif">
+      </button>
+      <button ng-click="ResolvePublish()" ng-disable='isUnPublisher' ng-hide="tempPublished || action == 'create'" class="{{cssClassPublish}}">
+        <div ng-show="!restCallButton">Publish</div><img ng-show="restCallButton" src="/images/spinner_small.gif">
+      </button>
+      <button ng-click="ResolveDelete()" ng-show="action == 'edit'" class="{{cssClassDelete}}"><div ng-show="!restCallDelete">Delete</div><img ng-show="restCallDelete" src="/images/spinner_small.gif"></button>
+    </div>
+  </div>
+
+</form>
+</div>
+<div class="col-md-6">
+
+    <div class="post-meta"><h1>{{post.name}}</h1><span id="postDate" class="post-date">{{post.mixins.post.date | date: 'fullDate'}}</span> | <span class="post-author">{{post.mixins.post.author}}</span></div>
+    <br/><br/>
+    <div class="post-content" ng-bind-html="post.mixins.post.content">
+    </div>
+
+</div>
+</div>

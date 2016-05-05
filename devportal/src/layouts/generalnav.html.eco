@@ -1,0 +1,154 @@
+---
+layout: default
+---
+
+<% isExternal = !@document.relativeDirPath.startsWith('internal') %>
+<% ifInternalUrl = if isExternal then '' else '/internal' %>
+<% ifInternal = if isExternal then '' else 'internal' %>
+
+<div class="main-content">
+  <section id="content" class="row-offcanvas row-offcanvas-left">
+
+    <header class="navbar-super-holder">
+      <!-- SUPER NAVBAR -->
+        <%- @partial('super-nav') %>
+      <!-- /SUPER NAVBAR -->
+
+      <% if @document.relativeDirPath != 'error' :%>
+
+      <div class="navbar navbar-inverse mobile-nav">
+
+        <button data-toggle="offcanvas" class="btn btn-primary btn-xs navbar-toggle navbar-btn" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <% if !isExternal: %>
+          <span class="internal-label hidden-xs">INTERNAL</span>
+        <% end %>
+        <ul role="menu" class="nav nav-pills hidden-xs" id="desktop-menu">
+          <li> <a href="<%= ifInternalUrl %>/" property="dc:title" id="home-topNav">Home</a></li>
+          <li> <a href="<%= ifInternalUrl %>/overview/" property="dc:title" id="overview-topNav">Overview</a></li>
+          <% if !isExternal: %>
+            <li> <a href="<%= ifInternalUrl %>/architecture/" property="dc:title" id="architecture-topNav">Architecture</a> </li>
+          <% end %>
+          <li> <a href="<%= ifInternalUrl %>/gettingstarted/" property="dc:title" id="getting-started-topNav">Getting Started</a></li>
+          <li> <a href="<%= ifInternalUrl %>/services/" property="dc:title" id="apis-topNav">API Docs</a></li>
+          <!-- <li> <a href="<%= @getSiteUrl() %>/apiconsoles/" property="dc:title" id="apis-topNav">API Consoles</a></li> -->
+          <li> <a href="<%= ifInternalUrl %>/tools/" property="dc:title" id="tools-topNav">Tools & Resources</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">News</a>
+            <ul class="dropdown-menu" style="padding: 0px 0; margin: -1px 0 0">
+              <li><a href="<%= ifInternalUrl %>/rn/">Release Notes</a></li>
+              <li><a href="<%= ifInternalUrl %>/blog/" >Blog</a></li>
+            </ul>
+          </li>
+          <!--<li> <a href="<%= @getSiteUrl() %>/experts.html" property="dc:title" id="community-topNav">Community</a></li>-->
+          <% if isExternal: %>
+            <li> <a href="https://techne.yaas.io/" target="_blank" property="dc:title" id="design-guidelines-topNav">UI Design Guidelines</a> </li>
+          <% else: %>
+            <li> <a href="<%= ifInternalUrl %>/docu_guide/" property="dc:title">Documentation Guidelines</a> </li>
+            <li> <a href="<%= ifInternalUrl %>/statuspage/" property="dc:title">Status Page</a> </li>
+          <% end %>
+        </ul>
+
+      <% end %>
+      <script>
+
+        (function(){
+          $(document).ready(function(){
+            var lunr = ['/lunr/lunr-data-my<%= ifInternal %>index.json'];
+            var scriptsArray = ['/lunr/lunr-ui.min.js', '/lunr/lunr.min.js'];
+            var lunr2 = $('#lunr-input2').length !== 0;
+            getMultipleFiles(lunr, '', $.getJSON).done(function(lunr){
+              lunrdoc = lunr[0];
+              //if there is inline lunr
+              if(lunr2){
+                scriptsArray.push('/lunr/lunr_inline.js');
+              }
+              getMultipleFiles(scriptsArray, '', $.getScript).done(function(){
+                //i guess we could eval function returned from JSON but optimalization rules from V8 are way worse when using eval and since this function doesn't change we can specify it here
+                lunrdoc.template = template;
+                //fire lunr when all scripts are loaded
+                lunrdoc.ready();
+                if(typeof lunrdoc2 !== 'undefined' && lunr2){
+                  lunrdoc2.template = template;
+                  lunrdoc2.ready();
+                }
+              });
+            });
+            /**
+             * template is generic function from lunr, it is used to create result strings
+             * @param  {Object} context [one record to show]
+             * @return {String}         [String that is appended to search window]
+             */
+            function template(context) {
+              var post = context.post;
+              var text = post.service || post.type;
+              if(text && text !== 'undefined' && post.url.indexOf('index.html') === -1){
+                return '<div><a href="' + post.url + '">' + post.title + '</a><span> part of ' + text + '</span></div>';
+              }
+              if(post.url && post.title)
+                return '<div><a href="' + post.url + '">' + post.title + '</a></div>';
+
+              return '';
+            }
+
+            /**
+             * getMultipleFiles is used to force callback when all files are properly loaded
+             * @param  {Array}      arr           [array of links to files]
+             * @param  {String}     path          [optional, if all your file have same start of the link you can specify it here]
+             * @param  {Function}   asyncFunction [asynchronous function to call for files, tested are $.getJSON/$.getScript]
+             * @return {$.Deferred}               [returns deferred object, it has synchronous manner when used with .done() or .fail(), this way we can do actions when files are loaded]
+             */
+            function getMultipleFiles(arr, path, asyncFunction) {
+              var _arr = $.map(arr, function(scr) {
+                return asyncFunction( (path||"") + scr );
+              });
+
+              _arr.push($.Deferred(function( deferred ){
+                  $( deferred.resolve );
+              }));
+
+              return $.when.apply($, _arr);
+            }
+          });
+        })();
+
+
+      </script>
+
+      <div class="navbar-right">
+
+        <div class="search-wrapper">
+          <input type="text" class="search-bar" id="lunr-input" autocomplete="on" placeholder="Search terms" /><input type="hidden" id="lunr-hidden" />
+          <img src="/images/icons/close-button.svg" alt="" class="close-button">
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <div class="content-offcanvas" id="content">
+
+    <div class="container-fluid">
+      <%- @content %>
+    </div>
+
+  </div>
+
+</section>
+
+</div>
+<!-- SUPER FOOTER -->
+
+<% #When we display error pages, we do not want to show super footer %>
+<% if @document.relativeDirPath != 'error' :%>
+  <%- @partial('super-footer') %>
+<% end %>
+<!-- /SUPER FOOTER -->
+<a href="#content" id="back-top"><span class="glyphicon glyphicon-arrow-up "></span> Back to Top</a>

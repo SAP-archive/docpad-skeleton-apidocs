@@ -1,0 +1,310 @@
+
+
+(function($, lscache, localStorage){
+  'use strict';
+
+    /********************
+          variables
+    ********************/
+
+  const apiLink = $('.api-link'),
+    apis = $('.apis'),
+    packages = $('.packages'),
+    filterList = $('#packageFilterList'),
+    tenant = localStorage.getItem('selectedTenant'),
+    idToken = lscache.get('id_token'),
+    apiNav = $('.api-nav'),
+    jws = KJUR.jws.JWS;
+
+  const img = '<div class="spinner"> \
+    <div class="spinner-container container1"> \
+      <div class="circle1"></div> \
+      <div class="circle2"></div> \
+      <div class="circle3"></div> \
+      <div class="circle4"></div> \
+    </div> \
+    <div class="spinner-container container2"> \
+      <div class="circle1"></div> \
+      <div class="circle2"></div> \
+      <div class="circle3"></div> \
+      <div class="circle4"></div> \
+    </div> \
+    <div class="spinner-container container3"> \
+      <div class="circle1"></div> \
+      <div class="circle2"></div> \
+      <div class="circle3"></div> \
+      <div class="circle4"></div> \
+    </div> \
+  </div>';
+
+  /********************
+          Main
+  ********************/
+
+
+  window.addEventListener('message', receiveMessage, false);
+
+  if(!idToken) return;
+
+  const claim = getClaim(idToken);
+
+
+  //if there is id_token from builder but there isn't token to list tenants yet
+  if(!lscache.get('noTenantToken') && lscache.get('id_token')){
+    authorize();
+  }
+
+  //if there is token already but no tenants arent listed in select
+  if(lscache.get('noTenantToken') && claim.email){
+    callForTenants(lscache.get('noTenantToken'));
+  }
+
+
+  //if user clicks some tenant it is saved to localStorage so you know what to load after page blinks - tenant is this value
+  if(lscache.get('token') && tenant){
+    getPackagesAfterCall(lscache.get('token'), tenant);
+  }
+
+
+    /********************
+          Functions
+    ********************/
+
+  /**
+   * getClaim returns claim obtained from id_token
+   * @return {Object} claim from id_token
+   */
+  function getClaim(){
+    const tokenClaim = idToken.split('.')[1],
+      uClaim = b64utos(tokenClaim);
+
+    return jws.readSafeJSONString(uClaim);
+  }
+
+  /**
+   * bindEvents is function attached to filter list change event
+   */
+  function selectEventBinder(){
+    const tenantName = $(this).find('option:selected').data('tenant');
+    if(lscache.get(tenantName)){
+      showServices(lscache.get(tenantName));
+      return;
+    }
+    if(tenantName){
+      showSpinner();
+      localStorage.setItem('selectedTenant', tenantName);
+      getServices(tenantName);
+    }
+  }
+
+  /**
+   * function showServices shows services that are in both arrays
+   * @param  {Array} fullArray [list of services in left nav]
+   * @param  {Array} diffArray [list of services that tenant got]
+   */
+  function showServices(fullArray, diffArray){
+    $('.spinner').remove();
+    packages.show();
+    $('.package-header').show();
+    apiLink.show();
+    apis.hide();
+
+    if (diffArray){
+      const fullArray = _.difference(fullArray, diffArray);
+    }
+
+    fullArray.forEach((server) => {
+      $(`.api-link[data-builder-identifier=${server}]`).parent().show();
+    });
+
+    let childLen;
+    packages.each(function () {
+
+      // count visible children and hide header if none found
+      childLen = $(this).find('ul li:visible').length;
+      (!childLen) ? $(this).find('.package-header').hide() : $(this).find('.package-header').show();
+
+    });
+  }
+
+  /**
+   * function showSpinner is used to create spinner in left nav while rest call is on
+   * @return {void}
+   */
+  function showSpinner(){
+    packages.hide();
+    apis.hide();
+    if(!$('.spinner').length)
+      apiNav.append(img);
+  }
+
+    /**
+    * callForServices is called after you receive packages, shows services that are in this package
+    * @param  {Object} [request] - Single package
+    */
+  function callForServices(request){
+    $.ajax({
+      url    : `<%= @site.accountService %>packages/${request.package}`,
+      headers: {
+        Authorization: `Bearer ${lscache.get('token')}`
+      }
+    }).done((data, xhr, request) => {
+      if(request.status !== 200){
+        return;
+      }
+      data.services.forEach((service) => {
+        tenantServices.push(service.name);
+      });
+      tempArray = _.uniq(tenantServices);
+      filterList.val(tenant);
+      showServices(tempArray, servicesArray);
+      lscache.set(tenant, finalArray, 59);
+    });
+  }
+
+  /**
+   * function addTenants adds tenants to dropdown in select after rest call
+   * @param {Array} [data] - tenants
+   */
+  function addTenants(data){
+    filterList.append($('<option disabled></option>').text('——————————'));
+    data.forEach((tenant) => {
+      filterList.append($('<option></option>').attr('value', tenant.id).attr('data-tenant', tenant.id).text(tenant.name));
+      filterList.change(bindEvents);
+    });
+    setTimeout(() => {
+      filterList.trigger('change');
+    }, 1000);
+  }
+
+  /**
+   * function callForTenants calls for tenants of given user and calls addTenants function to add them as <option> in select tag
+   */
+  function callForTenants(token){
+    if(lscache.get('tenants')){
+      return addTenants(lscache.get('tenants'));
+    }
+    $.ajax({
+      url    : '<%= @site.accountService %>projects',
+      headers: {
+        Authorization : `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        member: claim.email
+      }
+    }).done((data, xhr, request) => {
+      if(request.status !== 200){
+        return;
+      }
+      lscache.set('tenants', data, 59);
+      addTenants(data);
+    });
+
+    lscache.set('noTenantToken', token, 59);
+  }
+
+  /**
+   * getPackagesAfterCall make calls for packages after choosing select option and fires callForServices function
+   * @param  {String} token  [token to make a call]
+   * @param  {String} tenant [tenant for which we are requesting services]
+   */
+  function getPackagesAfterCall(token, tenant){
+    let tempArray, finalArray;
+    const tenantServices = [], servicesArray = [], queue = [];
+    localStorage.removeItem('selectedTenant');
+    apiLink.each(function(){
+      servicesArray.push($(this).data('lowercase'));
+    });
+    $.ajax({
+      url    : `<%= @site.accountService %>projects/${tenant}/subscriptions`,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).done((data, xhr, request) => {
+      if(request.status !== 200){
+        return;
+      }
+
+      data.forEach((request) => {
+        queue.push(restCallQueue(token, request));
+      });
+      $.when.apply(null, queue).then((...args) => {
+        args.forEach((sub) => {
+
+          //if there is more than one package array is returned
+          if(sub instanceof Array)
+            sub[0] && sub[0].services && sub[0].services.forEach((service) => {
+              tenantServices.push(service.name);
+            });
+          else if(sub instanceof Object)
+            sub && sub.services && sub.services.forEach((service) => {
+              tenantServices.push(service.name);
+            });
+        });
+
+        tempArray = _.uniq(tenantServices);
+        filterList.val(tenant);
+
+        showServices(tempArray, servicesArray);
+        lscache.set(tenant, tempArray, 59);
+        lscache.remove('tenantToken');
+
+      });
+    });
+  }
+
+  /**
+   * function restCallQueue creates ajax calls (not yet initiated) that go to queue (we need to know when calls get executed to perform another action)
+   * @param  {String} token   used to pass authorization
+   * @param  {Object} request Object used to create call string(we use its id)
+   * @return {void}
+   */
+  function restCallQueue(token, request){
+    return $.ajax({
+      url    : `<%= @site.accountService %>packages/${request.package}`,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  /**
+   * function authorize creates iframe to make OAuth authorization without having website blinking,
+   * iframe communicates with website through addEventListener message handler and postMessage on iframe side
+   */
+  function authorize(){
+    const authFrame = document.createElement('iframe');
+    authFrame.setAttribute('style', 'display: none;position:absolute; top:0px; left:0px;');
+    document.body.appendChild(authFrame);
+    authFrame.src = `<%= @site.oauthService %>/authorize?response_type=token&client_id=<%= @site.clientIdListing %>&redirect_uri=<%= @site.url %>/auth.html&id_token_hint=${lscache.get('id_token')}&scope=hybris.no_tenant`;
+  }
+
+  /**
+   * function getServices has the same use as in upper function, just to get token for specific tenant
+   * @param  {String} tenant [tenant for which we want token]
+   */
+  function getServices(tenant){
+    const serviceFrame = document.createElement('iframe');
+    serviceFrame.setAttribute('style', 'display: none;position:absolute; top:0px; left:0px;');
+    document.body.appendChild(serviceFrame);
+    serviceFrame.src = `<%= @site.oauthService %>/authorize?response_type=token&client_id=<%= @site.clientIdListing %>&redirect_uri=<%= @site.url %>/auth.html&id_token_hint=${lscache.get('id_token')}&scope=hybris.tenant=${tenant}`;
+  }
+
+  /**
+   * function receiveMessage is used to communicate with iframes
+   */
+  function receiveMessage(event){
+    const data = event.data;
+    if(data && data.noTenantToken && lscache.get('id_token')){
+      callForTenants(lscache.get('noTenantToken'));
+    }
+
+    if(data && data.tenantToken){
+      const tenant = data.scope.replace('%20', '').replace('hybris.tenant=', '').replace('hybris.tenant%3D', '');
+      getPackagesAfterCall(lscache.get('tenantToken'), tenant);
+    }
+  }
+
+
+})($, lscache, localStorage);

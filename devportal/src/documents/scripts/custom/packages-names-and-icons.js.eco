@@ -1,0 +1,125 @@
+'use strict';
+
+(function(){
+
+  var packagesAnonTokenVariable = lscache.get('packagesAnonToken');
+
+  if(packagesAnonTokenVariable) {
+
+    downloadPackagesData(packagesAnonTokenVariable, function(data) {
+
+      buildInlineHtml(data);
+    });
+
+  } else {
+
+    packagesAnonToken(function(token) {
+
+      downloadPackagesData(token, function(data) {
+
+        buildInlineHtml(data);
+      });
+    });
+  }
+
+
+  // Download packages data
+  function downloadPackagesData(anonToken, cb) {
+
+      // Get proper packages names and icons via AJAX
+      $.ajax({
+        url: '<%- @site.productService %>/marketplace/products?pageSize=100&fields=name,mixins.package.icon.value',
+        method: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer '+anonToken
+        }
+      }).done(function(data, status, xhr){
+          if (xhr.status !== 200) {
+            $( ".js-packages-icons-data" ).remove();
+          } else {
+            cb(data);
+          }
+      });
+  }
+
+  //injects html inside the api landing page
+  function buildInlineHtml(data){
+
+    var sortedPackagesElements = sortedPackagesArray(data);
+    var leftNavElements = leftNavItemsArray();
+
+    // Create a counter for matching names
+    var matchingNamesCounter = 0;
+
+    // Iterate through each package
+    sortedPackagesElements.forEach(function(element) {
+
+      leftNavElements.forEach(function(name) {
+        // If package name is equal to the name of an item in the left nav,
+        // append that package to HTML structure
+        if (element.name === name) {
+          matchingNamesCounter++;
+          $( ".js-packages-icons-data .row" ).append('<div class="featured-items__item featured-items__item--primary col-md-4 col-sm-6 text-center">' +
+              '<img class="featured-items__img featured-items__img--primary" src="' + element.mixins.package.icon[0].value + '" alt="' + element.name + '">' +
+              '<h3 class="featured-items__title featured-items__title--primary">' + element.name + '</h3>' +
+            '</div>'
+          );
+        }
+      });
+
+    });
+
+    if (matchingNamesCounter === 0) {
+      $( ".js-packages-icons-data" ).remove();
+    } else {
+      $( ".js-packages-icons-data" ).removeClass('is-opacity-0').addClass('is-opacity-1');
+    }
+
+  }
+
+  function packagesAnonToken(cb) {
+    $.ajax({
+      url: '<%- @site.accountService %>auth/anonymous/login?client_id=<%- @site.packageClientId %>',
+      method: 'GET',
+      dataType: 'json',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).done(function(data, status, xhr){
+      if (xhr.status !== 200) {
+        $( ".js-packages-icons-data" ).remove();
+      } else {
+        lscache.set('packagesAnonToken', data.access_token, 60);
+        cb(data.access_token);
+      }
+    });
+  }
+
+  // Sort packages by name
+  function sortedPackagesArray(data) {
+
+      data.forEach(function(element) {
+        element.nameLower = element.name.toLowerCase();
+      });
+
+      return _.sortBy(data, 'nameLower');
+
+  }
+
+  function leftNavItemsArray() {
+
+    // Create empty array
+    var leftNavItems = [];
+    // Add items from the left nav to array
+    $( "#left_nav .single-packages .package-header" ).each(function() {
+      leftNavItems.push( $(this).text() );
+    });
+
+    return leftNavItems;
+  }
+
+
+
+})();

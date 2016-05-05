@@ -1,0 +1,47 @@
+{
+  "name": "hyTechne",
+  "version": "1.2.0",
+  "description": "Hybris Techne style guide",
+  "authors": [
+    "Hybris Software"
+  ],
+  "keywords": [
+    "Hybris",
+    "techne",
+    "SAP",
+    "[y]"
+  ],
+  "ignore": [
+    ".idea/",
+    "docs/",
+    "bower_components",
+    "node_modules/",
+    "src/less/templates/",
+    ".gitignore",
+    "config.json",
+    "gulpfile.js",
+    "package.json"
+  ],
+  "main": [
+    "dist/js/techne.min.js",
+    "dist/css/techne.min.css"
+  ],
+  "license": "Apache 2.0",
+  "private": false,
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "select2": "~3.5.2",
+    "jquery": "~2.1.0"
+  },
+  "homepage": "https://github.com/SAP/techne",
+  "_release": "1.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.0",
+    "commit": "843c72967bff96d85d85a1d46afba1e7d4102b2e"
+  },
+  "_source": "https://github.com/SAP/techne.git",
+  "_target": "^1.2.0",
+  "_originalSource": "hyTechne",
+  "_direct": true
+}

@@ -1,0 +1,12 @@
+{
+    "url": "https://generic-rd-team-sap-cec-yaas:YaaSRocks@devportal-wookiee.stage.yaas.io",
+    "waitForConditionTimeout": 30000,
+    "username": "chewie",
+    "accessKey": "75c97cf9-3505-489e-8db5-3597e891a32b",
+    "apiDocsHeaders": ["Schema", "Media", "Coupon"],
+    "apiPackages": ["Cart", "Email", "Persistence"],
+    "notConsistentPair": ["Media", "Email"],
+    "consistentPair": ["Schema", "Persistence"],
+    "tools": ["Builder", "RAML Patterns", "Service SDK"],
+    "resources": ["API Best Practices", "Events", "Development Guidelines"]
+}

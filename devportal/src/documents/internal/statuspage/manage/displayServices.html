@@ -1,0 +1,35 @@
+<div style="text-align: center">
+    <button ng-click="redirectToAdd()" class="btn btn-warning">New Component</button></td>
+</div>
+
+<br/><br/>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class=""><a href="#/"><strong>STAGE</strong></a></li>
+  <li role="presentation"><a href="#prod"><strong>PROD</strong></a></li>
+</ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <table class="table table-striped techne-table" ng-repeat="o in objects">
+                <thead>
+                <tr>
+                    <th>Area / Name</th>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="e in o.elements">
+                    <td>{{o.title}} / <strong>{{e.name}} </strong></td>
+                    <td>{{e.id}}</td>
+                    <td>{{e.status}}</td>
+                    <td>{{e.description}}</td>
+                    <td style="text-align: center"><button style="margin-right:10%" class="btn btn-default" id="{{e.id}}" ng-click="redirectToEdit(e.id)">Edit</button><button class="btn btn-warning">Erase</button></td>
+                </tr>
+               </tbody>
+            </table>
+        </div>
+    </div>

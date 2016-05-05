@@ -1,0 +1,27 @@
+// prefixer library
+@import '../vendor/_prefixer';
+
+// devportal specific variables
+@import '../settings/_variables';
+
+// helpful utilities
+@import '../tools/_utilities';
+
+// helper classes
+@import '../tools/_helper-classes';
+
+//
+// Forms
+// --------------------------------------------------
+
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+  &--narrow {
+    max-width: 270/14em;
+    .u-center-horizontally;
+  }
+}

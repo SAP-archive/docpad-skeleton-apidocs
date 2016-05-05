@@ -1,0 +1,51 @@
+<div style="text-align: center">
+  <a href="#/incidents/add/stage" class="btn btn-warning" role="button">Add new incident</a>
+</div>
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class=""><a href="#/incidents/stage" aria-controls="home" role="tab" data-toggle="tab"><strong>STAGE</strong></a></li>
+        <li role="presentation" class=""><a href="#/incidents/prod" aria-controls="profile" role="tab" data-toggle="tab"><strong>PROD</strong></a></li>
+
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <table rules="groups" cellpadding="5" border="1" frame="void" width=65%">
+                <colgroup align="left" span="1"></colgroup>
+                <colgroup align="center" span="4"></colgroup>
+                <tr style="background-color: #F0F0F0">
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+                <tr ng-repeat="e in scheduledIncidents">
+                    <td>{{e.name}}</td>
+                    <td>{{e.id}}</td>
+                    <td>{{e.status}}</td>
+                    <td>{{e.incident_updates[0].body}}</td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-primary" aria-label="Left Align" ng-click="edit(e.id)">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
+                      </button>
+                        <button type="button" class="btn btn-sm btn-primary" aria-label="Left Align" ng-click="update(e.id)">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">Update</span>
+                        </button>
+                      <button type="button" class="btn btn-sm btn-info" aria-label="Left Align" ng-click="showDetails(e)">
+                        <span class="glyphicon glyphicon-star" aria-hidden="true">Details</span>
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger" aria-label="Left Align" ng-click="delete(e)">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true">Remove</span>
+                      </button>
+                   </td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+</div>

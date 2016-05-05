@@ -1,0 +1,19 @@
+---
+title: Internal API Documentation
+layout: document
+---
+
+<%- @partial('left-nav-collapse-control') %>
+<%- @getBlock('scripts').add(@site.navPersonalizationScripts).toHTML() %>
+
+<div class="api-landing-wrapper">
+
+  <div class="jumbotron text-center no-top-padding">
+
+    <span class="api-landing-sprite api-landing-header"></span>
+    <h1>APIs</h1>
+    <p>This is a right place for documentation for services that are considered to be internal. In other words, their API should not be exposed to the outside world.</p>
+
+  </div>
+
+</div>

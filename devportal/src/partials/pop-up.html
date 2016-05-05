@@ -1,0 +1,12 @@
+---
+cacheable: true
+---
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-partial-modal-lg">Click here for a list</button></center>
+	<div class="modal fade bs-partial-modal-lg" tabindex="-1" role="dialog" aria-labelledby="partial" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div id="partial"></div>
+				<script>$("#partial").load( "/internal/docu_guide/available_partials.html" );</script>
+			</div>
+		</div>
+	</div>

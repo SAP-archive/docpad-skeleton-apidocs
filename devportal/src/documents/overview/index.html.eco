@@ -1,0 +1,130 @@
+---
+layout: overview
+title: 'Overview'
+---
+
+<%- @partial('left-nav-collapse-control') %>
+<div class="landing-page-wrapper">
+
+  <!-- hero spot  -->
+  <div class="jumbotron text-center">
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <h1 class="jumbotron__title">Overview</h1>
+
+        <p class="jumbotron__paragraph">Familiarize yourself with the components that make up YaaS. You’ll also find more in-depth information about the YaaS architecture, security, extensibility, and deployment.
+          We've also provided you with various communication channels to get support.</p>
+
+      </div>
+    </div>
+
+    <%- @partial('devportal_signup') %>
+
+  </div>
+
+  <!-- search or ask component -->
+  <%- @partial('devportal_search-or-ask') %>
+
+  <!-- architecture overview  -->
+  <div class="overview">
+
+    <h2 class="overview__header">It’s all about Packages</h2>
+
+    <div class="overview__content clearfix">
+
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row overview__row">
+
+          <div class="overview__item overview__item--small">
+            <img src="/images/overview/people.svg" width="64" height="59" class="overview__img overview__img--people svg" alt="Boss, Team Lead, Development Teams">
+            <p class="overview__title overview__title--small">Boss</p>
+            <p class="overview__title overview__title--small">Team Lead</p>
+            <p class="overview__title overview__title--small">Development Teams</p>
+          </div>
+
+          <div class="overview__item overview__item--small">
+            <img src="/images/overview/arrow.svg" width="93" height="23" class="overview__img overview__img--arrow svg" alt="Sell Packages">
+            <p class="overview__title overview__title--medium">Sell Packages</p>
+          </div>
+
+          <div class="overview__item overview__item--small">
+            <img src="/images/overview/package.svg" width="128" height="112" class="overview__img overview__img--package svg" alt="">
+          </div>
+
+          <div class="overview__item overview__item--small">
+            <img src="/images/overview/arrow.svg" width="93" height="23" class="overview__img overview__img--arrow svg" alt="Buy Packages">
+            <p class="overview__title overview__title--medium">Buy Packages</p>
+          </div>
+
+          <div class="overview__item overview__item--small">
+            <img src="/images/overview/people.svg" width="64" height="59" class="overview__img overview__img--people svg" alt="Boss, Project Lead, Development Teams">
+            <p class="overview__title overview__title--small">Boss</p>
+            <p class="overview__title overview__title--small">Project Lead</p>
+            <p class="overview__title overview__title--small">Users of Packages, in Projects</p>
+          </div>
+
+          <div class="overview__item overview__item--large overview__item--center clearfix">
+            <img src="/images/overview/lines.svg" width="345" height="38" class="overview__img overview__img--lines svg" alt="">
+            <div class="overview__inside-item">
+              <img src="/images/overview/service-apis.svg" width="104" height="53" class="overview__img overview__img--services-apis svg" alt="">
+              <a
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Providing functionality for one specific area, over a RESTful API" class="overview__tooltip overview__title overview__title--small">
+                Services/APIs
+              </a>
+            </div>
+            <div class="overview__inside-item">
+              <img src="/images/overview/builder-modules.svg" width="103" height="66" class="overview__img overview__img--builder-modules svg" alt="">
+              <a
+                data-toggle="tooltip"
+                data-placement="top"
+                title="A web application that provides UI for YaaS services (usually back-office functionality) and is embedded in the Builder."
+                class="overview__tooltip overview__title overview__title--small"
+              >
+                Builder Modules
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row overview__row">
+
+          <div class="overview__item overview__item--large overview__item--center clearfix">
+            <img src="/images/overview/double-arrow.svg" width="24" height="67" class="overview__img overview__img--double-arrow svg" alt="">
+          </div>
+
+        </div>
+
+        <div class="row overview__row">
+
+          <div class="overview__item overview__item--medium">
+            <img src="/images/overview/dev-portal.svg" width="68" height="68" class="overview__img overview__img--dev-portal svg" alt="Dev Portal">
+            <p class="overview__title overview__title--large">Dev Portal</p>
+            <p class="overview__paragraph">Learn how to write services, Builder modules and how to use APIs of other services </p>
+          </div>
+
+          <div class="overview__item overview__item--medium">
+            <img src="/images/overview/builder.svg" width="68" height="68" class="overview__img overview__img--builder svg" alt="Builder">
+            <p class="overview__title overview__title--large">Builder</p>
+            <p class="overview__paragraph">Manage your business and publish packages</p>
+          </div>
+
+          <div class="overview__item overview__item--medium">
+            <img src="/images/overview/yaas-market.svg" width="68" height="68" class="overview__img overview__img--yaas-market svg" alt="YaaS Market">
+            <p class="overview__title overview__title--large">YaaS Market</p>
+            <p class="overview__paragraph">Shop for new packages</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

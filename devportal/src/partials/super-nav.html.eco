@@ -1,0 +1,75 @@
+---
+cacheable: true
+---
+<!-- SUPER NAVBAR -->
+
+    <div class="navbar-super" role="navigation">
+        <a href="/" class="domain">
+            <img class="domain-logo" src="/images/domains/devportal_logo.svg" alt="devportal"/>
+            <span class="logo-text">YAAS</span>
+        </a>
+        <ul class="nav-super">
+            <li><a href="<%= @getYaasUrl() %>">Home</a></li>
+            <li><a href="<%= @getMarketUrl() %>">YaaS Market</a></li>
+            <li><a href="<%= @getBaaSUrl() %>">Builder</a></li>
+            <li class="active"><a href="/">Dev Portal</a></li>
+            <li class="yg-dropdown-node js-yg-dropdown-node">
+                <a href="<%= @getCommunityUrl() %>">Community</a>
+                <div class="nav-super-submenu-toggle">
+                    <span class="nav-super-triangle"></span>
+                </div>
+                <ul class="yg-dropdown">
+                    <li class="yg-dropdown--menu-link">
+                        <a href="<%= @getCommunityUrl() %>">Co-Innovation Network</a>
+                    </li>
+                    <li class="yg-dropdown--menu-link">
+                        <a href="https://experts.hybris.com/spaces/151/index.html" target="_blank">hybris Experts</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="account js-yg-dropdown-node">
+                <a href="<%= @getBaaSUrl() %>/#/?selectedPath=%2FMy%20Profile%2FProfile">My Account</a>
+                <div class="nav-super-submenu-toggle">
+                    <span class="nav-super-triangle"></span>
+                </div>
+
+                <ul class="account-overlay">
+                    <li class="account-overlay-logged-in" style="display: none">
+                        <div>
+                            <ul>
+                                <li class="profile-head">
+                                <div class="profile-details">
+                                    <div class="profile-email">
+                                    </div>
+                                    <div class="profile-link">
+                                        <a href="<%= @getBaaSUrl() %>/#/?selectedPath=%2FMy%20Profile%2FProfile">My Profile</a>
+                                    </div>
+                                </div>
+                                    <div class="clr"></div>
+                                </li>
+                                <li class="sign-out">
+                                    <a href="#">Sign Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="account-overlay-login" >
+                        <div class="menu-link">
+                            <a href="<%= @getBaaSUrl() %>">Sign In</a>
+                        </div>
+                        <div class="register-link menu-link">
+                            <a href="<%= @getYaasUrl() %>/register/">Register</a>
+                        </div>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <a href="http://www.hybris.com" target="_blank" class="brand">
+            <img class="brand-logo" src="<%= @getYaasUrl() %>/globalresources/v2/img/hybris.svg" alt="hybris - an SAP Company"/>
+        </a>
+        <a href="#" class="nav-super-toggle">
+            <span class="nav-super-triangle"></span>
+        </a>
+    </div>
+<!-- /SUPER NAVBAR -->

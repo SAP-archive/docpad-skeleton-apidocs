@@ -1,0 +1,4 @@
+---
+cacheable: true
+---
+<a id="register-button" href="<%= @getYaasUrl() %>/register/" title="REGISTER NOW" class="btn btn-lg btn-primary" style="display: none">REGISTER NOW</a>

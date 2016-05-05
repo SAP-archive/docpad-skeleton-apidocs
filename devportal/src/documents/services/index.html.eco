@@ -1,0 +1,43 @@
+---
+title: API Documentation
+layout: document
+---
+
+<%- @partial('left-nav-collapse-control') %>
+<%- @getBlock('scripts').add(@site.navPersonalizationScripts).toHTML() %>
+
+<div class="landing-page-wrapper">
+
+  <div class="jumbotron text-center">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <h1 class="jumbotron__title">APIs</h1>
+
+        <p class="jumbotron__paragraph">The Dev Portal includes useful and detailed API documentation. Click on an API name to navigate to its documentation, and learn how to build applications that consume these RESTful APIs. The documentation includes a brief overview of the service, a link to the API Console, an API reference, tutorials, and a glossary.</p>
+
+      </div>
+    </div>
+
+    <%- @partial('devportal_signup') %>
+
+  </div>
+
+  <!-- search or ask component -->
+  <%- @partial('devportal_search-or-ask') %>
+
+  <!-- api steps  -->
+  <div class="row featured-items featured-items--primary js-packages-icons-data is-opacity-0 u-transition-opacity">
+    <div class="col-md-10 col-md-offset-1">
+
+      <div class="row featured-items__row">
+
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+
+
+</div>
