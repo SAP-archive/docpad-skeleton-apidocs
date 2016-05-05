@@ -12,6 +12,7 @@ isPaged: true
       <div class="col-md-8 col-md-offset-2">
         <h1>Release Notes</h1>
         <p>Place for a few sentences about your Release Notes.</p>
+        <a href="/atom.xml" rel="alternate" type="application/rss+xml" target="_blank" class="btn btn-primary btn-lg">SUBSCRIBE</a>
       </div>
     </div>
   </div>

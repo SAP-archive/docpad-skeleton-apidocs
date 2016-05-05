@@ -63,13 +63,11 @@
     "config": "^1.19.0",
     "gulp": "^3.9.0",
     "gulp-json-transform": "^0.3.0",
-    "gulp-nightwatch": "^0.2.7"
+    "gulp-nightwatch": "^0.2.7",
+    "express": "4.13.4"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
-    "start": "npm install && docpad clean && gulp start && docpad server",
-    "test": "NODE_CONFIG_DIR=./tests/devportal/config gulp test -b chrome --sauce && NODE_CONFIG_DIR=./tests/devportal/config gulp test -b firefox --sauce",
-    "smoke-tests": "NODE_CONFIG_DIR=./tests/devportal/config ./node_modules/gulp/bin/gulp.js test -b chrome --sauce --type smoke && NODE_CONFIG_DIR=./tests/devportal/config ./node_modules/gulp/bin/gulp.js test -b firefox --sauce --type smoke",
-    "ui-tests": "NODE_CONFIG_DIR=./tests/devportal/config ./node_modules/gulp/bin/gulp.js test -b chrome --sauce --type ui && NODE_CONFIG_DIR=./tests/devportal/config ./node_modules/gulp/bin/gulp.js test -b firefox --sauce --type ui"
+    "start": "docpad generate && gulp replaceApiReferences && node server.js"
   }
 }
