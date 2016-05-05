@@ -5,7 +5,6 @@ deployment = {
   gulp:
     writeAfter:["replaceApiReferences"]
     generateAfter: ['serviceLatest']
-    docpadReady: ['validation_metadata']
   styles: ["/styles/devportal-yaas.css"]
   scripts: ["/scripts/devportal-yaas.min.js"]
   headScripts: ["/scripts/devportal-yaas-head.min.js"]
@@ -474,7 +473,6 @@ docpadConfig = {
     gulp:
       writeAfter: false #['replaceApiReferences']
       generateAfter: false #['serviceLatest', 'fixTables']
-      docpadReady: ['validation_metadata']
 
 
     lunr:
