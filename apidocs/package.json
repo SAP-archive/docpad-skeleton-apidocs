@@ -68,6 +68,6 @@
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
-    "start": "npm install && gulp -t 'services:Product' && docpad generate && gulp replaceApiReferences && gulp serviceLatest && node server.js"
+    "start": "npm install && gulp start -t 'services:Product' && docpad generate && gulp replaceApiReferences && gulp serviceLatest && node server.js"
   }
 }
