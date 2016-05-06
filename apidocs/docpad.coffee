@@ -233,7 +233,6 @@ docpadConfig = {
       writeAfter: false #['replaceApiReferences']
       generateAfter: false #['serviceLatest', 'fixTables']
 
-
     lunr:
       indexes:
         myIndex:
