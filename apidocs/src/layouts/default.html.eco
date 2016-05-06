@@ -64,24 +64,9 @@
 
     <!-- Content -->
     <%- @content %>
-    <script src="<%= @getBaaSUrl() %>/sso/yaasAuth.js"></script>
 
     <!-- footer scripts -->
     <%- @getBlock('scripts').add(@site.scripts).toHTML() %>
-
-    <script>
-            $(document).ready(function() {
-              if(typeof sso !== 'undefined')
-                sso('<%= @getBaaSUrl() %>');
-                if(lscache.get('id_token')){
-                  var jws = KJUR.jws.JWS, idToken = lscache.get('id_token'), tokenClaim = idToken.split('.')[1], uClaim = b64utos(tokenClaim), mail = jws.readSafeJSONString(uClaim).email;
-                  if(mail){
-                    $('.account-overlay-logged-in').show(), $('#register-button').hide(), $('.account-overlay-login').hide(), $('.profile-email').text(mail);
-                  }
-                }
-            });
-
-    </script>
 
   <script>
   $(document).ready(function(){

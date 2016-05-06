@@ -79,41 +79,23 @@ docpadConfig = {
 
       # The production url of our website
       url: "http://127.0.0.1:9778"
-      yaasUrl: "https://www.stage.yaas.io"
-      home: "http://www.yaas.io"
+      yaasUrl: "https://www.yaas.io"
+      home: ""
 
-      #redir uri needed for blogging angular app
-      redirUri: "http://127.0.0.1:9778/internal/blog/"
-      redirBack: "http://127.0.0.1:9778/internal/blog/manage"
-      #other stuff for blogging
-      oauthService: "https://api.stage.yaas.io/hybris/oauth2/v1"
-      accountService: "https://api.stage.yaas.io/hybris/account/v1/"
-      packageClientId: "44NwKimthMiKT3BZ9TqfkOjqEf1Gn0Gy"
-      productService: "https://api.stage.yaas.io/hybris/product/v1"
-      clientId: "7iHzUCcQkcBYrDtIF6N1U0IXTM92RsEu"
-      blogFeed: "http://feeds.feedburner.com/yaas/devportalblog-stage"
-      internalBlogFeed: "http://feeds.feedburner.com/yaas/internaldevportalblog-stage"
-      feedbackService: "http://localhost:8081"
-      builderUrl: "https://builder.stage.yaas.io/"
-      clientIdListing: "4lfyAwV3zeskWEIzoIMxohRMVYd0YFXI"
       apinotebookService : "http://localhost:3000"
-      adminui: "https://builder.stage.yaas.io"
-      market: "https://market.stage.yaas.io"
-      community: "https://community.stage.yaas.io"
-      experts: "https://experts.hybris.com"
       googleAnalytics: () -> ''
 
       # The default title of our website
-      title: "YaaS Dev Portal"
+      title: "Simle API Docs Skeleton"
 
       # The website description (for SEO)
-      description: "Dev Portal for SAP Hybris as a Service (yaaS)"
+      description: "Skeleton for your API Documentation"
 
       # The website keywords (for SEO) separated by commas
-      keywords: "DevPortal yaaS cloud caas paas"
+      keywords: ""
 
       # The website author's name
-      author: "SAP Hybris"
+      author: ""
 
 
     # -----------------------------
@@ -130,44 +112,11 @@ docpadConfig = {
     getSiteUrl: ->
       @site.url
 
-    getRedirUri: ->
-      @site.redirUri
-
-    getRedirBack: ->
-      @site.redirBack
-
-    getProductService: ->
-      @site.productService
-
-    getOAuthService: ->
-      @site.oauthService
-
-    getAccountService: ->
-      @site.accountService
-
-    getApinotebookService: ->
-      @site.apinotebookService
-
-    getClientId: ->
-      @site.clientId
-
-    getHomeUrl: ->
-      @site.home
-
-    getAccountServiceUrl: ->
-      @site.account
-
-    getBaaSUrl: ->
-      @site.builderUrl
-
-    getMarketUrl: ->
-      @site.market
-
     getYaasUrl: ->
       @site.yaasUrl
 
-    getCommunityUrl: ->
-      @site.community
+    getHomeUrl: ->
+      @site.home
 
     getTrimmedName: (name) ->
       name.replace(/([^\w-])/g,"")
@@ -313,30 +262,13 @@ docpadConfig = {
     prod:
       templateData:
         site:
-          url: "https://devportal.yaas.io"
-          yaasUrl: "https://www.yaas.io"
-          account: "https://api.yaas.io/hybris/account/v1/"
-          adminui: "https://builder.yaas.io"
-          redirUri: "https://devportal.yaas.io/internal/blog/"
-          redirBack: "https://devportal.yaas.io/internal/blog/manage"
-          oauthService: "https://api.yaas.io/hybris/oauth2/v1"
-          accountService: "https://api.yaas.io/hybris/account/v1/"
-          productService: "https://api.yaas.io/hybris/product/v1"
-          clientId: "KH5q9P8AhkhAzituxDSO68iR2SmAwvJN"
-          blogFeed: "http://feeds.feedburner.com/yaas/devportalblog"
-          internalBlogFeed: "http://feeds.feedburner.com/yaas/internaldevportalblog"
+          url: ""
+          blogFeed: "/atom.xml"
           googleAnalytics: deployment.googleAnalytics
-          market: "https://market.yaas.io"
-          community: "https://community.yaas.io/"
-          experts: "https://experts.hybris.com"
-          packageClientId: "okkUry41QneQhWUjgk6ObGQikfnzA4fe"
           scripts: deployment.scripts
           headScripts: deployment.headScripts
           styles: deployment.styles
           apinotebookService : "https://apinotebook.us-east.modules.yaas.io"
-          feedbackService: "https://feedback.yaas.io"
-          builderUrl: "https://builder.yaas.io/"
-          clientIdListing: "AhvOOZ7fLGgJu2PUZCOFTLsum0DqFCQH"
 
       plugins:
         gulp: deployment.gulp
