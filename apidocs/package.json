@@ -68,7 +68,7 @@
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
-    "start": "npm install && bower intsall && gulp start -t 'services:Batman Ipsum' && docpad generate && gulp replaceApiReferences && gulp serviceLatest && node server.js",
+    "start": "npm install && bower install && gulp start -t 'services:Batman Ipsum' && docpad generate && gulp replaceApiReferences && gulp serviceLatest && node server.js",
     "generate": ""
   }
 }
