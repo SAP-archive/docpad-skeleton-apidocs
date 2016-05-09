@@ -33,8 +33,6 @@ layout: 'release_notes'
         <div class="post-content">
           <%- @content %>
         </div>
-        <!-- Below stuff embeds feedback panel -->
-        <%- @partial('feedback-panel') %>
       </article>
 
     </div>
