@@ -32,7 +32,7 @@
     "docpad-plugin-eco": "~2.1.0",
     "docpad-plugin-gulp": "^2.1.6",
     "docpad-plugin-highlightjs": "~2.3.0",
-    "docpad-plugin-less": "~2.4.1",
+    "docpad-plugin-less": "git@github.com:sdomagala/docpad-plugin-less.git#compiled",
     "docpad-plugin-livereload": "~2.7.1",
     "docpad-plugin-marked": "~2.3.0",
     "docpad-plugin-raw": "~2.4.1",
@@ -68,7 +68,7 @@
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
-    "start": "gulp start -t 'services:Batman Ipsum' && docpad generate && gulp replaceApiReferences && gulp serviceLatest && node server.js",
+    "start": "npm install && bower intsall && gulp start -t 'services:Batman Ipsum' && docpad generate && gulp replaceApiReferences && gulp serviceLatest && node server.js",
     "generate": ""
   }
 }
