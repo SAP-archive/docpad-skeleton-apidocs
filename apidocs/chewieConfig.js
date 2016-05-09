@@ -8,9 +8,9 @@ const config = {
 
   registry: {
     location: process.env.REGISTRY_LOCATION || 'remote',
-    path: process.env.REGISTRY_PATH || 'ssh://git@stash.hybris.com:7999/wookiee/devportal_registry.git',
+    path: process.env.REGISTRY_PATH || 'ssh://git@stash.hybris.com:7999/wookiee/simple-api-docs-szkielecik-sample-data.git',
     fileName: 'docu_registry.json',
-    branch: process.env.docuBranch || 'dev',
+    branch: process.env.docuBranch || 'master',
     shortVersionFileName: 'shrinkedRegistry.json',
     clonedRegistryFolder: 'registry'
   },
@@ -28,8 +28,8 @@ const config = {
   },
 
   generationResult: {
-    srcLocation: 'ssh://git@stash.hybris.com:7999/wookiee/devportal_out.git',
-    branch: process.env.docuBranch || 'dev',
+    srcLocation: 'ssh://git@stash.hybris.com:7999/wookiee/simple-api-docs-szkielecik-sample-data.git',
+    branch: process.env.docuBranch || 'master',
     cloneLocation: 'latestResultRepo'
   },
   constantLocations: {
