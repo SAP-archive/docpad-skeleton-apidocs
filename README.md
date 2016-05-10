@@ -13,7 +13,7 @@ If **REGISTRY_PATH** is not given, then sample data will be used, in order to ge
 
 3. Run the following command:
 ```
-npm run
+npm start
 ```
 
 4. Open `http://localhost:9778/` to see the results.
