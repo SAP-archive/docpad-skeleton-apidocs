@@ -32,4 +32,4 @@ export REGISTRY_PATH = git_repository_with_registry
 npm run production
 ```
 
-4. In **apidocs** folder, find **out** folder. This folder contains all generated files and can be used on production. For example, you can copy the content of **out** folder to your [GutHub Pages repository](https://pages.github.com/).
+4. In **apidocs** folder, find **out** folder. This folder contains all generated files and can be used on production. For example, you can copy the content of **out** folder to your [GitHub Pages repository](https://pages.github.com/).
