@@ -1,24 +1,21 @@
 {
-  "name": "devportal",
-  "description": "DevPortal skeleton for YaaS. It is used to build a DevPortal with content provided by all teams in their project's repositories.",
-  "homepage": "https://stash.hybris.com/projects/PAAS/repos/devportal/browse",
-  "keywords": [
-    "devportal-skeleton",
-    "docpad"
-  ],
-  "author": "Wookiee Team",
+  "name": "YourName",
+  "description": "Your Description",
+  "homepage": "",
+  "keywords": [],
+  "author": "",
   "maintainers": [
-    "Wookiee Team <wookiee> (https://wiki.hybris.com/display/prodandtech/PAAS8+Team+Wookiee)"
+    "maintainers"
   ],
   "contributors": [
-    "Wookiee Team <wookiee> (https://wiki.hybris.com/display/prodandtech/PAAS8+Team+Wookiee)"
+    "contributors"
   ],
   "bugs": {
-    "url": "https://jira.hybris.com/browse/WOO"
+    "url": ""
   },
   "repository": {
-    "type": "git",
-    "url": "ssh://git@stash.hybris.com:7999/paas/devportal.git"
+    "type": "",
+    "url": ""
   },
   "engines": {
     "node": "5.6.0",
@@ -68,7 +65,7 @@
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
-    "start": "npm install && bower install && gulp start && docpad generate && gulp replaceApiReferences && gulp serviceLatest && node server.js",
-    "production": "gulp start && docpad generate --env prod && gulp replaceApiReferences && gulp serviceLatest"
+    "start": "npm install && bower install && gulp start && docpad generate && gulp minify && node server.js",
+    "production": "gulp start && docpad generate --env prod && gulp minify && node server.js"
   }
 }
