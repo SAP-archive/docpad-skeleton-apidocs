@@ -85,7 +85,7 @@ docpadConfig = {
       googleAnalytics: () -> ''
 
       # The default title of our website
-      title: "Simle API Docs Skeleton"
+      title: "Simple API Docs Skeleton"
 
       # The website description (for SEO)
       description: "Skeleton for your API Documentation"
