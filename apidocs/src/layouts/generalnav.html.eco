@@ -28,7 +28,7 @@ layout: default
 
         (function(){
           $(document).ready(function(){
-            var lunr = ['/lunr/lunr-data-my/index.json'];
+            var lunr = ['/lunr/lunr-data-myindex.json'];
             var scriptsArray = ['/lunr/lunr-ui.min.js', '/lunr/lunr.min.js'];
             var lunr2 = $('#lunr-input2').length !== 0;
             getMultipleFiles(lunr, '', $.getJSON).done(function(lunr){
