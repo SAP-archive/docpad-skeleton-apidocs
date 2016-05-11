@@ -66,6 +66,7 @@
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
     "start": "npm install && bower install && gulp start && docpad generate && gulp minify && node server.js",
+    "local": "gulp start && docpad generate && gulp minify && node server.js",
     "production": "npm install && bower install && gulp start && docpad generate --env prod && gulp minify"
   }
 }
