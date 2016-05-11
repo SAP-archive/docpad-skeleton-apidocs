@@ -2,16 +2,13 @@
 layout: 'release_notes'
 ---
 
-<% isExternal = !@document.relativeDirPath.startsWith('internal') %>
-<% ifInternalUrl = if isExternal then '/' else '/internal/' %>
-
 <div class="post-wrapper">
   <div class="jumbotron">
 
 
     <%- @partial('left-nav-collapse-control') %>
 
-    <h3><a href="<%=ifInternalUrl%>rn/index.html"> RELEASE NOTES</a>/<%= @document.title %> </h3>
+    <h3><a href="/rn/index.html"> RELEASE NOTES</a>/<%= @document.title %> </h3>
 </div>
 
     <div class="col-md-8 col-md-offset-2">

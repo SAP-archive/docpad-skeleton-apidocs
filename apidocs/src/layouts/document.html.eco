@@ -2,10 +2,7 @@
 layout: generalnav
 ---
 
-<% isExternal = !@document.relativeDirPath.startsWith('internal') %>
-<% collectionName = if isExternal then 'services' else 'internalServices' %>
-<% ifInternal = if isExternal then '' else 'Internal ' %>
-<% ifInternalUrl = if isExternal then '' else '/internal' %>
+<% collectionName = 'services' %>
 
 <% # Only above is unique %>
 
@@ -25,7 +22,7 @@ layout: generalnav
         <% listofareas.sort() %>
 
         <ul>
-          <li class="back-link visible-xs"><a href="<%=ifInternalUrl%>/"> Back to <%=ifInternal%>Home</a></li>
+          <li class="back-link visible-xs"><a href="/"> Back to Home</a></li>
           <li class="nav-header">API Docs</li>
           <li><br>
             <select name="" id="singlePackageFilterList" class="form-control api-package-filter">
@@ -51,7 +48,7 @@ layout: generalnav
               <% for docu in @getCollection(collectionName).findAll(area:item,basename:'meta-inf').toJSON() : %>
                 <% if docu.latest is true :%>
                   <li class="apis">
-                    <a href="<%=ifInternalUrl%>/services/<%= @getTrimmedName(docu.service.toLowerCase()) %>/latest/index.html" property="dc:title" data-builder-identifier="<%= docu.builderIdentifier %>" class="api-link"><%= docu.service %></a>
+                    <a href="/services/<%= @getTrimmedName(docu.service.toLowerCase()) %>/latest/index.html" property="dc:title" data-builder-identifier="<%= docu.builderIdentifier %>" class="api-link"><%= docu.service %></a>
                   </li>
                 <% end %>
               <% end %>

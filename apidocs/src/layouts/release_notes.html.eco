@@ -2,10 +2,7 @@
 layout: generalnav
 ---
 
-<% isExternal = !@document.relativeDirPath.startsWith('internal') %>
-<% collectionName = if isExternal then 'releaseNotes' else 'internalReleaseNotes' %>
-<% ifInternal = if isExternal then '' else 'Internal ' %>
-<% ifInternalUrl = if isExternal then '/' else '/internal/' %>
+<% collectionName = 'releaseNotes' %>
 
   <div id="sidebar" class="sidebar-offcanvas" role="navigation" >
     <div class="">
@@ -24,7 +21,7 @@ layout: generalnav
 
     <div id="left_nav" class="left-nav">
       <ul class="left-nav__list">
-        <li class="visible-xs"><a class="left-nav__link left-nav__link--back" href="<%=ifInternalUrl%>"> Back to <%=ifInternal%> Home</a></li>
+        <li class="visible-xs"><a class="left-nav__link left-nav__link--back" href="/"> Back to Home</a></li>
         <li class="left-nav__nav-header nav-header">Release Notes</li>
         <li><br>
           <select name="" id="singlePackageFilterList" class="left-nav__package-filter form-control">

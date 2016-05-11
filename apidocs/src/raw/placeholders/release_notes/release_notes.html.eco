@@ -4,8 +4,6 @@ layout: release_notes
 
 <% dpServiceName = 'serviceNamePH' %>
 <% collectionName = 'collectionRN' %>
-<% ifInternal = 'isInternalPH' %>
-<% ifInternalUrl = 'isInternalUrlPH' %>
 
 <% metaInf = @getFile({relativeDirPath: @document.relativeDirPath, basename: 'meta-inf'}) %>
 
@@ -15,7 +13,7 @@ layout: release_notes
 
   <div class="sticky-page-header release-notes-header">
 
-    <h3><a href="<%=ifInternalUrl%>/rn/index.html">RELEASE NOTES </a>/<%=ifInternal%> <%=dpServiceName%> </h3>
+    <h3><a href="/rn/index.html">RELEASE NOTES </a>/ <%=dpServiceName%> </h3>
 
   </div>
 
