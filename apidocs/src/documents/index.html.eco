@@ -52,7 +52,7 @@ title: 'Home'
               <span class="u-animation-border__top"></span>
               <span class="u-animation-border__bottom"></span>
             </div>
-            <a class="featured-items__link featured-items__link--secondary" href="https://techne.yaas.io/" target="_blank" title="UI Design Guidelines">
+            <a class="featured-items__link featured-items__link--secondary" href="rn/" target="_blank" title="UI Design Guidelines">
               <img class="featured-items__img featured-items__img--secondary svg" src="/images/homepage/design-guidelines.svg" width="46" height="77" alt="">
               <h3 class="featured-items__title featured-items__title--secondary">Release Notes</h3>
               <p class="featured-items__paragraph featured-items__paragraph--secondary">Few words about your Release Notes.</p>
