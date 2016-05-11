@@ -42,7 +42,6 @@ docpadConfig = {
 
       navPersonalizationScripts: [
         '/bower_components/underscore/underscore-min.js'
-        '/scripts/custom/packages-names-and-icons.js'
         #'/scripts/custom/listing.js'
       ]
 

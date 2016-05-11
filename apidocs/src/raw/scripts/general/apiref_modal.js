@@ -1,4 +1,4 @@
-(document).ready(function() {
+$(document).ready(function() {
 
   // open modal on hashes like #_action_get
   $(window).bind('hashchange', function(e) {
