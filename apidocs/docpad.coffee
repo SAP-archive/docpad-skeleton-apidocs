@@ -230,8 +230,8 @@ docpadConfig = {
       matchElementRegexString: 't'
 
     gulp:
-      writeAfter: false #['replaceApiReferences']
-      generateAfter: false #['serviceLatest', 'fixTables']
+      writeAfter: ['replaceApiReferences']
+      generateAfter: ['serviceLatest', 'fixTables']
 
     lunr:
       indexes:
