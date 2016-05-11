@@ -270,11 +270,6 @@ service: 'serviceNamePH'
     <hr>
   <% end %>
 
-
-
-  <!-- Below stuff embeds feedback panel -->
-  <%- @partial('feedback-panel') %>
-
 </div>
 </div>
 
