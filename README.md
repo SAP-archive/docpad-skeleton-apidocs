@@ -18,6 +18,8 @@ npm start
 
 4. Open `http://localhost:9778/` to see the results.
 
+If you have already installed all npm packages and bower components, you can use `npm run local` to omit running the following commands: `npm install` and `bower install`.
+
 ### Production
 
 1. Navigate to the **apidocs** folder,
