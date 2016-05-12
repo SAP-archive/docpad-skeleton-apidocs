@@ -3,6 +3,6 @@ apidocs/out
 apidocs/src/raw/bower_components
 apidocs/tmp
 
-apidocs/src/raw/scripts/modernizr.js
-apidocs/src/raw/scripts/ZeroClipboard.js
-apidocs/src/raw/scripts/ZeroClipboard.swf
+apidocs/src/raw/scripts/general/modernizr.js
+apidocs/src/raw/scripts/general/ZeroClipboard.js
+apidocs/src/raw/scripts/general/ZeroClipboard.swf
