@@ -47,7 +47,7 @@ docpadConfig = {
 
       scripts: [
         "/scripts/general/opt-in-features.js"
-        "/scripts/general/modernizr-2.6.2.min.js"
+        "/scripts/general/modernizr.js"
         "/scripts/general/offcanvas.js"
         "/scripts/general/backtop.js"
         "/scripts/general/scrollspy.js"

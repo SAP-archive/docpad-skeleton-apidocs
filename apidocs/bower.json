@@ -27,6 +27,9 @@
     "hyTechne": "^1.2.0",
     "underscore": "^1.8.3",
     "list.js": "^1.2.0",
-    "lscache": "^1.0.5"
+    "lscache": "^1.0.5",
+    "highlight": "^9.3.0",
+    "zeroclipboard": "^2.2.0",
+    "modernizr": "^3.3.1"
   }
 }
