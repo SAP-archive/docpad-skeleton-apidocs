@@ -1,0 +1,196 @@
+---
+layout: 'apiconsole'
+title: API Console
+service: 'serviceNamePH'
+---
+
+<% dpServiceName = 'serviceNamePH' %>
+<% dpServiceNameShort = 'serviceShortNamePH' %>
+<% dpServiceVersion = 'serviceVersionPH' %>
+<% dpServiceVersionRAML = 'serviceVersionRAML' %>
+<% dpServiceInternal = 'isInternalUrlPH'  %>
+<% rnCollectionName = 'releaseNotesPH' %>
+<% collectionName = 'collectionAPIConsolesPH' %>
+<% collectionName2 = 'collectionNamePH' %>
+<% ifInternalUrl = 'isInternalUrlPH' %>
+<% ifInternalUrlOther = 'isInternalUrlOtherPH' %>
+<% ifInternal = 'internalPH' %>
+<% dbServiceUri = 'serviceUri' %>
+<% allowedArrayLength = lengthPH %>
+
+  <div id="sidebar" class="sidebar-offcanvas" role="navigation" >
+
+    <div class="api-nav left-nav" id="left_nav">
+
+      <nav class="bs-docs-sidebar">
+
+        <ul class="nav">
+          <li class="back-link"><a href="<%-ifInternalUrl%>/services/"> Back to API Docs</a></li>
+          <li class="nav-header"><%- dpServiceName %></li>
+            <% for docu, i in @getCollection(collectionName2).findAll(title:"Overview",service:dpServiceName,relativeDirPath:ifInternalUrlOther+'services/'+dpServiceNameShort+'/'+dpServiceVersion).toJSON(): %>
+              <% if i == 0: %>
+                 <li><a href="index.html#<%-@getTrimmedName(docu.title) %>">Overview <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a></li>
+              <% end %>
+            <% end %>
+
+            <!-- API Reference Generated Docu replaced by gulp-->
+            rightReferencePlaceholder
+
+            <%for docu, i in @getCollection(collectionName2).findAll(title:"Events",service:dpServiceName,relativeDirPath:ifInternalUrlOther+'services/'+dpServiceNameShort+'/'+dpServiceVersion).toJSON(): %>
+              <% if i == 0: %>
+                <li>
+                  <a href="index.html#<%= @getTrimmedName(docu.title) %>">Events <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                </li>
+              <% end %>
+            <% end %>
+
+          <% details = @getCollection(collectionName2).findAll(type:'Details',service:dpServiceName,relativeDirPath:ifInternalUrlOther+'services/'+dpServiceNameShort+'/'+dpServiceVersion).toJSON() %>
+          <%for docu, i in details: %>
+          <% if i == 0: %>
+            <li>
+              <a href="index.html#<%= @getTrimmedName(docu.type) %>"><%- docu.type %> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+              <ul class="nav nav-stacked">
+              <%for docu in details: %>
+                <li>
+                  <a href="index.html#<%= @getTrimmedName(docu.title) %>"><%=docu.title%> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                </li>
+              <% end %>
+              </ul>
+            </li>
+            <% end %>
+          <% end %>
+
+          <% tutorial = @getCollection(collectionName2).findAll(type:'Tutorial',service:dpServiceName,relativeDirPath:ifInternalUrlOther+'services/'+dpServiceNameShort+'/'+dpServiceVersion).toJSON() %>
+            <%for docu, i in tutorial: %>
+              <% if i == 0: %>
+              <li>
+                <a href="index.html#<%= @getTrimmedName(docu.type) %>"><%- docu.type %> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                  <ul class="nav nav-stacked">
+                  <%for docu in tutorial: %>
+                    <li>
+                      <a href="index.html#<%= @getTrimmedName(docu.title) %>"><%=docu.title%> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                    </li>
+                  <% end %>
+                  </ul>
+              </li>
+            <% end %>
+          <% end %>
+
+          <% glossary = @getCollection('partials').findAll(service: dpServiceName).toJSON() %>
+          <% if glossary.length: %>
+          <!-- GLOSSARY Docu-->
+            <li>
+              <a href="index.html#Glossary">Glossary <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+            </li>
+          <% end %>
+        </ul>
+        <% for docu in @getCollection(rnCollectionName).findAll(relativeDirPath:ifInternalUrlOther+"rn/services/"+dpServiceNameShort+"/"+dpServiceVersion,basename:"release_notes").toJSON(): %>
+              <a href="/<%- docu.relativeDirPath %>/release_notes.html" class="btn btn-primary">Release Notes</a>
+        <% end %>
+        <!-- end list of services  -->
+
+      </nav>
+
+    </div>
+
+  </div>
+
+
+    <div class="container-fluid">
+      <div class="container-wrapper has-nav">
+
+        <div class="content-wrapper">
+
+<div class="col-sm-12">
+
+    <div class="sticky-page-header">
+
+      <div class="pull-left">
+
+
+         <h1><%= dpServiceName %></h1>
+
+          <!-- this part enables version dropdown with links between versions if there are more then one versions -->
+      <% currentVersion %>
+      <% listofversions = [] %>
+        <% for docu in @getCollection(collectionName2).findAll(service:dpServiceName,basename:'meta-inf',area:$exists:true).toJSON(): %>
+          <% if dpServiceVersion == docu.version: %>
+            <% currentVersion = docu.latestVersion or docu.version %>
+          <% end %>
+          <% listofversions.push version: docu.version, latestVersion: docu.latestVersion  %>
+        <% end %>
+        <% if listofversions.length > 1 : %>
+            <div class="dropdown version-selector">
+                    <button class="btn btn-link btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                      <%- currentVersion %>
+                    <span class="caret"></span>
+                    </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <% for version in listofversions : %>
+              <% if version.version isnt dpServiceVersion : %>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="<%=ifInternalUrl%>/services/<%- dpServiceNameShort %>/<%- version.version %>/apiconsole.html"><%- version.latestVersion or version.version %></a></li>
+                        <% end %>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+      <!-- end of version drop down part -->
+      </div>
+
+    <div class="service-links service-links-api-console">
+
+      <!-- raml link dropdown -->
+      <%for docu in @getCollection(collectionName2).findAll(url:$startsWith:ifInternalUrl+'/services/'+dpServiceNameShort+'/'+dpServiceVersion+'/api.raml').toJSON(): %>
+        <div class="service-url raml-url hidden-xs">
+          <div class="input-group">
+            <input type="text" class="form-control input-sm" value="<%- @getSiteUrl() %><%- ifInternalUrl+'/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>">
+            <span class="input-group-btn">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" id="api-spec-btn" aria-expanded="false">
+                 <span class="raml-label">RAML </span><span class="glyphicon glyphicon-cog raml-icon"></span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" id="api-spec-list">
+                  <li><a href="#" id="copy-api-spec" data-clipboard-text="<%- @getSiteUrl() %><%- ifInternalUrl+'/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" >Copy RAML link</a></li>
+                  <li><a href="<%- @getSiteUrl() %><%- ifInternalUrl+'/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" id="raml-download-link">Download RAML file</a></li>
+                </ul>
+              </div>
+            </span>
+          </div>
+        </div>
+      <% end %>
+
+          <!-- copy service url -->
+      <!--% if dbServiceUri.length > 10 : %-->
+        <div class="service-url hidden-xs">
+          <div class="input-group">
+              <input type="text" class="form-control input-sm" value="<%- dbServiceUri %>">
+            <span class="input-group-btn">
+              <button id="copy-api-button" data-clipboard-text="<%- dbServiceUri %>" class="btn btn-default btn-sm" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy Service URL">
+              <span class="service-label">Service URL</span> <span class="glyphicon glyphicon-link service-icon"></span>
+            </span>
+          </div>
+        </div>
+      <!-- % end %-->
+
+    </div>
+
+    </div>
+
+    <%- @partial('left-nav-collapse-control') %>
+
+<div ng-app="ramlConsoleApp" ng-cloak class="raml-console-body">
+  <section class="group">
+    <h2>API Console</h2>
+  </section>
+  <div>
+    <raml-console src="<%- dpServiceInternal %>/services/<%- dpServiceNameShort %>/<%- dpServiceVersionRAML %>/api.raml" with-root-documentation="" class="ng-isolate-scope"></raml-console>
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>

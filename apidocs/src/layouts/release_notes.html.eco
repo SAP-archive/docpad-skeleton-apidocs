@@ -1,0 +1,94 @@
+---
+layout: generalnav
+---
+
+<% collectionName = 'releaseNotes' %>
+
+  <div id="sidebar" class="sidebar-offcanvas" role="navigation" >
+    <div class="">
+
+
+    <% types = { services: {}} %>
+
+    <% for docu in @getCollection(collectionName).findAll({service:{$exists:true},basename:'meta-inf'}).toJSON(): %>
+        <% if @getCollection(collectionName).findAll({service: docu.service, basename:{$nin:['meta-inf','release_notes']}}).toJSON().length > 0: %>
+          <% if types[docu.type][docu.area] then types[docu.type][docu.area].push(docu.service) else types[docu.type][docu.area] = [docu.service] %>
+        <% end %>
+    <% end %>
+
+    <% APIs = types.services %>
+    <% typesNewName = {APIs} %>
+
+    <div id="left_nav" class="left-nav">
+      <ul class="left-nav__list">
+        <li class="visible-xs"><a class="left-nav__link left-nav__link--back" href="/"> Back to Home</a></li>
+        <li class="left-nav__nav-header nav-header">Release Notes</li>
+        <li><br>
+          <select name="" id="singlePackageFilterList" class="left-nav__package-filter form-control">
+            <option value="all topics">All Topics</option>
+            <% for item in Object.keys(typesNewName).sort(): %>
+              <option value="<%= item.toLowerCase() %>"><%= item %></option>
+            <% end %>
+          </select>
+        </li>
+        <li style="display: none;"><br>
+          <select name="" id="packageFilterList" class="left-nav__package-filter form-control" style="display: none;">
+            <option value="all packages">All Packages</option>
+            <% for item in Object.keys(typesNewName).sort(): %>
+              <% if not Array.isArray(typesNewName[item]):  %>
+                <% for pack in Object.keys(typesNewName[item]).sort(): %>
+                  <option value="<%= pack.toLowerCase() %>"><%= pack %></option>
+                <% end %>
+              <% end %>
+            <% end %>
+          </select>
+        </li>
+        <li>
+          <div class="left-nav__filter-input-wrapper">
+            <input placeholder="Filter by Keyword" id="apiFilterInput" type="text" class="left-nav__filter-input form-control"/>
+            <img src="/images/icons/close-button.svg" alt="" class="left-nav__clear-api-input">
+          </div>
+        </li>
+
+        <% for item in Object.keys(typesNewName).sort() : %>
+          <li class="single-packages">
+            <span class="left-nav__package-header "><%= item %></span>
+            <ul role="menu" class="nav nav-pills nav-stacked apiList">
+              <% if Array.isArray(typesNewName[item]):  %>
+                <% for service in typesNewName[item].sort() : %>
+                  <% for docu in @getCollection(collectionName).findAll({service: service ,basename:'meta-inf'}).toJSON() : %>
+                      <li class="apis">
+                        <a href="/<%= docu.relativeDirPath %>/release_notes.html" property="dc:title" class="api-link"><%= docu.service %></a>
+                      </li>
+                  <% end %>
+                <% end %>
+              <% else: %>
+                <% for pack in Object.keys(typesNewName[item]).sort() : %>
+                  <li class="packages">
+                    <span class="left-nav__package-header left-nav__package-header--small"><%= pack %></span>
+                    <ul role="menu" class="nav nav-pills nav-stacked apiList">
+                      <% for service in typesNewName[item][pack].sort() : %>
+                        <% for docu in @getCollection(collectionName).findAll({service: service ,basename:'meta-inf'}).toJSON() : %>
+                          <li class="apis">
+                            <a href="/<%= docu.relativeDirPath %>/release_notes.html" property="dc:title" class="api-link"><%= service %></a>
+                          </li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+
+      </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="container-wrapper has-nav">
+      <%- @content %>
+    </div>
+  </div>

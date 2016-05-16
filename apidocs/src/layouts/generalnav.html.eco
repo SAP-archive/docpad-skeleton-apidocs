@@ -1,0 +1,116 @@
+---
+layout: default
+---
+
+<div class="main-content">
+  <section id="content" class="row-offcanvas row-offcanvas-left">
+
+    <header class="navbar-super-holder">
+      <% if @document.relativeDirPath != 'error' :%>
+
+      <div class="navbar navbar-inverse mobile-nav">
+
+        <button data-toggle="offcanvas" class="btn btn-primary btn-xs navbar-toggle navbar-btn" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <ul role="menu" class="nav nav-pills hidden-xs" id="desktop-menu">
+          <li> <a href="/" property="dc:title" id="home-topNav">Home</a></li>
+          <li> <a href="/services/" property="dc:title" id="apis-topNav">API Docs</a></li>
+          <li> <a href="/rn/" property="dc:title">Release Notes</a></li>
+        </ul>
+
+      <% end %>
+      <script>
+
+        (function(){
+          $(document).ready(function(){
+            var lunr = ['/lunr/lunr-data-myindex.json'];
+            var scriptsArray = ['/lunr/lunr-ui.min.js', '/lunr/lunr.min.js'];
+            var lunr2 = $('#lunr-input2').length !== 0;
+            getMultipleFiles(lunr, '', $.getJSON).done(function(lunr){
+              lunrdoc = lunr[0];
+              //if there is inline lunr
+              if(lunr2){
+                scriptsArray.push('/lunr/lunr_inline.js');
+              }
+              getMultipleFiles(scriptsArray, '', $.getScript).done(function(){
+                //i guess we could eval function returned from JSON but optimalization rules from V8 are way worse when using eval and since this function doesn't change we can specify it here
+                lunrdoc.template = template;
+                //fire lunr when all scripts are loaded
+                lunrdoc.ready();
+                if(typeof lunrdoc2 !== 'undefined' && lunr2){
+                  lunrdoc2.template = template;
+                  lunrdoc2.ready();
+                }
+              });
+            });
+            /**
+             * template is generic function from lunr, it is used to create result strings
+             * @param  {Object} context [one record to show]
+             * @return {String}         [String that is appended to search window]
+             */
+            function template(context) {
+              var post = context.post;
+              var text = post.service || post.type;
+              if(text && text !== 'undefined' && post.url.indexOf('index.html') === -1){
+                return '<div><a href="' + post.url + '">' + post.title + '</a><span> part of ' + text + '</span></div>';
+              }
+              if(post.url && post.title)
+                return '<div><a href="' + post.url + '">' + post.title + '</a></div>';
+
+              return '';
+            }
+
+            /**
+             * getMultipleFiles is used to force callback when all files are properly loaded
+             * @param  {Array}      arr           [array of links to files]
+             * @param  {String}     path          [optional, if all your file have same start of the link you can specify it here]
+             * @param  {Function}   asyncFunction [asynchronous function to call for files, tested are $.getJSON/$.getScript]
+             * @return {$.Deferred}               [returns deferred object, it has synchronous manner when used with .done() or .fail(), this way we can do actions when files are loaded]
+             */
+            function getMultipleFiles(arr, path, asyncFunction) {
+              var _arr = $.map(arr, function(scr) {
+                return asyncFunction( (path||"") + scr );
+              });
+
+              _arr.push($.Deferred(function( deferred ){
+                  $( deferred.resolve );
+              }));
+
+              return $.when.apply($, _arr);
+            }
+          });
+        })();
+
+
+      </script>
+
+      <div class="navbar-right">
+
+        <div class="search-wrapper">
+          <input type="text" class="search-bar" id="lunr-input" autocomplete="on" placeholder="Search terms" /><input type="hidden" id="lunr-hidden" />
+          <img src="/images/icons/close-button.svg" alt="" class="close-button">
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <div class="content-offcanvas" id="content">
+
+    <div class="container-fluid">
+      <%- @content %>
+    </div>
+
+  </div>
+
+</section>
+
+</div>
+<a href="#content" id="back-top"><span class="glyphicon glyphicon-arrow-up "></span> Back to Top</a>
