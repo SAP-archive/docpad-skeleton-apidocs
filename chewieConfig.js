@@ -8,7 +8,7 @@ const config = {
 
   registry: {
     location: process.env.REGISTRY_LOCATION || 'remote',
-    path: process.env.REGISTRY_PATH || 'https://github.com/hybris/chewie-sample-data.git',
+    path: process.env.REGISTRY_PATH || 'https://github.com/hybris/docpad-skeleton-apidocs-sampledata.git',
     fileName: 'docu_registry.json',
     branch: process.env.docuBranch || 'master',
     shortVersionFileName: 'shrinkedRegistry.json',

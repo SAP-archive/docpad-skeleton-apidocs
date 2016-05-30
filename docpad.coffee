@@ -54,17 +54,12 @@ docpadConfig = {
         "/scripts/general/expand-collapse.js"
         "/scripts/general/search-bar.js"
         "/scripts/general/code-block.js"
-        "/scripts/general/simplePagination.js"
-        "/scripts/general/blog.js"
         "/scripts/general/img-click-modal.js"
-        "/scripts/general/ZeroClipboard-min.js"
-        "/scripts/general/sequence_nav.js"
         "/scripts/general/apiref.js"
         "/scripts/general/left-nav-indicators.js"
         "/scripts/general/replace-svg-images-with-inline-svg.js"
         "/scripts/general/api-filter.js"
         "/scripts/general/api-console.js"
-        "/scripts/general/y-factors.js"
         "/scripts/general/ignore-scrolling.js"
       ]
 
