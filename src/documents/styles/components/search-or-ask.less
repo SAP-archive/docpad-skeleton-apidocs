@@ -1,0 +1,132 @@
+// prefixer library
+@import '../vendor/_prefixer';
+
+// devportal specific variables
+@import '../settings/_variables';
+
+.search-or-ask {
+  text-align: center;
+  background: #fff;
+  padding: 42/14em 30/14em 28/14em;
+  border-top: 1px solid @blue-catskill-white;
+  line-height: 45/14em;
+
+  &__wrapper-inline {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    max-width: 487/14em;
+    width: 100%;
+    margin: 0 0 14/14em;
+  }
+
+  &__input {
+    vertical-align: top;
+    width: 100%;
+    padding: 0 24/18em 0 76/18em;
+    background-image: url("/images/icons/search-icon-lg.svg");
+    background-repeat: no-repeat;
+    background-position: left 26/18em bottom 50%;
+    text-overflow: ellipsis;
+    .placeholder-color(@blue-east-bay);
+  }
+
+  &__results {
+    display: none;
+    position: absolute;
+    background: #fff;
+    padding: 10/14em;
+    .box-shadow(0 3/14em 10/14em @gray-silver);
+    width: auto;
+    overflow-y: scroll;
+    height: 300/14em;
+    top: 45/14em;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    text-align: left;
+    font-family: "Dosis";
+
+    div {
+      margin-bottom: 7/14em;
+
+      a {
+        color: @blue-lochmara;
+        font-size: 14px;
+
+        &:hover {
+          background-color: #fff!important;
+        }
+      }
+
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .processing {
+    text-align: center;
+    float: right;
+    clear: right;
+    display: block;
+    background: @blue-aqua-haze;
+    padding: 10px;
+    .box-shadow(0 3px 10px @gray-silver);
+    width: 300px;
+    overflow-y: scroll;
+    margin-top: 5px;
+    height: 300px;
+
+    span {
+      display: block;
+      margin-top: 50px;
+
+      img {
+        padding-right: 30px;
+      }
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 50px 20px 20px;
+    background: url("/images/icons/smiley-sad.svg") top center no-repeat;
+    background-size: 50/14em;
+  }
+
+  &__btn-close {
+    opacity: .5;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    top: 50%;
+    margin: -8/14em 0 0;
+    right: 5/14em;
+    .transition(all 0.3s ease-in-out);
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  &__text {
+    font-family: "Dosis";
+    font-size: 33px;
+    font-weight: 300;
+    display: inline-block;
+    line-height: 45/33em;
+    color: @blue-manatee;
+    padding: 0 14/33em;
+  }
+
+  &__btn {
+    vertical-align: top;
+  }
+
+  @media print {
+    .u-hide-permanently;
+  }
+}

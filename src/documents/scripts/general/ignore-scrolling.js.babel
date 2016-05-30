@@ -1,0 +1,8 @@
+'use strict';
+
+// This code allows collapsing and expanding of the top navbar to temporarily stop,
+// because it gets in the way of proper usage of links with anchor tags.
+
+$('a[href^="#"]').click(() => {
+  yg.pauseScrolling('500');
+});

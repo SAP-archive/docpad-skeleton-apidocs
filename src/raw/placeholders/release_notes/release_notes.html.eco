@@ -1,0 +1,52 @@
+---
+layout: release_notes
+---
+
+<% dpServiceName = 'serviceNamePH' %>
+<% collectionName = 'collectionRN' %>
+
+<% metaInf = @getFile({relativeDirPath: @document.relativeDirPath, basename: 'meta-inf'}) %>
+
+<% # Only above is unique %>
+
+<div class="blogs-wrapper release-notes-wrapper">
+
+  <div class="sticky-page-header release-notes-header">
+
+    <h3><a href="/rn/index.html">RELEASE NOTES </a>/ <%=dpServiceName%> </h3>
+
+  </div>
+
+  <%- @partial('left-nav-collapse-control') %>
+
+
+  <!-- Page Content -->
+  <div class="posts">
+
+    <ul class="dataCards">
+      <% query = {} %>
+      <% if metaInf.attributes.type == 'tools' : %>
+        <% query = {service: dpServiceName} %>
+      <% else : %>
+        <% query = {service:dpServiceName, official_version: metaInf.attributes.version} %>
+      <% end %>
+      <% for document in @getCollection(collectionName).findAll(query).toJSON(): %>
+        <%if document.title: %>
+        <li class="dataCard">
+        <a href='<%=document.url%>' class="title cardRow cardRowClickable">
+            <p class="primaryData"><%= document.title %></p>
+
+            <% if document.headline : %>
+              <p class="secondaryData"><%= @trimTo140Char(document.headline) %></p>
+            <% end %>
+
+            <p class="statusDataValue"><%= document.date.toLocaleDateString() %></p>
+        </a>
+        </li>
+        <% end %>
+    <% end %>
+    </ul>
+
+  </div>
+
+</div>

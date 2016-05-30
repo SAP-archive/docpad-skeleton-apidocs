@@ -1,0 +1,70 @@
+{
+  "name": "docpad-plugin-lunr",
+  "homepage": "https://github.com/brockfanning/docpad-plugin-lunr",
+  "version": "2.0.9",
+  "description": "Adds support for client-side search with Lunr, full-text and faceted.",
+  "license": "MIT",
+  "keywords": [
+    "docpad",
+    "docpad-plugin",
+    "search",
+    "lunr",
+    "faceted search",
+    "client-side"
+  ],
+  "author": {
+    "name": "Brock Fanning",
+    "email": "brockfanning@gmail.com",
+    "url": "http://brockfanning.com"
+  },
+  "maintainers": [
+    {
+      "name": "brockfanning",
+      "email": "brockfanning@gmail.com"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Brock Fanning",
+      "email": "brockfanning@gmail.com",
+      "url": "http://brockfanning.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/brockfanning/docpad-plugin-lunr/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brockfanning/docpad-plugin-lunr.git"
+  },
+  "engines": {
+    "node": ">=0.4",
+    "docpad": "6.x"
+  },
+  "dependencies": {
+    "lunr": "~0.4.1",
+    "eco": "~1.1.0-rc-3"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.2",
+    "docpad": ">=6.37 <7"
+  },
+  "main": "./out/lunr.plugin.js",
+  "gitHead": "7c5ca04a564f157ab2f794e539fd1f706061c6fa",
+  "_id": "docpad-plugin-lunr@2.0.9",
+  "scripts": {},
+  "_shasum": "d6aa8134a1c40cf0f3a60fdd1ca29ec5be80c058",
+  "_from": "docpad-plugin-lunr@",
+  "_npmVersion": "2.1.4",
+  "_nodeVersion": "0.10.32",
+  "_npmUser": {
+    "name": "brockfanning",
+    "email": "brockfanning@gmail.com"
+  },
+  "dist": {
+    "shasum": "d6aa8134a1c40cf0f3a60fdd1ca29ec5be80c058",
+    "tarball": "http://registry.npmjs.org/docpad-plugin-lunr/-/docpad-plugin-lunr-2.0.9.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/docpad-plugin-lunr/-/docpad-plugin-lunr-2.0.9.tgz"
+}

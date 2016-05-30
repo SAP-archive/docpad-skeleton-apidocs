@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Release Notes | YaaS Dev Portal</title>
+	<link href="<%= @site.url %>/atom.xml" rel="self"/>
+	<link href="<%= @site.url %>"/>
+	<updated><%= @site.date.toISOString() %></updated>
+	<id><%= @site.url %>/</id>
+	<author>
+		<name><%= @site.author %></name>
+	</author>
+
+	<% for document in @getCollection('posts').toJSON(): %>
+<% if document.basename isnt 'index' :%>
+		<entry>
+			<title><%= document.title %></title>
+			<link href="<%= @site.url+document.url %>"/>
+			<content type="html"><%= document.contentRenderedWithoutLayouts %></content>
+			<updated><%= document.date.toISOString() %></updated>
+			<id><%= @site.url+document.url %></id>
+		</entry>
+		<% end %>
+	<% end %>
+</feed>

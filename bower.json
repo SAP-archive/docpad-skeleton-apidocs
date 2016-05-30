@@ -1,0 +1,35 @@
+{
+  "name": "simepleapidocsskeleton",
+  "description": "Simple API Doc Skeleton in a template project based on DocPad that you can use to quickly build an API documentation portal.",
+  "main": "node_modules/docpad/bin/docpad-server",
+  "authors": [
+    "Wookiee Team <wookiee> (https://wiki.hybris.com/display/prodandtech/PAAS8+Team+Wookiee)"
+  ],
+  "license": "Apache 2.0",
+  "keywords": [
+    "devportal-skeleton",
+    "docpad"
+  ],
+  "homepage": "https://yaas.io",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "jquery": "^2.2.3"
+  },
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "hyTechne": "^1.2.0",
+    "underscore": "^1.8.3",
+    "list.js": "^1.2.0",
+    "lscache": "^1.0.5",
+    "highlight": "^9.3.0",
+    "zeroclipboard": "^2.2.0",
+    "modernizr": "2.6.2"
+  }
+}

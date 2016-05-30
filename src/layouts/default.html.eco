@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- Use the .htaccess and remove these lines to avoid edge case issues. More info: h5bp.com/i/378 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- Our site title and description -->
+    <title><%= @getPreparedTitle() %></title>
+    <meta name="description" content="<%= @getPreparedDescription() %>" />
+    <meta name="keywords" content="<%= @getPreparedKeywords() %>" />
+    <meta name="author" content="<%= @site.author or '' %>" />
+
+    <!-- Output DocPad produced meta elements -->
+    <%- @getBlock('meta').toHTML() %>
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="alternate" type="application/rss+xml" title="DevPortal Blog!"  href="/atom.xml"  />
+      <!-- favicons -->
+      <link rel="apple-touch-icon" sizes="57x57" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="144x144" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="60x60" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="120x120" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="<%= @getSiteUrl() %>/images/favicon/apple-touch-icon-180x180.png">
+      <link rel="icon" type="image/png" href="<%= @getSiteUrl() %>/images/favicon/favicon-192x192.png" sizes="192x192">
+      <link rel="icon" type="image/png" href="<%= @getSiteUrl() %>/images/favicon/favicon-160x160.png" sizes="160x160">
+      <link rel="icon" type="image/png" href="<%= @getSiteUrl() %>/images/favicon/favicon-96x96.png" sizes="96x96">
+      <link rel="icon" type="image/png" href="<%= @getSiteUrl() %>/images/favicon/favicon-16x16.png" sizes="16x16">
+      <link rel="icon" type="image/png" href="<%= @getSiteUrl() %>/images/favicon/favicon-32x32.png" sizes="32x32">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="msapplication-TileImage" content="<%= @getSiteUrl() %>/images/favicon//mstile-144x144.png">
+
+    <!-- Shims: IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="<%= @getYaasUrl() %>/globalresources/v3/css/global.min.css" media="screen, projection, print">
+    <%- @getBlock('styles').add(@site.styles).toHTML() %>
+
+    <!-- header scripts  -->
+    <% for script in @site.headScripts: %>
+      <script src="<%= script %>"></script>
+    <% end %>
+    <script src="<%= @getYaasUrl() %>/globalresources/v3/js/global.novendor.min.js"></script>
+
+
+
+  </head>
+
+  <body class="<% if @document.relativeDirPath == 'error' :%>error no-margin<% end %> <% if @document.relativeDirPath == 'overview/yfactors' :%>u-background-grayish-blue<% end %>">
+
+    <!-- Content -->
+    <%- @content %>
+
+    <!-- footer scripts -->
+    <%- @getBlock('scripts').add(@site.scripts).toHTML() %>
+
+  <script>
+  $(document).ready(function(){
+      $('ul.nav li.dropdown').hover(function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(0).fadeIn(0);
+      }, function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(0).fadeOut(0);
+      });
+  });
+  </script>
+
+  </body>
+</html>

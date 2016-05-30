@@ -1,0 +1,22 @@
+---
+layout: generalnav
+---
+
+<% # Only above is unique %>
+<link rel="stylesheet" href="/apiconsole/styles/app.min.css" type="text/css" />
+
+<div class="container-fluid">
+  <div class="container-wrapper">
+
+    <div class="content-wrapper">
+      <%- @content %>
+    </div>
+
+  </div>
+</div>
+
+<script src="/apiconsole/scripts/vendor.min.js"></script>
+<script src="/apiconsole/scripts/app.min.js"></script>
+<script type="text/javascript">
+    $.noConflict();
+</script>

@@ -1,0 +1,120 @@
+// devportal specific variables
+@import '../settings/_variables';
+
+// converted this css to less
+.parent {
+  color: @gray-dusty;
+}
+
+.list-group-item > .badge {
+  float: none;
+  margin-right: 6px;
+}
+
+.panel-title > .methods {
+  float: right;
+}
+
+.panel-customapiref {
+  margin-bottom: 5px;
+}
+
+.badge {
+  border-radius: 0;
+  text-transform: uppercase;
+  width: 70px;
+  font-weight: normal;
+  color: @gray-athens;
+  line-height: normal;
+
+  &_get {
+    background-color: @blue-havelock;
+  }
+
+  &_post {
+    background-color: @green-fern;
+  }
+
+  &_put {
+    background-color: @blue-java;
+  }
+
+  &_delete {
+    background-color: @red-indian;
+  }
+}
+
+.list-group,
+.panel-group {
+  margin-bottom: 0;
+}
+
+.panel-group .panel+.panel-white {
+  margin-top: 0;
+}
+
+.panel-white:last-child {
+  border-bottom-color: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.panel-white .panel-heading {
+  background: white;
+}
+
+.tab-pane ul {
+  padding-left: 2em;
+}
+
+.tab-pane h2 {
+  font-size: 1.2em;
+  padding-bottom: 4px;
+  border-bottom: 1px solid @gray-alto;
+}
+
+.tab-pane h3 {
+  font-size: 1.1em;
+}
+
+.tab-content {
+  border-left: 1px solid @gray-alto;
+  border-right: 1px solid @gray-alto;
+  border-bottom: 1px solid @gray-alto;
+  padding: 10px;
+}
+
+.top-resource-description {
+  border-bottom: 1px solid @gray-alto;
+  background: @white-alabaster;
+  padding: 15px 15px 0;
+  margin: -15px -15px 10px;
+}
+
+.resource-description {
+  border-bottom: 1px solid @white-alabaster;
+  background: @white-alabaster;
+  padding: 15px 15px 0;
+  margin: -15px -15px 10px;
+}
+
+.list-group .badge {
+  float: left;
+}
+
+.method_description {
+  margin-left: 85px;
+
+  p:last-child {
+    margin: 0;
+  }
+}
+
+.list-group-item {
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover {
+    background-color: @gray-wild-sand-600;
+  }
+}

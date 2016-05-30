@@ -1,0 +1,39 @@
+---
+layout: 'release_notes'
+isPaged: true
+---
+
+<%- @partial('left-nav-collapse-control') %>
+<%- @getBlock('scripts').add(@site.navPersonalizationScripts).toHTML() %>
+
+<div class="blogs-wrapper">
+  <div class="jumbotron text-center">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Release Notes</h1>
+        <p>Place for a few sentences about your Release Notes.</p>
+        <a href="/atom.xml" rel="alternate" type="application/rss+xml" target="_blank" class="btn btn-primary btn-lg">SUBSCRIBE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="posts">
+    <h3 class="latest-releases">Latest Releases</h3>
+      <div class="row">
+        <ul class="dataCards">
+          <% for document in @getCollection('posts').toJSON(): %>
+            <li class="dataCard">
+              <a href='<%=document.url%>' class="title cardRow cardRowClickable">
+                <p class="primaryData"><%= document.title %></p>
+                  <% if document.headline : %>
+                    <p class="secondaryData"><%= @trimTo140Char(document.headline) %></p>
+                  <% end %>
+                <p class="statusDataValue"><%= document.date.toLocaleDateString() %></p>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+</div>

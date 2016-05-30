@@ -1,0 +1,61 @@
+{
+  "name": "simepleapidocsskeleton",
+  "version": "0.0.1",
+  "description": "Boilerplate for your API documentation",
+  "homepage": "https://yaas.io",
+  "license": "Apache 2.0",
+  "keywords": [],
+  "author": "SAP Hybris",
+  "maintainers": [
+    "maintainers"
+  ],
+  "contributors": [
+    "contributors"
+  ],
+  "bugs": {
+    "url": ""
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "engines": {
+    "node": "5",
+    "npm": "3"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "docpad": "~6.78.4",
+    "docpad-plugin-babel": "https://github.com/sdomagala/docpad-plugin-babel.git#compiled",
+    "docpad-plugin-coffeescript": "~2.5.0",
+    "docpad-plugin-eco": "~2.1.0",
+    "docpad-plugin-gulp": "^2.1.6",
+    "docpad-plugin-highlightjs": "~2.3.0",
+    "docpad-plugin-less": "git@github.com:sdomagala/docpad-plugin-less.git#compiled",
+    "docpad-plugin-livereload": "~2.7.1",
+    "docpad-plugin-marked": "~2.3.0",
+    "docpad-plugin-raw": "~2.4.1",
+    "docpad-plugin-text": "~2.3.3",
+    "docpad-plugin-winston": "~2.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-preset-es2015": "^6.3.13",
+    "chewie": "https://github.com/hybris/chewie.git",
+    "config": "^1.19.0",
+    "express": "4.13.4",
+    "gulp": "^3.9.0",
+    "yargs": "^4.2.0"
+  },
+  "main": "node_modules/docpad/bin/docpad-server",
+  "scripts": {
+    "start": "npm run build && docpad generate && gulp minify && node server.js",
+    "local": "gulp start && docpad generate && gulp minify && node server.js",
+    "production": "npm install && bower install && gulp start && docpad generate --env prod && gulp minify",
+    "build": "npm install && npm run build:lunrplugin && bower install && npm run build:modernizr && npm run build:zeroclipboard && gulp start",
+    "build:modernizr": "cp ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general",
+    "build:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general",
+    "build:lunrplugin": "npm install --prefix ./plugins/docpad-plugin-lunr"
+  }
+}
