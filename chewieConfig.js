@@ -4,11 +4,11 @@ const config = {
   skeletonDestination: './src',
   skeletonOutDestination: './out',
   placeholdersLocation: `./src/raw/placeholders`,
-  docuUrl: process.env.docuURL || 'https://devportal.yaas.io',
+  docuUrl: process.env.docuURL || 'http://your.webpage.io',
 
   registry: {
     location: process.env.REGISTRY_LOCATION || 'remote',
-    path: process.env.REGISTRY_PATH || 'ssh://git@stash.hybris.com:7999/wookiee/simple-api-docs-szkielecik-sample-data.git',
+    path: process.env.REGISTRY_PATH || 'https://github.com/hybris/chewie-sample-data.git',
     fileName: 'docu_registry.json',
     branch: process.env.docuBranch || 'master',
     shortVersionFileName: 'shrinkedRegistry.json',
@@ -28,7 +28,7 @@ const config = {
   },
 
   generationResult: {
-    srcLocation: 'ssh://git@stash.hybris.com:7999/wookiee/simple-api-docs-szkielecik-sample-data.git',
+    srcLocation: 'https://github.com/hybris/chewie-sample-result.git',
     branch: process.env.docuBranch || 'master',
     cloneLocation: 'latestResultRepo'
   },
