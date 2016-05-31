@@ -112,13 +112,13 @@ gulp.task('clean', (cb) => {
 
 
 // task pushes latest results to remote repo that keeps results.
-gulp.task('pushResult', () => {
+gulp.task('pushResult', (cb) => {
   const topics = _getTopics(argv.topics);
   const opt = {
     'src': `${config.skeletonOutDestination}/**`,
     'dest': config.generationResult.clonedResultFolderPath,
     'branch': config.generationResult.branch,
-    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for: ${JSON.stringify(topics)}`,
+    'message': Boolean(!argv.topics) ? 'Push operation for the whole portal' : `Push operation for: ${JSON.stringify(topics)}`,
     'independent': Boolean(argv.topics),
     'notUsedFiles': config.independentGeneration.notUsedFiles
   };
@@ -126,6 +126,7 @@ gulp.task('pushResult', () => {
   chewie.pushResult(opt, (err) => {
     if (err) return log.error(err);
     log.info('Push operation completed');
+    cb();
   });
 });
 
