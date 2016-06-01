@@ -1,0 +1,119 @@
+<script src="https://devportal-temp.stage.yaas.io/scripts/devportal-yaas-head.min.js"></script>
+<script src="https://devportal-temp.stage.yaas.io/scripts/devportal-yaas.min.js"></script>
+
+<div class="u-position-relative u-min-height--off u-vertical-centering u-horizontal-centering flex-column u-transition-all">
+  <div class="alert alert-success u-transition-all" role="alert">
+    <p class="h4 text-center u-max-width--xs">
+      <strong>Interactive Tutorial</strong>
+    </p>
+    <p class="text-center u-max-width--xs no-margin">
+      After the tutorial is loaded, you can read it, modify its code, and trigger it to see real-time communication with the service.
+    </p>
+  </div>
+  <p class="text-center u-transition-all no-margin">
+    <button id="notebook1442996172345" class="btn btn-lg btn-primary" type="button">Load tutorial</button>
+  </p>
+  <div class="js-notebook-loader spinner-backdrop spinner-backdrop--secondary spinner-backdrop--secondary-filled-background u-transition-all u-opacity-0">
+    <div class="spinner">
+      <div class="spinner-container spinner-container1 spinner-container1--secondary">
+        <div class="spinner-circle1"></div>
+        <div class="spinner-circle2"></div>
+        <div class="spinner-circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container spinner-container2 spinner-container2--secondary">
+        <div class="spinner-circle1"></div>
+        <div class="spinner-circle2"></div>
+        <div class="spinner-circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container spinner-container3 spinner-container3--secondary">
+        <div class="spinner-circle1"></div>
+        <div class="spinner-circle2"></div>
+        <div class="spinner-circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+    <p class="spinner-paragraph text-center h3">Loading tutorial...</br></p>
+  </div>
+  <iframe style="min-height: 430px;width: 100%;" class="apinotebookFrame u-transition-all u-hidden width-100" src="" scrolling="no" frameBorder="0" data-id="<%- @tutorial %>"></iframe>
+
+<script>
+
+  $('#notebook1442996172345').click(function() {
+
+    $(this).parent().slideUp(300);
+    $(this).parent().siblings('.alert').slideUp(300);
+
+    var frame = $(this).parent().siblings('iframe');
+    frame.attr('src', 'http://127.0.0.1:3000/embedded.html#1442996172345');
+
+    $(this).parent().siblings('.js-notebook-loader').removeClass('u-opacity-0').addClass('u-opacity-100');
+    $(this).parent().parent().addClass('u-min-height--on');
+  });
+
+
+</script>
+<p>
+
+  trololo
+</p>
+
+
+<div class="u-position-relative u-min-height--off u-vertical-centering u-horizontal-centering flex-column u-transition-all">
+  <div class="alert alert-success u-transition-all" role="alert">
+    <p class="h4 text-center u-max-width--xs">
+      <strong>Interactive Tutorial</strong>
+    </p>
+    <p class="text-center u-max-width--xs no-margin">
+      After the tutorial is loaded, you can read it, modify its code, and trigger it to see real-time communication with the service.
+    </p>
+  </div>
+  <p class="text-center u-transition-all no-margin">
+    <button id="notebook1442996172345" class="btn btn-lg btn-primary" type="button">Load tutorial</button>
+  </p>
+  <div class="js-notebook-loader spinner-backdrop spinner-backdrop--secondary spinner-backdrop--secondary-filled-background u-transition-all u-opacity-0">
+    <div class="spinner">
+      <div class="spinner-container spinner-container1 spinner-container1--secondary">
+        <div class="spinner-circle1"></div>
+        <div class="spinner-circle2"></div>
+        <div class="spinner-circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container spinner-container2 spinner-container2--secondary">
+        <div class="spinner-circle1"></div>
+        <div class="spinner-circle2"></div>
+        <div class="spinner-circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container spinner-container3 spinner-container3--secondary">
+        <div class="spinner-circle1"></div>
+        <div class="spinner-circle2"></div>
+        <div class="spinner-circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+    <p class="spinner-paragraph text-center h3">Loading tutorial...</br></p>
+  </div>
+  <iframe style="min-height: 430px;width: 100%;" class="apinotebookFrame u-transition-all u-hidden width-100" src="" scrolling="no" frameBorder="0" data-id="<%- @tutorial %>"></iframe>
+
+<script>
+
+  $('#notebook1442996172345').click(function() {
+
+    $(this).parent().slideUp(300);
+    $(this).parent().siblings('.alert').slideUp(300);
+
+    var frame = $(this).parent().siblings('iframe');
+    frame.attr('src', 'http://127.0.0.1:3000/embedded.html#1442996172345');
+
+    $(this).parent().siblings('.js-notebook-loader').removeClass('u-opacity-0').addClass('u-opacity-100');
+    $(this).parent().parent().addClass('u-min-height--on');
+  });
+
+
+</script>
+<p>
+
+  trololo
+</p>

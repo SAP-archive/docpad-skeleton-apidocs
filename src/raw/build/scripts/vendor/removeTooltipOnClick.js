@@ -1,0 +1,1 @@
+$("#loginButton").click(function(){$(".tooltip").removeClass("in")});
