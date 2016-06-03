@@ -51,7 +51,7 @@
   "scripts": {
     "start": "npm run build && docpad generate && gulp minify && node server.js",
     "local": "gulp start && docpad generate && gulp minify && node server.js",
-    "production": "npm install && bower install && gulp start && docpad generate --env prod && gulp minify",
+    "production": "npm run build && gulp start && docpad generate --env prod && gulp minify",
     "build": "npm install && npm run build:lunrplugin && bower install && npm run build:modernizr && npm run build:zeroclipboard && gulp start",
     "build:modernizr": "cp ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general",
     "build:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general",
