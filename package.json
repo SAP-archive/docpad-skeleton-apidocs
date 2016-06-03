@@ -31,7 +31,7 @@
     "docpad-plugin-eco": "~2.1.0",
     "docpad-plugin-gulp": "^2.1.6",
     "docpad-plugin-highlightjs": "~2.3.0",
-    "docpad-plugin-less": "git@github.com:sdomagala/docpad-plugin-less.git#compiled",
+    "docpad-plugin-less": "https://github.com/sdomagala/docpad-plugin-less.git#compiled",
     "docpad-plugin-marked": "~2.3.0",
     "docpad-plugin-raw": "~2.4.1",
     "docpad-plugin-text": "~2.3.3",
