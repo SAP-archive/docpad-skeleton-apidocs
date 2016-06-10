@@ -14,10 +14,14 @@ const gulp = require('gulp'),
   .argv,
   log = require('./node_modules/chewie/src/helpers/logger'),
   async = require('async'),
-  path = require('path');
-
+  path = require('path'),
+  unzip = require('gulp-unzip'),
+  download = require('gulp-download'),
+  nodeConfig = require('config'),
+  del = require('del');
 
 const LOCAL_REGISTRY_PATH = '../sample_data';
+const DEVPORTAL_BUILD_URL = nodeConfig.get('devportalBuildUrl');
 
 const localValue = argv.local;
 
@@ -118,7 +122,7 @@ gulp.task('pushResult', (cb) => {
     'src': `${config.skeletonOutDestination}/**`,
     'dest': config.generationResult.clonedResultFolderPath,
     'branch': config.generationResult.branch,
-    'message': Boolean(!argv.topics) ? 'Push operation for the whole portal' : `Push operation for: ${JSON.stringify(topics)}`,
+    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for: ${JSON.stringify(topics)}`,
     'independent': Boolean(argv.topics),
     'notUsedFiles': config.independentGeneration.notUsedFiles
   };
@@ -130,6 +134,16 @@ gulp.task('pushResult', (cb) => {
   });
 });
 
+gulp.task('getDependencyInteractiveDocu', () => {
+
+  download(DEVPORTAL_BUILD_URL)
+    .pipe(gulp.dest('./src/raw'))
+    .pipe(unzip())
+    .pipe(gulp.dest('./src/raw'))
+    .on('end', () => {
+      del('./src/raw/build.zip');
+    });
+});
 
 function _getTopics(topics) {
   if(topics === true){
