@@ -36,7 +36,9 @@
     "docpad-plugin-raw": "~2.4.1",
     "docpad-plugin-text": "~2.3.3",
     "docpad-plugin-winston": "~2.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "gulp-download": "0.0.1",
+    "gulp-unzip": "^0.1.4"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
@@ -50,11 +52,10 @@
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
     "start": "npm run build && docpad generate && gulp minify && node server.js",
-    "local": "gulp start && docpad generate && gulp minify && node server.js",
-    "production": "npm run build && gulp start && docpad generate --env prod && gulp minify",
-    "build": "npm install && npm run build:lunrplugin && bower install && npm run build:modernizr && npm run build:zeroclipboard && gulp start",
+    "local": "gulp start && gulp getDependencyInteractiveDocu && docpad generate && gulp minify && node server.js",
+    "production": "npm install && bower install && gulp start && gulp getDependencyInteractiveDocu && docpad generate --env prod && gulp minify",
+    "build": "npm install && bower install && npm run build:modernizr && npm run build:zeroclipboard && gulp start && gulp getDependencyInteractiveDocu",
     "build:modernizr": "cp ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general",
-    "build:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general",
-    "build:lunrplugin": "npm install --prefix ./plugins/docpad-plugin-lunr"
+    "build:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general"
   }
 }
