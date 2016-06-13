@@ -137,12 +137,9 @@ gulp.task('pushResult', (cb) => {
 gulp.task('getDependencyInteractiveDocu', () => {
 
   download(DEVPORTAL_BUILD_URL)
-    .pipe(gulp.dest('./src/raw'))
     .pipe(unzip())
-    .pipe(gulp.dest('./src/raw'))
-    .on('end', () => {
-      del('./src/raw/build.zip');
-    });
+    .pipe(gulp.dest('./src/raw'));
+    
 });
 
 function _getTopics(topics) {
