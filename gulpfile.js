@@ -21,7 +21,7 @@ const gulp = require('gulp'),
   del = require('del');
 
 const LOCAL_REGISTRY_PATH = '../sample_data';
-const DEVPORTAL_BUILD_URL = nodeConfig.get('devportalBuildUrl');
+const INTERACTIVE_DOCU_SRC_LOC = nodeConfig.get('interactiveDocuSrcUrl');
 
 const localValue = argv.local;
 
@@ -136,7 +136,7 @@ gulp.task('pushResult', (cb) => {
 
 gulp.task('getDependencyInteractiveDocu', (cb) => {
 
-  download(DEVPORTAL_BUILD_URL)
+  download(INTERACTIVE_DOCU_SRC_LOC)
     .pipe(unzip())
     .pipe(gulp.dest('./src/raw'))
     .on('end', cb);
