@@ -134,12 +134,13 @@ gulp.task('pushResult', (cb) => {
   });
 });
 
-gulp.task('getDependencyInteractiveDocu', () => {
+gulp.task('getDependencyInteractiveDocu', (cb) => {
 
   download(DEVPORTAL_BUILD_URL)
     .pipe(unzip())
-    .pipe(gulp.dest('./src/raw'));
-    
+    .pipe(gulp.dest('./src/raw'))
+    .on('end', cb);
+
 });
 
 function _getTopics(topics) {
