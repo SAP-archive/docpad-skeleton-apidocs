@@ -4,5 +4,6 @@ apidocs/src/raw/bower_components
 apidocs/tmp
 
 apidocs/src/raw/scripts/general/modernizr.js
+apidocs/src/raw/scripts/vendor/jws-3.3.js
 apidocs/src/raw/scripts/general/ZeroClipboard.js
 apidocs/src/raw/scripts/general/ZeroClipboard.swf
