@@ -62,7 +62,7 @@ config.independentGeneration = {
 
 config.minification = {
   js: [{
-    src: [`${out}/bower_components/jquery/dist/jquery.min.js`, `${out}/bower_components/bootstrap/dist/js/bootstrap.min.js`, `${out}/bower_components/select2/select2.min.js`, `${out}/bower_components/lscache/lscache.min.js`, `${out}/scripts/general/polyfills.js`, `${out}/scripts/vendor/jws-3.3.js`, `${out}/build/plugins/embed-hash-persistence.js`],
+    src: [`${out}/bower_components/jquery/dist/jquery.min.js`, `${out}/bower_components/bootstrap/dist/js/bootstrap.min.js`, `${out}/bower_components/select2/select2.min.js`, `${out}/bower_components/lscache/lscache.min.js`, `${out}/scripts/custom/polyfills.js`, `${out}/scripts/vendor/jws-3.3.js`, `${out}/build/plugins/embed-hash-persistence.js`],
     dest: `${out}/scripts/`,
     name: 'devportal-yaas-head.min.js'
   },
