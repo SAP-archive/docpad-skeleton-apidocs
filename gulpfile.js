@@ -57,9 +57,9 @@ gulp.task('start', (cb) => {
     async.series({
       cloneDocuSources: asyncCb(chewie.cloneDocuSources, registry, config),
       rewriteRAML: asyncCb(chewie.rewriteRAML, registry, config, argv.r),
+      copyTutorials: asyncCb(chewie.copyTutorials, registry, config),
       preparePlaceholders: asyncCb(chewie.preparePlaceholders, registry, config),
       createMetaInfo: asyncCb(chewie.createMetaInfo, fullRegistry, topics, config),
-      copyTutorials: asyncCb(chewie.copyTutorials, registry, config),
       prepareApiReferences: asyncCb(chewie.prepareApiReferences, registry, config),
       createUrlPartials: asyncCb(chewie.createUrlPartials, registry, config),
       createRAMLPartials: asyncCb(chewie.createRAMLPartials, registry, config),
