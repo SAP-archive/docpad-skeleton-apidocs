@@ -54,6 +54,16 @@
     <% for script in @site.headScripts: %>
       <script src="<%= script %>"></script>
     <% end %>
+
+    <script>
+    $(document).ready(function() {
+      $('.mermaid').each(function() {
+        $(this).html(decodeURIComponent($(this).html()));
+      })
+      mermaid.initialize({startOnLoad:true});
+    });
+    </script>
+
     <script src="<%= @getYaasUrl() %>/globalresources/v3/js/global.novendor.min.js"></script>
 
 
