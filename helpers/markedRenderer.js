@@ -6,7 +6,7 @@ module.exports = {
       let escaped, out;
 
       if (code.match(/^sequenceDiagram/) || code.match(/^graph/)) {
-        return `<div class="mermaid">\n${encodeURIComponent(code)}\n</div>\n`;
+        return `<div class="mermaid" style="display: none;">\n${encodeURIComponent(code)}\n</div>\n`;
       }
 
       if (this.options.highlight) {

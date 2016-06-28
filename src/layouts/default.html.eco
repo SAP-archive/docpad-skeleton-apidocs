@@ -61,6 +61,7 @@
         $(this).html(decodeURIComponent($(this).html()));
       })
       mermaid.initialize({startOnLoad:true});
+      $('.mermaid').show();
     });
     </script>
 
