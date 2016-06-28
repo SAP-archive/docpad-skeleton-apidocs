@@ -31,6 +31,7 @@
     "highlight": "^9.3.0",
     "zeroclipboard": "^2.2.0",
     "modernizr": "2.6.2",
-    "kjur-jsrsasign": "jsrsasign#^5.0.12"
+    "kjur-jsrsasign": "jsrsasign#^5.0.12",
+    "mermaid": "0.5.1"
   }
 }

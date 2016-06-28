@@ -34,6 +34,7 @@ docpadConfig = {
         "/bower_components/lscache/lscache.min.js"
         "/scripts/custom/polyfills.js"
         '/scripts/vendor/jws-3.3.js'
+        '/scripts/vendor/mermaid.js'
         '/build/plugins/embed-hash-persistence.js'
       ]
 
@@ -224,6 +225,9 @@ docpadConfig = {
       indexes:
         myIndex:
           collection: ['searchServices']
+
+    # customize marked to use mermaid diagrams
+    marked: require './helpers/markedRenderer.js'
 
   # =================================
   # DocPad Events
