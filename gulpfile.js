@@ -11,6 +11,7 @@ const gulp = require('gulp'),
   .alias('p', 'platform')
   .alias('a', 'sauce')
   .alias('y', 'type')
+  .alias('f', 'force')
   .argv,
   log = require('./node_modules/chewie/src/helpers/logger'),
   async = require('async'),
@@ -55,6 +56,7 @@ gulp.task('start', (cb) => {
     }
 
     async.series({
+      removeClonedRepositories: asyncCb(chewie.removeClonedRepositories, argv.force, config),
       cloneDocuSources: asyncCb(chewie.cloneDocuSources, registry, config),
       rewriteRAML: asyncCb(chewie.rewriteRAML, registry, config, argv.r),
       copyTutorials: asyncCb(chewie.copyTutorials, registry, config),
@@ -80,8 +82,10 @@ gulp.task('start', (cb) => {
 
 
 gulp.task('replaceApiReferences', (cb) => {
-  const registry = require(config.registry.registryPath);
-  chewie.replaceApiReferences(registry, config, cb);
+  chewie.prepareRegistry(topics, config, () => {
+    const registry = require(config.registry.registryPath);
+    chewie.replaceApiReferences(registry, config, cb);
+  });
 });
 
 
@@ -91,8 +95,10 @@ gulp.task('fixTables', (cb) => {
 
 
 gulp.task('serviceLatest', ['fixTables'], (cb) => {
-  const registry = require(config.registry.registryPath);
-  chewie.serviceLatestCreate(registry, config, cb);
+  chewie.prepareRegistry(topics, config, () => {
+    const registry = require(config.registry.registryPath);
+    chewie.serviceLatestCreate(registry, config, cb);
+  });
 });
 
 
