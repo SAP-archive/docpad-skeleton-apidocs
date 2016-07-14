@@ -134,7 +134,10 @@ gulp.task('pushResult', (cb) => {
   };
 
   chewie.pushResult(opt, (err) => {
-    if (err) return log.error(err);
+    if (err) {
+      log.error(err);
+      return cb();
+    }
     log.info('Push operation completed');
     cb();
   });
