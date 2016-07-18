@@ -90,13 +90,12 @@ config.minification = {
   css: [{
     src: [`${out}/styles/main.css`, `${out}/styles/components/globalnomodal.css`],
     dest: `${out}/styles/`,
-    name: 'devportal-yaas.css',
-    opts: {benchmark:true, noAdvanced:false}
+    name: 'devportal-yaas.css'
   }],
   html: [{
-    src: [`${out}/**/*.html`, `!${out}/error/error.html`],
+    src: [`${out}/**/*.html`, `!${out}/error/error.html`, `!${out}/services/**/client/README.html`],
     dest: `${out}/`,
-    opts: {spare:true, conditionals:true, empty:true}
+    opts: {collapseWhitespace: true}
   }]
 };
 
