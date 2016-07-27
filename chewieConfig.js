@@ -78,7 +78,7 @@ config.minification = {
     opts: {benchmark:true, noAdvanced:false}
   }],
   html: [{
-    src: [`${out}/**/*.html`, `!${out}/error/error.html`],
+    src: [`${out}/**/*.html`, `!${out}/error/error.html`, `!${out}/services/**/client/README.html`],
     dest: `${out}/`,
     opts: {spare:true, conditionals:true, empty:true}
   }]
