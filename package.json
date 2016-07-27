@@ -63,8 +63,8 @@
     "chewie:fixTables": "gulp fixTables",
     "chewie:serviceLatest": "gulp serviceLatest",
     "chewie:minify": "gulp minify",
-    "devportal:prepare": "npm run install-deps && npm run copy:modernizr && npm run copy:zeroclipboard && npm run build:lunrplugin && npm run copy:jws",
-    "devportal:compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js",
-    "devportal:start": "npm run devportal:compile && node server.js"
+    "apidocs:prepare": "npm run install-deps && npm run copy:modernizr && npm run copy:zeroclipboard && npm run build:lunrplugin && npm run copy:jws",
+    "apidocs:compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js",
+    "apidocs:start": "npm run apidocs:compile && node server.js"
   }
 }
