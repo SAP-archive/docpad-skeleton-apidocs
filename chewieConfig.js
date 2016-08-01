@@ -45,10 +45,9 @@ const config = {
     'docu_guide'
   ],
 
-  typesWithoutReleaseNotes: [
-    'gettingstarted',
-    'architecture',
-    'solutions'
+  typesWithReleaseNotes: [
+    'tools',
+    'services'
   ],
 
   defaultBaseUriDomain: 'localhost'
