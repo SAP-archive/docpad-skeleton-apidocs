@@ -16,6 +16,6 @@ To trigger generation with production configuration:
 
 ### Updating
 
-1. Call the following command: `gulp clean`
-2. Make sure there are no changes in this repository because git will try to pull all changes. (consider placing your registry outside of API Docs repository)
-3. Call the following command: `npm run update-deps`
+1. All your changes in this repository will be deleted, make sure you saved them somewhere
+2. Make sure there are no changes in this repository's source code because git will try to pull all changes. (consider placing your registry outside of Dev Portal repository)
+3. Call the following command: `npm run update`
