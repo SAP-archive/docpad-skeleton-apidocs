@@ -1,0 +1,88 @@
+((() => {
+  $(document).ready(() => {
+
+    const loadTutorialNotificationVisible = 'notebook-notification--is-visible';
+    const loadTutorialNotification = `<div class="notebook-notification alert alert-success alert-dismissible" role="alert">
+                                        <button class="btn btn-primary js-load-tutorial-button">
+                                           Load tutorial
+                                        </button>
+                                      </div>`;
+    const $header = $('.navbar-super-holder');
+    const $notebook = $('.notebook');
+    const isLoaded = 'notebook--is-loaded';
+
+    $header.append(loadTutorialNotification);
+    const $loadTutorialNotification = $('.notebook-notification');
+    const $loadTutorialButton = $loadTutorialNotification.find('.js-load-tutorial-button');
+
+    $notebook.hover(function() {
+      const $this = $(this);
+      if (!$this.hasClass(isLoaded)) {
+        const id = $this.attr('id');
+        $loadTutorialButton.attr('id', `buttonFor${id}`);
+        $loadTutorialNotification.addClass(loadTutorialNotificationVisible);
+      }
+    }, () => {
+      $loadTutorialNotification.removeClass(loadTutorialNotificationVisible);
+    });
+
+    $loadTutorialButton.click(function() {
+
+      const $this = $(this);
+
+      const tutorialId = $this.attr('id').replace('buttonFor','');
+
+      const $currentTutorial = $notebook.filter(`[id="${tutorialId}"]`);
+
+      const $tutorialStatic = $currentTutorial.find('.notebook__static-tutorial');
+      const $tutorialInteractive = $currentTutorial.find('.notebook__interactive-tutorial');
+
+      const tutorialName = $tutorialStatic.attr('data-tutorial');
+      const isQuickSetup = $tutorialStatic.attr('data-is-quick-setup');
+      const tutorialLink = $tutorialStatic.attr('data-link');
+
+      const $loader = $currentTutorial.find('.notebook__loader');
+      const $loadTutorialNotification = $('.notebook-notification');
+
+      function _showInteractiveTutorial() {
+        $tutorialStatic.slideFadeOut(300);
+        $tutorialInteractive.attr('src', tutorialLink).addClass('apinotebookFrame').slideFadeIn(300);
+      }
+
+      function _hideLoader() {
+        $loader.fadeTo(300, 0, () => {
+          $loader.hide().remove();
+          $currentTutorial.addClass(isLoaded);
+        });
+      }
+
+      function _onLoadInteractiveTutorial() {
+        if (isQuickSetup === 'false') {
+          const contentTutorialElement = document.getElementById(tutorialName).contentWindow;
+          const setupOptions = '#setupOptions';
+          contentTutorialElement.createExpandCollapseMarkup(setupOptions);
+          contentTutorialElement.addExpandCollapse();
+          contentTutorialElement.dispatchResizeEvent();
+        }
+
+        $.when(
+          $tutorialStatic.remove()
+        )
+        .done(_hideLoader);
+
+      }
+
+      $currentTutorial.css('min-height', $tutorialStatic.outerHeight());
+
+      $.when(
+        $loader.fadeTo(300, 1),
+        $loadTutorialNotification.removeClass(loadTutorialNotificationVisible)
+      )
+      .done(_showInteractiveTutorial);
+
+      $(`#${tutorialName}`).load(_onLoadInteractiveTutorial);
+
+    });
+
+  });
+}))();

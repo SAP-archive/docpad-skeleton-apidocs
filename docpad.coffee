@@ -61,6 +61,7 @@ docpadConfig = {
         "/scripts/general/api-filter.js"
         "/scripts/general/api-console.js"
         "/scripts/general/ignore-scrolling.js"
+        "/scripts/general/load-tutorial.js"
       ]
 
 
@@ -161,6 +162,14 @@ docpadConfig = {
       else
         content
 
+    removeRedundantMeta: (content) ->
+      findMeta = content.indexOf('---', 3)
+      if(findMeta == -1) # if no meta - probably will never happen
+        return content
+      return '\n' + content.substr(findMeta + 3) + '\n' # add because indexOf returns index of first character, we need to trim to last
+                                                        # added \n at the begining and end so it will render properly
+
+
 
   # =================================
   # Collections
@@ -207,6 +216,13 @@ docpadConfig = {
           url: {$startsWith: "/services"},
           relativeOutDirPath:{$ne: 'services'}}).on "add", (model) ->
             model.setMetaDefaults({layout:"document",result:true})
+
+    # Get all services sorted by order meta
+    APINotebooks: ->
+      @getCollection("documents")
+        .findAllLive({
+          interactive: {$exists: true}
+        })
 
   # =================================
   # Plugins

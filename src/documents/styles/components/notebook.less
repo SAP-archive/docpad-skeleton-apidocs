@@ -1,0 +1,71 @@
+// prefixer library
+@import '../vendor/_prefixer';
+
+// devportal specific variables
+@import '../settings/_variables';
+
+// special mixins
+@import '../tools/_utilities';
+
+.notebook {
+  cursor: pointer;
+  position: relative;
+  .transition(all 0.3s ease-out 0s);
+
+  &__loader {
+    display: none;
+  }
+
+  &__static-tutorial {
+    padding: 1em;
+  }
+
+  &__interactive-tutorial {
+    display: none;
+  }
+
+  &-notification {
+    margin: 0 0 0 264px;
+    font-size: 15px;
+    text-align: center;
+    visibility: hidden;
+    background: fade(@well-done-success, 80%);
+    -webkit-transition: all .3s ease-out 1s, margin .25s ease-out 0s;
+    -moz-transition: all .3s ease-out 1s, margin .25s ease-out 0s;
+    -o-transition: all .3s ease-out 1s, margin .25s ease-out 0s;
+    -ms-transition: all .3s ease-out 1s, margin .25s ease-out 0s;
+    transition: all .3s ease-out 1s, margin .25s ease-out 0s;
+    .opacity(0);
+
+    &--is-constantly-visible,
+    &--is-visible,
+    &:active,
+    &:focus,
+    &:hover {
+      visibility: visible;
+      -webkit-transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+      -moz-transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+      -o-transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+      -ms-transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+      transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+      .opacity(1);
+    }
+
+    &--has-no-margin {
+      margin-left: 0;
+    }
+    @media all and (max-width: @screen-xs-max) {
+      margin-left: 0;
+    }
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    .box-shadow(0 6px 10px fade(#000, 60%));
+
+    &--is-loaded {
+      .box-shadow(none);
+    }
+  }
+}
