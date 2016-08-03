@@ -64,6 +64,7 @@
     "update": "gulp clean && git pull && npm update",
 
     "clean": "gulp clean",
+    "minify": "gulp minify",
     "apiNotebook": "gulp getDependencyInteractiveDocu",
 
     "initialize": "gulp clean && gulp start",

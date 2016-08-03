@@ -1,6 +1,7 @@
 'use strict';
 
 const gulp = require('gulp'),
+  validation = require('./gulp_tasks/deployment/validationMetadata.js'),
   chewie = require('chewie'),
   argv = require('yargs')
   .alias('s', 'section')
@@ -102,7 +103,7 @@ gulp.task('serviceLatest', ['fixTables'], (cb) => {
 });
 
 
-gulp.task('minify', (cb) => {
+gulp.task('minify', ['serviceLatest'], (cb) => {
   chewie.minify(config, cb);
 });
 

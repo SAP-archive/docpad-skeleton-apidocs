@@ -4,7 +4,7 @@ require('./helpers/objectsPrototypes.js');
 deployment = {
   gulp:
     writeAfter:["replaceApiReferences"]
-    generateAfter: ['serviceLatest']
+    generateAfter: ['minify']
     docpadReady: ['validation_metadata']
   styles: ["/styles/devportal-yaas.css"]
   scripts: ["/scripts/devportal-yaas.min.js"]
@@ -219,7 +219,7 @@ docpadConfig = {
 
     gulp:
       writeAfter: ['replaceApiReferences']
-      generateAfter: ['serviceLatest']
+      generateAfter: ['minify']
       docpadReady: ['validation_metadata']
 
     lunr:
