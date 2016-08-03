@@ -13,3 +13,9 @@ If you called `npm start` at least ones, it means all the dependencies you neede
 To trigger generation with production configuration:
 1. Call the following command: `npm run production`
 2. Notice new **out** folder. This folder contains all generated files and can be used on production. For example, you can copy the content of **out** folder to your [GitHub Pages repository](https://pages.github.com/).
+
+### Updating
+
+1. Call the following command: `gulp clean`
+2. Make sure there are no changes in this repository because git will try to pull all changes. (consider placing your registry outside of API Docs repository)
+3. Call the following command: `npm run update-deps`

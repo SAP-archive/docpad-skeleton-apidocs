@@ -61,6 +61,7 @@
 
     "install-deps": "npm install && npm run bower",
     "bower": "node_modules/bower/bin/bower install -f",
+    "update-deps": "git pull && npm update",
 
     "clean": "gulp clean",
     "apiNotebook": "gulp getDependencyInteractiveDocu",
