@@ -22,5 +22,8 @@
     "node": ">=0.4"
   },
   "main": "./partials.plugin.js",
-  "readme": "ERROR: No README data found!"
+  "readme": "ERROR: No README data found!",
+  "dependencies": {
+    "taskgroup": "^5.0.1"
+  }
 }

@@ -1,0 +1,25 @@
+---
+title: "Solutions built on YaaS"
+layout: "solutions"
+---
+
+<%- @partial('left-nav-collapse-control') %>
+<div class="landing-page-wrapper u-background-white">
+
+  <!-- hero spot  -->
+  <div class="jumbotron text-center">
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <h1 class="jumbotron__title">Solutions</h1>
+
+        <p class="jumbotron__paragraph">Various solutions are built on the YaaS platform and all of these technical details are contained in this Solutions section.  For instance, learn how to use the SAP Hybris Profile solution. Note that depending upon the complexity of the solution, it may require you to subscribe to different packages on the YaaS Market.</p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- search or ask component -->
+  <%- @partial('devportal_search-or-ask') %>
