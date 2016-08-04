@@ -20,6 +20,4 @@ layout: "solutions"
     </div>
 
   </div>
-
-  <!-- search or ask component -->
-  <%- @partial('devportal_search-or-ask') %>
+</div>

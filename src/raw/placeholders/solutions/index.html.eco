@@ -134,7 +134,6 @@ title: 'serviceNamePH'
               <% end %>
             <% end %>
 
-          <%- @partial('feedback-panel') %>
         </div>
       </div>
     </div>
