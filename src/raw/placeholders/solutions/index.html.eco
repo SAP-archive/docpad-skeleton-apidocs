@@ -6,7 +6,6 @@ title: 'serviceNamePH'
 
 <% collectionName = 'collectionNamePH' %>
 <% dpServiceName = 'serviceNamePH' %>
-<% ifInternalUrl = 'isInternalUrlPH' %>
 
 <% # Only above is unique %>
 
@@ -23,7 +22,7 @@ title: 'serviceNamePH'
   <div class="api-nav left-nav" id="left_nav">
     <nav class="bs-docs-sidebar">
       <ul class="nav">
-        <li class="back-link"><a href="<%-ifInternalUrl%>/solutions"> Back to Solutions</a></li>
+        <li class="back-link"><a href="/solutions"> Back to Solutions</a></li>
         <li class="nav-header"><%- dpServiceName %></li>
         <% # initializing an array that stores info about how many documents are of the same type %>
         <% typeNum = [] %>

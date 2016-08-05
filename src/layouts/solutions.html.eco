@@ -2,11 +2,7 @@
 layout: generalnav
 ---
 
-<% isExternal = !@document.relativeDirPath.startsWith('internal') %>
-<% collectionName = if isExternal then 'solutions' else 'internalSolutions' %>
-<% ifInternal = if isExternal then '' else 'Internal ' %>
-<% ifInternalUrl = if isExternal then '/' else '/internal/' %>
-
+<% collectionName = 'solutions' %>
 
 <% # Only above is unique %>
 
@@ -26,7 +22,7 @@ layout: generalnav
       <% listofareas.sort().reverse() %>
 
       <ul>
-        <li class="back-link visible-xs"><a href="<%=ifInternalUrl%>"> Back to <%=ifInternal%>Home</a></li>
+        <li class="back-link visible-xs"><a href="/"> Back to Home</a></li>
         <li class="nav-header">Solutions</li>
         <% for item in listofareas.unique() : %>
         <li class="packages">
@@ -38,7 +34,7 @@ layout: generalnav
             <% for docu in @getCollection(collectionName).findAll({area:item,basename:'meta-inf'},[service: 1]).toJSON() : %>
               <% if docu.latest is true :%>
                       <li class="apis">
-                        <a href="<%=ifInternalUrl%>solutions/<%= @getTrimmedName(docu.service.toLowerCase()) %>/index.html" property="dc:title" class="api-link">
+                        <a href="/solutions/<%= @getTrimmedName(docu.service.toLowerCase()) %>/index.html" property="dc:title" class="api-link">
                           <%= docu.service %>
                         </a>
                       </li>
