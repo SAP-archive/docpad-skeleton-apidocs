@@ -14,7 +14,7 @@ layout: "solutions"
 
         <h1 class="jumbotron__title">Solutions</h1>
 
-        <p class="jumbotron__paragraph">Various solutions are built on the YaaS platform and all of these technical details are contained in this Solutions section.  For instance, learn how to use the SAP Hybris Profile solution. Note that depending upon the complexity of the solution, it may require you to subscribe to different packages on the YaaS Market.</p>
+        <p class="jumbotron__paragraph">Place for a few sentences about your Solutions.</p>
 
       </div>
     </div>
