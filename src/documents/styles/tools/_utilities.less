@@ -23,6 +23,17 @@
   text-align: center;
 }
 
+// Turn off text decoration
+.u-text-decoration-none {
+  text-decoration: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 // TRANSITIONS
 //
 // All
@@ -44,7 +55,7 @@
 //
 // Position relative mixin
 // Use only within LESS
-.u-position-relative--z-index(@z-index: 10) {
+.u-position-relative--z-index(@z-index:10) {
   position: relative;
   z-index: @z-index;
 }
@@ -146,105 +157,11 @@
 
 // ANIMATIONS
 //
-// Border animation (rectangular)
-// Requires additional markup:
-// <div class="u-animation-border">
-//  <span class="u-animation-border__left"></span>
-//  <span class="u-animation-border__right"></span>
-//  <span class="u-animation-border__top"></span>
-//  <span class="u-animation-border__bottom"></span>
-// </div>
-.u-animation-border {
-  position: relative;
-
-  &:hover,
-  &:active,
-  &:focus {
-    .u-animation-border__left {
-      top: 0;
-    }
-
-    .u-animation-border__right {
-      bottom: 0;
-    }
-
-    .u-animation-border__top {
-      right: 0;
-    }
-
-    .u-animation-border__bottom {
-      left: 0;
-    }
-  }
-
-  &--primary {
-    .u-animation-border__left,
-    .u-animation-border__right,
-    .u-animation-border__top,
-    .u-animation-border__bottom {
-      background: @blue-denim;
-    }
-  }
-
-  &--secondary {
-    .u-animation-border__left,
-    .u-animation-border__right,
-    .u-animation-border__top,
-    .u-animation-border__bottom {
-      background: #fff;
-    }
-  }
-
-  &__left,
-  &__right,
-  &__top,
-  &__bottom {
-    display: block;
-    .transition(all 300ms ease-in-out);
-    background: #000;
-    position: absolute;
-  }
-
-  &__left,
-  &__right {
-    width: 2px;
-  }
-
-  &__top,
-  &__bottom {
-    height: 2px;
-  }
-
-  &__left {
-    left: 0;
-    bottom: 0;
-    top: 100%;
-  }
-
-  &__right {
-    right: 0;
-    top: 0;
-    bottom: 100%;
-  }
-
-  &__top {
-    top: 0;
-    left: 0;
-    right: 100%;
-  }
-
-  &__bottom {
-    bottom: 0;
-    right: 0;
-    left: 100%;
-  }
-}
-
 // Box-shadow animation
 .u-animation-box-shadow {
-  &:hover,
   &:active,
-  &:focus {
+  &:focus,
+  &:hover {
     .box-shadow( 0px 0px 18px 0px rgba(0, 0, 0, 0.74));
   }
 }
@@ -285,12 +202,12 @@
   .gradient(#fff, @blue-lochmara, @blue-denim);
 
   &::after {
-    background-image: url("/images/featured-items-bg-lines-normal.png");
+    background-image: url('/images/featured-items-bg-lines-normal.png');
     z-index: 0;
   }
 
   &::before {
-    background-image: url("/images/featured-items-bg-lines-dotted.png");
+    background-image: url('/images/featured-items-bg-lines-dotted.png');
     z-index: 1;
   }
 }
@@ -300,14 +217,24 @@
   .gradient(@blue-lochmara-600, @blue-picton-600, @blue-lochmara-600);
 
   &::after {
-    background-image: url("/images/grid.png");
+    background-image: url('/images/grid.png');
     z-index: 0;
   }
+}
+
+// Background with grid blueprint - version 1
+.u-background-blueprint--3 {
+  background: url('/images/blueprint-grid--gray.png');
 }
 
 // Grayish blue background
 .u-background-grayish-blue {
   background-color: @screen-background;
+}
+
+// White background
+.u-background-white {
+  background-color: #fff;
 }
 
 // SCALING
@@ -344,16 +271,16 @@
 
 // Opacity 100%
 .u-opacity-100 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" !important;
-  filter:~"alpha(opacity=(100))" !important;
+  -ms-filter:  "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" !important;
+  // filter: ~ "alpha(opacity=(100))" !important;
   opacity: 1 !important;
   visibility: visible;
 }
 
 // Opacity 0%
 .u-opacity-0 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)" !important;
-  filter:~"alpha(opacity=(0))" !important;
+  -ms-filter:  "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)" !important;
+  // filter: ~ "alpha(opacity=(0))" !important;
   opacity: 0 !important;
   visibility: hidden;
 }
@@ -364,4 +291,11 @@
 .u-help-label {
   text-decoration: underline;
   color: @typography-secondary;
+}
+
+// VARIOUS UTILITIES
+//
+// Outline none
+.u-outline-none {
+  outline: none;
 }

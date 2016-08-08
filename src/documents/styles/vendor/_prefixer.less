@@ -316,7 +316,7 @@
 //     @args();
 //   }
 // }
-// 
+//
 // Text Shadow
 .text-shadow(@args) {
   text-shadow: @args;
@@ -581,4 +581,12 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Invert(invert=@factor)";
   -webkit-filter: invert(@factor);
   filter:invert(@factor);
+}
+
+// CALC
+.calc(@prop; @val) {
+  @{prop}: calc(~'@{val}');
+  @{prop}: -moz-calc(~'@{val}');
+  @{prop}: -webkit-calc(~'@{val}');
+  @{prop}: -o-calc(~'@{val}');
 }
