@@ -52,19 +52,22 @@
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
-    "install-deps": "npm install && npm run install:bower",
-    "install:bower": "node_modules/bower/bin/bower install -f",
-    "copy:modernizr": "cp ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general",
-    "copy:jws": "mkdir -p ./src/raw/scripts/vendor && cp ./src/raw/bower_components/kjur-jsrsasign/jws-3.3.js ./src/raw/scripts/vendor",
-    "copy:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general",
+    "install-deps": "npm install && npm run bower",
+    "bower": "node_modules/bower/bin/bower install -f",
+
+    "prepare:modernizr": "cp ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general",
+    "prepare:jws": "mkdir -p ./src/raw/scripts/vendor && cp ./src/raw/bower_components/kjur-jsrsasign/jws-3.3.js ./src/raw/scripts/vendor",
+    "prepare:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general",
     "build:lunrplugin": "npm install --prefix ./plugins/docpad-plugin-lunr",
-    "chewie:clean": "gulp clean",
-    "chewie:replaceApiReferences": "gulp replaceApiReferences",
-    "chewie:fixTables": "gulp fixTables",
-    "chewie:serviceLatest": "gulp serviceLatest",
-    "chewie:minify": "gulp minify",
-    "apidocs:prepare": "npm run install-deps && npm run copy:modernizr && npm run copy:zeroclipboard && npm run build:lunrplugin && npm run copy:jws",
-    "apidocs:compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js",
-    "apidocs:start": "npm run apidocs:compile && node server.js"
+
+    "prepare": "npm run install-deps && npm run prepare:modernizr && npm run prepare:zeroclipboard && npm run build:lunrplugin && npm run prepare:jws",
+    "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js",
+
+    "clean": "gulp clean",
+    "initialize": "gulp start",
+
+    "start": "npm run compile && node server.js",
+
+    "update": "gulp clean && git pull && npm update"
   }
 }
