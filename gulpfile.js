@@ -18,9 +18,9 @@ const gulp = require('gulp'),
   path = require('path'),
   unzip = require('gulp-unzip'),
   download = require('gulp-download'),
-  nodeConfig = require('config'),
-  del = require('del');
+  nodeConfig = require('config');
 
+  
 const LOCAL_REGISTRY_PATH = '../sample_data';
 const INTERACTIVE_DOCU_SRC_LOC = nodeConfig.get('interactiveDocuSrcUrl');
 

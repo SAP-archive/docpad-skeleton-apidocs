@@ -188,6 +188,13 @@ docpadConfig = {
           {url:$startsWith: "/services"},
           [order:1,service:1])
 
+    # Get all tools sorted by order meta
+    solutions: ->
+      @getCollection("documents")
+        .findAllLive(
+          {url:$startsWith: "/solutions"},
+          [order:1])
+
     # Get all rn sorted by order meta + paging included
     posts: ->
       @getCollection('html')
