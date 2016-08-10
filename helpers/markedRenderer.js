@@ -16,11 +16,9 @@ module.exports = {
           code = out;
         }
       }
-      if (!lang) {
-        return `<pre><code>${escaped ? code : _escape(code, true)}\n</code></pre>`;
-      }
+      const languageClass = lang ? (this.options.langPrefix + _escape(lang, true)) : '';
 
-      return `<pre><code class="${this.options.langPrefix + _escape(lang, true)}">${escaped ? code : _escape(code, true)}\n</code></pre>\n`;
+      return `<pre><code class="${languageClass}">${escaped ? code : _escape(code, true)}\n</code></pre>\n`;
     }
   }
 };
