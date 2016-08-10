@@ -92,9 +92,12 @@ config.minification = {
     name: 'devportal-yaas.css'
   }],
   html: [{
-    src: [`${out}/**/*.html`, `!${out}/error/error.html`, `!${out}/services/**/client/README.html`],
+    src: [`${out}/**/*.html`, `!${out}/error/error.html`, `!${out}/services/**/client/README.html`,  `!${out}/bower_components/**/*.html`],
     dest: `${out}/`,
-    opts: {collapseWhitespace: true}
+    opts: {
+      collapseWhitespace: true,
+      ignoreCustomFragments: [/<div.*class\s*=\s*["']mermaid["']\s*>((.|\n)*?)<\/div>/g]
+    }
   }]
 };
 

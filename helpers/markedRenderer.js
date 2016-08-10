@@ -3,7 +3,7 @@
 module.exports = {
   markedRenderer: {
     code: function(code, lang) {
-      let escaped, out;
+      let escaped;
 
       if (code.match(/^sequenceDiagram/) || code.match(/^graph/) || code.match(/^gantt/)) {
         return `<div class="mermaid">\n${code}\n</div>\n`;
