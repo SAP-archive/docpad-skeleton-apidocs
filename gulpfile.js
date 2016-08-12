@@ -20,7 +20,7 @@ const gulp = require('gulp'),
   download = require('gulp-download'),
   nodeConfig = require('config');
 
-  
+
 const LOCAL_REGISTRY_PATH = '../sample_data';
 const INTERACTIVE_DOCU_SRC_LOC = nodeConfig.get('interactiveDocuSrcUrl');
 
@@ -41,32 +41,35 @@ const topics = _getTopics(argv.topics);
 
 gulp.task('start', (cb) => {
 
-  let registry;
 
-  //If you use remote registry, you want to pass the name of the branch in the remote repo, for example you can run task with: '-b dev'
-  chewie.prepareRegistry(topics, config, () => {
+  chewie.removeClonedRepositories(argv.force, config, () => {
 
-    const fullRegistry = require(config.registry.registryPath);
+    let registry;
 
-    topics ? registry = require(`${config.tempLocation}/${config.registry.shortVersionFileName}`) : registry = fullRegistry;
+    //If you use remote registry, you want to pass the name of the branch in the remote repo, for example you can run task with: '-b dev'
+    chewie.prepareRegistry(topics, config, () => {
 
-    //stop processing if there is no registry
-    if (!registry) {
-      throw new Error('Registry is not provided');
-    }
+      const fullRegistry = require(config.registry.registryPath);
 
-    async.series({
-      removeClonedRepositories: asyncCb(chewie.removeClonedRepositories, argv.force, config),
-      cloneDocuSources: asyncCb(chewie.cloneDocuSources, registry, config),
-      rewriteRAML: asyncCb(chewie.rewriteRAML, registry, config, argv.r),
-      copyTutorials: asyncCb(chewie.copyTutorials, registry, config),
-      preparePlaceholders: asyncCb(chewie.preparePlaceholders, registry, config),
-      createMetaInfo: asyncCb(chewie.createMetaInfo, fullRegistry, topics, config),
-      prepareApiReferences: asyncCb(chewie.prepareApiReferences, registry, config),
-      createUrlPartials: asyncCb(chewie.createUrlPartials, registry, config),
-      createRAMLPartials: asyncCb(chewie.createRAMLPartials, registry, config),
-      copyContent: asyncCb(chewie.copyContent, fullRegistry, config)
-    }, cb);
+      topics ? registry = require(`${config.tempLocation}/${config.registry.shortVersionFileName}`) : registry = fullRegistry;
+
+      //stop processing if there is no registry
+      if (!registry) {
+        throw new Error('Registry is not provided');
+      }
+
+      async.series({
+        cloneDocuSources: asyncCb(chewie.cloneDocuSources, registry, config, topics),
+        rewriteRAML: asyncCb(chewie.rewriteRAML, registry, config, argv.r),
+        copyTutorials: asyncCb(chewie.copyTutorials, registry, config),
+        preparePlaceholders: asyncCb(chewie.preparePlaceholders, registry, config),
+        createMetaInfo: asyncCb(chewie.createMetaInfo, fullRegistry, topics, config),
+        prepareApiReferences: asyncCb(chewie.prepareApiReferences, registry, config),
+        createUrlPartials: asyncCb(chewie.createUrlPartials, registry, config),
+        createRAMLPartials: asyncCb(chewie.createRAMLPartials, registry, config),
+        copyContent: asyncCb(chewie.copyContent, fullRegistry, config)
+      }, cb);
+    });
   });
 
   function asyncCb() {

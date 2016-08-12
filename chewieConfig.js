@@ -3,8 +3,10 @@ const config = {
   tempLocation: './tmp',
   skeletonDestination: './src',
   skeletonOutDestination: './out',
-  placeholdersLocation: `./src/raw/placeholders`,
+  placeholdersLocation: './src/raw/placeholders',
   docuUrl: process.env.docuURL || 'http://your.webpage.io',
+  notClonedRepositoriesFile: 'notClonedRepositories.json',
+  indepenedentDocuRepositoriesFile: 'indepenedentDocuRepositories.json',
 
   registry: {
     location: process.env.REGISTRY_LOCATION || 'remote',
