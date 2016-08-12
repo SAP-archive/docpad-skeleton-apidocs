@@ -132,8 +132,7 @@ gulp.task('pushResult', (cb) => {
     'dest': config.generationResult.clonedResultFolderPath,
     'branch': config.generationResult.branch,
     'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for: ${JSON.stringify(topics)}`,
-    'independent': Boolean(argv.topics),
-    'notUsedFiles': config.independentGeneration.notUsedFiles
+    'independent': Boolean(argv.topics)
   };
 
   chewie.pushResult(opt, (err) => {
@@ -142,6 +141,29 @@ gulp.task('pushResult', (cb) => {
       return cb();
     }
     log.info('Push operation completed');
+    cb();
+  });
+});
+
+gulp.task('preparePushResult', (cb) => {
+  const topics = _getTopics(argv.topics);
+  const opt = {
+    'src': `${config.skeletonOutDestination}/**`,
+    'dest': config.generationResult.clonedResultFolderPath,
+    'branch': config.generationResult.branch,
+    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for: ${JSON.stringify(topics)}`,
+    'independent': Boolean(argv.topics),
+    'tempLocation': config.tempLocation,
+    'notClonedRepositoriesFile': config.notClonedRepositoriesFile,
+    'indepenedentDocuRepositoriesFile': config.indepenedentDocuRepositoriesFile
+  };
+
+  chewie.preparePushResult(opt, (err) => {
+    if (err) {
+      log.error(err);
+      return cb();
+    }
+    log.info('Prepare pushResult operation completed');
     cb();
   });
 });
