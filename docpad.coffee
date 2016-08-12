@@ -35,6 +35,7 @@ docpadConfig = {
         "/scripts/custom/polyfills.js"
         "/scripts/vendor/jws-3.3.js"
         "/build/plugins/embed-hash-persistence.js"
+        "/scripts/custom/jquery-custom-animations.js"
         "/scripts/custom/jquery-custom-prototypes.js"
       ]
 
@@ -68,7 +69,7 @@ docpadConfig = {
 
       styles: [
         "/styles/main.css"
-        "/styles/components/super-nav.css"
+        "/styles/7-components/super-nav.css"
       ]
 
       # The production url of our website

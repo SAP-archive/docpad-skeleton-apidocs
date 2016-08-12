@@ -67,6 +67,7 @@ config.minification = {
       `${out}/scripts/custom/polyfills.js`,
       `${out}/scripts/vendor/jws-3.3.js`,
       `${out}/build/plugins/embed-hash-persistence.js`,
+      `${out}/scripts/custom/jquery-custom-animations.js`,
       `${out}/scripts/custom/jquery-custom-prototypes.js`
     ],
     dest: `${out}/scripts/`,
@@ -80,7 +81,7 @@ config.minification = {
   css: [{
     src: [
       `${out}/styles/main.css`,
-      `${out}/styles/components/globalnomodal.css`
+      `${out}/styles/7-components/globalnomodal.css`
     ],
     dest: `${out}/styles/`,
     name: 'devportal-yaas.css'
