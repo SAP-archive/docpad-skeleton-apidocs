@@ -1,0 +1,125 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+.hierarchy_list a {
+  text-decoration: none;
+}
+
+.hierarchy_list ul {
+  height: 0;
+  list-style: none;
+}
+
+.hierarchy_list ul.measure_hidden {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  z-index: -5;
+}
+
+.hierarchy_list > ul {
+  height: auto;
+  padding-left: 0;
+}
+
+.hierarchy_list.default li {
+  position: relative;
+  padding-left: 10px;
+}
+
+.hierarchy_list li.open > ul {
+  height: auto;
+}
+
+#hl_right_nav_arrow_nav {
+  text-align: right;
+  margin: 10px 40px 10px 0;
+}
+
+#hl_right_nav_arrow_nav * {
+  color: #333;
+}
+
+#right_nav_hl .parent_node > span {
+
+}
+
+#right_nav_hl .parent_node > span,
+#right_nav_hl > a {
+  display: block;
+  padding: 5px 15px;
+  background: #fff;
+  margin: 5px 0;
+  font-weight: 400;
+}
+
+#right_nav_hl {
+  padding-right: 40px;
+}
+
+#right_nav_hl .parent_node.open > span {
+  position: relative;
+  background: #fff;
+  margin: 5px 0 0;
+  font-weight: 400;
+}
+
+#right_nav_hl .parent_node > ul {
+  overflow: auto;
+  background: #fff;
+}
+
+#right_nav_hl li i.glyphicon {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  dipslay: none;
+}
+
+.hierarchy_list li.parent_node > * {
+  cursor: pointer;
+}
+
+.hierarchy_list.default .toggle_symbol {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  width: 20px;
+  vertical-align: middle;
+}
+
+.hierarchy_list li.parent_node > .toggle_symbol:before {
+  content: "+";
+}
+
+.hierarchy_list li.parent_node.open > .toggle_symbol:before {
+  content: "-";
+}
+
+.sliding_label {
+  position: relative;
+}
+
+.sliding_label > input {
+  font-size: 13px;
+  color: @gray-emperor;
+  outline: none;
+  border: 1px solid @gray-silver-600;
+  padding: 10px 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.sliding_label > label {
+  position: absolute;
+  color: @gray-silver-600;
+  font-size: 11px;
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  top: 14px;
+  padding: 0 2px;
+  pointer-events: none;
+  background: white;
+}

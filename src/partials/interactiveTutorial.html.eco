@@ -21,27 +21,8 @@ cacheable: true
     <iframe style="min-height: 430px;" class="notebook__interactive-tutorial u-transition-all width-100 interactive-tutorial" src="" scrolling="no" frameBorder="0" id="<%- @tutorial %>"></iframe>
   </div>
 
-  <div class="notebook__loader spinner-backdrop spinner-backdrop--secondary spinner-backdrop--half-opacity spinner-backdrop--secondary-filled-background u-transition-all">
-    <div class="spinner">
-      <div class="spinner-container spinner-container1 spinner-container1--secondary">
-        <div class="spinner-circle1"></div>
-        <div class="spinner-circle2"></div>
-        <div class="spinner-circle3"></div>
-        <div class="circle4"></div>
-      </div>
-      <div class="spinner-container spinner-container2 spinner-container2--secondary">
-        <div class="spinner-circle1"></div>
-        <div class="spinner-circle2"></div>
-        <div class="spinner-circle3"></div>
-        <div class="circle4"></div>
-      </div>
-      <div class="spinner-container spinner-container3 spinner-container3--secondary">
-        <div class="spinner-circle1"></div>
-        <div class="spinner-circle2"></div>
-        <div class="spinner-circle3"></div>
-        <div class="circle4"></div>
-      </div>
-    </div>
+  <div class="notebook__loader">
+
   </div>
 
 </div>

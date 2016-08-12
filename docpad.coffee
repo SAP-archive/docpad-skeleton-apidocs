@@ -33,13 +33,14 @@ docpadConfig = {
         "/bower_components/select2/select2.min.js"
         "/bower_components/lscache/lscache.min.js"
         "/scripts/custom/polyfills.js"
-        '/scripts/vendor/jws-3.3.js'
-        '/build/plugins/embed-hash-persistence.js'
+        "/scripts/vendor/jws-3.3.js"
+        "/build/plugins/embed-hash-persistence.js"
+        "/scripts/custom/jquery-custom-prototypes.js"
       ]
 
       navPersonalizationScripts: [
-        '/bower_components/underscore/underscore-min.js'
-        #'/scripts/custom/listing.js'
+        "/bower_components/underscore/underscore-min.js"
+        #"/scripts/custom/listing.js"
       ]
 
       scripts: [
@@ -168,8 +169,6 @@ docpadConfig = {
         return content
       return '\n' + content.substr(findMeta + 3) + '\n' # add because indexOf returns index of first character, we need to trim to last
                                                         # added \n at the begining and end so it will render properly
-
-
 
   # =================================
   # Collections

@@ -1,0 +1,18 @@
+#back-top {
+  position: fixed;
+  right: 20/35em;
+  bottom: 60/35em;
+  font-size: 35px;
+  z-index: 1000;
+  visibility: hidden;
+  .opacity(0);
+  .transition(all 0.3s ease-out 0s);
+
+  &.is-visible {
+    visibility: visible;
+    .opacity(1);
+  }
+  @media all and (max-width: @screen-xs-max) {
+    bottom: 35/35em;
+  }
+}

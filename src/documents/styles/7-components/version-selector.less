@@ -1,0 +1,43 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+.version-selector-wrapper {
+  margin: 20px;
+  max-width: 80px;
+
+  h3 {
+    font-family: "Dosis";
+    font-weight: 300;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .version-selector {
+    border-radius: 0;
+    border: 1px solid #e1e1e1;
+    box-shadow: 2px 2px 0 @gray-exact;
+    margin: 0;
+    width: 80px;
+    float: right;
+
+    button {
+      box-shadow: none;
+      text-align: left;
+      width: 100%;
+
+      &:hover {
+        border-radius: 0;
+      }
+    }
+
+    span {
+      float: right;
+      margin: 8px 0 0;
+    }
+
+    .dropdown-menu {
+      min-width: 80px;
+    }
+  }
+}

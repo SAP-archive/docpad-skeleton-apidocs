@@ -1,82 +1,94 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 // include techne
 @bower-path: '../../raw/bower_components'; // Path to bower
-@import "../../raw/bower_components/hyTechne/src/less/styles.less"; //path to techne less
-@hytech-path: "/bower_components/hyTechne/dist"; // Path to hytech folder
-@bootstrap-path: "../../raw/bower_components/bootstrap"; // Path to bootstrap folder
+@import '../../raw/bower_components/hyTechne/src/less/styles.less'; //path to techne less
+@hytech-path: '/bower_components/hyTechne/dist'; // Path to hytech folder
+@bootstrap-path: '../../raw/bower_components/bootstrap'; // Path to bootstrap folder
 
 // SETTINGS
 // These are preprocessor variables for later use.
-@import 'settings/_variables'; // custom variables
+@import '1-settings/_variables'; // custom variables
 
 // TOOLS
 // These include all the mixins and functions.
-@import "tools/_utilities"; // utilities
-@import "tools/_states"; // states
-@import "tools/_helper-classes"; // helper classes
-@import "tools/_custom-keyframes"; // helper classes
+@import '2-tools/_utilities'; // utilities
+@import '2-tools/_states'; // states
+@import '2-tools/_helper-classes'; // helper classes
+@import '2-tools/_custom-keyframes'; // helper classes
 
 // VENDOR
 // This includes all the third-party CSS used throughout the site.
-@import "vendor/_prefixer"; // prefixer library
-@import "vendor/_animate"; // Animate.css
-@import "vendor/_codemirror"; // CodeMirror
-@import "vendor/_fonts"; // Google Fonts
-@import "vendor/_select2"; // select2
-@import "vendor/_mermaid"; // styles for custom diagrams (flowchart, gant)
+@import '3-vendor/_prefixer'; // prefixer library
+@import '3-vendor/_animate'; // Animate.css
+@import '3-vendor/_codemirror'; // CodeMirror
+@import '3-vendor/_select2'; // select2
+@import '3-vendor/_mermaid'; // styles for custom diagrams (flowchart, gant)
 
 // BASE
 // These are element styles — no classes or IDs. Base typography styles go here, as well as anything needed to style raw elements.
-@import "base/_general-styles"; // global styles
+@import '4-base/_general-styles'; // global styles
 
-// Techne overwrites
-@import "overwrites/_icons";
-@import "overwrites/_data-card";
-@import "overwrites/_sticky-page-header";
-@import "overwrites/_tables";
-@import "overwrites/_glyphicons";
-@import "overwrites/_tooltip";
-@import "overwrites/_spinner";
-@import "overwrites/_forms";
+// Atoms
+/*
+  Atoms are basic tags, such as form labels, inputs or buttons. Atoms are abstract; they provide a useful reference and allow you to see all your global styles laid out at a glance.
+ */
+
+// Molecules
+/*
+  Molecules are groups of elements that function together as a unit. For example, a form label, search input, and button atom
+  can combine them together to form a search form molecule.
+ */
 
 // reusable custom components
-@import "components/five-col-grid-extension";
-@import "components/offcanvas";
-@import "components/password";
-@import "components/backtop";
-@import "components/highlight";
-@import "components/panels";
-@import "components/homepage";
-@import "components/landing-pages";
-@import "components/apiref";
-@import "components/sticky-page-header";
-@import "components/hierarchy_list";
-@import "components/login";
-@import "components/font-icons";
-@import "components/sequence-nav";
-@import "components/search-or-ask";
-@import "components/right_nav";
-@import "components/service-url";
-@import "components/blogs";
-@import "components/version-selector";
-@import "components/search-bar";
-@import "components/expand-collapse";
-@import "components/pagination";
-@import "components/api-console";
-@import "components/left-nav-collapse";
-@import "components/glossary";
-@import "components/spinner";
-@import "components/media-queries";
-@import "components/featured-items";
-@import "components/jumbotron";
-@import "components/visual-section";
-@import "components/grid-cards";
-@import "components/additional-links";
-@import "components/overview";
-@import "components/y-factors";
-@import "components/error";
-@import "components/animated-box";
-@import "components/left-nav";
-@import "components/application";
-@import "components/notebook";
+@import '7-components/five-col-grid-extension';
+@import '7-components/offcanvas';
+@import '7-components/password';
+@import '7-components/backtop';
+@import '7-components/highlight';
+@import '7-components/homepage';
+@import '7-components/landing-pages';
+@import '7-components/sticky-page-header';
+@import '7-components/hierarchy_list';
+@import '7-components/login';
+@import '7-components/font-icons';
+@import '7-components/sequence-nav';
+@import '7-components/right_nav';
+@import '7-components/service-url';
+@import '7-components/blogs';
+@import '7-components/version-selector';
+@import '7-components/search-bar';
+@import '7-components/expand-collapse';
+@import '7-components/pagination';
+@import '7-components/api-console';
+@import '7-components/left-nav-collapse';
+@import '7-components/glossary';
+@import '7-components/spinner';
+@import '7-components/media-queries';
+@import '7-components/featured-items';
+@import '7-components/grid-cards';
+@import '7-components/additional-links';
+@import '7-components/overview';
+@import '7-components/y-factors';
+@import '7-components/error';
+@import '7-components/animated-box';
+@import '7-components/left-nav';
+@import '7-components/application';
+@import '7-components/items-list';
+@import '7-components/featured-cards';
+@import '7-components/footer';
+@import '7-components/notebook';
+
+// Techne overwrites
+@import '8-overwrites/_icons';
+@import '8-overwrites/_data-card';
+@import '8-overwrites/_sticky-page-header';
+@import '8-overwrites/_tables';
+@import '8-overwrites/_glyphicons';
+@import '8-overwrites/_tooltip';
+@import '8-overwrites/_spinner';
+@import '8-overwrites/_forms';
+@import '8-overwrites/_panels';
+@import '8-overwrites/_listgroup';
+@import '8-overwrites/_buttons';
+@import '8-overwrites/_jumbotron';

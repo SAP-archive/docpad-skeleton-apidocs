@@ -1,0 +1,62 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// special mixins
+@import '../2-tools/_utilities';
+
+.featured-cards {
+  background: @screen-background;
+  padding: 1px 1px 40/14em;
+  margin: 0;
+  position: relative;
+
+  .featured-cards__title {
+    font-weight: 500;
+    margin: 1em 0;
+
+    .is-home & {
+      font-size: 40px;
+    }
+
+    .is-not-home & {
+      font-size: 35px;
+    }
+  }
+
+  .featured-cards__tabs {
+    margin: 0 auto 15/14em;
+  }
+
+  &__container {
+    padding: 0;
+  }
+
+  &__link {
+    font-size: 21px;
+    letter-spacing: 30/1000em;
+    font-weight: bold;
+    font-family: 'Dosis';
+    .flex-block();
+    .flex-flow(row nowrap);
+    .justify-content(center);
+    .align-items(center);
+
+    &-icon {
+      font-size: 32/21em;
+      line-height: 30/32;
+      position: relative;
+      left: (8/32)*-1em;
+    }
+  }
+
+  &__alert {
+    margin: 2em;
+  }
+
+  &__paragraph {
+    margin: 15px 0 0;
+  }
+}

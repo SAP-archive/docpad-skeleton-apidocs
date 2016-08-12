@@ -1,0 +1,19 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+.footer {
+  display: table !important;
+  padding-top: 0;
+  height: @footer-height;
+  z-index: 70;
+  position: relative;
+  @media print {
+    .u-hide-permanently;
+  }
+}

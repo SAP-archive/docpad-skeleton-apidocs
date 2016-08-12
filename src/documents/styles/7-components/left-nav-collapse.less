@@ -1,0 +1,39 @@
+.left-nav-collapse-warpper {
+  .collapse-left-nav {
+    position: fixed;
+    left: 226px;
+    top: 50%;
+    opacity: .5;
+    z-index: 1000;
+    transition: all .25s ease-out;
+
+    &:hover {
+      opacity: 1;
+    }
+
+  }
+
+  .expand-left-nav {
+    position: fixed;
+    opacity: .35;
+    top: 50%;
+    left: 0;
+    display: none;
+    z-index: 1000;
+    transition: all .25s ease-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .collapse-left-nav,
+  .expand-left-nav {
+    img {
+      height: 41px;
+      width: 24px;
+      margin: 0;
+      max-width: 100%;
+    }
+  }
+}

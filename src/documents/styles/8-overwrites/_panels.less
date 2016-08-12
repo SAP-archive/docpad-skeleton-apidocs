@@ -1,0 +1,216 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+.panel {
+  word-wrap: break-word;
+  margin: 2em 0;
+  padding: 20/14em;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: 5px solid @gray-gallery;
+
+  &-link {
+    background: @default-grey;
+    display: block;
+    width: 100%;
+    padding: 10%;
+  }
+
+  &-title {
+    .parent {
+      word-wrap: break-word;
+    }
+  }
+
+  &-heading {
+    h3 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  code {
+    background-color: #fff;
+    border-radius: 3px;
+  }
+
+  .panel-group &+.panel {
+    margin: 0 0 2em;
+  }
+
+  &-white:last-child {
+    border-bottom-color: white;
+    .box-shadow(none);
+  }
+
+  &-white .panel-heading {
+    background: #fff;
+  }
+
+  &-neutral {
+    border: 1px solid @gray-alto-300;
+    padding: 0;
+
+    &--only-margin-bottom {
+      margin: 0 0 2em;
+    }
+
+    & > .panel-heading {
+      font-weight: bold;
+      background: @default-greyblue-300;
+    }
+  }
+
+  &-group .panel {
+    margin: 0 0 2em;
+  }
+}
+
+.tip {
+  background-color: @green-feta;
+  border-color: @green-killarney;
+
+  &:before {
+    content: "Tip";
+    font-size: large;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+.warning {
+  background-color: @red-fantasy;
+  border-color: @red-roman;
+
+  &:before {
+    content: "Warning";
+    font-size: large;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+.info {
+  background-color: @blue-catskill-white-400;
+  border-color: @blue-viking;
+
+  &:before {
+    content: "Find Out More";
+    font-size: large;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+.note {
+  background-color: @yellow-hint;
+  border-color: @yellow-indian-khaki;
+
+  &:before {
+    content: "Note";
+    font-size: large;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+// converted this css to less
+.parent {
+  color: @gray-dusty;
+}
+
+.panel-title > .methods {
+  float: right;
+}
+
+.panel-customapiref {
+  margin-bottom: 5px;
+}
+
+.badge {
+  text-transform: uppercase;
+  width: 70px;
+  color: @gray-athens;
+  .border-radius(0);
+  border: none;
+
+  &_get {
+    background-color: @blue-havelock;
+  }
+
+  &_post {
+    background-color: @green-fern;
+  }
+
+  &_put {
+    background-color: @blue-java;
+  }
+
+  &_delete {
+    background-color: @red-indian;
+  }
+
+  .list-group & {
+    float: left;
+  }
+}
+
+.tab-pane {
+  ul {
+    padding-left: 2em;
+  }
+
+  h2 {
+    padding-bottom: 4/26em;
+    border-bottom: 1px solid @gray-alto;
+  }
+}
+
+.tab-content {
+  border-left: 1px solid @gray-alto;
+  border-right: 1px solid @gray-alto;
+  border-bottom: 1px solid @gray-alto;
+  padding: 10px;
+}
+
+.top-resource-description {
+  border-bottom: 1px solid @gray-alto;
+  background: @white-alabaster;
+  padding: 15px 15px 0;
+  margin: -15px -15px 10px;
+}
+
+.resource-description {
+  border-bottom: 1px solid @white-alabaster;
+  background: @white-alabaster;
+  padding: 15px 15px 0;
+  margin: -15px -15px 10px;
+}
+
+.method_description {
+  margin-left: 85px;
+
+  p:last-child {
+    margin: 0;
+  }
+}

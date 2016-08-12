@@ -1,0 +1,29 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific utilities
+@import '../2-tools/_utilities';
+
+// Tertiary Button
+//
+// Markup:
+//<button class="btn btn-lg btn-tertiary">
+//    Tertiary Button
+//</button>
+//
+// Styleguide 2.1.2
+
+.btn-tertiary {
+  color: @btn-tertiary-text;
+  background-color: @btn-tertiary-background;
+  cursor: pointer;
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: @btn-tertiary-text;
+  }
+}
