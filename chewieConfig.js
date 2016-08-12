@@ -3,8 +3,10 @@ const config = {
   tempLocation: './tmp',
   skeletonDestination: './src',
   skeletonOutDestination: './out',
-  placeholdersLocation: `./src/raw/placeholders`,
+  placeholdersLocation: './src/raw/placeholders',
   docuUrl: process.env.docuURL || 'http://your.webpage.io',
+  notClonedRepositoriesFile: 'notClonedRepositories.json',
+  indepenedentDocuRepositoriesFile: 'indepenedentDocuRepositories.json',
 
   registry: {
     location: process.env.REGISTRY_LOCATION || 'remote',
@@ -54,26 +56,6 @@ const config = {
 };
 
 const out = config.skeletonOutDestination;
-
-config.independentGeneration = {
-  notUsedFiles: [`${out}/apiconsole`,
-                `${out}/blog`,
-                `${out}/bower_components`,
-                `${out}/error`,
-                `${out}/fonts`,
-                `${out}/matrix`,
-                `${out}/vendor`,
-                `${out}/atom.xml`,
-                `${out}/scripts`,
-                `${out}/styles`,
-                `${out}/fonts`,
-                `${out}/rn/index.html`,
-                `${out}/internal/rn/index.html`,
-                `${out}/internal/temp`,
-                `${out}/lunr`,
-                `${out}/internal/rn/internal_atom.xml`,
-                `!${out}/.git`]
-};
 
 config.minification = {
   js: [{
