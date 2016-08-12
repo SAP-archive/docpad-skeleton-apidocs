@@ -10,6 +10,7 @@
 .notebook {
   position: relative;
   overflow: hidden;
+  width: 100%;
   .transition(all 0.3s ease-out 0s);
 
   &__loader {
@@ -24,9 +25,14 @@
     .transition(all 0.3s ease-out 0s);
   }
 
+  &__interactive-tutorial,
+  &__static-tutorial {
+    overflow: hidden;
+    width: 100%;
+  }
+
   &__static-tutorial {
     padding: 1em;
-    overflow: hidden;
 
     .copy-code-block {
       display: none;
@@ -35,7 +41,6 @@
 
   &__interactive-tutorial {
     display: none;
-    overflow: hidden;
   }
 
   &-notification {

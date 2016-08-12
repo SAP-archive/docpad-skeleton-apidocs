@@ -17,6 +17,8 @@
     const notebookInView = 'notebook--in-view';
     const isLoaded = 'notebook--is-loaded';
 
+    let loaderFaded = false;
+
     $body.append(loadTutorialNotification);
     const $loadTutorialNotification = $('.notebook-notification');
     let $loadTutorialButton = $loadTutorialNotification.find('.js-load-tutorial-button');
@@ -33,7 +35,7 @@
         let anyNotebookVisible = false;
         $notebook.each(function() {
           const $this = $(this);
-          if ($this.isOnScreen() && (!$this.hasClass(isLoaded))) {
+          if ($this.isOnScreen() && (!$this.hasClass(isLoaded)) && (loaderFaded === false)) {
             anyNotebookVisible = true;
             handleNotebookHover($this);
           }
@@ -88,13 +90,13 @@
 
           $currentTutorial.css('min-height', $tutorialStatic.outerHeight());
 
-          $.when(
-            $loader.fadeTo(300, 1),
+          $loader.fadeIn(300, () => {
             $loadTutorialNotification.addClass(loadTutorialNotificationConstantlyVisible).html(duringLoadingText)
-          )
-          .done(_showInteractiveTutorial);
+            _showInteractiveTutorial();
+          });
 
           function _showInteractiveTutorial() {
+            loaderFaded = true;
             $tutorialStatic.slideFadeOut(300);
             $tutorialInteractive.attr('src', tutorialLink).addClass('apinotebookFrame').slideFadeIn(300);
             $(`#${tutorialName}`).load(_onLoadInteractiveTutorial);
@@ -123,6 +125,7 @@
           function _hideLoader() {
             $loader.fadeTo(300, 0, () => {
               $loader.hide().remove();
+              loaderFaded = false;
               $.when(
                 $currentTutorial.addClass(isLoaded)
               )
