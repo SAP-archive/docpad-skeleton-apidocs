@@ -11,5 +11,5 @@ If you called `npm run apidocs:prepare` at least one, it means all the dependenc
 ### Production
 
 To trigger generation with production configuration:
-1. Call the following commands: `gulp start ` and `npm run apidocs:start`
+1. Call the following commands: `npm run initialize ` and `npm run apidocs:start`
 2. Notice new **out** folder. This folder contains all generated files and can be used on production. For example, you can copy the content of **out** folder to your [GitHub Pages repository](https://pages.github.com/).
