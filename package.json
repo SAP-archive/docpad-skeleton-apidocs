@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "async": "^1.5.2",
+    "bower": "^1.7.9",
     "docpad": "~6.78.4",
     "docpad-plugin-babel": "2.2.1",
     "docpad-plugin-coffeescript": "~2.5.0",
@@ -36,13 +37,14 @@
     "docpad-plugin-raw": "~2.4.1",
     "docpad-plugin-text": "~2.3.3",
     "docpad-plugin-winston": "~2.0.0",
-    "path": "^0.12.7",
     "gulp-download": "0.0.1",
-    "gulp-unzip": "^0.1.4"
+    "gulp-unzip": "^0.1.4",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
     "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.11.1",
     "chewie": "https://github.com/hybris/chewie.git",
     "config": "^1.19.0",
     "express": "4.13.4",

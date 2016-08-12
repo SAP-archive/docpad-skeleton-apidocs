@@ -37,7 +37,6 @@ docpadConfig = {
         '/build/plugins/embed-hash-persistence.js'
       ]
 
-
       navPersonalizationScripts: [
         '/bower_components/underscore/underscore-min.js'
         #'/scripts/custom/listing.js'
@@ -62,8 +61,9 @@ docpadConfig = {
         "/scripts/general/api-console.js"
         "/scripts/general/ignore-scrolling.js"
         "/scripts/general/load-tutorial.js"
+        "/scripts/general/mermaid.js"
+        "/scripts/general/startMermaid.js"
       ]
-
 
       styles: [
         "/styles/main.css"
@@ -197,6 +197,13 @@ docpadConfig = {
           {url:$startsWith: "/services"},
           [order:1,service:1])
 
+    # Get all tools sorted by order meta
+    solutions: ->
+      @getCollection("documents")
+        .findAllLive(
+          {url:$startsWith: "/solutions"},
+          [order:1])
+
     # Get all rn sorted by order meta + paging included
     posts: ->
       @getCollection('html')
@@ -240,6 +247,9 @@ docpadConfig = {
       indexes:
         myIndex:
           collection: ['searchServices']
+
+    # customize marked to use mermaid diagrams
+    marked: require './helpers/markedRenderer.js'
 
   # =================================
   # DocPad Events

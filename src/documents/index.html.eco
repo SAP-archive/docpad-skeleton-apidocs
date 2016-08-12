@@ -38,6 +38,20 @@ title: 'Home'
               <span class="u-animation-border__top"></span>
               <span class="u-animation-border__bottom"></span>
             </div>
+            <a class="featured-items__link featured-items__link--secondary" href="solutions/" title="Solutions">
+              <img class="featured-items__img featured-items__img--secondary svg" src="/images/homepage/getting-started.svg" width="74" height="58" alt="">
+              <h3 class="featured-items__title featured-items__title--secondary">Solutions</h3>
+              <p class="featured-items__paragraph featured-items__paragraph--secondary">Few words about your Solutions.</p>
+            </a>
+          </div>
+
+          <div class="featured-items__item featured-items__item--secondary  col-md-3 col-sm-6 text-center">
+            <div class="u-animation-border u-animation-border--primary">
+              <span class="u-animation-border__left"></span>
+              <span class="u-animation-border__right"></span>
+              <span class="u-animation-border__top"></span>
+              <span class="u-animation-border__bottom"></span>
+            </div>
             <a class="featured-items__link featured-items__link--secondary" href="services/" title="API Documentation">
               <img class="featured-items__img featured-items__img--secondary svg" src="/images/homepage/api-docs.svg" width="74" height="58" alt="">
               <h3 class="featured-items__title featured-items__title--secondary">API Documentation</h3>
