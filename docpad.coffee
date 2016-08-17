@@ -61,6 +61,8 @@ docpadConfig = {
         "/scripts/general/api-filter.js"
         "/scripts/general/api-console.js"
         "/scripts/general/ignore-scrolling.js"
+        "/scripts/general/mermaid.js"
+        "/scripts/general/startMermaid.js"
       ]
 
 
@@ -231,6 +233,9 @@ docpadConfig = {
       indexes:
         myIndex:
           collection: ['searchServices']
+
+    # customize marked to use mermaid diagrams
+    marked: require './helpers/markedRenderer.js'
 
   # =================================
   # DocPad Events

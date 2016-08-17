@@ -1,0 +1,11 @@
+'use strict';
+
+(function(){
+  $(document).ready(() => {
+    mermaid.initialize({
+      startOnLoad   : true,
+      cloneCssStyles: false
+    });
+    $('.mermaid').show();
+  });
+})();

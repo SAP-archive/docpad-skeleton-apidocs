@@ -3,8 +3,10 @@ const config = {
   tempLocation: './tmp',
   skeletonDestination: './src',
   skeletonOutDestination: './out',
-  placeholdersLocation: `./src/raw/placeholders`,
+  placeholdersLocation: './src/raw/placeholders',
   docuUrl: process.env.docuURL || 'http://your.webpage.io',
+  notClonedRepositoriesFile: 'notClonedRepositories.json',
+  indepenedentDocuRepositoriesFile: 'indepenedentDocuRepositories.json',
 
   registry: {
     location: process.env.REGISTRY_LOCATION || 'remote',
@@ -55,26 +57,6 @@ const config = {
 
 const out = config.skeletonOutDestination;
 
-config.independentGeneration = {
-  notUsedFiles: [`${out}/apiconsole`,
-                `${out}/blog`,
-                `${out}/bower_components`,
-                `${out}/error`,
-                `${out}/fonts`,
-                `${out}/matrix`,
-                `${out}/vendor`,
-                `${out}/atom.xml`,
-                `${out}/scripts`,
-                `${out}/styles`,
-                `${out}/fonts`,
-                `${out}/rn/index.html`,
-                `${out}/internal/rn/index.html`,
-                `${out}/internal/temp`,
-                `${out}/lunr`,
-                `${out}/internal/rn/internal_atom.xml`,
-                `!${out}/.git`]
-};
-
 config.minification = {
   js: [{
     src: [`${out}/bower_components/jquery/dist/jquery.min.js`, `${out}/bower_components/bootstrap/dist/js/bootstrap.min.js`, `${out}/bower_components/select2/select2.min.js`, `${out}/bower_components/lscache/lscache.min.js`, `${out}/scripts/custom/polyfills.js`, `${out}/bower_components/kjur-jsrsasign/jws-3.3.js`, `${out}/build/plugins/embed-hash-persistence.js`],
@@ -92,9 +74,12 @@ config.minification = {
     name: 'devportal-yaas.css'
   }],
   html: [{
-    src: [`${out}/**/*.html`, `!${out}/error/error.html`, `!${out}/services/**/client/README.html`],
+    src: [`${out}/**/*.html`, `!${out}/error/error.html`, `!${out}/services/**/client/README.html`,  `!${out}/bower_components/**/*.html`],
     dest: `${out}/`,
-    opts: {collapseWhitespace: true}
+    opts: {
+      collapseWhitespace: true,
+      ignoreCustomFragments: [/<div.*class\s*=\s*["']mermaid["']\s*>((.|\n)*?)<\/div>/g]
+    }
   }]
 };
 
