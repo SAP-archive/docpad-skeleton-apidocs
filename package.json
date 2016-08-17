@@ -64,7 +64,7 @@
     "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js",
 
     "clean": "gulp clean",
-    "initialize": "gulp clean && gulp start",
+    "init": "gulp clean && gulp start",
 
     "start": "npm run compile && node server.js",
 
