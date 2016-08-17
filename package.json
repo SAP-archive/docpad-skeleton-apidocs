@@ -57,11 +57,10 @@
     "bower": "node_modules/bower/bin/bower install -f",
 
     "prepare:modernizr": "cp ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general",
-    "prepare:jws": "mkdir -p ./src/raw/scripts/vendor && cp ./src/raw/bower_components/kjur-jsrsasign/jws-3.3.js ./src/raw/scripts/vendor",
     "prepare:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general",
     "build:lunrplugin": "npm install --prefix ./plugins/docpad-plugin-lunr",
 
-    "prepare": "npm run install-deps && npm run prepare:modernizr && npm run prepare:zeroclipboard && npm run build:lunrplugin && npm run prepare:jws",
+    "prepare": "npm run install-deps && npm run prepare:modernizr && npm run prepare:zeroclipboard && npm run build:lunrplugin",
     "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js",
 
     "clean": "gulp clean",

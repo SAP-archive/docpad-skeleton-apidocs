@@ -33,7 +33,7 @@ docpadConfig = {
         "/bower_components/select2/select2.min.js"
         "/bower_components/lscache/lscache.min.js"
         "/scripts/custom/polyfills.js"
-        '/scripts/vendor/jws-3.3.js'
+        '/bower_components/kjur-jsrsasign/jws-3.3.js'
         '/build/plugins/embed-hash-persistence.js'
       ]
 
