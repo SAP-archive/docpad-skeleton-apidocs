@@ -23,45 +23,29 @@
     const $loadTutorialNotification = $('.notebook-notification');
     let $loadTutorialButton = $loadTutorialNotification.find('.js-load-tutorial-button');
 
-    if (Modernizr.touch) {
-
-      let didScroll = false;
-
-      $(window).scroll(() => {
-        didScroll = true;
-      });
-
-      function checkNotebookVisibility() {
-        let anyNotebookVisible = false;
-        $notebook.each(function() {
-          const $this = $(this);
-          if ($this.isOnScreen() && (!$this.hasClass(isLoaded)) && (loaderFaded === false)) {
-            anyNotebookVisible = true;
-            handleNotebookHover($this);
-          }
-        });
-
-        if (anyNotebookVisible === false) {
+    function checkNotebookVisibility() {
+      let anyNotebookVisible = false;
+      $notebook.each(function() {
+        const $this = $(this);
+        if ($this.isOnScreen() && (!$this.hasClass(isLoaded)) && (loaderFaded === false)) {
+          anyNotebookVisible = true;
+          handleNotebookHover($this);
+        }
+        if ($this.isOnScreen() && $this.hasClass(isLoaded)) {
           $loadTutorialNotification.removeClass(loadTutorialNotificationVisible);
         }
-      }
-
-      checkNotebookVisibility();
-
-      setInterval(function() {
-        if(didScroll) {
-          didScroll = false;
-          checkNotebookVisibility();
-        }
-      }, 100);
-    }
-    else {
-      $notebook.hover(function() {
-        handleNotebookHover(this);
-      }, () => {
-        $loadTutorialNotification.removeClass(loadTutorialNotificationVisible);
       });
+
+      if (anyNotebookVisible === false) {
+        $loadTutorialNotification.removeClass(loadTutorialNotificationVisible);
+      }
     }
+
+    checkNotebookVisibility();
+
+    setInterval(function() {
+      checkNotebookVisibility();
+    }, 100);
 
     function handleNotebookHover(notebook) {
       const $this = $(notebook);
