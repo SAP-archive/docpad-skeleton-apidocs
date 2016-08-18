@@ -1,0 +1,294 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// Landing pages - generic styles
+.landing-page-wrapper {
+  .row {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+// community / experts/blog summary page
+.experts-summary-wrapper {
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  #askContainer {
+    width: auto;
+    background-color: #fff;
+    border: none!important;
+
+    img {
+      display: none;
+    }
+
+    input[type="submit"] {
+      display: inline-block;
+      margin-bottom: 0;
+      font-weight: normal;
+      text-align: center;
+      vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      background-image: none;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: none;
+      color: #000;
+      background-color: #fad712;
+      border-color: #edca05;
+      -webkit-box-shadow: 0 3px 0 #e4c205;
+      box-shadow: 0 3px 0 #e4c205;
+      background-color: #fcdf2b;
+      padding: 10px 16px;
+      font-size: 18px;
+      line-height: 1.33;
+      border-radius: 3px;
+      display: block;
+      width: auto;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  .working,
+  .login-notice {
+    display: none;
+  }
+
+  .questions {
+    display: none;
+
+    h3 {
+      text-align: center;
+      background: @gray-athens-400;
+      padding: 20px;
+      margin-bottom: 0;
+      // font-family: "Dosis";
+      font-weight: 300;
+      font-size: 30px;
+    }
+
+    .posts {
+      font-family: "Dosis";
+
+      .post {
+        .post-content {
+          position: relative;
+          padding: 35px 70px;
+
+          img {
+            float: right;
+            border-radius: 50%;
+            margin-right: -160px;
+          }
+
+          .title {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 5px;
+            display: block;
+          }
+
+          .author {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            display: block;
+            color: @gray-silver-chalice-600;
+          }
+        }
+
+        .post-content:before {
+          content: "";
+          position: absolute;
+          top: 40px;
+          left: 15px;
+          display: inline-block;
+          background: url(/images/icons/quotes.png) top left no-repeat;
+          width: 40px;
+          height: 40px;
+        }
+
+        .post-content:after {
+          content: "";
+          position: absolute;
+          top: 40px;
+          right: 15px;
+          display: inline-block;
+          background: url(/images/icons/quotes.png) top right no-repeat;
+          width: 40px;
+          height: 40px;
+        }
+
+        .post-meta {
+          padding: 35px;
+
+          .votes {
+            float: right;
+            clear: right;
+            color: @gray-silver-chalice-600;
+            font-size: 14px;
+            display: block;
+            width: 100px;
+
+            .count {
+              font-size: 20px;
+              width: 40px;
+              text-align: left;
+              display: inline-block;
+            }
+          }
+
+          .replies {
+            float: right;
+            clear: right;
+            color: @blue-pickled-bluewood;
+            font-size: 14px;
+            display: block;
+            width: 100px;
+
+            .count {
+              font-size: 20px;
+              width: 40px;
+              text-align: left;
+              display: inline-block;
+            }
+          }
+        }
+      }
+
+      .post:nth-child(odd) {
+        background: @white-porcelain;
+      }
+
+      .post:nth-child(even) {
+        .col-md-8 {
+          float: right;
+        }
+
+        .post-content {
+          img {
+            float: left;
+            margin-left: -160px;
+          }
+        }
+
+        .post-meta {
+          float: left;
+
+          .votes {
+            float: left;
+            clear: left;
+          }
+
+          .replies {
+            float: left;
+            clear: left;
+          }
+        }
+      }
+    }
+  }
+}
+
+// blog post page
+.post-wrapper {
+  .post-body {
+    padding: 0;
+    margin-left: 0;
+
+    .post-meta {
+      margin-bottom: 40px;
+    }
+
+    .post-content {
+      h4 {
+
+        // font-size: 24px;
+        font-weight: 300px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 15px;
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  .post-sidebar {
+    padding: 30px;
+
+    .post-meta {
+      color: @lt-grey;
+      text-align: right;
+
+      .comments {
+        display: block;
+      }
+
+      .share {
+        display: block;
+      }
+
+      .icon {
+        display: inline-block;
+        width: 40px;
+        text-align: right;
+        font-size: 25px;
+        vertical-align: middle;
+      }
+    }
+
+    .recent-posts {
+      h3 {
+        border: 1px solid @white-porcelain;
+        border-left: none;
+        border-right: none;
+        padding: 10px 0;
+        margin-bottom: 0;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+          border-bottom: 1px solid @white-porcelain;
+          padding: 10px 0;
+          margin-left: 0;
+
+          a {
+            text-decoration: none;
+            color: @blue-manatee;
+            display: block;
+            position: relative;
+            margin-right: 30px;
+
+            span {
+              position: absolute;
+              top: 50%;
+              right: -25px;
+              margin-top: -15px;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

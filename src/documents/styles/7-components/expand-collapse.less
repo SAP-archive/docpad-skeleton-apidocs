@@ -1,0 +1,98 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+.seperator {
+  margin: 40px 0 60px;
+  position: relative;
+
+  .circle {
+    position: relative;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border: none;
+    margin: 0 auto -40px;
+    padding: 0;
+    background: @blue-solitude;
+    .u-text-decoration-none;
+    .u-outline-none;
+
+    .hyicon {
+      font-size: 18.2px;
+      color: @gray-oslo;
+      font-weight: 500;
+      display: block;
+      line-height: 35/18.2em;
+      text-align: center;
+      position: relative;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .hyicon-collapse {
+      color: #fff;
+      display: none;
+    }
+  }
+
+  .open-circle {
+    background: @gray-oslo;
+  }
+
+  .expand-collapse {
+    display: none;
+    background: @blue-geyser;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    border-radius: 0;
+    padding: 30px;
+    // overflow: hidden;
+
+    &--white {
+      background: #fff;
+    }
+
+    .application__cell-controls-btn.btn-sm {
+      right: 31/12em;
+      top: 31/12em;
+    }
+  }
+
+  hr {
+    margin-top: 20px;
+    margin-bottom: 0;
+    border-top: 1px solid @gray-gallery;
+  }
+
+  .caption {
+    text-align: center;
+    margin-top: 25px;
+    display: block;
+    font-weight: 200;
+    text-transform: uppercase;
+    position: absolute;
+    width: 100%;
+    top: 20px;
+  }
+}
+
+.expand-collapse-controls {
+  span {
+    cursor: pointer;
+    color: @blue-lochmara;
+  }
+
+  span:hover {
+    color: @blue-bahama;
+    text-decoration: underline;
+  }
+}

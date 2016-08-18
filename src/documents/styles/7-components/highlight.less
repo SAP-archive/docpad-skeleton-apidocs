@@ -1,0 +1,142 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+// _____ HIGHLIGHT JS MONO BLUE THEME _____ //
+/*
+  Five-color theme from a single blue hue.
+*/
+.highlight {
+  border: 1px solid @gray-iron;
+  color: @gray-emperor;
+  display: block;
+  font-size: 13px;
+  line-height: 18/13em;
+  margin: 0 0 10/13em;
+  padding: 9.5/13em 50/13em 9.5/13em 9.5/13em;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: visible;
+  background: @blue-geyser;
+  position: relative;
+  z-index: 1;
+  .border-radius(0px);
+
+  &--equal-padding {
+    padding: 9.5/13em;
+  }
+
+  &--bottom-padding {
+    padding: 9.5/13em 9.5/13em 40/13em;
+  }
+
+  .copy-code-block {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: @btn-tertiary-background;
+
+    span,
+    span:hover {
+      color: @btn-tertiary-text;
+    }
+  }
+
+  &__btn-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    .box-shadow(none);
+
+    &:active,
+    &:focus,
+    &:hover {
+      .box-shadow(none);
+    }
+  }
+
+  .hljs {
+    display: block;
+    font-family: Menlo,Monaco,Consolas,'Courier New',monospace;
+    background-color: transparent;
+    color: inherit;
+    font-size: inherit;
+    padding: 0;
+    white-space: pre-wrap;
+
+    &-header,
+    &-important,
+    &-javadoctag,
+    &-keyword,
+    &-request,
+    &-title {
+      font-weight: bold;
+    }
+
+    &-chunk,
+    &-comment,
+    &-template_comment {
+      color: @gray-slate;
+    }
+
+    &-addition,
+    &-argument,
+    &-blockquote,
+    &-built_in,
+    &-filename,
+    &-header,
+    &-link_label,
+    &-literal,
+    &-parent,
+    &-string,
+    &-tag,
+    &-title,
+    &-value {
+      color: @blue-cobalt;
+    }
+
+    &-attr_selector,
+    &-attribute,
+    &-bullet,
+    &-decorator,
+    &-deletion,
+    &-doctype,
+    &-javadoc,
+    &-link_url,
+    &-phony,
+    &-pi,
+    &-pragma,
+    &-preprocessor,
+    &-prompt,
+    &-regexp,
+    &-shebang,
+    &-sqbracket,
+    &-string &-variable,
+    &-subst,
+    &-symbol,
+    &-xmlDocTag,
+    &-yardoctag {
+      color: @blue-indigo;
+    }
+  }
+
+  h3 {
+    border-bottom: 1px solid @gray-silver;
+    padding: 15px;
+    margin: -20px -20px 0;
+    font-weight: 500;
+  }
+
+  .tooltip {
+    min-width: 0;
+  }
+
+  .tooltip-inner {
+    white-space: nowrap;
+  }
+}

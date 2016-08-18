@@ -59,7 +59,17 @@ const out = config.skeletonOutDestination;
 
 config.minification = {
   js: [{
-    src: [`${out}/bower_components/jquery/dist/jquery.min.js`, `${out}/bower_components/bootstrap/dist/js/bootstrap.min.js`, `${out}/bower_components/select2/select2.min.js`, `${out}/bower_components/lscache/lscache.min.js`, `${out}/scripts/custom/polyfills.js`, `${out}/bower_components/kjur-jsrsasign/jws-3.3.js`, `${out}/build/plugins/embed-hash-persistence.js`],
+    src: [
+      `${out}/bower_components/jquery/dist/jquery.min.js`,
+      `${out}/bower_components/bootstrap/dist/js/bootstrap.min.js`,
+      `${out}/bower_components/select2/select2.min.js`,
+      `${out}/bower_components/lscache/lscache.min.js`,
+      `${out}/scripts/custom/polyfills.js`,
+      `${out}/bower_components/kjur-jsrsasign/jws-3.3.js`,
+      `${out}/build/plugins/embed-hash-persistence.js`,
+      `${out}/scripts/custom/jquery-custom-animations.js`,
+      `${out}/scripts/custom/jquery-custom-prototypes.js`
+    ],
     dest: `${out}/scripts/`,
     name: 'devportal-yaas-head.min.js'
   },
@@ -69,12 +79,20 @@ config.minification = {
     name: 'devportal-yaas.min.js'
   }],
   css: [{
-    src: [`${out}/styles/main.css`, `${out}/styles/components/globalnomodal.css`],
+    src: [
+      `${out}/styles/main.css`,
+      `${out}/styles/7-components/globalnomodal.css`
+    ],
     dest: `${out}/styles/`,
     name: 'devportal-yaas.css'
   }],
   html: [{
-    src: [`${out}/**/*.html`, `!${out}/error/error.html`, `!${out}/services/**/client/README.html`,  `!${out}/bower_components/**/*.html`],
+    src: [
+      `${out}/**/*.html`,
+      `!${out}/error/error.html`,
+      `!${out}/services/**/client/README.html`,
+      `!${out}/bower_components/**/*.html`
+    ],
     dest: `${out}/`,
     opts: {
       collapseWhitespace: true,

@@ -1,0 +1,159 @@
+(() => {
+  $(document).ready(() => {
+
+    let beforeLoadText = '<p class="notebook-notification__paragraph">Load <strong><a href="#" class="js-load-tutorial-button"></a></strong> tutorial to run or edit the code.</p>';
+    let duringLoadingText = '';
+    let tutorialName = '';
+    const loadTutorialNotification = `<div class="notebook-notification alert alert-success alert-dismissible" role="alert">
+                                        ${beforeLoadText}
+                                      </div>`;
+    const loadTutorialNotificationVisible = 'notebook-notification--is-visible';
+    const loadTutorialNotificationConstantlyVisible = 'notebook-notification--is-constantly-visible';
+    const loadTutorialNotificationInvisible = 'notebook-notification--is-invisible';
+
+    const $body = $('body');
+    const contentWrapper = '.content-wrapper';
+    const $notebook = $('.notebook');
+    const notebookInView = 'notebook--in-view';
+    const isLoaded = 'notebook--is-loaded';
+
+    let loaderFaded = false;
+
+    $body.append(loadTutorialNotification);
+    const $loadTutorialNotification = $('.notebook-notification');
+    let $loadTutorialButton = $loadTutorialNotification.find('.js-load-tutorial-button');
+
+    function checkNotebookVisibility() {
+      let anyNotebookVisible = false;
+      $notebook.each(function() {
+        const $this = $(this);
+        if ($this.isOnScreen() && (!$this.hasClass(isLoaded)) && (loaderFaded === false)) {
+          anyNotebookVisible = true;
+          handleNotebookHover($this);
+        }
+        if ($this.isOnScreen() && $this.hasClass(isLoaded)) {
+          $loadTutorialNotification.removeClass(loadTutorialNotificationVisible);
+        }
+      });
+
+      if (anyNotebookVisible === false) {
+        $loadTutorialNotification.removeClass(loadTutorialNotificationVisible);
+      }
+    }
+
+    checkNotebookVisibility();
+
+    setInterval(function() {
+      checkNotebookVisibility();
+    }, 100);
+
+    function handleNotebookHover(notebook) {
+      const $this = $(notebook);
+      if (!$this.hasClass(isLoaded)) {
+        const id = $this.attr('id');
+        const tutorialName = $this.parent().children('h2').text();
+        beforeLoadText = `<p class="notebook-notification__paragraph">Load <strong><a id="buttonFor${id}" href="#" class="js-load-tutorial-button">${tutorialName}</a></strong> tutorial to run or edit the code.</p>`;
+        $loadTutorialButton.attr('id', id).html(tutorialName).click(function(event) {
+          event.preventDefault();
+
+          const $this = $(this);
+
+          const tutorialId = $this.attr('id').replace('buttonFor','');
+
+          const $currentTutorial = $notebook.filter(`[id="${tutorialId}"]`);
+
+          const $tutorialStatic = $currentTutorial.find('.notebook__static-tutorial');
+          const $tutorialInteractive = $currentTutorial.find('.notebook__interactive-tutorial');
+
+          const tutorialName = $tutorialStatic.attr('data-tutorial');
+          const isQuickSetup = $tutorialStatic.attr('data-is-quick-setup');
+          const tutorialLink = $tutorialStatic.attr('data-link');
+
+          const $loader = $currentTutorial.find('.notebook__loader');
+          const $loadTutorialNotification = $('.notebook-notification');
+
+          $currentTutorial.css('min-height', $tutorialStatic.outerHeight());
+
+          $loader.fadeIn(300, () => {
+            $loadTutorialNotification.addClass(loadTutorialNotificationConstantlyVisible).html(duringLoadingText)
+            _showInteractiveTutorial();
+          });
+
+          function _showInteractiveTutorial() {
+            loaderFaded = true;
+            $tutorialStatic.slideFadeOut(300);
+            $tutorialInteractive.attr('src', tutorialLink).addClass('apinotebookFrame').slideFadeIn(300);
+            $(`#${tutorialName}`).load(_onLoadInteractiveTutorial);
+          }
+
+          function _onLoadInteractiveTutorial() {
+            $.when(
+              _buildExpandCollapse()
+            )
+            .done(
+              _hideLoader,
+              _hideNotification
+            );
+          }
+
+          function _buildExpandCollapse() {
+            if (isQuickSetup === 'false') {
+              const contentTutorialElement = document.getElementById(tutorialName).contentWindow;
+              const setupOptions = '#setupOptions';
+              contentTutorialElement.createExpandCollapseMarkup(setupOptions);
+              contentTutorialElement.addExpandCollapse();
+              contentTutorialElement.dispatchResizeEvent();
+            }
+          }
+
+          function _hideLoader() {
+            $loader.fadeTo(300, 0, () => {
+              $loader.hide().remove();
+              loaderFaded = false;
+              $.when(
+                $currentTutorial.addClass(isLoaded)
+              )
+              .done(_hideNotification);
+            });
+          }
+
+          function _hideNotification() {
+            $loadTutorialNotification.addClass(loadTutorialNotificationInvisible).fadeOut(300, () => {
+              $loadTutorialNotification.html(beforeLoadText).promise().done(() => {
+                $loadTutorialNotification.css('display', '').removeClass(loadTutorialNotificationConstantlyVisible).removeClass(loadTutorialNotificationVisible);
+                _defineLoadButtonAgain();
+              });
+            });
+          }
+
+          function _defineLoadButtonAgain() {
+            $loadTutorialButton = $loadTutorialNotification.find('.js-load-tutorial-button');
+          }
+        });
+
+        $loadTutorialNotification.addClass(loadTutorialNotificationVisible).removeClass(loadTutorialNotificationInvisible);
+        duringLoadingText = `<div class="spinner notebook-notification__spinner">
+                               <div class="spinner-container spinner-container1 spinner-container1--secondary">
+                                 <div class="spinner-circle1"></div>
+                                 <div class="spinner-circle2"></div>
+                                 <div class="spinner-circle3"></div>
+                                 <div class="circle4"></div>
+                               </div>
+                               <div class="spinner-container spinner-container2 spinner-container2--secondary">
+                                 <div class="spinner-circle1"></div>
+                                 <div class="spinner-circle2"></div>
+                                 <div class="spinner-circle3"></div>
+                                 <div class="circle4"></div>
+                               </div>
+                               <div class="spinner-container spinner-container3 spinner-container3--secondary">
+                                 <div class="spinner-circle1"></div>
+                                 <div class="spinner-circle2"></div>
+                                 <div class="spinner-circle3"></div>
+                                 <div class="circle4"></div>
+                               </div>
+                             </div>
+                             <p>Loading <strong>${tutorialName}</strong> tutorial</p>`;
+      }
+    }
+  });
+})();
