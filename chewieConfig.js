@@ -65,7 +65,7 @@ config.minification = {
       `${out}/bower_components/select2/select2.min.js`,
       `${out}/bower_components/lscache/lscache.min.js`,
       `${out}/scripts/custom/polyfills.js`,
-      `${out}/scripts/vendor/jws-3.3.js`,
+      `${out}/bower_components/kjur-jsrsasign/jws-3.3.js`,
       `${out}/build/plugins/embed-hash-persistence.js`,
       `${out}/scripts/custom/jquery-custom-animations.js`,
       `${out}/scripts/custom/jquery-custom-prototypes.js`
