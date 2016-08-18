@@ -62,6 +62,7 @@ docpadConfig = {
         "/scripts/general/api-filter.js"
         "/scripts/general/api-console.js"
         "/scripts/general/ignore-scrolling.js"
+        "/scripts/general/add-margin-to-content-with-sticky-header.js"
         "/scripts/general/load-tutorial.js"
         "/scripts/general/mermaid.js"
         "/scripts/general/startMermaid.js"

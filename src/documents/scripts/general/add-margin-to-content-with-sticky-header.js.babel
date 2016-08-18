@@ -1,0 +1,70 @@
+'use strict';
+
+// This script adds a margin to content when element with class '.sequence_nav'
+// or '.sticky-page-header' is present (margin is equal to height of the element).
+// Then it watches for changes in the height of the element and updates the margin
+// accordingly.
+
+((() => {
+  $( document ).ready(() => {
+
+    const $sequenceNav = $('.sequence_nav');
+    const $stickyPageHeader = $('.sticky-page-header');
+    const $content = $('#content > .container-fluid');
+    let $header;
+    let savedHeight;
+    let currentHeight;
+    const $sidebar = $('.sidebar-offcanvas');
+    const sidebarTransitionDuration = parseFloat($sidebar.css('transition-duration')) * 1000;
+    const $collapseExpand = $('.collapse-left-nav, .expand-left-nav');
+    let timer = 0;
+    let changeMarginInterval;
+
+    if ($sequenceNav.length) {
+
+      $header = $sequenceNav;
+    }
+    else if ($stickyPageHeader.length) {
+
+      $header = $stickyPageHeader;
+    }
+
+    function changeContentMargin() {
+
+      savedHeight = $header.outerHeight();
+      $content.css('margin-top', `${savedHeight}px`);
+    }
+
+    if ($sequenceNav.length || $stickyPageHeader.length) {
+
+      changeContentMargin();
+
+      // Trigger when browser window is resized
+      $(window).resize(() => {
+
+        currentHeight = $header.outerHeight();
+        if (savedHeight !== currentHeight) changeContentMargin();
+      });
+
+      // Trigger when expand/collapse is clicked
+      $collapseExpand.on('click', () => {
+
+        changeMarginInterval = setInterval(() => {
+
+          currentHeight = $header.outerHeight();
+          if (savedHeight !== currentHeight) changeContentMargin();
+
+          timer += 10;
+
+          if (timer >= sidebarTransitionDuration) {
+            clearInterval(changeMarginInterval);
+            timer = 0;
+          }
+
+        }, 10);
+      });
+
+    }
+
+  });
+}))();
