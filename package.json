@@ -54,7 +54,7 @@
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
     "install-deps": "npm install && npm run bower",
-    "bower": "node_modules/bower/bin/bower install -f",
+    "bower": "bower install -f",
 
     "prepare:modernizr": "cp ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general",
     "prepare:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general",
