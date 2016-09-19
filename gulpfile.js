@@ -131,7 +131,7 @@ gulp.task('pushResult', (cb) => {
     'src': `${config.skeletonOutDestination}/**`,
     'dest': config.generationResult.clonedResultFolderPath,
     'branch': config.generationResult.branch,
-    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for: ${JSON.stringify(topics)}`,
+    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for ${argv.topics}`,
     'independent': Boolean(argv.topics)
   };
 
@@ -151,7 +151,7 @@ gulp.task('preparePushResult', (cb) => {
     'src': `${config.skeletonOutDestination}/**`,
     'dest': config.generationResult.clonedResultFolderPath,
     'branch': config.generationResult.branch,
-    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for: ${JSON.stringify(topics)}`,
+    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for ${argv.topics}`,
     'independent': Boolean(argv.topics),
     'tempLocation': config.tempLocation,
     'notClonedRepositoriesFile': config.notClonedRepositoriesFile,
