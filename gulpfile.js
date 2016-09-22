@@ -3,7 +3,6 @@
 
 const gulp = require('gulp'),
   chewie = require('chewie'),
-  validation = require('./gulp_tasks/deployment/validationMetadata.js'),
   argv = require('yargs')
   .alias('s', 'section')
   .alias('t', 'topics')
