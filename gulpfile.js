@@ -114,7 +114,7 @@ gulp.task('serviceLatest', ['fixTables'], (cb) => {
 });
 
 
-gulp.task('minify', ['serviceLatest'], (cb) => {
+gulp.task('minify', (cb) => {
 
   chewie.minify(config, cb);
 });

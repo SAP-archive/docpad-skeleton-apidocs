@@ -61,7 +61,7 @@
     "build:lunrplugin": "npm install --prefix ./plugins/docpad-plugin-lunr",
 
     "prepare": "npm run install-deps && npm run prepare:modernizr && npm run prepare:zeroclipboard && npm run build:lunrplugin && gulp getDependencyInteractiveDocu",
-    "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js",
+    "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js && gulp minify",
 
     "clean": "gulp clean",
     "init": "gulp clean && gulp start",
