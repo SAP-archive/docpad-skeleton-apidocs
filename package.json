@@ -26,11 +26,13 @@
   "dependencies": {
     "async": "^1.5.2",
     "bower": "^1.7.9",
+    "cpy-cli": "^1.0.1",
+    "del-cli": "^0.2.0",
     "docpad": "~6.78.4",
     "docpad-plugin-babel": "2.2.1",
     "docpad-plugin-coffeescript": "~2.5.0",
     "docpad-plugin-eco": "~2.1.0",
-    "docpad-plugin-gulp": "^2.1.6",
+    "docpad-plugin-functions": "git+https://github.com/sdomagala/docpad-plugin-functions.git",
     "docpad-plugin-highlightjs": "~2.3.0",
     "docpad-plugin-less": "https://github.com/sdomagala/docpad-plugin-less.git#compiled",
     "docpad-plugin-marked": "~2.3.0",
@@ -55,19 +57,13 @@
   "scripts": {
     "install-deps": "npm install && npm run bower",
     "bower": "bower install -f",
-
-    "prepare:modernizr": "cp ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general",
-    "prepare:zeroclipboard": "cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general && cp ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general",
-    "build:lunrplugin": "npm install --prefix ./plugins/docpad-plugin-lunr",
-
-    "prepare": "npm run install-deps && npm run prepare:modernizr && npm run prepare:zeroclipboard && npm run build:lunrplugin && gulp getDependencyInteractiveDocu",
-    "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js && gulp minify",
-
+    "update": "gulp clean && git pull && npm update",
+    "copy:modernizr": "cpy ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general/",
+    "copy:zeroclipboard": "cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.min.map ./src/raw/scripts/",
     "clean": "gulp clean",
-    "init": "gulp clean && gulp start",
-
-    "start": "rm -rf out && npm run compile && node server.js",
-
-    "update": "gulp clean && git pull && npm update"
+    "init": "gulp start",
+    "prepare": "npm run install-deps && npm run copy:modernizr && npm run copy:zeroclipboard && gulp getDependencyInteractiveDocu",
+    "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js && gulp minify",
+    "start": "del-cli out -f && npm run compile && node server.js"
   }
 }

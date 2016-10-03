@@ -1,10 +1,14 @@
 require('./helpers/objectsPrototypes.js');
+gulpFunctions = require('./gulpFunctions.js');
+validate = require('./gulp_tasks/deployment/validationMetadata.js')
+
 
 #variables used many times in docpad.coffee that can be stored like this
 deployment = {
-  gulp:
-    writeAfter:["replaceApiReferences"]
-    generateAfter: ['serviceLatest']
+  functions:
+    writeAfter: [gulpFunctions.replaceApiReferences]
+    generateAfter: [gulpFunctions.fixTables, gulpFunctions.serviceLatest]
+    docpadReady: [validate]
   styles: ["/styles/devportal-yaas.css"]
   scripts: ["/scripts/devportal-yaas.min.js"]
   headScripts: ["/scripts/devportal-yaas-head.min.js"]
@@ -240,9 +244,10 @@ docpadConfig = {
     text:
       matchElementRegexString: 't'
 
-    gulp:
-      writeAfter: ['replaceApiReferences']
-      generateAfter: ['serviceLatest', 'fixTables']
+    functions:
+      writeAfter: [gulpFunctions.replaceApiReferences]
+      generateAfter: [gulpFunctions.fixTables, gulpFunctions.serviceLatest]
+      docpadReady: [validate]
 
     lunr:
       indexes:
