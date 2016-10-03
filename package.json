@@ -62,7 +62,8 @@
     "copy:zeroclipboard": "cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.min.map ./src/raw/scripts/",
     "clean": "gulp clean",
     "init": "gulp start",
-    "prepare": "npm run install-deps && npm run copy:modernizr && npm run copy:zeroclipboard && gulp getDependencyInteractiveDocu",
+    "build:lunrplugin": "npm install --prefix ./plugins/docpad-plugin-lunr",
+    "prepare": "npm run install-deps && npm run copy:modernizr && npm run copy:zeroclipboard && npm run build:lunrplugin && gulp getDependencyInteractiveDocu",
     "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js && gulp minify",
     "start": "del-cli out -f && npm run compile && node server.js"
   }
