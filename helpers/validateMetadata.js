@@ -39,7 +39,7 @@ function allIndexOf(str, strToSearch) {
 }
 
 function validateMetaDataByPath(next) {
-  const url = './src/documents/**/*.*';
+  var url = './src/documents/**/*.*';
 
   gulp.src(url)
     .pipe(tap(function(file, t){

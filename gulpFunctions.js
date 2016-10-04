@@ -5,7 +5,6 @@
 const gulp = require('gulp'),
 
   //below is not explicitly used in the gulpfile but is triggered by the docpad.coffee
-  validation = require('./gulp_tasks/deployment/validationMetadata.js'),
   chewie = require('chewie'),
   argv = require('yargs')
   .alias('s', 'section')

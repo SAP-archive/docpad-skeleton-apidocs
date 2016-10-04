@@ -1,6 +1,6 @@
 require('./helpers/objectsPrototypes.js');
 gulpFunctions = require('./gulpFunctions.js');
-validate = require('./gulp_tasks/deployment/validationMetadata.js')
+validate = require('./helpers/validateMetadata.js')
 
 
 #variables used many times in docpad.coffee that can be stored like this

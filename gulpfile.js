@@ -5,12 +5,6 @@ const gulpTasks = require('./gulpFunctions.js');
 
 gulp.task('start', gulpTasks.start);
 
-gulp.task('replaceApiReferences', gulpTasks.replaceApiReferences);
-
-gulp.task('fixTables', gulpTasks.fixTables);
-
-gulp.task('serviceLatest', ['fixTables'], gulpTasks.serviceLatest);
-
 gulp.task('minify', gulpTasks.minify);
 
 // task that is meant to clean every section of portal or just one
