@@ -81,7 +81,7 @@ function start(cb) {
       async.series({
         cloneDocuSources: asyncCb(chewie.cloneDocuSources, registry, config, topics),
         rewriteRAML: asyncCb(chewie.rewriteRAML, registry, config, argv.r),
-        // copyTutorials: asyncCb(chewie.copyTutorials, registry, config),
+        copyTutorials: asyncCb(chewie.copyTutorials, registry, config),
         preparePlaceholders: asyncCb(chewie.preparePlaceholders, registry, config),
         createMetaInfo: asyncCb(chewie.createMetaInfo, fullRegistry, topics, config),
         prepareApiReferences: asyncCb(chewie.prepareApiReferences, registry, config),
