@@ -1,6 +1,6 @@
 ## Quick try out
 
-1. Run in the console: `git clone https://github.com/hybris/docpad-skeleton-apidocs.git`
+1. Run in the console: `git clone https://github.com/YaaS/docpad-skeleton-apidocs.git`
 2. Open cloned project: `cd docpad-skeleton-apidocs`
 3. Call the following commands: `npm run prepare` and `npm run start`
 
