@@ -1,16 +1,20 @@
 ---
 layout: 'solutions'
-title: 'serviceNamePH'
 ---
 
+<% metadata = @getFileAtPath(@document.relativeDirPath+'/meta-inf').attributes %>
+<% @document.title = metadata.name %>
 
-<% collectionName = 'collectionNamePH' %>
-<% dpServiceName = 'serviceNamePH' %>
+<% contentCollectionName = 'solutionsContent' %>
 
-<% # Only above is unique %>
+<% dpServiceName = metadata.name %>
+
+<% collection = @getCollection(contentCollectionName).findAll(relativeDirPath: @document.relativeDirPath) %>
+
+
 
 <% typesofdocs = [] %>
-<% for docu in @getCollection(collectionName).findAll(topic:dpServiceName,filename:{$ne: 'meta-inf'}).toJSON(): %>
+<% for docu in collection.toJSON(): %>
   <% if docu.type :%>
     <% typesofdocs.push docu.type %>
   <% else :%>
@@ -22,7 +26,7 @@ title: 'serviceNamePH'
   <div class="api-nav left-nav" id="left_nav">
     <nav class="bs-docs-sidebar">
       <ul class="nav">
-        <li class="back-link"><a href="/solutions"> Back to Solutions</a></li>
+        <li class="back-link"><a href="/solutions/"> Back to Solutions</a></li>
         <li class="nav-header"><%- dpServiceName %></li>
         <% # initializing an array that stores info about how many documents are of the same type %>
         <% typeNum = [] %>
@@ -30,7 +34,7 @@ title: 'serviceNamePH'
         <% for type in typesofdocs.unique() : %>
             <% # clearing the array for each iteration so it works for all docs %>
             <% typeNum.length = 0 %>
-            <%for docu in @getCollection(collectionName).findAll(topic:dpServiceName,filename:{$ne: 'meta-inf'}).toJSON(): %>
+            <%for docu in collection.toJSON(): %>
               <% if docu.type is type :%>
                     <% typeNum.push(docu.title) %>
               <% else if docu.title is type :%>
@@ -49,7 +53,7 @@ title: 'serviceNamePH'
               <a href="#<%= @getTrimmedName(type) %>"><%- type %> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
               <ul class="nav nav-stacked">
                 <% uniqueTitles = [] %>
-              <%for d in @getCollection(collectionName).findAll(type:type,topic:dpServiceName,filename:{$ne: 'meta-inf'}).toJSON(): %>
+              <%for d in collection.findAll(type:type).toJSON(): %>
                 <% uniqueTitles.push(d.title) %>
               <% end %>
               <%for d in uniqueTitles.unique(): %>
@@ -73,7 +77,7 @@ title: 'serviceNamePH'
       <div class="col-sm-pull-3 col-sm-pull-3" role="main">
         <div class="tools-wrapper">
 
-          <div class="sticky-page-header">
+          <div class="sticky-page-header m-sticky-header">
 
 
             <h1 class="pull-left"><%= dpServiceName %></h1>
@@ -83,7 +87,7 @@ title: 'serviceNamePH'
           <%- @partial('left-nav-collapse-control') %>
 
 
-          <% for docu in @getCollection(collectionName).findAll(topic:dpServiceName,filename:{$ne: 'meta-inf'}).toJSON(): %>
+          <% for docu in collection.toJSON(): %>
             <% if docu.type :%>
               <% typesofdocs.push docu.type %>
             <% else :%>
@@ -94,7 +98,7 @@ title: 'serviceNamePH'
             <% # rendering content of documents. making sure there are no duplicates and that also docs without type are rendered %>
             <% for type in typesofdocs.unique() : %>
             <% uniqueDocs = [] %>
-              <% for d in @getCollection(collectionName).findAll(topic:dpServiceName,filename:{$ne: 'meta-inf'}).toJSON(): %>
+              <% for d in collection.toJSON(): %>
                 <% uniqueDocs.push(d) %>
               <% end %>
               <% for docu in uniqueDocs.uniqueArrByTitle(): %>
@@ -132,7 +136,6 @@ title: 'serviceNamePH'
                 <% end %>
               <% end %>
             <% end %>
-
         </div>
       </div>
     </div>

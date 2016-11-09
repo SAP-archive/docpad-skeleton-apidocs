@@ -185,7 +185,7 @@ docpadConfig = {
     # Get all rn sorted by order meta
     releaseNotes: ->
       @getCollection("documents")
-        .findAllLive({url:$startsWith: "/rn"},[filename:-1,service:1])
+        .findAllLive({url:$startsWith: "/rn"},[filename:-1])
 
     # Get all rn sorted by order meta
     apiconsoles: ->
@@ -193,21 +193,21 @@ docpadConfig = {
         .findAllLive(
           {url:{$startsWith: "/apiconsoles"},
           filename: 'meta-inf'},
-          [filename:-1,service:1])
+          [filename: 1])
 
     # Get all services sorted by order meta
     services: ->
       @getCollection("documents")
         .findAllLive(
           {url:$startsWith: "/services"},
-          [order:1,service:1])
+          [order:1, filename:1])
 
     # Get all tools sorted by order meta
     solutions: ->
       @getCollection("documents")
         .findAllLive(
           {url:$startsWith: "/solutions"},
-          [order:1])
+          [order: 1, filename: 1])
 
     # Get all rn sorted by order meta + paging included
     posts: ->
@@ -217,7 +217,7 @@ docpadConfig = {
           basename:{$nin: ['index', 'release_notes']},
           filename:{$ne: 'meta-inf'},
           url:{$startsWith:"/rn"}},
-          [filename:-1]).on "add", (model) ->
+          [filename: -1]).on "add", (model) ->
             model.setMetaDefaults(layout:"post")
 
     searchServices: ->
@@ -235,6 +235,23 @@ docpadConfig = {
         .findAllLive({
           interactive: {$exists: true}
         })
+
+
+    #################################
+    # COLLECTIONS FOR CONTENT       #
+    #################################
+
+    servicesContent: ->
+      @getCollection('services')
+        .findAllLive({ basename: {$nin: ['meta-inf', 'index']}, title: {$exists: true, $ne: null} })
+
+    solutionsContent: ->
+      @getCollection('solutions')
+        .findAllLive({ basename: {$nin: ['meta-inf', 'index']}, title: {$exists: true, $ne: null} })
+
+    postsContent: ->
+      @getCollection('posts')
+        .findAllLive({ basename: {$nin: ['meta-inf', 'release_notes']}, headline: {$exists: true, $ne: null} })
 
   # =================================
   # Plugins
