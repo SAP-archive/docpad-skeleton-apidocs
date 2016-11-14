@@ -13,7 +13,7 @@ module.exports = function (BasePlugin) {
       const ref = opts.collection.models;
       for (let i = 0; i < ref.length; i++) {
         model = ref[i];
-        
+
 
         //validate release notes
         if (model.get('layout') === 'post' || model.get('layout') === 'internal_post') {
@@ -58,10 +58,8 @@ module.exports = function (BasePlugin) {
           }
 
           if (!model.get('headline')) {
-            if (new Date(model.get('date').toLocaleDateString()) > new Date('February 04, 2016'.toLocaleString())) {
-              model.set('write', false);
-              console.log('error', `\n\n\n\n\n${model.get('relativePath')} has no headline metadata and will not be generated in Dev Portal!\n\n\n\n\n`);
-            }
+            model.set('write', false);
+            console.log('error', `\n\n\n\n\n${model.get('relativePath')} has no headline metadata and will not be generated in Dev Portal!\n\n\n\n\n`);
           }
 
           /* if (!model.get('headline')){

@@ -29,7 +29,7 @@ isPaged: true
                   <% if document.headline : %>
                     <p class="secondaryData"><%= @trimTo140Char(document.headline) %></p>
                   <% end %>
-                <p class="statusDataValue"><%= document.date.toLocaleDateString() %></p>
+                <p class="statusDataValue"><%= document.date.toLocaleDateString('en-GB', {weekday: 'long', month : 'long', day : 'numeric', year : 'numeric'}) %></p>
               </a>
             </li>
           <% end %>
