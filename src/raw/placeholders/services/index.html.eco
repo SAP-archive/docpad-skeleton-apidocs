@@ -141,7 +141,7 @@ layout: generalnav
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <% for version in listofversions : %>
                   <% if version.version isnt dpServiceVersion : %>
-                    <li role="presentation"><a role="menuitem" class="hrefToPrefix" tabindex="-1" href="<%- dpServiceNameShort %>/<%- version.version %>/index.html"><%- version.latestVersion or version.version %></a></li>
+                    <li role="presentation"><a role="menuitem" class="hrefToPrefix" tabindex="-1" href="/services/<%- dpServiceNameShort %>/<%- version.version %>/index.html"><%- version.latestVersion or version.version %></a></li>
                   <% end %>
                 <% end %>
               </ul>
