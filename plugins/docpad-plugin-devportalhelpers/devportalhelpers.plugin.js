@@ -10,6 +10,7 @@ module.exports = function (BasePlugin) {
 
     generateBefore: function(opts) {
       let file, model;
+      const self = this;
       const ref = opts.collection.models;
       for (let i = 0; i < ref.length; i++) {
         model = ref[i];
@@ -22,17 +23,19 @@ module.exports = function (BasePlugin) {
           }
           if (!model.get('official_version') && model.get('relativeDirPath').search('services/') !== -1) {
             model.set('write', false);
+            console.log('failed');
             continue;
           }
           if (!model.get('service')) {
-            model.set('write', false);
-            continue;
+            const metadata = self.docpad.getFileAtPath(model.get('relativeDirPath') + '/meta-inf').attributes;
+            model.set('service', metadata.service);
           }
           file = this.docpad.getFile({
             relativePath: `${model.get('relativeDirPath')}/meta-inf`
           });
           if (file && file.attributes && file.attributes.version !== model.get('official_version') && model.get('relativeDirPath').search('services/') !== -1) {
             model.set('write', false);
+            console.log('testfailed');
             continue;
           }
           if (model.get('official_version') && model.get('internal_version') && model.get('layout') === 'post' && model.get('relativeDirPath').startsWith('internal')) {
@@ -49,16 +52,19 @@ module.exports = function (BasePlugin) {
           }
           if (model.get('previous_version_shutdown_date' && new Date(model.get('previous_version_shutdown_date')).toLocaleDateString() === 'Invalid Date')) {
             model.set('write', false);
+            console.log('failedprevious_version_shutdown_date');
             console.log('error', `\n\n\n\n\n${model.get('relativePath')} has broken date format and will not be generated in Dev Portal!\n\n\n\n\n`);
             continue;
           }
           if (model.get('date').toLocaleDateString() === 'Invalid Date') {
             model.set('write', false);
+            console.log('faileddate');
             console.log('error', `\n\n\n\n\n${model.get('relativePath')} has broken date format and will not be generated in Dev Portal!\n\n\n\n\n`);
           }
 
           if (!model.get('headline')) {
             model.set('write', false);
+            console.log('failedheadline');
             console.log('error', `\n\n\n\n\n${model.get('relativePath')} has no headline metadata and will not be generated in Dev Portal!\n\n\n\n\n`);
           }
 

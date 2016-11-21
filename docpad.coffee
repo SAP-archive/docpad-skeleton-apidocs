@@ -251,7 +251,7 @@ docpadConfig = {
 
     postsContent: ->
       @getCollection('posts')
-        .findAllLive({ basename: {$nin: ['meta-inf', 'release_notes']}, headline: {$exists: true, $ne: null} })
+        .findAllLive({ headline: {$exists: true, $ne: null} })
 
   # =================================
   # Plugins

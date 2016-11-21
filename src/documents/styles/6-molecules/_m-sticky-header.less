@@ -1,0 +1,165 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+// devportal specific variables
+@import '../2-tools/_helper-classes';
+
+/* _____ DROPDOWN _____ */
+
+.m-sticky-header {
+  background: @screen-background;
+  padding: 1rem 2rem 1rem 4rem;
+  margin-left: 26.5rem;
+  display: none;
+  position: relative;
+  left: 0;
+  .transition(@transition-sidebar);
+  .clearfix();
+
+  &__item {
+    &--left {
+      padding: .6rem 0;
+      .flex-block();
+      .flex-flow(row, wrap);
+      .align-items(baseline);
+      .justify-content(flex-start);
+    }
+  }
+
+  &__subitem {
+    margin-left: 1rem;
+  }
+
+  &__title,
+  h1 {
+    font-size: 2.8rem;
+    float: left;
+    margin: 0;
+  }
+
+  &__form-container,
+  .service-links {
+    padding-left: 5rem;
+    .flex-block();
+    .flex-flow(row-reverse, nowrap);
+    .align-items(center);
+    .justify-content(flex-start);
+
+    &-api-console {
+      margin-right: 0;
+    }
+  }
+
+  &__form-label {
+    color: @typography-secondary;
+    font-size: 1.1rem;
+    position: absolute;
+    left: 1.6rem;
+    top: .4rem;
+    font-family: @font-family-open-sans;
+    z-index: 100;
+  }
+
+  &__form-element,
+  .service-url {
+    display: inline-block;
+    float: right;
+    margin: 0 0 0 .5rem;
+    position: relative;
+
+    &--small-lg {
+      .flex(0);
+    }
+
+    &--large-lg {
+      @media (max-width: @screen-lg) {
+        .flex(0);
+      }
+      @media (min-width: @screen-lg) {
+        .flex(0 0 40%);
+      }
+    }
+
+    input {
+      padding-right: 2px;
+    }
+
+    h3 {
+      // font-family: "Dosis";
+      font-weight: 300;
+      font-size: 14px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    button,
+    input {
+      border-radius: 0;
+      border: 1px solid #e1e1e1;
+    }
+
+    input {
+      border-right: none;
+    }
+
+    button {
+      box-shadow: none;
+      border-left: none;
+
+      &:hover {
+        border-color: #e1e1e1;
+      }
+
+      img {
+        max-width: 30px;
+      }
+    }
+
+    .dropdown-menu {
+      left: -120px;
+    }
+    @media (max-width: @screen-lg) {
+      .m-sticky-header__form-label,
+      .raml-label,
+      .service-label,
+      input {
+        display: none;
+      }
+
+      .raml-icon,
+      .service-icon {
+        display: inline-block;
+      }
+    }
+  }
+
+  .btn-open-console {
+    float: right;
+    margin: 0 0 0 .5rem;
+  }
+
+  .raml-icon,
+  .service-icon {
+    display: none;
+  }
+
+  &-offcanvas {
+    margin-left: 265px;
+    word-break: break-all;
+    word-wrap: break-word;
+    @media all and (max-width:@screen-sm) {
+      margin-left: 0;
+      left: 265px;
+    }
+  }
+  @media all and (max-width:@screen-sm) {
+    margin-left: 0;
+    padding: 2rem 1rem;
+  }
+}

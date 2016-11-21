@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="main-content">
-  <section id="content" class="row-offcanvas row-offcanvas-left">
+  <section class="row-offcanvas row-offcanvas-left">
 
     <header class="navbar-super-holder">
       <% if @document.relativeDirPath != 'error' :%>

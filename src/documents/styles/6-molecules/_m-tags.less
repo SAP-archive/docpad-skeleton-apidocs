@@ -1,0 +1,29 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+/* _____ TAGS _____ */
+
+.m-tags {
+  overflow: hidden;
+  margin: 0 16/14em;
+
+  &__container {
+    padding   : 2rem 1rem 1rem;
+    border-bottom: 1px solid @border-neutral-secondary;
+    .flex-block();
+    .flex-flow(row, wrap);
+    .align-items(center);
+    .justify-content(flex-start);
+    @media all and (max-width: @screen-xs-max) {
+      border-left : 1px solid @border-neutral-secondary;
+      border-right: 1px solid @border-neutral-secondary;
+    }
+  }
+
+  &__item {
+    margin: 0 1rem 1rem 0;
+  }
+}

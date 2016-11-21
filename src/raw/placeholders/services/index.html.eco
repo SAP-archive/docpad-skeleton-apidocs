@@ -112,44 +112,44 @@ layout: generalnav
 <div role="main">
 <div class="api-wrapper">
 
-    <div class="sticky-page-header m-sticky-header">
+  <div class="sticky-page-header m-sticky-header">
 
-      <div class="m-sticky-header__item m-sticky-header__item--left pull-left">
+    <div class="m-sticky-header__item m-sticky-header__item--left pull-left">
 
-      <h1 class="m-sticky-header__title"><%= dpServiceName %></h1>
+    <h1 class="m-sticky-header__title"><%= dpServiceName %></h1>
 
-          <!-- this part enables version dropdown with links between versions if there are more then one versions -->
-      <% currentVersion %>
-      <% listofversions = [] %>
-        <% for docu in @getCollection(collectionName).findAll(service:dpServiceName,basename:'meta-inf',area:$exists:true).toJSON(): %>
-          <% if metadata.version == docu.version: %>
-            <% currentVersion = docu.latestVersion or docu.version %>
+        <!-- this part enables version dropdown with links between versions if there are more then one versions -->
+    <% currentVersion %>
+    <% listofversions = [] %>
+      <% for docu in @getCollection(collectionName).findAll(service:dpServiceName,basename:'meta-inf',area:$exists:true).toJSON(): %>
+        <% if metadata.version == docu.version: %>
+          <% currentVersion = docu.latestVersion or docu.version %>
+        <% end %>
+        <% listofversions.push version: docu.version, latestVersion: docu.latestVersion  %>
+      <% end %>
+
+      <% if listofversions.length > 1 : %>
+          <% if currentVersion: %>
+              <% versionToDisplay = currentVersion %>
+          <% else: %>
+              <% versionToDisplay = 'Latest version' %>
           <% end %>
-          <% listofversions.push version: docu.version, latestVersion: docu.latestVersion  %>
-        <% end %>
-
-        <% if listofversions.length > 1 : %>
-            <% if currentVersion: %>
-                <% versionToDisplay = currentVersion %>
-            <% else: %>
-                <% versionToDisplay = 'Latest version' %>
-            <% end %>
-            <div class="m-sticky-header__subitem m-dropdown dropdown version-selector pull-left">
-                <a class="m-dropdown__selector a-link a-link--contextual dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                  <%- versionToDisplay %><span class="m-dropdown__icon hyicon hyicon-arrow"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                  <% for version in listofversions : %>
-                    <% if version.version isnt dpServiceVersion : %>
-                      <li role="presentation"><a role="menuitem" class="hrefToPrefix" tabindex="-1" href="<%- dpServiceNameShort %>/<%- version.version %>/index.html"><%- version.latestVersion or version.version %></a></li>
-                    <% end %>
+          <div class="m-sticky-header__subitem m-dropdown dropdown version-selector pull-left">
+              <a class="m-dropdown__selector a-link a-link--contextual dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <%- versionToDisplay %><span class="m-dropdown__icon hyicon hyicon-arrow"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <% for version in listofversions : %>
+                  <% if version.version isnt dpServiceVersion : %>
+                    <li role="presentation"><a role="menuitem" class="hrefToPrefix" tabindex="-1" href="<%- dpServiceNameShort %>/<%- version.version %>/index.html"><%- version.latestVersion or version.version %></a></li>
                   <% end %>
-                </ul>
-            </div>
-        <% end %>
-      </div>
+                <% end %>
+              </ul>
+          </div>
+      <% end %>
+    </div>
 
-    <!-- open api console -->
+  <!-- open api console -->
     <% if raml: %>
       <a href="/<%- @document.relativeDirPath %>/apiconsole.html" class="btn btn-primary btn-open-console hidden-xs">API CONSOLE</a>
     <% end %>
@@ -164,8 +164,8 @@ layout: generalnav
                   <img src="/images/icons/icon--download.svg" width="19" height="16" />&nbsp;<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" id="api-spec-list">
-                  <li><a href="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" id="raml-download-link">Download RAML file</a></li>
-                  <!-- <li><a href="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/client.zip' %>" id="client-download-link">Download Generated JS Client</a></li> -->
+                  <li><a href="<%- @getSiteUrl() %><%- ifInternalUrl+'/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" id="raml-download-link">Download RAML file</a></li>
+                  <!-- <li><a href="<%- @getSiteUrl() %><%- ifInternalUrl+'/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/client.zip' %>" id="client-download-link">Download Generated JS Client</a></li> -->
                 </ul>
               </div>
             </span>
@@ -175,9 +175,9 @@ layout: generalnav
         <div class="m-sticky-header__form-element m-sticky-header__form-element--large-lg service-url raml-url hidden-xs">
           <div class="input-group">
             <span class="m-sticky-header__form-label">RAML Url:</span>
-            <input type="text" class="form-control form-control--has-label" value="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>">
+            <input type="text" class="form-control form-control--has-label" value="<%- @getSiteUrl() %><%- ifInternalUrl+'/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>">
             <span class="input-group-btn">
-              <button id="copy-api-spec" data-clipboard-text="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy RAML URL">
+              <button id="copy-api-spec" data-clipboard-text="<%- @getSiteUrl() %><%- ifInternalUrl+'/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy RAML URL">
                 <img src="/images/icons/icon--copy.svg" width="16" height="16" />
               </button>
             </span>
@@ -185,23 +185,23 @@ layout: generalnav
         </div>
       <% end %>
 
-      <!-- copy service url -->
-      <!--% if dbServiceUri.length > 10 : %-->
-      <div class="m-sticky-header__form-element m-sticky-header__form-element--large-lg service-url hidden-xs">
-        <div class="input-group">
-          <span class="m-sticky-header__form-label">Service Url:</span>
-          <input type="text" class="form-control form-control--has-label" value="<%- dbServiceUri %>">
-          <span class="input-group-btn">
-            <button id="copy-api-button" data-clipboard-text="<%- dbServiceUri %>" class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy Service URL">
-              <img src="/images/icons/icon--copy.svg" width="16" height="16" />
-            </button>
-          </span>
-        </div>
+    <!-- copy service url -->
+    <!--% if dbServiceUri.length > 10 : %-->
+    <div class="m-sticky-header__form-element m-sticky-header__form-element--large-lg service-url hidden-xs">
+      <div class="input-group">
+        <span class="m-sticky-header__form-label">Service Url:</span>
+        <input type="text" class="form-control form-control--has-label" value="<%- dbServiceUri %>">
+        <span class="input-group-btn">
+          <button id="copy-api-button" data-clipboard-text="<%- dbServiceUri %>" class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy Service URL">
+            <img src="/images/icons/icon--copy.svg" width="16" height="16" />
+          </button>
+        </span>
       </div>
-      <!-- % end %-->
+    </div>
+    <!-- % end %-->
 
-    </div>
-    </div>
+  </div>
+  </div>
 
     <%- @partial('left-nav-collapse-control') %>
 
