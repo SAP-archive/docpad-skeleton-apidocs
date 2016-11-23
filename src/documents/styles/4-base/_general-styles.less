@@ -38,8 +38,7 @@ body {
   .wrapper,
   body,
   html {
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-x: visible;
   }
 }
 
@@ -291,11 +290,12 @@ a {
 }
 
 .navbar-super-holder {
-  height: @header-height;
+  height: 100px;
 }
 
 .api-wrapper,
-.tools-wrapper {
+.tools-wrapper,
+.blogs-wrapper {
   padding: 0 20px 20px 40px;
 }
 
@@ -408,8 +408,8 @@ svg {
   &:before {
     content: '';
     display: block;
-    height: @header-height + @sticky-header-height;
-    margin: -(@header-height + @sticky-header-height) 0 0;
+    height: 175px;
+    margin: -175px 0 0;
   }
 }
 

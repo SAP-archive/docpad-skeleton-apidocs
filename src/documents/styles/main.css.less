@@ -33,12 +33,18 @@
 /*
   Atoms are basic tags, such as form labels, inputs or buttons. Atoms are abstract; they provide a useful reference and allow you to see all your global styles laid out at a glance.
  */
+@import '5-atoms/_a-link'; // link
 
 // Molecules
 /*
   Molecules are groups of elements that function together as a unit. For example, a form label, search input, and button atom
   can combine them together to form a search form molecule.
  */
+@import '6-molecules/_m-articles'; // filterizr
+@import '6-molecules/_m-dropdown'; // dropdown
+@import '6-molecules/_m-filter'; // filterizr
+@import '6-molecules/_m-sticky-header'; // sticky header
+@import '6-molecules/_m-tags'; // filterizr
 
 // reusable custom components
 @import '7-components/five-col-grid-extension';
@@ -92,3 +98,7 @@
 @import '8-overwrites/_listgroup';
 @import '8-overwrites/_buttons';
 @import '8-overwrites/_jumbotron';
+@import '8-overwrites/_buttons';
+@import '8-overwrites/_select2';
+@import '8-overwrites/_m-filter';
+@import '8-overwrites/_m-articles';

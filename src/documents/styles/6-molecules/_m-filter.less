@@ -1,0 +1,111 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+/* _____ FILTER _____ */
+
+.m-filter {
+  margin: 0 16/14em;
+
+  &__item,
+  &__list {
+    .flex-block();
+    .flex-flow(row, wrap);
+    .align-items(stretch);
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid @border-neutral-secondary;
+    border-bottom: 1px solid @border-neutral-secondary;
+    .justify-content(flex-start);
+    @media all and (max-width: @screen-xs-max) {
+      border-right: 1px solid @border-neutral-secondary;
+      .flex-flow(row, wrap);
+    }
+
+    &--no-top-border {
+      border-top: none;
+    }
+  }
+
+  &__item {
+    border-right: 1px solid @border-neutral-secondary;
+    height: 5.8rem;
+    overflow: hidden;
+    white-space: nowrap;
+    .justify-content(center);
+
+    &--border-left {
+      border-left: 1px solid @border-neutral-secondary;
+      border-right: none;
+    }
+
+    &--align-right {
+      margin-left: auto;
+    }
+    @media all and (max-width: @screen-xs-max) {
+      border-top: 1px solid @border-neutral-secondary;
+      border-left: 1px solid @border-neutral-secondary;
+      border-right: none;
+
+      &.m-filter__item--no-top-border-xs,
+      &:first-child {
+        border-top: none;
+      }
+
+      &--large-xs {
+        .flex(1 0 100%);
+      }
+
+      &--small-xs {
+        .flex(1 0 50%);
+      }
+
+      &--micro-xs {
+        .flex(0 0 auto);
+      }
+
+      &--auto-xs {
+        .flex(1 0 auto);
+      }
+
+      &--hidden-xs {
+        display: none;
+      }
+    }
+  }
+
+  &__link {
+    @media all and (max-width: @screen-xs-max) {
+      .flex(1 0 100%);
+    }
+  }
+
+  &__search {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    color: #000;
+    cursor: pointer;
+    height: 100%;
+    .box-shadow(none);
+    .placeholder-color(@label-filter);
+    .transition(@transition-default);
+
+    &:active,
+    &:focus,
+    &:hover {
+      background: #fff;
+      .box-shadow(none);
+    }
+  }
+
+  &.m-subfilter {
+    background: #fff;
+  }
+}

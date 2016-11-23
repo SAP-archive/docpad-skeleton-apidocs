@@ -1,3 +1,5 @@
+@import '../3-vendor/_prefixer';
+
 #glossary {
   .term-filter {
     float: right;
@@ -6,22 +8,13 @@
 
   .search {
     width: 200px;
+    padding-right: 36px;
   }
 
   .table-glossary {
     td {
       padding-top: 23px !important;
       padding-bottom: 23px !important;
-    }
-
-    td:nth-child(1),
-    th:nth-child(1) {
-      width: 200px;
-    }
-
-    td:nth-child(2),
-    td:nth-child(2) {
-      width: 150px;
     }
 
     .sort {
@@ -32,8 +25,10 @@
   .clear-glossary-input {
     display: none;
     position: absolute;
-    top: 9px;
+    top: 50%;
     right: 10px;
+    margin: 0;
+    .translate(0, -50%);
     z-index: 1;
     cursor: pointer;
     opacity: .6;

@@ -11,7 +11,7 @@ layout: 'release_notes'
     <h3><a href="/rn/index.html"> RELEASE NOTES</a>/<%= @document.title %> </h3>
 </div>
 
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-10">
 
     <div class="blogs-wrapper">
 

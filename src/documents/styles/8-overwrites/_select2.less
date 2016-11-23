@@ -1,0 +1,136 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+/* _____ SELECT2 _____ */
+
+@arrow-width: 2.5rem;
+
+.m-filter {
+  .select2-container {
+    &.select2-dropdown-open {
+      &.a-link--filter {
+        background: #fff;
+
+        .select2-choice {
+          box-shadow: none;
+        }
+
+        .select2-arrow {
+          .rotate(90deg);
+        }
+      }
+    }
+
+    &.a-link--filter {
+      .align-items(stretch);
+    }
+
+    .select2-choice {
+      height       : inherit;
+      line-height  : inherit;
+      border       : none;
+      background   : none;
+      border-radius: 0;
+      box-shadow   : none;
+      .flex-block();
+      .flex-flow(row nowrap);
+      .align-items(center);
+      .justify-content(center);
+
+      &::before {
+        content: 'Sort by:';
+        display: block;
+        color  : @label-filter;
+      }
+
+      .select2-chosen {
+        color  : #000;
+        margin : 0 0 0 0.3rem;
+        padding: 0;
+
+        font-size: 1.5rem;
+      }
+
+      .select2-arrow {
+        border     : none;
+        background : none;
+        width      : @arrow-width;
+        height     : @arrow-width;
+        line-height: 0;
+        width      : auto;
+        position   : relative;
+        color      : @default-greyblue-500;
+        font-size  : 2.5rem;
+        font-family: @font-family-hyicon;
+        .rotate(-90deg);
+        .transition(@transition-default);
+
+        &::before {
+          display                : inline-block;
+          vertical-align         : middle;
+          speak                  : none;
+          line-height            : 1;
+          text-decoration        : inherit;
+          text-transform         : none;
+          text-rendering         : optimizeLegibility;
+          -webkit-font-smoothing : antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          content                : '\e003';
+          font-family: @font-family-hyicon;
+          font-style : normal;
+          font-weight: normal;
+        }
+
+        b {
+          display: none;
+        }
+      }
+    }
+    &.a-link--filter--sort {
+      .select2-choice {
+        &::before {
+          content: 'Sort by:';
+          background: url("/images/icons/sort-icon.svg") no-repeat left/25px;
+          padding: 5px 0 5px 30px;
+        }
+      }
+    }
+    &.a-link--filter--flags {
+      .select2-choice {
+        &::before {
+          content: 'Package available in:';
+        }
+      }
+    }
+  }
+  select {
+    &.a-link--filter {
+      display: none;
+    }
+  }
+}
+.select2-drop {
+  &.select2-drop-active {
+    border-radius: 0;
+    box-shadow   : none;
+    border       : none;
+
+    &::after {
+      position: absolute;
+      content : '';
+      left    : -0.1rem;
+      right   : -0.1rem;
+      bottom  : -0.1rem;
+      top     : 0;
+      display : block;
+      z-index : -1;
+      border-left  : 1px solid @border-neutral-secondary;
+      border-right : 1px solid @border-neutral-secondary;
+      border-bottom: 1px solid @border-neutral-secondary;
+      border-top   : none;
+    }
+  }
+}
