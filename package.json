@@ -61,7 +61,7 @@
     "copy:modernizr": "cpy ./src/raw/bower_components/modernizr/modernizr.js ./src/raw/scripts/general/",
     "copy:zeroclipboard": "cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.js ./src/raw/scripts/general/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.swf ./src/raw/scripts/general/ && cpy ./src/raw/bower_components/zeroclipboard/dist/ZeroClipboard.min.map ./src/raw/scripts/",
     "clean": "gulp clean",
-    "preparePushResult": "gulp preparePushResult",
+    "preparePushResult": "gulp preparePushResult && del-cli src/raw/bower_components/list.js/docu",
     "pushResult": "gulp pushResult",
     "init": "gulp clean && gulp start",
     "build:lunrplugin": "npm install --prefix ./plugins/docpad-plugin-lunr",
