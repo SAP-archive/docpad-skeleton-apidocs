@@ -5,6 +5,7 @@ node_js:
 before_install: 
 - git config --global user.name "Travis CI Test"
 - git config --global user.email "test@test.com"
+- export docuBranch='gh-pages'
 - export RESULT_LOC='https://'$DEPLOY_TOKEN'@github.com/yaas/chewie-sample-result.git'
 - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 install:
@@ -12,7 +13,6 @@ install:
 script:
 - npm run init
 - npm run compile
-- export docuBranch=gh-pages
 - npm run preparePushResult
 - npm run pushResult
 env:
