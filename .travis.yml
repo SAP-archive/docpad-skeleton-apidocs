@@ -1,9 +1,9 @@
 sudo: required
 language: node_js
 node_js:
-- 6.9.1
 - 4.2.1
-before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+- 6.9.1
+before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi #make sure that npm version is at least 3.x
 install:
 - git config --global user.name "Travis CI Test"
 - git config --global user.email "test@test.com"
