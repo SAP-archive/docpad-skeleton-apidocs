@@ -12,6 +12,7 @@ install:
 script:
 - npm run init
 - npm run compile
+deploy:
 - export docuBranch=gh-pages
 - npm run preparePushResult
 - npm run pushResult
