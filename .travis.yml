@@ -3,7 +3,7 @@ language: node_js
 node_js:
 - 4.2.1
 - 6.9.1
-before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi #make sure that npm version is at least 3.x
+before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 install:
 - git config --global user.name "Travis CI Test"
 - git config --global user.email "test@test.com"
@@ -17,4 +17,4 @@ script:
 - npm run pushResult
 env:
   global:
-  - secure: Ncm/EB5JMqpSAEDITE3jBMWOGg1l51P2ooX6xwTh6yMe/FuloN3mIuzBKVVWUOoOt5oBr6ejyA8eKbzIOrMTzkNd1Eb5tGU+3Y4lEXrFevZwnDctX1EedqxbTKpbOPk0l7h2Wx1s/EElyJtMRu2tPKg3V0HwSfoh9EOQI7kqojdynFFUByfj2AL5L6QqrB7AJde9aokS1iO/ZAhX3VDfdTPKCxcKrwm8Zkemfa64/gYiYvrtgdoD8bTI2lxZxAB1+ssG9WJUfywGVICVA79YjbCJdusK/vrnsqENlHXf9TkHFcqFNrv1JIKi1IFbOAgwDT+P02qp9ykSxfifKoSKJ/75Tr1mas3M3MU008dfZ5CuVIGsSxn2s48kroRqDUqhYUqM9ioNt5nRL/qz881zwDzmXwVL32lUnYOMyieYhtJEb0I7/JRXaRplGbZO7ctqTcF/NFyFM13pGsnbkOU7W9eVdnnQWaO+9BkZ64hmzCTENQwQAiecyXcG+UdGxXHj3caW4DBTr9GlMIwfL49FK8kcN+26a0kJH0XT7ka940R+CjcUef0fkE1/cthPO338uWb7tVr2oUzoHu+/pvrgGNEriUzJG7TsUWMN7CYCZB/1P2O/+q3WjePDlOskUPQC+qQ0ScE9Xp23JtXuQeR5hVNLsBOt6uK3jS7p6IXj25w=
+  - secure: fYio+Ep0HLQLWBCkfroC67dyO5JzJdxmwxM2MFlZGbh/vUWoWZNPxsuFiqcHCmBZUGwP/S+1mXM/onjUmdDbLHWUeyStmUOHEksoRvlpyOTbvC4YfFEowww1zKZk99a0zyS2Ma0zAEbqOuTPS+0EHjqtyJ5mNRxrXEOb1NXz9sbRgyYWNHmKH+htIEzz11NAWCmX/RE6kBMy7C4HQzvauNpt4r0jI6CatyUOLA5d4kkuTUFWSpmmyQx+RDpC89oQ5EB30eVpP0lq0L/u24ZPa+K+DZwvsxl6EY4oXqXjtw0VSyGISgGCgCvErg+/yqlN1pr4QMN4tns2H92FG3KYDZ2052vPiLa9z/fAZ+p+O640nrzyqjmpaPl7SVpc/oJZsTTzr6WiyB4SAJUL2QcOJf4mS4Ol2GCBv1pr/wiEM7IV8XgAi/oc7LYCWNjgJNKiZwsocCG4MA5cYdnExxckOKi3aDBvfBgtRzAnOPqkq1g/9w5gEs9Y8xQ944EpN3MFnUxDuSPQA702eFqfb4/9WReG5NLJuqSwZ7u80Swksvao4Qfv9SQeFYXk5xUairY3jf9C5XuZSAMqax+3vASdO/ZMKvaFf7vT7W6tVkngIzGNwX7kgzbd8zLFR37UNomzBpZF5945WroW/nx8fzoOhtsL3StRyqKbX3e3aza1+ZE=
