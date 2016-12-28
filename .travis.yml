@@ -6,7 +6,7 @@ before_install:
 - git config --global user.name "Travis CI Test"
 - git config --global user.email "test@test.com"
 - export docuBranch='gh-pages'
-- export docuUrl=http://yaas.github.io/chewie-sample-result
+- export docuUrl=https://github.com/YaaS/chewie-sample-result/tree/gh-pages
 - export NODE_ENV=prod
 - export RESULT_LOC='https://'$DEPLOY_TOKEN'@github.com/yaas/chewie-sample-result.git'
 - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
