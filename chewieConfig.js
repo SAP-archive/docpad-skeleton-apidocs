@@ -4,7 +4,7 @@ const config = {
   skeletonDestination: './src',
   skeletonOutDestination: './out',
   placeholdersLocation: './src/raw/placeholders',
-  docuUrl: process.env.docuURL || 'http://your.webpage.io',
+  docuUrl: process.env.docuURL || 'http://yaas.github.io/chewie-sample-result',
   notClonedRepositoriesFile: 'notClonedRepositories.json',
   indepenedentDocuRepositoriesFile: 'indepenedentDocuRepositories.json',
 

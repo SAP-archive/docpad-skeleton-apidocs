@@ -114,6 +114,13 @@ function fixTables(cb) {
   chewie.replacer.replaceInFile('./out/**/*.html', '<table>', '<table class="table table-striped techne-table">', './out', cb);
 }
 
+function fixLinks(cb) {
+  
+  chewie.replacer.replaceInFile('./out/**/*.html', `href="/`, `href="${config.docuUrl}/`, './out', () => {
+    chewie.replacer.replaceInFile('./out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out', cb);
+  });
+}
+
 function minify(cb) {
 
   chewie.minify(config, cb);
@@ -201,6 +208,7 @@ module.exports = {
   replaceApiReferences,
   start,
   fixTables,
+  fixLinks,
   minify,
   clean,
   pushResult,

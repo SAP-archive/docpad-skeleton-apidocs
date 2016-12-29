@@ -7,7 +7,7 @@ validate = require('./helpers/validateMetadata.js')
 deployment = {
   functions:
     writeAfter: [gulpFunctions.replaceApiReferences]
-    generateAfter: [gulpFunctions.fixTables, gulpFunctions.serviceLatest]
+    generateAfter: [gulpFunctions.fixTables, gulpFunctions.fixLinks, gulpFunctions.serviceLatest]
     docpadReady: [validate]
   styles: ["/styles/devportal-yaas.css"]
   scripts: ["/scripts/devportal-yaas.min.js"]
@@ -263,7 +263,7 @@ docpadConfig = {
 
     functions:
       writeAfter: [gulpFunctions.replaceApiReferences]
-      generateAfter: [gulpFunctions.fixTables, gulpFunctions.serviceLatest]
+      generateAfter: [gulpFunctions.fixTables, gulpFunctions.fixLinks, gulpFunctions.serviceLatest]
       docpadReady: [validate]
 
     lunr:
