@@ -115,10 +115,10 @@ function fixTables(cb) {
 }
 
 function fixLinks(cb) {
-  const hrefRegex = new RegExp(`href=('|")\/`, 'g');
-  
-  chewie.replacer.replaceInFile('./out/**/*.html', hrefRegex, `href="${config.docuUrl}/`, './out', () => {
-    chewie.replacer.replaceInFile('./out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out', cb);
+  chewie.replacer.replaceInFile('./out/**/*.html', `href='/`, `href='${config.docuUrl}`, './out', () => {
+    chewie.replacer.replaceInFile('./out/**/*.html', `href="/`, `href="${config.docuUrl}`, './out', () => {
+      chewie.replacer.replaceInFile('./out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out', cb);
+    });
   });
 }
 
