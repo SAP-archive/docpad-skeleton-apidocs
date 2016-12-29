@@ -15,9 +15,6 @@ gulp.task('minify', gulpTasks.minify);
 // mind that rn and partials are not sections anymore, they are deleted per service
 gulp.task('clean', gulpTasks.clean);
 
-// task adds baseUri to all links with src and href
-gulp.task('fixLinks', gulpTasks.fixLinks);
-
 // task pushes latest results to remote repo that keeps results.
 gulp.task('pushResult', gulpTasks.pushResult);
 
