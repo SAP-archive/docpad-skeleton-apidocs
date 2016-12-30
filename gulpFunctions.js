@@ -102,7 +102,7 @@ function fixLinks(cb) {
   async.series({
       hrefSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href='/`, `href='${config.docuUrl}/`, './out'),
       hrefDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href="/`, `href="${config.docuUrl}/`, './out'),
-      srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src='/`, `src="${config.docuUrl}/`, './out'),
+      srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src='/`, `src='${config.docuUrl}/`, './out'),
       srcDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out'),
       urlSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url('/`, `url('${config.docuUrl}/`, './out'),
       urlDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url("/`, `url("${config.docuUrl}/`, './out')
