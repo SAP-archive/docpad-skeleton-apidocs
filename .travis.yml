@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - 4.2.1
-- 6.9.1
+- 6.9.2
 before_install: 
 - git config --global user.name "Travis CI Test"
 - git config --global user.email "test@test.com"
