@@ -57,7 +57,6 @@ docpadConfig = {
         "/scripts/general/remember_location.js"
         "/scripts/general/ZeroClipboard-min.js"
         "/scripts/general/expand-collapse.js"
-        "/scripts/general/search-bar.js"
         "/scripts/general/code-block.js"
         "/scripts/general/img-click-modal.js"
         "/scripts/general/apiref.js"
@@ -220,15 +219,6 @@ docpadConfig = {
           [filename: -1]).on "add", (model) ->
             model.setMetaDefaults(layout:"post")
 
-    searchServices: ->
-      @getCollection('documents')
-        .findAllLive({
-          extension: {$in:['md', 'html', 'eco']},
-          title: {$exists: true},
-          url: {$startsWith: "/services"},
-          relativeOutDirPath:{$ne: 'services'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"document",result:true})
-
     # Get all services sorted by order meta
     APINotebooks: ->
       @getCollection("documents")
@@ -265,11 +255,6 @@ docpadConfig = {
       writeAfter: [gulpFunctions.replaceApiReferences]
       generateAfter: [gulpFunctions.fixTables, gulpFunctions.fixLinks, gulpFunctions.serviceLatest]
       docpadReady: [validate]
-
-    lunr:
-      indexes:
-        myIndex:
-          collection: ['searchServices']
 
     # customize marked to use mermaid diagrams
     marked: require './helpers/markedRenderer.js'
