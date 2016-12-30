@@ -297,7 +297,7 @@ docpadConfig = {
     prod:
       templateData:
         site:
-          url: ""
+          url: "http://yaas.github.io/chewie-sample-result"
           blogFeed: "/atom.xml"
           googleAnalytics: deployment.googleAnalytics
           scripts: deployment.scripts
