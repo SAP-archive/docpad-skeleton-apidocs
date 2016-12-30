@@ -117,7 +117,9 @@ function fixTables(cb) {
 function fixLinks(cb) {
   chewie.replacer.replaceInFile('./out/**/*.html', `href='/`, `href='${config.docuUrl}/`, './out', () => {
     chewie.replacer.replaceInFile('./out/**/*.html', `href="/`, `href="${config.docuUrl}/`, './out', () => {
-      chewie.replacer.replaceInFile('./out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out', cb);
+      chewie.replacer.replaceInFile('./out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out', () => {
+        chewie.replacer.replaceInFile('./out/**/*.css', `url('/`, `url('${config.docuUrl}/`, './out', cb);
+      });
     });
   });
 }
