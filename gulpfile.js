@@ -12,7 +12,7 @@ gulp.task('minify', gulpTasks.minify);
 // removing all sections - NODE_ENV=master gulp clean
 // removing one section - NODE_ENV=master gulp clean --section services
 //
-// mind that rn and partials are not sections anymore, they are deleted per service
+// mind that rn and partials are not sections anymore, they are deleted per service!
 gulp.task('clean', gulpTasks.clean);
 
 // task pushes latest results to remote repo that keeps results.
