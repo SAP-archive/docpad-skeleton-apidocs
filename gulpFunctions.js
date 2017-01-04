@@ -79,39 +79,34 @@ function start(cb) {
       }
 
       async.series({
-        cloneDocuSources: asyncCb(chewie.cloneDocuSources, registry, config, topics),
-        rewriteRAML: asyncCb(chewie.rewriteRAML, registry, config, argv.r),
-        copyTutorials: asyncCb(chewie.copyTutorials, registry, config),
-        preparePlaceholders: asyncCb(chewie.preparePlaceholders, registry, config),
-        createMetaInfo: asyncCb(chewie.createMetaInfo, fullRegistry, topics, config),
-        prepareApiReferences: asyncCb(chewie.prepareApiReferences, registry, config),
-        createUrlPartials: asyncCb(chewie.createUrlPartials, registry, config),
-        createRAMLPartials: asyncCb(chewie.createRAMLPartials, registry, config),
-        copyContent: asyncCb(chewie.copyContent, fullRegistry, config)
+        cloneDocuSources: _asyncCb(chewie.cloneDocuSources, registry, config, topics),
+        rewriteRAML: _asyncCb(chewie.rewriteRAML, registry, config, argv.r),
+        copyTutorials: _asyncCb(chewie.copyTutorials, registry, config),
+        preparePlaceholders: _asyncCb(chewie.preparePlaceholders, registry, config),
+        createMetaInfo: _asyncCb(chewie.createMetaInfo, fullRegistry, topics, config),
+        prepareApiReferences: _asyncCb(chewie.prepareApiReferences, registry, config),
+        createUrlPartials: _asyncCb(chewie.createUrlPartials, registry, config),
+        createRAMLPartials: _asyncCb(chewie.createRAMLPartials, registry, config),
+        copyContent: _asyncCb(chewie.copyContent, fullRegistry, config)
       }, cb);
     });
   });
-
-
-  function asyncCb() {
-    const args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments)); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
-    const func = args[0];
-    const params = args.slice(1);
-
-    return (cb) => {
-      log.info(`Started task: ${func.name}`);
-      params.push(() => {
-        log.info(`Finished task: ${func.name}`);
-        cb();
-      });
-      func.apply(null, params);
-    };
-  }
 }
 
 function fixTables(cb) {
 
   chewie.replacer.replaceInFile('./out/**/*.html', '<table>', '<table class="table table-striped techne-table">', './out', cb);
+}
+
+function fixLinks(cb) {
+  async.series({
+      hrefSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href='/`, `href='${config.docuUrl}/`, './out'),
+      hrefDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href="/`, `href="${config.docuUrl}/`, './out'),
+      srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src='/`, `src='${config.docuUrl}/`, './out'),
+      srcDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out'),
+      urlSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url('/`, `url('${config.docuUrl}/`, './out'),
+      urlDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url("/`, `url("${config.docuUrl}/`, './out')
+  }, cb);
 }
 
 function minify(cb) {
@@ -196,11 +191,27 @@ function _getTopics(topics) {
   });
 }
 
+function _asyncCb() {
+  const args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments)); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
+  const func = args[0];
+  const params = args.slice(1);
+
+  return (cb) => {
+    log.info(`Started task: ${func.name}`);
+    params.push(() => {
+      log.info(`Finished task: ${func.name}`);
+      cb();
+    });
+    func.apply(null, params);
+  };
+}
+
 module.exports = {
   serviceLatest,
   replaceApiReferences,
   start,
   fixTables,
+  fixLinks,
   minify,
   clean,
   pushResult,

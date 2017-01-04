@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- 4.2.1
+- 6.9.2
+before_install: 
+- git config --global user.name "Travis CI Test"
+- git config --global user.email "test@test.com"
+- export docuBranch='gh-pages'
+- export NODE_ENV=prod
+- export RESULT_LOC='https://'$DEPLOY_TOKEN'@github.com/yaas/chewie-sample-result.git'
+- if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+install:
+- npm run prepare
+script:
+- npm run init
+- npm run compile
+- npm run preparePushResult
+- npm run pushResult
+env:
+  global:
+    secure: uJSm5TsS3D7StnJfFIsCqUJXRNrLg5ZxCux9GtHej9xIzG4pCNQA93jX7q0y+2/XwEL2KgTbJdrxw9OrWq1gjqXfYVDvEbam4/TBxX1XL239ZHQlwNzVYALSo/1JUAbydEfQ4ziNNVxvrSSKoK1jRnKAu9bUVdzlEpHZ8RBK8+uFYbRPHPdSJhK5GDk28oQXb+ItvTqM7ikwuGQW169Q8oJbBezpMDq2befihp/VqgGMdEjrg+nahdhxQSDQ9JUNBaEyDrZzS2HQ1vv2r4XheZoKjpfmKKa230aXW1NUMLGij2gSxypljyWWyFKptEoxoAJ8OioMU94by6vnKnWYOfBy500yy7jl7U1/4l544MFWAXNhWJ0A1GLLL5n1XMjN6SITHj/tlQZv+oeL/Xnzvjnd3u+q1pAQWWQDOaLqTX/qfyiqJaZxMzgrT+PAhWOvpVlv2WuzCnld8Rn8EDAVRcKe//QELJ+Xmf1PeJB1MzGWqp69EjaFgMc0EJkd6XtA82JHgAOIGQSYi4ObyHlMz8PPH8QyWrAkNgLqP98VG2JqVc785ERsnoi8SHpypAeTCtX9ToEDrKz6b2K+HgryGxaCNApM1BkGr8EwKO0qmYCklq8AbU2pK9SaYAZ7/s1pnZWwmV83oaborvu7DGMCrYMLFyuJbNlRVgOQr5+zwtA=

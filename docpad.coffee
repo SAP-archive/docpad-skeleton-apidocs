@@ -7,7 +7,7 @@ validate = require('./helpers/validateMetadata.js')
 deployment = {
   functions:
     writeAfter: [gulpFunctions.replaceApiReferences]
-    generateAfter: [gulpFunctions.fixTables, gulpFunctions.serviceLatest]
+    generateAfter: [gulpFunctions.fixTables, gulpFunctions.fixLinks, gulpFunctions.serviceLatest]
     docpadReady: [validate]
   styles: ["/styles/devportal-yaas.css"]
   scripts: ["/scripts/devportal-yaas.min.js"]
@@ -57,7 +57,6 @@ docpadConfig = {
         "/scripts/general/remember_location.js"
         "/scripts/general/ZeroClipboard-min.js"
         "/scripts/general/expand-collapse.js"
-        "/scripts/general/search-bar.js"
         "/scripts/general/code-block.js"
         "/scripts/general/img-click-modal.js"
         "/scripts/general/apiref.js"
@@ -220,15 +219,6 @@ docpadConfig = {
           [filename: -1]).on "add", (model) ->
             model.setMetaDefaults(layout:"post")
 
-    searchServices: ->
-      @getCollection('documents')
-        .findAllLive({
-          extension: {$in:['md', 'html', 'eco']},
-          title: {$exists: true},
-          url: {$startsWith: "/services"},
-          relativeOutDirPath:{$ne: 'services'}}).on "add", (model) ->
-            model.setMetaDefaults({layout:"document",result:true})
-
     # Get all services sorted by order meta
     APINotebooks: ->
       @getCollection("documents")
@@ -263,13 +253,8 @@ docpadConfig = {
 
     functions:
       writeAfter: [gulpFunctions.replaceApiReferences]
-      generateAfter: [gulpFunctions.fixTables, gulpFunctions.serviceLatest]
+      generateAfter: [gulpFunctions.fixTables, gulpFunctions.fixLinks, gulpFunctions.serviceLatest]
       docpadReady: [validate]
-
-    lunr:
-      indexes:
-        myIndex:
-          collection: ['searchServices']
 
     # customize marked to use mermaid diagrams
     marked: require './helpers/markedRenderer.js'
@@ -297,7 +282,7 @@ docpadConfig = {
     prod:
       templateData:
         site:
-          url: ""
+          url: "http://yaas.github.io/chewie-sample-result"
           blogFeed: "/atom.xml"
           googleAnalytics: deployment.googleAnalytics
           scripts: deployment.scripts
