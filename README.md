@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/YaaS/docpad-skeleton-apidocs.svg?branch=master)](https://travis-ci.org/YaaS/docpad-skeleton-apidocs)
+
 ## Quick try out
 
 1. Run in the console: `git clone https://github.com/YaaS/docpad-skeleton-apidocs.git`
