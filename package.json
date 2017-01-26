@@ -40,6 +40,7 @@
     "docpad-plugin-text": "~2.3.3",
     "docpad-plugin-winston": "~2.0.0",
     "gulp-download": "0.0.1",
+    "gulp-replace": "^0.5.4",
     "gulp-unzip": "^0.1.4",
     "path": "^0.12.7"
   },

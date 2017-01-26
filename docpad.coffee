@@ -77,7 +77,7 @@ docpadConfig = {
       ]
 
       # The production url of our website
-      url: "http://127.0.0.1:9778"
+      url: "http://yaas.github.io/chewie-sample-result"
       yaasUrl: "https://www.yaas.io"
       home: ""
 
