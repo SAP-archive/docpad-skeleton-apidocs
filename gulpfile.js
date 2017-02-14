@@ -20,4 +20,6 @@ gulp.task('pushResult', gulpTasks.pushResult);
 
 gulp.task('getDependencyInteractiveDocu', gulpTasks.getDependencyInteractiveDocu);
 
+gulp.task('prepareInteractiveDocuToDeploy', gulpTasks.prepareInteractiveDocuToDeploy);
+
 gulp.task('preparePushResult', gulpTasks.preparePushResult);
