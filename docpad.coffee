@@ -1,6 +1,7 @@
 require('./helpers/objectsPrototypes.js');
 gulpFunctions = require('./gulpFunctions.js');
 validate = require('./helpers/validateMetadata.js')
+config = require('./chewieConfig');
 
 
 #variables used many times in docpad.coffee that can be stored like this
@@ -77,7 +78,7 @@ docpadConfig = {
       ]
 
       # The production url of our website
-      url: "http://127.0.0.1:9778"
+      url: if process.env.DEPLOY then config.docuUrl else 'http://127.0.0.1:9778'
       yaasUrl: "https://www.yaas.io"
       home: ""
 

@@ -17,5 +17,5 @@ If you called `npm run prepare` at least once, it means all the dependencies you
 
 To trigger generation with production configuration:
 
-1. Call the following commands: `npm run init ` and `npm run compile`
+1. Call the following commands: `npm run init ` and `npm run deploy`
 2. Notice new **out** folder. This folder contains all generated files and can be used on production. For example, you can copy the content of **out** folder to your [GitHub Pages repository](https://pages.github.com/).

@@ -148,11 +148,6 @@ function pushResult(cb) {
 function getDependencyInteractiveDocu(cb) {
   download(INTERACTIVE_DOCU_SRC_LOC)
     .pipe(unzip())
-    .pipe(replace('location.origin', `"${config.docuUrl}"`))
-    .pipe(replace('http://127.0.0.1:9778', config.docuUrl))
-    .pipe(replace('/build/', `${config.docuUrl}/build/`))
-    .pipe(replace('tag.href="127.0.0.1"===host?"https://devportal.yaas.io/styles/devportal-yaas.css":url+"/styles/devportal-yaas.css"', `tag.href="${config.docuUrl}/styles/devportal-yaas.css"`))
-    .pipe(replace('/images/icons/pencil.svg', `${config.docuUrl}/images/icons/pencil.svg`))
     .pipe(gulp.dest('./src/raw'))
     .on('end', cb);
 }
