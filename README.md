@@ -19,3 +19,11 @@ To trigger generation with production configuration:
 
 1. Call the following commands: `npm run init ` and `npm run prepare-deploy`
 2. Notice new **out** folder. This folder contains all generated files and can be used on production. For example, you can copy the content of **out** folder to your [GitHub Pages repository](https://pages.github.com/).
+
+### Tutorial
+
+Start using this documentation template by following below tutorial:
+
+- [Overview](docs/overview.md)
+- [Prerequisites](docs/prerequisites.md)
+- [Set up and publishing](docs/using_docu_tool.md)
