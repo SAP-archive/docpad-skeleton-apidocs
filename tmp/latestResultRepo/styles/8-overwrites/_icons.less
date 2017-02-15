@@ -1,0 +1,29 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+@font-face {
+  font-family: "hyicon";
+  src:url('../fonts/hyicon.eot?vaoee8');
+  src:url('../fonts/hyicon.eot?#iefixvaoee8') format('embedded-opentype'),
+    url('../fonts/hyicon.woff?vaoee8') format('woff'),
+    url('../fonts/hyicon.ttf?vaoee8') format('truetype'),
+    url('../fonts/hyicon.svg?vaoee8#hyicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.hyicon {
+  line-height: 0;
+  &.hyicon-filter {
+    background: url("/images/icons/filter-icon.svg") no-repeat center/21px;
+    content: '';
+    height: 25px;
+    width: 25px;
+  }
+}

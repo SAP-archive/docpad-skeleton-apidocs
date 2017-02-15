@@ -1,0 +1,77 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+.jumbotron {
+  background: #fff;
+  color: @blue-pickled-bluewood;
+  padding-top: 25/14em;
+  padding-bottom: 25/14em;
+  margin-bottom: 0;
+  .border-radius(0);
+
+  &--featured {
+    padding-top: 50/14em;
+    padding-bottom: 50/14em;
+    .u-background-blueprint;
+  }
+
+  &--secondary {
+    background: none;
+    padding: 0;
+    @media (max-width:749px) {
+      margin-bottom: 49/14em;
+    }
+  }
+
+  &--tertiary {
+    background: @screen-background;
+    text-align: center;
+  }
+
+  &--padding-bottom {
+    padding-bottom: 50/14em;
+  }
+
+  .jumbotron__title,
+  h1 {
+    font-weight: 500;
+    font-size: 40px;
+    color: #000;
+    margin: 17.5/35em 0;
+
+    &--featured {
+      color: #fff;
+      font-size: 53px;
+      margin: 16/53em 0 34/53em;
+    }
+  }
+
+  .jumbotron__paragraph,
+  p {
+    font-size: 18px;
+    font-family: 'Dosis';
+    line-height: 25/18em;
+    color: #000;
+    font-weight: 400;
+
+    &--featured {
+      color: #fff;
+      font-size: 28px;
+      line-height: 40/28em;
+      font-weight: 500;
+      margin-bottom: 43/28em;
+    }
+  }
+
+  &__small,
+  .small {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}

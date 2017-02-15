@@ -1,0 +1,398 @@
+@charset "UTF-8";
+
+/* _____ VARIABLES _____ */
+// Generic
+// ==========================================================================
+@font-family-dosis: 'Dosis', sans-serif;
+@font-family-open-sans: 'Open Sans',sans-serif;
+@font-family-hyicon: hyicon;
+
+// Colors
+// ==========================================================================
+
+/*
+
+Syntax for sets:
+---------------------------------------
+@type-colour-200: #; // Lightest value
+@type-colour-300: #;
+@type-colour-400: #;
+@type-colour: #;     // Normal value (500)
+@type-colour-600: #;
+@type-colour-700: #;
+@type-colour-800: #; // Darkest value
+----------------------------------------
+
+*/
+
+// Techne Main Colors
+@screen-background: #e0e9f0;
+@content-background: #ffffff;
+@typography-main: #313440;
+@typography-secondary: #8a8fa1;
+@text-link-color: #0486e0;
+
+// Techne Alerts, Errors & Notifications
+@help-information: #d3dbe6;
+@well-done-success: #233243;
+@oh-snap-try-again: #ff3b30;
+@alert-success: #495765;
+
+// Light grey
+@lt-grey: @gray-silver-chalice-600;
+
+// Default Purple
+@default-purple: #708;
+
+/* OTHER COLORS */
+// White
+@white-alabaster: #fcfcfc;
+@white-alabaster-600: #F8F8F8;
+@white-porcelain: #e7e8ea;
+@white-black-haze: #FAFBFB;
+@white-athens: #f8f9fa;
+
+// Gray
+@gray-exact: #7f7f7f;
+@gray-alabaster: #f7f7f7;
+@gray-dusty: #999;
+@gray-silver-400: #CACACA;
+@gray-silver: #ccc;
+@gray-silver-600: #bbb;
+@gray-emperor: #555;
+@gray-alto-300: #DCDCDC;
+@gray-alto-400: #DEDEDE;
+@gray-alto: #d9d9d9;
+@gray-silver-chalice: #aaa;
+@gray-silver-chalice-600: #a1a1a1;
+@gray-wild-sand: #f6f6f6;
+@gray-wild-sand-600: #f5f5f5;
+@gray-nero: #222;
+@gray-dim: #666;
+@gray-suva: #888;
+@gray-athens-400: #f7f7f8;
+@gray-athens: #f3f3f6;
+@gray-athens-600: #f0f1f3;
+@gray-quill: #cdcdcc;
+@gray-porcelain-400: #e2e6e9;
+@gray-porcelain: #e3e7e9;
+@gray-oslo-400: #7F8B8C;
+@gray-oslo: #7e858d;
+@gray-gallery: #eee;
+@gray-shady-lady: #989898;
+@gray-solitude: #ebedef;
+@gray-mako: #474949;
+@gray-iron: #d4d7dc;
+@gray-regent: #808fa1;
+@gray-mystic: #eaeef3;
+@gray-slate: #738191;
+@gray-heather: #b3c2cd;
+@gray-cape-cod: #3e4143;
+@gray-shuttle: #676971;
+@gray-silver-sand: #BCC2C6;
+@gray-mercury-400: #E3E3E3;
+@gray-mercury: #E1E1E1;
+@gray-bali-hali: #8d9cae;
+
+// Green
+@green-pastel: #7e7;
+@green-pastel-600: #62e446;
+@green-jewel: #164;
+@green-deep-sea: #085;
+@green-japanese-laurel: #170;
+@green-islamic: #090;
+@green-forest: #292;
+@green-lime: #0f0;
+@green-jungle: #2aa198;
+@green-java: #22b9a2;
+@green-mountain-meadow-400: #1ebd77;
+@green-mountain-meadow: #1ea18d;
+@green-shamrock-400: #53dda0;
+@green-shamrock: #31d08a;
+@green-citrus: #a7c908;
+@green-pistachio: #98b805;
+@green-puerto-rico: #3acbb5;
+@green-inch-worm: #b9db1b;
+@green-yellowish: #ccdc82;
+@green-algae: #8fdebb;
+@green-fern: #6cbd7d;
+@green-snowy-mint: #d1f2d6;
+@green-kelly: #18bc33;
+@green-feta: #f4fdf0;
+@green-killarney: #3c763d;
+
+// Blue
+@blue-gem: #219;
+@blue-endeavour: #05a;
+@blue-pigment-indigo: #30a;
+@blue-medium: #00c;
+@blue-zumthor: #e8f2ff;
+@blue-prelude: #d7d4f0;
+@blue-marguerite: #6c71c4;
+@blue-venice: #086c96;
+@blue-hawkes: #e2f1fc;
+@blue-hawkes-600: #cdd3ec;
+@blue-cerulean: #109bd1;
+@blue-bondi: #0b88b9;
+@blue-cornflower: #5483ec;
+@blue-royal: #4472d9;
+@blue-bright-turquoise: #17c4f6;
+@blue-iris: #02b0e2;
+@blue-picton-400: #4e97e4;
+@blue-picton: #18b0eb;
+@blue-picton-600: #1b99ec;
+@blue-bermuda: #85c4dc;
+@blue-malibu: #6b98fc;
+@blue-perano: #a2b9ec;
+@blue-maya: #44d4fd;
+@blue-spray: #81d8f1;
+@blue-curious-300: #2097e9;
+@blue-curious-400: #1390e2;
+@blue-curious: #1b99cd;
+@blue-eastern: #1998c6;
+@blue-havelock: #63a8e2;
+@blue-java: #22bac4;
+@blue-pickled-bluewood-300: #364a63;
+@blue-pickled-bluewood-400: #364c64;
+@blue-pickled-bluewood: #27394f;
+@blue-pickled-bluewood-600: #233243;
+@blue-catskill-white-400: #f4f8fa;
+@blue-catskill-white: #e0e9f0;
+@blue-mystic-400: #dbe3eb;
+@blue-mystic: #d5dee7;
+@blue-regent-gray: #8592a2;
+@blue-lochmara: #0486e0;
+@blue-lochmara-600: #0881d4;
+@blue-solitude-400: #dee6ed;
+@blue-solitude: #d8dfe8;
+@blue-geyser: #cfd8e3;
+@blue-bahama: #035995;
+@blue-manatee: #8a8fa1;
+@blue-tuna-400: #3B3D45;
+@blue-tuna: #313440;
+@blue-aqua-haze: #edf1f5;
+@blue-seagull: #7ccde5;
+@blue-regal: #00466a;
+@blue-nepal: #a1aebe;
+@blue-link-water: #d1dbe5;
+@blue-tangaroa: #1e2c3b;
+@blue-tangaroa-600: #213142;
+@blue-tangaroa-700: #1f2d3e;
+@blue-cello: #3e4d60;
+@blue-mariner: #2877cb;
+@blue-medium-persian: #0368ae;
+@blue-midnight: #223245;
+@blue-midnight-600: #00193a;
+@blue-cobalt: #0048ab;
+@blue-indigo: #4c81c9;
+@blue-east-bay: #3f5875;
+@blue-big-stone: #172535;
+@blue-cloud-burst: #1d2e43;
+@blue-viking: #5bc0de;
+@blue-casper: #b7c6d6;
+@blue-heather: #bdc6d2;
+@blue-scooter: #3cb1da;
+@blue-iron: #d5d8dc;
+@blue-denim: #0b75be;
+@blue-big-stone: #1b2b3e;
+@blue-deep-cerulean: #0070AF;
+@blue-danube: #68A9D6;
+@blue-congress: #004A95;
+@blue-humming-bird: #DFF9FB;
+@blue-bali-hai: #8a9aac;
+@blue-lobloli: #b8c1c8;
+@blue-loblolly: #c6cdd3;
+@blue-pale-sky: #5f7185;
+@blue-shuttle-gray: #616a79;
+
+// Purple
+@purple-cerise: #d33682;
+@purple-amethyst: #a652c3;
+@purple-affair: #8a45a2;
+@purple-lavender: #ba68d7;
+@purple-east-side: #c5a2d1;
+@purple-misty-rose: #ffd8d6;
+@purple-wisteria: #c787d7;
+
+// Red
+@red-tamarillo: #a11;
+@red-valencia: #d44;
+@red-torch: #f22;
+@red-bittersweet: #f66;
+@red-mandy: #e9505f;
+@red-chestnut-rose: #d14956;
+@red-brink-pink: #f96b7c;
+@red-shilo: #e8a4ab;
+@red-indian: #d26460;
+@red-mahogany: #b93239;
+@red-fantasy: #fdf7f7;
+@red-roman: #d9534f;
+
+// Grey Blue
+@default-greyblue: #7f90a4;
+@default-greyblue-500: #bdc6d2;
+
+// Orange
+@orange-chelsea-gem: #a50;
+@orange-international: #f50;
+@orange-yellowish: #fbb03b;
+@orange-buttercup: #f39e1a;
+@orange-gamboge: #e48f0a;
+@orange-buff: #f2c785;
+@orange-red: #ff3b30;
+@orange-red-600: #fb3636;
+@orange-my-sin: #fda94a;
+
+// Yellow
+@yellow-gurkha: #997;
+@yellow-milan: #ffa;
+@yellow-candlelight: #fad712;
+@yellow-corn: #edca05;
+@yellow-corn-600: #d5b504;
+@yellow-corn-700: #E2B300;
+@yellow-lemon-chiffon: #fff9cc;
+@yellow-golden: #ffe300;
+@yellow-gorse: #fcdf2b;
+@yellow-hint: #fcfcdd;
+@yellow-indian-khaki: #bdbd89;
+@yellow-supernova: #FCCE00;
+@yellow-turbo: #FCE000;
+
+/* DIAGRAMS */
+@diagram-lightBlue: #9ccae6;
+@diagram-navy: #27394d;
+@diagram-blue: #2295d2;
+@diagram-darkBlue: #1072b7;
+@diagram-yellow: #f9dc52;
+@diagram-type: #737272;
+@diagram-grid: #b3b3b2;
+
+/* BTN SETS */
+/* HIGHLIGHT */
+@highlight-color: #0486e0;
+
+// Custom colors
+// ==========================================================================
+
+// Typography
+@typography-tertiary: #5f7084;
+@typography-quinary: #7d7d7d;
+
+// Buttons
+@btn-tertiary-text: #233343;
+@btn-tertiary-background: #8a9aac;
+
+// Labels
+@label-filter: #737f8e;
+
+// Links
+@link-secondary: #8a8fa2;
+
+// Borders
+@border-neutral: #ced8e0;
+@border-neutral-secondary: #cccccc;
+@border-neutral-tertiary: #95a5b6;
+@border-formatted-content: #939ca7;
+
+// States
+@active-primary: #46a4e5;
+@inactive-primary: #a5b0bd;
+
+// Backgrounds
+@background-counter: #199ed8;
+
+// Tables
+@table-row-even: #f2f2f2;
+
+// Custom dimenstions
+// ==========================================================================
+
+// Large screen / wide desktop
+@container-lg-desktop: ((1140px + 30px));
+
+// Footer
+@footer-height: 40/14em;
+
+// Search
+@search-bar-height: 44px;
+@search-results-width: 487px;
+@search-results-height: 300px;
+
+// Transitions
+// ==========================================================================
+@transition-default: all 300ms ease-in-out;
+@transition-opacity: opacity 300ms ease-in-out;
+@transition-color: color 300ms ease-in-out;
+@transition-header: all .4s ease;
+@transition-navigation-link: all .1s ease-in-out 0s;
+@transition-sidebar: all .25s ease-out;
+@transition-article-item: width 300ms ease-in-out, height 300ms ease-in-out, transform 300ms ease-in-out, opacity 300ms ease-in-out, box-shadow 100ms ease-in-out, margin 100ms ease-in-out;
+
+// Media queries breakpoints
+// ==========================================================================
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+@screen-phone: @screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+@screen-sm: 768px;
+@screen-sm-min: @screen-sm;
+@screen-tablet: @screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+@screen-md: 992px;
+@screen-md-min: @screen-md;
+@screen-desktop: @screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+@screen-lg: 1200px;
+@screen-lg-min: @screen-lg;
+@screen-lg-desktop: @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+
+// Bootstrap Vars
+// ==========================================================================
+// Iconography
+// -------------------------
+@icon-font-path: '../fonts/';
+@icon-font-name: 'glyphicons-halflings-regular';
+
+//-- Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+//
+// Note: These variables are not generated into the Customizer.
+@zindex-tooltip: 3000;
+
+// Navbar
+// -------------------------
+// Inverted navbar search
+// Normal navbar needs no special styles or vars
+@navbar-inverse-search-bg: lighten(#27394f, 25%);
+@navbar-inverse-search-bg-focus: #fff;
+@navbar-inverse-search-border: #27394f;
+@navbar-inverse-search-placeholder-color: @gray-silver;
+
+// Navs
+// -------------------------
+@nav-open-caret-border-color: #fff;
+
+// Left nav
+//
+@left-nav__nav-header-bg: #172535;
+
+// Code
+// -------------------------
+@code-color: @default-blue;
+@code-bg: @light-blue;

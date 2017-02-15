@@ -1,0 +1,292 @@
+---
+layout: generalnav
+---
+
+<% metadata = @getFileAtPath(@document.relativeDirPath+'/meta-inf').attributes %>
+<% @document.title = metadata.name %>
+<% raml = @getFileAtPath(@document.relativeDirPath+'/api.raml') %>
+
+<% collectionName = 'services' %>
+<% contentCollectionName = 'servicesContent' %>
+
+<% dpServiceName = metadata.name %>
+<% dpServiceNameShort = metadata.shortName %>
+<% dpServiceVersion = if metadata.latest then 'latest' else metadata.version %>
+<% dpServiceVersionRAML = metadata.version %>
+<% dbServiceUri = metadata.baseUri %>
+<% rnCollectionName = 'releaseNotes' %>
+
+<% collection = @getCollection(contentCollectionName).findAll(relativeDirPath: @document.relativeDirPath) %>
+
+<% RNs = @getCollection(rnCollectionName).findAll(relativeDirPath: 'rn/services/' + dpServiceNameShort + '/' + dpServiceVersion, basename: {$nin: ['meta-inf', 'release_notes']}).toJSON() %>
+<% landingRN = @getFileAtPath('rn/services/' + dpServiceNameShort + '/' + dpServiceVersion + '/release_notes.html.eco') %>
+
+  <div id="sidebar" class="sidebar-offcanvas" role="navigation" >
+
+    <div class="api-nav left-nav" id="left_nav">
+
+      <nav class="bs-docs-sidebar">
+
+        <ul class="nav">
+          <li class="back-link"><a href="/services/">Back to API Docs</a></li>
+          <li class="nav-header"><%- dpServiceName %></li>
+            <% for docu, i in collection.findAll(title: 'Overview').toJSON(): %>
+              <% if i == 0: %>
+                 <li><a href="#Overview">Overview <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a></li>
+              <% end %>
+            <% end %>
+
+            <!-- API Reference Generated Docu replaced by gulp-->
+            rightReferencePlaceholder
+
+            <%for docu, i in collection.findAll(title: 'Events', basename: {$ne: 'index'}).toJSON(): %>
+              <% if i == 0: %>
+                <li>
+                  <a href="#Events">Events <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                </li>
+              <% end %>
+            <% end %>
+
+          <% details = collection.findAll(type: 'Details').toJSON() %>
+          <%for docu, i in details: %>
+          <% if i == 0: %>
+            <li>
+              <a href="#Details"><%- docu.type %> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+              <ul class="nav nav-stacked">
+              <%for docu in details: %>
+                <li>
+                  <a href="#<%= @getTrimmedName(docu.title) %>"><%=docu.title%> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                </li>
+              <% end %>
+              </ul>
+            </li>
+            <% end %>
+          <% end %>
+
+          <% tutorial = collection.findAll(type: 'Tutorial').toJSON() %>
+            <%for docu, i in tutorial: %>
+              <% if i == 0: %>
+              <li>
+                <a href="#Tutorial"><%- docu.type %> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                  <ul class="nav nav-stacked">
+                  <%for docu in tutorial: %>
+                    <li>
+                      <a href="#<%= @getTrimmedName(docu.title) %>"><%=docu.title%> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                    </li>
+                  <% end %>
+                  </ul>
+              </li>
+            <% end %>
+          <% end %>
+
+          <% glossary = @getCollection('partials').findAll(topic: dpServiceName).toJSON() %>
+          <% if glossary.length: %>
+          <!-- GLOSSARY Docu-->
+            <li>
+              <a href="#Glossary">Glossary <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+            </li>
+          <% end %>
+        </ul>
+        <!-- open api console -->
+        <%if raml and raml.attributes: %>
+              <a href="/<%- @document.relativeDirPath %>/apiconsole.html" class="btn btn-primary btn-open-console hidden-sm hidden-md hidden-lg">API CONSOLE</a>
+        <% end %>
+        <% if RNs.length and landingRN and landingRN.attributes: %>
+            <a href="/<%- landingRN.attributes.relativeOutPath %>" class="btn btn-primary">Release Notes</a>
+        <% end %>
+        <!-- end list of services  -->
+
+      </nav>
+
+    </div>
+
+  </div>
+
+  <div class="container-fluid">
+    <div class="container-wrapper has-nav">
+
+      <div class="content-wrapper">
+
+
+<!-- Main content -->
+<div role="main">
+<div class="api-wrapper">
+
+  <div class="sticky-page-header m-sticky-header">
+
+    <div class="m-sticky-header__item m-sticky-header__item--left pull-left">
+
+    <h1 class="m-sticky-header__title"><%= dpServiceName %></h1>
+
+        <!-- this part enables version dropdown with links between versions if there are more then one versions -->
+    <% currentVersion %>
+    <% listofversions = [] %>
+      <% for docu in @getCollection(collectionName).findAll(service:dpServiceName,basename:'meta-inf',area:$exists:true).toJSON(): %>
+        <% if metadata.version == docu.version: %>
+          <% currentVersion = docu.latestVersion or docu.version %>
+        <% end %>
+        <% listofversions.push version: docu.version, latestVersion: docu.latestVersion  %>
+      <% end %>
+
+      <% if listofversions.length > 1 : %>
+          <% if currentVersion: %>
+              <% versionToDisplay = currentVersion %>
+          <% else: %>
+              <% versionToDisplay = 'Latest version' %>
+          <% end %>
+          <div class="m-sticky-header__subitem m-dropdown dropdown version-selector pull-left">
+              <a class="m-dropdown__selector a-link a-link--contextual dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <%- versionToDisplay %><span class="m-dropdown__icon hyicon hyicon-arrow"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <% for version in listofversions : %>
+                  <% if version.version isnt dpServiceVersion : %>
+                    <li role="presentation"><a role="menuitem" class="hrefToPrefix" tabindex="-1" href="/services/<%- dpServiceNameShort %>/<%- version.version %>/index.html"><%- version.latestVersion or version.version %></a></li>
+                  <% end %>
+                <% end %>
+              </ul>
+          </div>
+      <% end %>
+    </div>
+
+  <!-- open api console -->
+    <% if raml: %>
+      <a href="/<%- @document.relativeDirPath %>/apiconsole.html" class="btn btn-primary btn-open-console hidden-xs">API CONSOLE</a>
+    <% end %>
+
+    <div class="m-sticky-header__form-container service-links">
+      <% if raml: %>
+        <div class="m-sticky-header__form-element m-sticky-header__form-element--small-lg service-url raml-url hidden-xs">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" id="api-spec-btn" aria-expanded="false">
+                  <img src="/images/icons/icon--download.svg" width="19" height="16" />&nbsp;<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" id="api-spec-list">
+                  <li><a href="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" id="raml-download-link">Download RAML file</a></li>
+                </ul>
+              </div>
+            </span>
+          </div>
+        </div>
+
+        <div class="m-sticky-header__form-element m-sticky-header__form-element--large-lg service-url raml-url hidden-xs">
+          <div class="input-group">
+            <span class="m-sticky-header__form-label">RAML Url:</span>
+            <input type="text" class="form-control form-control--has-label" value="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>">
+            <span class="input-group-btn">
+              <button id="copy-api-spec" data-clipboard-text="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy RAML URL">
+                <img src="/images/icons/icon--copy.svg" width="16" height="16" />
+              </button>
+            </span>
+          </div>
+        </div>
+      <% end %>
+
+    <!-- copy service url -->
+    <!--% if dbServiceUri.length > 10 : %-->
+    <div class="m-sticky-header__form-element m-sticky-header__form-element--large-lg service-url hidden-xs">
+      <div class="input-group">
+        <span class="m-sticky-header__form-label">Service Url:</span>
+        <input type="text" class="form-control form-control--has-label" value="<%- dbServiceUri %>">
+        <span class="input-group-btn">
+          <button id="copy-api-button" data-clipboard-text="<%- dbServiceUri %>" class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy Service URL">
+            <img src="/images/icons/icon--copy.svg" width="16" height="16" />
+          </button>
+        </span>
+      </div>
+    </div>
+    <!-- % end %-->
+
+  </div>
+  </div>
+
+    <%- @partial('left-nav-collapse-control') %>
+
+
+
+<!-- Overview Document-->
+  <% for docu in collection.findAll(title:'Overview').toJSON(): %>
+    <section id="<%= @getTrimmedName(docu.title) %>" class="group">
+      <h2><%=docu.title%></h2>
+      <p>
+        <%-docu.contentRenderedWithoutLayouts%>
+      </p>
+    </section>
+    <hr>
+  <% end %>
+
+<!-- API Reference Generated Docu-->
+      mainReferencePlaceholder
+
+<!-- Events Document-->
+  <% for docu in collection.findAll(title:'Events', basename: {$ne: 'index'}).toJSON(): %>
+    <section id="<%= @getTrimmedName(docu.title) %>" class="group">
+      <h2><%=docu.title%></h2>
+      <p>
+        <%-docu.contentRenderedWithoutLayouts%>
+      </p>
+    </section>
+    <hr>
+  <% end %>
+
+<!-- Details Docu-->
+  <section id="Details" class="group">
+    <% for docu in collection.findAll(type:'Details').toJSON(): %>
+      <div id="<%= @getTrimmedName(docu.title) %>" class="subgroup">
+        <h2><%=docu.title%></h2>
+        <p>
+          <%-docu.contentRenderedWithoutLayouts%>
+        </p>
+      </div>
+      <hr>
+    <% end %>
+  </section>
+
+<!-- TUTORIAL Docu-->
+  <section id="Tutorial" class="group">
+    <% for docu in collection.findAll(type: 'Tutorial').toJSON(): %>
+      <div id="<%= @getTrimmedName(docu.title) %>" class="subgroup">
+        <h2><%=docu.title%></h2>
+        <p>
+           <%-docu.contentRenderedWithoutLayouts%>
+        </p>
+      </div>
+      <hr>
+    <% end %>
+  </section>
+
+  <% glossary = @getCollection('partials').findAll(topic: dpServiceName).toJSON() %>
+  <% if glossary.length: %>
+<!-- GLOSSARY Docu-->
+    <section id="Glossary" class="group">
+      <h2>Glossary</h2>
+      <p>
+        <table class="table table-striped techne-table">
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for document in glossary: %>
+            <tr>
+              <td data-th="Term" ><%- document.term %></td>
+              <td data-th="Description" ><%- document.description %></td>
+            </tr>
+          <% end %>
+         </tbody>
+        </table>
+      </p>
+    </section>
+    <hr>
+  <% end %>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>

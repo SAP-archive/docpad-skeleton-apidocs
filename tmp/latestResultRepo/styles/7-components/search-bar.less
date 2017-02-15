@@ -1,0 +1,147 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// search bar
+.search-wrapper {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+
+  .search-bar {
+    float: right;
+    cursor: pointer;
+    font-size: 15px;
+    border: none;
+    padding: 10px 10px 10px 35px;
+    width: 30px;
+    border-radius: 3px;
+    background: url("/images/icons/search-icon.svg") 10px 50% no-repeat @blue-lochmara;
+
+    &::-webkit-input-placeholder {
+      color: @blue-casper;
+    }
+
+    &:-moz-placeholder {
+      color: @blue-casper;
+    }
+
+    &::-moz-placeholder {
+      color: @blue-casper;
+    }
+
+    &:-ms-input-placeholder {
+      color: @blue-casper;
+    }
+
+    &:focus {
+      opacity: 1;
+      width: 300px;
+      background-color: #fff;
+      padding: 10px 35px 10px 45px;
+      cursor: default;
+    }
+  }
+
+  .active {
+    cursor: default;
+    opacity: 1;
+    color: #000;
+    background-color: #fff;
+    width: 300px;
+    padding: 10px 35px 10px 45px;
+  }
+
+  #lunr-results,
+  #lunr-results2 {
+    float: right;
+    clear: right;
+    display: none;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 3px 10px @gray-silver;
+    width: 300px;
+    overflow-y: scroll;
+    margin-top: 5px;
+    height: 300px;
+
+    div {
+      margin-bottom: 7px;
+
+      a {
+        color: @blue-lochmara;
+
+        &:hover {
+          background-color: #fff!important;
+        }
+      }
+
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .processing {
+    text-align: center;
+    float: right;
+    clear: right;
+    display: block;
+    background: @blue-aqua-haze;
+    padding: 10px;
+    box-shadow: 0 3px 10px @gray-silver;
+    width: 300px;
+    overflow-y: scroll;
+    margin-top: 5px;
+    height: 300px;
+
+    span {
+      display: block;
+      margin-top: 50px;
+
+      img {
+        padding-right: 30px;
+      }
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 50px 20px 20px;
+    background: url("/images/icons/smiley-sad.svg") top center no-repeat;
+    background-size: 50px;
+  }
+
+  .search-info {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .close-button {
+    opacity: .5;
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    top: 13px;
+    right: 13px;
+  }
+}
+
+//search result page header
+.search-header {
+  text-align: center;
+  padding: 30px !important;
+  margin-bottom: 0;
+  background: #fff;
+  background: -moz-linear-gradient(top, #fff 0%, @gray-wild-sand-600 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(100%,@gray-wild-sand-600));
+  background: -webkit-linear-gradient(top, #fff 0%,@gray-wild-sand-600 100%);
+  background: -o-linear-gradient(top, #fff 0%,@gray-wild-sand-600 100%);
+  background: -ms-linear-gradient(top, #fff 0%,@gray-wild-sand-600 100%);
+  background: linear-gradient(to bottom, #fff 0%,@gray-wild-sand-600 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='@gray-wild-sand-600',GradientType=0 );
+}
+
+.search-content {
+  padding: 40px;
+}

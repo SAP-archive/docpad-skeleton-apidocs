@@ -1,0 +1,300 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+// devportal specific variables
+@import '../2-tools/_helper-classes';
+
+// api left nav and filter
+.api-nav,
+.left-nav {
+  position: relative;
+  margin-bottom: 70/14em;
+  margin-top: 100/14em;
+  .transition(all 0.4s ease 0s);
+  font-family: @font-family-dosis;
+
+  .navbar-super-down & {
+    margin-top: 100/14em;
+  }
+
+  .navbar-super-up & {
+    margin-top: 50/14em;
+  }
+
+  &__list,
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &__item,
+  li {
+    &.active {
+      & > .left-nav__link .left-nav__play-button,
+      & > a .left-nav__play-button {
+        path {
+          fill: @default-blue;
+          .opacity(0.7);
+        }
+      }
+
+      .left-nav__link,
+      a {
+        color: @default-blue;
+        background-color: @well-done-success;
+      }
+
+      .left-nav__icon {
+        color: @default-blue;
+        .rotate(90deg);
+      }
+    }
+
+  }
+
+  .bs-docs-sidebar > ul {
+    & > .api-nav__item,
+    & > .left-nav__item,
+    & > li {
+      & > .left-nav__link,
+      & > a {
+        &:hover {
+          .left-nav__play-button {
+            path {
+              fill: @default-blue;
+              .opacity(0.7);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__nav-header,
+  .nav-header {
+    display: block;
+    color: @typography-secondary;
+    background: @left-nav__nav-header-bg;
+    padding: 20/20em 20/20em 20/20em 40/20em;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: initial;
+    font-family: @font-family-dosis;
+    font-weight: 400;
+    margin-bottom: 10/20em;
+
+    &--back,
+    &.back {
+      color: @text-link-color;
+      padding: 15/15em 20/15em 15/15em 40/15em;
+      background: @blue-cloud-burst url("/images/icons/back-link-arrow.png") 15/15em 50% no-repeat;
+      border: 1px solid @blue-pickled-bluewood-300;
+      .no-side-border;
+      font-size: 15px;
+    }
+  }
+
+  &__package-header,
+  .package-header {
+    font-size: 20px;
+    color: @typography-secondary;
+    padding: 10/16em 10/16em 0 40/20em;
+    display: block;
+    font-weight: 600;
+    margin: 10/16em 0 0;
+
+    &--small {
+      font-size: 16px;
+      padding-left: 40/16em;
+    }
+  }
+
+  &__play-button {
+    vertical-align: middle;
+    margin-left: .5em;
+    width: 19/14em;
+    height: 19/14em;
+    position: relative;
+    bottom: 1.5/14em;
+  }
+
+  &__icon {
+    display: inline-block;
+    font-size: 1.5em;
+    line-height: 50%;
+    vertical-align: top;
+  }
+
+  &__link,
+  li a {
+    color: #fff;
+    font-size: 14px;
+    padding: 2/14em 20/14em 2/14em 40/14em;
+    margin: 15/14em 30/14em 15/14em 0;
+    font-weight: 500;
+    display: block;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: @default-blue;
+      background-color: @well-done-success;
+
+      .left-nav__icon {
+        color: @default-blue;
+      }
+    }
+
+    &--nav-header {
+      color: @typography-secondary;
+      background: @blue-aqua-haze;
+      .no-side-border;
+      font-size: 15px;
+      text-transform: initial;
+    }
+
+    &--back,
+    &.left-nav__link--back {
+      color: @blue-mystic-400;
+      font-size: 14px;
+      text-transform: inherit;
+      padding: 0 20/14em 0 40/14em;
+      background: url('/images/icons/back-link-arrow.png') 30/14em 50% no-repeat;
+      display: inline-block;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: @blue-mystic-400;
+        background: url('/images/icons/back-link-arrow.png') 30/14em 50% no-repeat;
+      }
+    }
+  }
+
+  &__api-link,
+  .api-link {
+    color: @typography-secondary;
+    font-size: 14px;
+    padding: 0 20/14em 0 40/14em;
+    display: block;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: @well-done-success!important;
+      color: @text-link-color;
+    }
+  }
+
+  .back-link a {
+    color: @blue-mystic-400;
+    font-size: 14px;
+    text-transform: inherit;
+    padding: 0 20/14em 0 40/14em;
+    background: url('/images/icons/back-link-arrow.png') 30/14em 50% no-repeat;
+    display: inline-block;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: @blue-mystic-400;
+      background: url('/images/icons/back-link-arrow.png') 30/14em 50% no-repeat;
+    }
+  }
+
+  &__package-filter,
+  .api-package-filter {
+    margin: 0 27/14em;
+    width: 210/14em;
+    .border-radius(0);
+  }
+
+  &__filter-input-wrapper,
+  .api-filter-input-wrapper {
+    position: relative;
+  }
+
+  &__filter-input,
+  .api-filter-input {
+    margin: 10/14em 27/14em 20/14em;
+    width: 210/14em;
+    padding-right: 36/14em;
+    .border-radius(0);
+  }
+
+  &__clear-api-input,
+  .clear-api-input {
+    position: absolute;
+    top: 50%;
+    margin: -8px 0 0;
+    left: 214/14em;
+    .opacity(.5);
+    display: none;
+    cursor: pointer;
+  }
+
+  &__parent-node-item,
+  .parent_node li {
+    color: @typography-secondary;
+    font-size: 14px;
+
+    &.active {
+      &__link,
+      a {
+        color: @default-blue;
+        background-color: @well-done-success;
+      }
+    }
+
+    &__link,
+    a {
+      color: @blue-mystic-400;
+      font-size: 14px;
+      padding: 10/14em 20/14em 10/14em 30/14em;
+      margin-top: 0;
+      margin-bottom: 0;
+      display: block;
+    }
+
+    &__span,
+    span {
+      color: @typography-secondary;
+      font-size: 14px;
+      padding: 10/14em 20/14em 10/14em 30/14em;
+      margin-right: 30/14em;
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  &__subtitle,
+  h4 {
+    padding: 15px 20px 15px 30px;
+    margin-bottom: 0;
+
+    i {
+      padding-left: 10px;
+    }
+  }
+
+  &__open,
+  .open {
+    &-item-link,
+    li a {
+      padding-left: 40px;
+      background: @well-done-success;
+    }
+
+    &-subtitle,
+    h4 {
+      border-bottom: 1px solid @blue-pickled-bluewood-300;
+      margin-bottom: 0;
+    }
+  }
+}

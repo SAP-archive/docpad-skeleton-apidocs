@@ -1,0 +1,68 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+.y-factors {
+  background: @blue-catskill-white;
+  padding: 40/14em;
+  margin-top: -40px;
+  &__card-detail {
+    background: #fff;
+    display: none;
+    padding: 20/14em;
+    position: relative;
+
+    @media (max-width: 768px) {
+      margin-bottom: 5/14em;
+    }
+    @media (max-width: 991px) and (min-width: 768px) {
+      margin-bottom: 10/14em;
+    }
+    @media (min-width: 991px) {
+      margin-bottom: 5/14em;
+    }
+  }
+
+  &__close-card {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .card-heading {
+    margin: 0;
+    padding: 10/24em;
+  }
+
+  .card-sub-heading {
+    border-bottom: 1px solid @gray-heather;
+    padding-bottom: 20/14em;
+    margin-bottom: 30/14em;
+  }
+
+  .card-detail-column {
+    h3 {
+      margin-top: 10/19em;
+    }
+
+    p {
+      padding-bottom: 20/19em;
+    }
+  }
+
+  .card-detail-column:nth-child(2) {
+    border: 1px solid @gray-heather;
+    border-top: none;
+    border-bottom: none;
+    @media (max-width: 768px) {
+      border: none;
+    }
+  }
+}

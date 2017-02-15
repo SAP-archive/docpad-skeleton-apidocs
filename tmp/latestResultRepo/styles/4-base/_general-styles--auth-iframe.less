@@ -1,0 +1,84 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+// General styles and design elements shared across pages
+// MAIN
+
+body {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  color: @typography-main;
+  background-color: #fff;
+  padding-top: 0;
+  min-height: 100%;
+  -ms-overflow-style: scrollbar;
+  .u-font-smoothing;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 36px;
+  color: @blue-tuna;
+}
+
+h2 {
+  font-weight: 200;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: @blue-tuna;
+}
+
+a {
+  color: @blue-lochmara;
+  display: block;
+  text-align: right;
+  margin: 0 0 1em;
+}
+
+.subheadline {
+  padding: 15px 0;
+}
+
+.lt-grey-bg {
+  background: @gray-athens-400;
+}
+
+.grey-bg {
+  background: @blue-aqua-haze;
+}
+
+.lt-blue-bg {
+  background: @blue-seagull!important;
+}
+
+.font-dosis {
+  font-family: "Dosis";
+}
+
+// techne fixes
+
+.alert {
+  box-shadow: 0 0 3px #000;
+  border-radius: 0;
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+  }
+}

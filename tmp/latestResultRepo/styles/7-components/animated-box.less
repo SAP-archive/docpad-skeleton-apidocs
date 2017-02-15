@@ -1,0 +1,146 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+.animated-box {
+  enable-background: new 0 0 266.631 342.606;
+
+  &__polyline {
+    fill: @blue-deep-cerulean;
+  }
+
+  &__ellipse {
+    &--1 {
+      fill: @blue-danube;
+    }
+
+    &--2 {
+      fill: @blue-congress;
+    }
+
+    &--3 {
+      fill: #fff;
+    }
+  }
+
+  &__path {
+    &--1 {
+      fill: @white-black-haze;
+    }
+
+    &--2 {
+      fill: @gray-silver-sand;
+    }
+
+    &--3 {
+      fill: @gray-oslo-400;
+    }
+
+    &--4 {
+      fill: @blue-tuna-400;
+    }
+  }
+
+  &__polygon {
+    &--1 {
+      fill: @yellow-supernova;
+    }
+
+    &--2 {
+      fill: @yellow-corn-700;
+    }
+
+    &--3 {
+      fill: @white-alabaster-600;
+    }
+
+    &--4 {
+      fill: @gray-silver-400;
+    }
+
+    &--5 {
+      fill: @gray-alto-400;
+    }
+
+    &--6 {
+      fill: @yellow-turbo;
+    }
+  }
+
+  &__rect {
+    &--1 {
+      fill: @yellow-turbo;
+    }
+
+    &--2 {
+      fill: @gray-mercury;
+    }
+
+    &--3 {
+      fill: @gray-silver-400;
+    }
+
+    &--4 {
+      fill: @gray-mercury-400;
+    }
+
+    &--5 {
+      .opacity(.5);
+      fill: @blue-humming-bird;
+    }
+  }
+
+  &__line {
+    &--1 {
+      fill: @yellow-supernova;
+    }
+  }
+
+  &__line-outer {
+    &--1 {
+      .animation(3s ease-in 0.3s normal none infinite running slideLine);
+    }
+
+    &--2 {
+      .animation(3s ease-in 1.8s normal none infinite running slideLine);
+    }
+  }
+
+  &__belt-line {
+    fill: none;
+    stroke: @gray-shuttle;
+    stroke-miterlimit: 10;
+
+    &--1 {
+      .animation(3s ease-in 0.3s normal none infinite running scaleLine);
+      .transform-origin(133px 48px);
+    }
+
+    &--2 {
+      .animation(3s ease-in 1.8s normal none infinite running scaleLine);
+      .transform-origin(133px 48px);
+    }
+  }
+
+  &__first-box {
+    .animation(1.5s ease-in 0.2s normal none infinite running down);
+  }
+
+  &__big-box {
+    &--1 {
+      .animation(3s ease-in 0.2s normal none infinite running move);
+      .transform-origin(133px 290px);
+    }
+
+    &--2 {
+      .animation(3s ease-in 1.7s normal none infinite running move);
+      .transform(translate(0px, 600px));
+      .transform-origin(133px 290px);
+    }
+  }
+}

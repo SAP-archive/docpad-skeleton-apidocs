@@ -1,0 +1,127 @@
+.bs-docs-sidebar {
+  .nav {
+    margin-bottom: 0;
+
+    & > li {
+      & > a {}
+    }
+
+    .nav {
+      & > li {
+        & > a {}
+      }
+    }
+
+    ul.nav {
+      display: none;
+      padding-left: 40px;
+    }
+
+    ul.nav li a {
+      padding: 0 30px 0 10px;
+      color: #dbe3eb;
+      text-transform: inherit;
+      font-weight: 300;
+      margin: 10px 0;
+      word-wrap: break-word;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    & > .active {
+      & > ul.nav {
+        display: block;
+
+        li.active a {
+          border-left: 1px solid #0486e0;
+          color: #0486e0;
+        }
+      }
+    }
+  }
+
+  a.btn {
+    @media all and (max-width: @screen-xs-max) {
+      width: auto;
+      display: block;
+      margin: 10px 20px 0;
+    }
+
+    @media all and (min-width: @screen-sm-min) {
+      margin: 10px 0 0 20px;
+      width: 150px;
+    }
+  }
+
+  @media (max-width: @screen-sm) {
+    position: relative;
+    margin-bottom: 40px;
+    right: auto;
+    width: auto;
+    height: auto;
+  }
+}
+
+.bs-docs-sidebar .nav &>.active &>a,
+.bs-docs-sidebar .nav &>li &>a:hover,
+.bs-docs-sidebar .nav &>li &>a:focus {
+  color: #0486e0;
+  text-decoration: none;
+  background-color: transparent;
+  border-left-color: #0486e0;
+}
+
+.right-nav-mobile {
+  background-color: #fff;
+  border: none;
+  position: fixed;
+  top: 116px;
+  width: 100%;
+  min-height: 40px;
+  border-radius: 0;
+  -webkit-transition: all .25s ease-out;
+  -moz-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+
+  ul {
+    margin: 0 auto;
+    width: 250px;
+    text-align: center;
+    background: #fff;
+
+    .open {
+      box-shadow: 0 0 10px #ccc;
+
+      .dropdown-menu {
+        li {
+          margin-bottom: 0;
+        }
+      }
+
+      .nav-header,
+      .nav-header:hover,
+      .nav-header:active,
+      .nav-header:focus {
+        color: #0486e0!important;
+        background-color: #fff;
+      }
+    }
+  }
+
+  .navbar-nav .open .dropdown-menu > li > a,
+  .navbar-nav .open .dropdown-menu .dropdown-header {
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-nav .open .dropdown-menu .dropdown-header:hover {
+    color: #0486e0;
+  }
+}
+
+.mobile-right-nav-active {
+  margin-left: 270px;
+}

@@ -1,0 +1,106 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+.additional-links {
+  &__list,
+  .additional-links__list {
+    // .flex-block;
+    // .flex-flow(row, wrap);
+    // .justify-content(center);
+    // list-style-type: none;
+    // padding: 0;
+    margin-top: 18/14em;
+    .u-text-center;
+  }
+
+  &__item,
+  .additional-links__item {
+    // .flex-block;
+    // .flex-flow(row, wrap);
+    // .align-items(center);
+    // .justify-content(center);
+    vertical-align: middle;
+
+    @media all and (max-width: @screen-xs-max) {
+      // .flex(1 0 100%);
+      // margin: 0;
+      border-top: 3px dotted @blue-catskill-white;
+
+      &:first-child {
+        .additional-links__link {
+          border: none;
+        }
+      }
+    }
+
+    @media all and (min-width: @screen-sm-min) {
+      border-left: 3px dotted @blue-catskill-white;
+      margin-bottom: 18/14em;
+    }
+
+    @media all and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      // .flex(0 0 25%);
+
+      &:nth-child(4n+1) {
+        border: none;
+      }
+    }
+
+    @media all and (min-width: @screen-md-min) {
+      // .flex(0 0 (1/6)*100%);
+
+      &:nth-child(6n+1) {
+        border: none;
+      }
+    }
+  }
+
+  &__link,
+  .additional-links__link {
+    display: block;
+    color: @blue-denim;
+    font-size: 18px;
+    line-height: 23/21em;
+    font-weight: 700;
+    font-family: 'Dosis';
+    .u-text-center;
+
+    @media all and (max-width: @screen-xs-max) {
+      padding: 1em 0;
+      // .flex(1 0 100%);
+    }
+
+    @media all and (min-width: @screen-sm-min) {
+      padding: 8/18em 0;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+
+      // .u-scale-down;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    margin: 9/21em auto 0;
+    width: 11/21em;
+    height: 16/21em;
+
+    path {
+      fill: @blue-lochmara;
+    }
+  }
+
+  @media print {
+    .u-hide-permanently;
+  }
+}

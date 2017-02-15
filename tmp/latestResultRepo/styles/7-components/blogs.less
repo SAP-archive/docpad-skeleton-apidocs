@@ -1,0 +1,304 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+//to make code snippets work in blog solution
+.ng-binding {
+  pre {
+    code {
+      display: block;
+    }
+  }
+}
+
+// blog on homepage styles
+.blog-feature-wrapper {
+  // font-family: "Dosis";
+  padding: 30px;
+  background: @gray-athens-600;
+
+  h3 {
+    text-align: center;
+    // font-family: "Dosis";
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+  .post {
+    h2 {
+      font-size: 24px;
+      color: @blue-lochmara;
+      font-weight: 400;
+      // font-family: "Dosis";
+
+      small {
+        font-size: 24px;
+        color: @blue-pickled-bluewood;
+      }
+    }
+
+    h4 {
+      font-size: 20px;
+      // font-family: "Dosis";
+    }
+
+    .post-content {
+      font-size: 16px;
+      font-weight: 300;
+      border-bottom: 1px solid @gray-porcelain;
+      padding-bottom: 20px;
+    }
+  }
+
+  article {
+    padding-bottom: 20px;
+  }
+}
+
+// Blog summary page
+.blogs-wrapper {
+  background: @blue-catskill-white;
+  padding-bottom: 30px;
+  min-height: 1000px;
+
+  .list-group-item:hover {
+    cursor: default;
+  }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .tags {
+    margin-bottom: 30px;
+    line-height: 30px;
+    text-align: center;
+
+    .label {
+      font-weight: 600;
+      border-radius: 0;
+      background-color: none;
+      padding: 10px 35px;
+      background: url('/images/blog-filter-seperator.png') right 11px no-repeat;
+      border-bottom: 1px solid @blue-mystic;
+      font-size: 13px;
+    }
+
+    .label:last-child {
+      background-image: none;
+    }
+
+    .label-default {
+      color: @blue-regent-gray;
+      background-color: @blue-catskill-white!important;
+    }
+
+    .label-default:hover {
+      color: @blue-lochmara;
+    }
+
+    .label-active {
+      color: @blue-lochmara;
+      border-bottom-color: @blue-lochmara;
+    }
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  ol,
+  ul {
+    padding-left: 18px;
+    list-style-position: outside!important;
+  }
+
+  .dataCards {
+    padding-left: 10px;
+    margin-bottom: 0;
+  }
+
+  .dataCard {
+    width: 32%;
+    margin: 5px;
+    border: none;
+    display: flex;
+    // min-height: 113px;
+    a:hover {
+      text-decoration: none;
+    }
+
+    p {
+      margin-bottom: 5px;
+    }
+
+    .statusDataValue {
+      color: #8A8FA1;
+    }
+  }
+
+  li {
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    font-weight: 300;
+    font-size: 28px;
+    margin: 20px 0;
+  }
+
+  h3 {
+    // font-family: "Dosis";
+    font-weight: 500;
+    font-size: 21px;
+    margin: 20px 0;
+  }
+
+  .latest-releases {
+    text-align: center;
+    padding: 0 0 30px;
+    margin-bottom: 0;
+    // font-family: "Dosis";
+    font-weight: 300;
+    font-size: 30px;
+  }
+
+  .posts {
+    // font-family: "Dosis";
+
+    .post {
+      padding: 20px 70px;
+      background: #fff;
+
+      .avatar {
+        text-align: center;
+        margin-bottom: -85px;
+      }
+
+      .title {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .author {
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 0;
+        display: block;
+        color: @gray-silver-chalice-600;
+        margin-left: 10px;
+        vertical-align: middle;
+        margin-bottom: 5px;
+      }
+
+      .mobile-meta {
+        display: none;
+      }
+
+      .post-content {
+        position: relative;
+        margin-top: 10px;
+
+        img {
+          float: right;
+        }
+      }
+
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0;
+        margin: 0 0 5px;
+      }
+
+      .post-meta {
+        text-align: center;
+
+        .votes {
+          float: right;
+          clear: right;
+          color: @gray-silver-chalice-600;
+          font-size: 14px;
+          display: block;
+          width: 100px;
+
+          .count {
+            font-size: 20px;
+            width: 40px;
+            text-align: left;
+            display: inline-block;
+          }
+        }
+
+        .replies {
+          float: right;
+          clear: right;
+          color: @blue-pickled-bluewood;
+          font-size: 14px;
+          display: block;
+          width: 100px;
+
+          .count {
+            font-size: 20px;
+            width: 40px;
+            text-align: left;
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .post:nth-child(even) {
+      background: @gray-athens-400!important;
+
+      // .post-content{		text-align: left; float: right;
+      // 	img{			float: left; margin-left:-160px;}
+      // 	ul, ol{			}
+      // }
+      // .post-meta{			float: right; text-align: left;
+      // 	.votes{			float: left; clear: left;}
+      // 	.replies{		float: left; clear: left;}
+      // }
+    }
+  }
+
+  .post-body {
+    .post-meta {
+      margin-bottom: 20px;
+      &.margin-top {
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+// posts page
+.post-wrapper {
+  .blogs-wrapper {
+    background: #fff;
+  }
+}
+
+.release-notes-header {
+  background: #fff;
+  text-align: center;
+}
+
+.release-notes-wrapper {
+  padding-top: 110px;
+}
+@media (max-width: 767px) {
+  .blogs-wrapper .posts .post .avatar {
+    margin-bottom: 0;
+  }
+
+  .blogs-wrapper .posts .post {
+    padding: 20px;
+  }
+}

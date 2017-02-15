@@ -1,0 +1,265 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// special mixins
+@import '../2-tools/_utilities';
+
+.overview {
+  .u-background-blueprint;
+  color: #fff;
+  padding: 44/14em 0;
+
+  &__header,
+  .overview__header,
+  &__content {
+    position: relative;
+    z-index: 5;
+  }
+
+  &__header,
+  .overview__header {
+    font-size: 30px;
+    line-height: 140%;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    margin: 0 0 26/30em;
+    padding: 0;
+  }
+
+  &__row {
+    .flex-block;
+    .flex-flow(row, wrap);
+  }
+
+  &__item {
+    text-align: center;
+
+    @media all and (max-width: 1300px) {
+      margin: 20/14em 0;
+
+      &:nth-of-type(1) {
+        order: 1;
+      }
+
+      &:nth-of-type(2) {
+        order: 2;
+      }
+
+      &:nth-of-type(3) {
+        order: 3;
+      }
+
+      &:nth-of-type(6) {
+        order: 4;
+      }
+
+      &:nth-of-type(4) {
+        order: 5;
+      }
+
+      &:nth-of-type(5) {
+        order: 6;
+      }
+    }
+
+    &--small {
+      @media all and (max-width: 1300px) {
+        .flex(1 0 100%);
+      }
+
+      @media (min-width: 1300px) {
+        .flex(1 0 18%);
+        padding: 0 1em;
+      }
+    }
+
+    &--medium {
+      @media all and (max-width: 1300px) {
+        .flex(1 0 100%);
+      }
+
+      @media (min-width: 1300px) {
+        .flex(1 0 30%);
+        padding: 0 1em;
+      }
+    }
+
+    &--large {
+      width: 100%;
+      max-width: 345/14em;
+      .flex(1 0 100%);
+    }
+
+    &--center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media print {
+      page-break-before: always;
+    }
+  }
+
+  &__inside-item {
+    float: left;
+    width: 50%;
+  }
+
+  &__img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    &--people,
+    &--arrow {
+      margin-bottom: 10/14em;
+    }
+
+    &--package {
+      max-width: 128/14em;
+
+      @media (min-width: 1300px) {
+        margin-top: 10/14em;
+      }
+
+      path {
+        .opacity(1);
+      }
+    }
+
+    &--people {
+      max-width: 64/14em;
+
+      path {
+        .opacity(1);
+      }
+    }
+
+    &--arrow {
+      max-width: 93/14em;
+
+      @media all and (max-width: 1300px) {
+        .rotate(90deg);
+        margin-top: 40/14em;
+        margin-bottom: 60/14em;
+      }
+
+      @media all and (min-width: 1300px) {
+        margin-top: 36/14em;
+      }
+
+      path {
+        .opacity(0.83);
+      }
+    }
+
+    &--lines {
+      max-width: 345/14em;
+
+      path {
+        .opacity(0.75);
+      }
+    }
+
+    &--services-apis {
+      margin-top: 6.5/14em;
+      margin-bottom: 16.5/14em;
+      max-width: 104/14em;
+
+      path {
+        .opacity(0.9);
+      }
+    }
+
+    &--builder-modules {
+      margin-bottom: 10/14em;
+      max-width: 103/14em;
+
+      path {
+        .opacity(1);
+      }
+    }
+
+    &--dev-portal,
+    &--builder,
+    &--yaas-market {
+      margin-bottom: 23/14em;
+      max-width: 68/14em;
+
+      path {
+        .opacity(1);
+      }
+    }
+
+    &--double-arrow {
+      max-width: 24/14em;
+
+      @media all and (max-width: 1300px) {
+        margin: 0 auto;
+      }
+
+      @media all and (min-width: 1300px) {
+        margin: 23/14em auto;
+      }
+
+      path {
+        .opacity(0.9);
+      }
+    }
+
+    path {
+      fill: #fff;
+    }
+  }
+
+  &__title,
+  .overview__title {
+    &--small {
+      font-size: 15px;
+      line-height: 19/15em;
+      font-weight: 600;
+      margin: 0 0 9/15em;
+    }
+
+    &--medium {
+      font-size: 18px;
+      line-height: 140%;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    &--large {
+      font-size: 25px;
+      line-height: 140%;
+      font-weight: 700;
+      margin: 0 0 3/25em;
+      font-family: 'Dosis';
+    }
+  }
+
+  &__paragraph,
+  .overview__paragraph {
+    font-size: 18px;
+    line-height: 23/18em;
+    font-family: 'Dosis';
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__tooltip {
+    color: #000;
+    cursor: help;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+      color: #000;
+    }
+  }
+}

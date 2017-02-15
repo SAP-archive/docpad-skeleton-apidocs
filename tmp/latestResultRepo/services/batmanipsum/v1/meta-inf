@@ -1,0 +1,16 @@
+apiReferenceContentInternal: "---\nservice: Batman Ipsum\ntitle: API Reference\nlayout: document\n---\nmainReferencePlaceholder"
+apiReferenceSource: "./tmp/docuSources/services/batmanipsum/v1/content/services/batmanipsum/docu/files/apireferenceTempContent.html"
+apiReferenceSourceInternal: "./tmp/docuSources/services/batmanipsum/v1/content/services/batmanipsum/docu/internal/files/apireferenceTempContent.html"
+apiReferenceNewFile: "./tmp/docuSources/services/batmanipsum/v1/content/services/batmanipsum/docu/files/apireference.html"
+apiReferenceNewFileInternal: "./tmp/docuSources/services/batmanipsum/v1/content/services/batmanipsum/docu/internal/files/apireference.html"
+clientFolder: "./tmp/docuSources/services/batmanipsum/v1/content/services/batmanipsum/docu/files/client"
+clientFolderInternal: "./tmp/docuSources/services/batmanipsum/v1/content/services/batmanipsum/docu/internal/files/client"
+clonedDocuFolderTypes: "./tmp/docuSources/services"
+isInternalNameExists: false
+isService: true
+isGS: false
+isTools: false
+hasReleaseNotes: true
+isSrcLocNotMainDocu: false
+local: false
+---

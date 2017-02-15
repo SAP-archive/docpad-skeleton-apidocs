@@ -1,0 +1,143 @@
+---
+layout: 'solutions'
+---
+
+<% metadata = @getFileAtPath(@document.relativeDirPath+'/meta-inf').attributes %>
+<% @document.title = metadata.name %>
+
+<% contentCollectionName = 'solutionsContent' %>
+
+<% dpServiceName = metadata.name %>
+
+<% collection = @getCollection(contentCollectionName).findAll(relativeDirPath: @document.relativeDirPath) %>
+
+
+
+<% typesofdocs = [] %>
+<% for docu in collection.toJSON(): %>
+  <% if docu.type :%>
+    <% typesofdocs.push docu.type %>
+  <% else :%>
+    <% typesofdocs.push docu.title %>
+  <% end %>
+<% end %>
+
+<div id="sidebar" class="sidebar-offcanvas" role="navigation" >
+  <div class="api-nav left-nav" id="left_nav">
+    <nav class="bs-docs-sidebar">
+      <ul class="nav">
+        <li class="back-link"><a href="/solutions/"> Back to Solutions</a></li>
+        <li class="nav-header"><%- dpServiceName %></li>
+        <% # initializing an array that stores info about how many documents are of the same type %>
+        <% typeNum = [] %>
+        <% # start iterating through the list of types (duplicates are eliminated) %>
+        <% for type in typesofdocs.unique() : %>
+            <% # clearing the array for each iteration so it works for all docs %>
+            <% typeNum.length = 0 %>
+            <%for docu in collection.toJSON(): %>
+              <% if docu.type is type :%>
+                    <% typeNum.push(docu.title) %>
+              <% else if docu.title is type :%>
+                    <% typeNum.push(docu.title) %>
+              <% end %>
+            <% end %>
+
+            <% # if the list of doc has only one title it means that it is either a document with title only, or the only document of some type. If one, then instead of parent node, it is a clickable href that takes you to this singe doc.  %>
+            <% if typeNum.length is 1 :%>
+              <% title = typeNum[0] %>
+              <li>
+                <a href="#<%= @getTrimmedName(title) %>"><%- title %> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+              </li>
+            <% else :%>
+            <li>
+              <a href="#<%= @getTrimmedName(type) %>"><%- type %> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+              <ul class="nav nav-stacked">
+                <% uniqueTitles = [] %>
+              <%for d in collection.findAll(type:type).toJSON(): %>
+                <% uniqueTitles.push(d.title) %>
+              <% end %>
+              <%for d in uniqueTitles.unique(): %>
+                <li>
+                  <a href="#<%= @getTrimmedName(d) %>"><%=d%> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                </li>
+              <% end %>
+              </ul>
+            </li>
+            <% end %>
+        <% end %>
+      </ul>
+    </nav>
+    <!-- end list of services  -->
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="container-wrapper">
+    <div class="content-wrapper">
+      <div class="col-sm-pull-3 col-sm-pull-3" role="main">
+        <div class="tools-wrapper">
+
+          <div class="sticky-page-header m-sticky-header">
+
+
+            <h1 class="pull-left"><%= dpServiceName %></h1>
+
+          </div>
+
+          <%- @partial('left-nav-collapse-control') %>
+
+
+          <% for docu in collection.toJSON(): %>
+            <% if docu.type :%>
+              <% typesofdocs.push docu.type %>
+            <% else :%>
+              <% typesofdocs.push docu.title %>
+            <% end %>
+          <% end %>
+
+            <% # rendering content of documents. making sure there are no duplicates and that also docs without type are rendered %>
+            <% for type in typesofdocs.unique() : %>
+            <% uniqueDocs = [] %>
+              <% for d in collection.toJSON(): %>
+                <% uniqueDocs.push(d) %>
+              <% end %>
+              <% for docu in uniqueDocs.uniqueArrByTitle(): %>
+
+                <% # more then one doc with the same type %>
+                <% if docu.type is type and docu.title isnt type :%>
+                <section id="<%= @getTrimmedName(docu.title) %>" class="group">
+                  <h2><%=docu.title%></h2>
+                  <p>
+                    <%-docu.contentRenderedWithoutLayouts%>
+                  </p>
+
+                </section>
+                <hr>
+                <% end %>
+                <% # unique doc without type %>
+                <% if docu.title is type and docu.type isnt type :%>
+                <section id="<%= @getTrimmedName(docu.title) %>" class="group">
+                  <h2><%- docu.title %></h2>
+                    <p>
+                    <%-docu.contentRenderedWithoutLayouts%>
+                  </p>
+                </section>
+                <hr>
+                <% end %>
+                <% # unique doc but with type %>
+                <% if docu.title is type and docu.type is type :%>
+                <section id="<%= @getTrimmedName(docu.title) %>" class="group">
+                  <h2><%- docu.title %></h2>
+                  <p>
+                    <%-docu.contentRenderedWithoutLayouts%>
+                  </p>
+                </section>
+                <hr>
+                <% end %>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

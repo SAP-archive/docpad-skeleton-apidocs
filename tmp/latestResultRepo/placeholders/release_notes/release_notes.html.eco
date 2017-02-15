@@ -1,0 +1,51 @@
+---
+layout: release_notes
+---
+
+
+<% metadata = @getFileAtPath(@document.relativeDirPath+'/meta-inf').attributes %>
+
+<% contentCollectionName = 'postsContent' %>
+
+<% dpServiceName = metadata.name %>
+
+<% collection = @getCollection(contentCollectionName).findAll({relativeDirPath: @document.relativeDirPath}) %>
+
+<% # Only above is unique %>
+
+<div class="blogs-wrapper release-notes-wrapper">
+
+  <div class="sticky-page-header release-notes-header m-sticky-header">
+
+    <h3><a href="/rn/index.html">RELEASE NOTES</a>/<%= dpServiceName %></h3>
+
+  </div>
+
+  <%- @partial('left-nav-collapse-control') %>
+
+
+  <!-- Page Content -->
+  <div class="posts">
+
+    <ul class="dataCards">
+
+      <% for document in collection.findAll({official_version: metadata.version}).toJSON(): %>
+        <%if document.title: %>
+        <li class="dataCard">
+        <a href='<%=document.url%>' class="title cardRow cardRowClickable">
+            <p class="primaryData"><%= document.title %></p>
+
+            <% if document.headline : %>
+              <p class="secondaryData"><%= @trimTo140Char(document.headline) %></p>
+            <% end %>
+
+            <p class="statusDataValue"><%= document.date.toLocaleDateString() %></p>
+        </a>
+        </li>
+        <% end %>
+    <% end %>
+    </ul>
+
+  </div>
+
+</div>

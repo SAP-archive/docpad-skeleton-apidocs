@@ -1,0 +1,16 @@
+apiReferenceContentInternal: "---\nservice: Solution Ipsum\ntitle: API Reference\nlayout: document\n---\nmainReferencePlaceholder"
+apiReferenceSource: "./tmp/docuSources/solutions/solutionipsum/content/solutions/solutionipsum/docu/solutions/solutionipsum/apireferenceTempContent.html"
+apiReferenceSourceInternal: "./tmp/docuSources/solutions/solutionipsum/content/solutions/solutionipsum/docu/internal/solutions/solutionipsum/apireferenceTempContent.html"
+apiReferenceNewFile: "./tmp/docuSources/solutions/solutionipsum/content/solutions/solutionipsum/docu/solutions/solutionipsum/apireference.html"
+apiReferenceNewFileInternal: "./tmp/docuSources/solutions/solutionipsum/content/solutions/solutionipsum/docu/internal/solutions/solutionipsum/apireference.html"
+clientFolder: "./tmp/docuSources/solutions/solutionipsum/content/solutions/solutionipsum/docu/solutions/solutionipsum/client"
+clientFolderInternal: "./tmp/docuSources/solutions/solutionipsum/content/solutions/solutionipsum/docu/internal/solutions/solutionipsum/client"
+clonedDocuFolderTypes: "./tmp/docuSources/solutions"
+isInternalNameExists: false
+isService: false
+isGS: false
+isTools: false
+hasReleaseNotes: false
+isSrcLocNotMainDocu: true
+local: false
+---
