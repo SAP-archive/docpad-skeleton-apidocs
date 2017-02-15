@@ -1,6 +1,6 @@
 ### Overview
 
-The docpad-apidoc-skeleton is a simple documentation portal theme/template. It is based on static site generator called [DocPad](https://docpad.org/). It is also by default configured to use [Chewie](https://github.com/YaaS/chewie), the module supporting distributed source publishing.
+The docpad-skeleton-apidoc is a simple documentation portal theme/template. It is based on static site generator called [DocPad](https://docpad.org/). It is also by default configured to use [Chewie](https://github.com/YaaS/chewie), the module supporting distributed source publishing.
 
 Go through this tutorial to:
 - Set up your local environment to build a documentation portal
