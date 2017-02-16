@@ -1,0 +1,16 @@
+apiReferenceContentInternal: "---\nservice: Hodor Ipsum\ntitle: API Reference\nlayout: document\n---\nmainReferencePlaceholder"
+apiReferenceSource: "./tmp/docuSources/services/hodoripsum/v1/content/services/hodoripsum/docu/files/apireferenceTempContent.html"
+apiReferenceSourceInternal: "./tmp/docuSources/services/hodoripsum/v1/content/services/hodoripsum/docu/internal/files/apireferenceTempContent.html"
+apiReferenceNewFile: "./tmp/docuSources/services/hodoripsum/v1/content/services/hodoripsum/docu/files/apireference.html"
+apiReferenceNewFileInternal: "./tmp/docuSources/services/hodoripsum/v1/content/services/hodoripsum/docu/internal/files/apireference.html"
+clientFolder: "./tmp/docuSources/services/hodoripsum/v1/content/services/hodoripsum/docu/files/client"
+clientFolderInternal: "./tmp/docuSources/services/hodoripsum/v1/content/services/hodoripsum/docu/internal/files/client"
+clonedDocuFolderTypes: "./tmp/docuSources/services"
+isInternalNameExists: false
+isService: true
+isGS: false
+isTools: false
+hasReleaseNotes: true
+isSrcLocNotMainDocu: false
+local: false
+---

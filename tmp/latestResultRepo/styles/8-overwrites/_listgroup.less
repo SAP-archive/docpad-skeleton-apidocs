@@ -1,0 +1,52 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+.list-group--secondary {
+  .flex-block();
+  .flex-wrap(wrap);
+}
+
+.list-group-item {
+  cursor: pointer;
+  padding: 1em;
+  word-break: break-all;
+
+  &:first-child,
+  &:last-child {
+    .border-radius(0);
+  }
+
+  &:hover {
+    background-color: @gray-wild-sand-600;
+  }
+
+  &--secondary {
+    .flex-block();
+    .flex(1 1 33%);
+    .justify-content(center);
+    .align-items(center);
+    cursor: default;
+    padding: 0.5em;
+
+    &:hover, &:focus, &:active {
+      background-color: white;
+    }
+
+    &:last-child {
+      margin-bottom: -1px;
+    }
+
+    &:nth-child(3n-1){
+      border-left: 0;
+      border-right: 0;
+    }
+  }
+
+
+}

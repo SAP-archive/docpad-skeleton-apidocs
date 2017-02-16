@@ -1,0 +1,22 @@
+{
+  "application": {
+    "url": "/build/"
+  },
+  "plugins": {
+    "proxy": {
+      "proxyUrl": "/proxy"
+    },
+    "envVariables": {
+      "yodaLink": "https://api.stage.yaas.io/hybris/yoda/v1",
+      "oauthService": "https://api.stage.yaas.io/hybris/oauth2/v1",
+      "accountService": "https://api.stage.yaas.io/hybris/account/v1/",
+      "clientId": "4lfyAwV3zeskWEIzoIMxohRMVYd0YFXI",
+      "redirUrl": "https://devportal.stage.yaas.io/auth.html",
+      "loginCssUrl": "https://devportal.stage.yaas.io/styles/auth-iframe.css"
+    },
+    "customLocation": {
+      "path": "./apinotebooks",
+      "mode": "external"
+    }
+  }
+}

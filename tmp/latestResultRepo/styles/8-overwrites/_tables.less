@@ -1,0 +1,32 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+.table {
+  > thead {
+    > tr {
+      > th {
+        a {
+          color: @text-link-color;
+        }
+      }
+    }
+  }
+}
+
+table.techne-table {
+  &.techne-table--secondary {
+    margin: 0;
+
+    tr {
+      width: 100%;
+      .flex-block();
+      .flex-flow(row, wrap);
+      .align-items(center);
+      .justify-content(space-between);
+
+      th {
+        .flex(1 0 25%);
+      }
+    }
+  }
+}

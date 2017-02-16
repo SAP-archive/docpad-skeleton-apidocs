@@ -1,0 +1,1 @@
+function dispatchResizeEvent(){var RESIZE_EVENT=new CustomEvent("resizeNeeded");window.dispatchEvent(RESIZE_EVENT)}

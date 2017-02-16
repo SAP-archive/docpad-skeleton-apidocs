@@ -1,0 +1,313 @@
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// helpful utilities
+@import '../2-tools/_utilities';
+
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+/* Flowchart variables */
+/* Sequence Diagram variables */
+/* Gantt chart variables */
+.mermaid {
+  font-family: @font-family-dosis;
+  font-size: 17px;
+
+  svg {
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid @diagram-grid;
+    .u-background-blueprint--3;
+  }
+
+  .label {
+    color: #fff;
+    font-size: 17px;
+    text-transform: none;
+    font-weight: 400;
+  }
+
+  .node circle,
+  .node polygon,
+  .node rect {
+    stroke: none;
+    stroke-width: 0;
+  }
+
+  .node circle,
+  .node rect {
+    fill: @diagram-blue;
+  }
+
+  .node polygon {
+    fill: @diagram-yellow;
+
+    & + .label {
+      color: #000;
+    }
+  }
+
+  .edgePath {
+    .path,
+    marker path {
+      stroke: @diagram-grid;
+    }
+  }
+
+  .edgeLabel {
+    color: #000;
+    font-size: 13px;
+  }
+
+  .cluster {
+    rect {
+      fill: none;
+      rx: 0;
+      stroke: @diagram-lightBlue;
+      stroke-width: 1px;
+    }
+
+    text {
+      fill: #000;
+    }
+  }
+
+  .actor {
+    stroke: none;
+    fill: @diagram-blue;
+  }
+
+  text.actor {
+    fill: #fff;
+    stroke: none;
+  }
+
+  .actor-line,
+  .messageLine0,
+  .messageLine1 {
+    stroke: @diagram-grid;
+    stroke-width: 1.5;
+  }
+
+  #arrowhead {
+    fill: @diagram-grid;
+  }
+
+  #crosshead path {
+    fill: @diagram-grid;
+    stroke: @diagram-grid;
+  }
+
+  .messageText {
+    fill: #000;
+    stroke: none;
+  }
+
+  .labelBox {
+    stroke: none;
+    fill: @diagram-darkBlue;
+  }
+
+  .labelText {
+    fill: #fff;
+    stroke: none;
+  }
+
+  .loopText {
+    fill: #000;
+    stroke: none;
+  }
+
+  .loopLine {
+    stroke-width: .75;
+    stroke-dasharray: '2 2';
+    marker-end: 'url(#arrowhead)';
+    stroke: @diagram-darkBlue;
+  }
+
+  .note {
+    stroke: none;
+    fill: @diagram-yellow;
+  }
+
+  .noteText {
+    fill: #000;
+    stroke: none;
+  }
+  /** Section styling */
+  .section {
+    stroke: none;
+    opacity: .2;
+  }
+
+  .section0 {
+    fill: @diagram-grid;
+  }
+
+  .section2 {
+    fill: @diagram-grid;
+  }
+
+  .section1,
+  .section3 {
+    fill: #fff;
+    opacity: .2;
+  }
+
+  .sectionTitle {
+    text-height: 14px;
+    fill: #000;
+  }
+  /* Grid and axis */
+  .grid .tick {
+    stroke: @diagram-grid;
+    opacity: .4;
+    shape-rendering: crispEdges;
+  }
+
+  .grid path {
+    stroke-width: 0;
+  }
+  /* Today line */
+  .today {
+    fill: none;
+    stroke: none;
+    stroke-width: 0;
+  }
+  /* Task styling */
+  /* Default task */
+  .task {
+    stroke: none;
+    stroke-width: 0;
+  }
+
+  .taskText {
+    text-anchor: middle;
+    font-size: 14px;
+  }
+
+  .taskTextOutsideRight {
+    fill: #000;
+    text-anchor: start;
+    font-size: 11px;
+  }
+
+  .taskTextOutsideLeft {
+    fill: #000;
+    text-anchor: end;
+    font-size: 11px;
+  }
+  /* Specific task settings for the sections*/
+  .taskText0,
+  .taskText1,
+  .taskText2,
+  .taskText3 {
+    fill: #fff;
+  }
+
+  .task0,
+  .task1,
+  .task2,
+  .task3 {
+    fill: @diagram-darkBlue;
+    stroke: none;
+  }
+
+  .taskTextOutside0,
+  .taskTextOutside2 {
+    fill: #000;
+  }
+
+  .taskTextOutside1,
+  .taskTextOutside3 {
+    fill: #000;
+  }
+  /* Active task */
+  .active0,
+  .active1,
+  .active2,
+  .active3 {
+    fill: @diagram-yellow;
+    stroke: none;
+  }
+
+  .activeText0,
+  .activeText1,
+  .activeText2,
+  .activeText3 {
+    fill: #000;
+  }
+  /* Completed task */
+  .done0,
+  .done1,
+  .done2,
+  .done3 {
+    stroke: none;
+    fill: @diagram-grid;
+    stroke-width: 0;
+    .opacity(0.5);
+  }
+
+  .doneText0,
+  .doneText1,
+  .doneText2,
+  .doneText3 {
+    fill: #000;
+  }
+
+  /* Tasks on the critical line */
+  .activeCrit0,
+  .activeCrit1,
+  .activeCrit2,
+  .activeCrit3,
+  .crit0,
+  .crit1,
+  .crit2,
+  .crit3 {
+    stroke: none;
+    fill: @diagram-yellow;
+    stroke-width: 0;
+  }
+
+  .doneCrit0,
+  .doneCrit1,
+  .doneCrit2,
+  .doneCrit3 {
+    stroke: none;
+    fill: @diagram-grid;
+    stroke-width: 0;
+    cursor: pointer;
+    shape-rendering: crispEdges;
+    .opacity(0.5);
+  }
+
+  .doneCritText0,
+  .doneCritText1,
+  .doneCritText2,
+  .doneCritText3 {
+    fill: #000;
+  }
+
+  .activeCritText0,
+  .activeCritText1,
+  .activeCritText2,
+  .activeCritText3,
+  .critText0,
+  .critText1,
+  .critText2,
+  .critText3 {
+    fill: #000;
+  }
+
+  .titleText {
+    text-anchor: middle;
+    font-size: 21px;
+    fill: #000;
+  }
+
+  text {
+    font-family: @font-family-dosis;
+    font-size: 17px;
+  }
+}

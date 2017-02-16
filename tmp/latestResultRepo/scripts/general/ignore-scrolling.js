@@ -1,0 +1,1 @@
+'use strict';$('a[href^="#"]').click(function(){yg.pauseScrolling('500');});

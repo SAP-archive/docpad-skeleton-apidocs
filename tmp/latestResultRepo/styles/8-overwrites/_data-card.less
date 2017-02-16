@@ -1,0 +1,151 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+@breakpoint-screen-width: 1281/14em;
+
+// Data Card component
+.dataCards {
+  &--custom-secondary {
+    max-width: @breakpoint-screen-width;
+    margin: 0 auto;
+    @media all and (max-width: 90.4286em) {
+      padding: 15/14em;
+    }
+    @media all and (min-width: 90.4286em) {
+      padding: 0;
+    }
+  }
+}
+
+.dataCard {
+  .dataCard__img {
+    .border-radius(50%);
+    margin: 0 18/14em 0 5/14em;
+    .align-self(center);
+  }
+
+  &__column {
+    .flex(1 0 50%);
+  }
+
+  &__additional-info,
+  &__author,
+  &__title {
+    display: block;
+  }
+
+  &__author {
+    font-size: 15px;
+    margin: 0;
+    color: @typography-main;
+    word-break: break-all;
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 9/15em;
+    color: @typography-main;
+    word-break: break-all;
+  }
+
+  &__additional-info {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: @typography-secondary;
+    margin: 0;
+    word-break: break-all;
+  }
+
+  &__link {
+    color: @text-link-color;
+  }
+
+  .dataCard__counter {
+    text-align: center;
+    .align-self(center);
+    @media (max-width: @screen-xs-max) {
+      padding: 24/14em 0 0;
+      .flex(1 0 100%);
+    }
+    @media (min-width: @screen-sm-min) {
+      padding: 24/14em 14/14em 24/14em 24/14em;
+    }
+
+    &-description,
+    &-number {
+      display: block;
+      line-height: 100%;
+    }
+
+    &-number {
+      font-size: 15px;
+      font-weight: bold;
+      margin: 0 0 3/15em;
+      color: @typography-main;
+    }
+
+    &-description {
+      font-size: 13px;
+      font-weight: 400;
+      color: @typography-secondary;
+    }
+  }
+
+  &.dataCard--custom-primary {
+    @media (max-width: 991px) and (min-width: 768px) {
+      width: 32%;
+      margin: 0 0 2% 2%;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .cardRow {
+      .flex-block;
+      .flex-flow(row, wrap);
+      min-height: 80/14em;
+      .align-items(center);
+    }
+
+    .primaryData {
+      font-family: 'Dosis';
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &.dataCard--custom-secondary {
+    .cardRow.cardRow--custom-secondary {
+      .flex-block;
+      .flex-flow(row, wrap);
+      .align-items(stretch);
+
+      &:active,
+      &:focus,
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    @media all and (max-width: @screen-sm-max) {
+      .flex(1 0 100%);
+      margin: 15/14em 0 0;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+    @media all and (min-width: @screen-md-min) {
+      .flex(1 0 48%);
+      margin: 7.5/14em;
+    }
+  }
+}

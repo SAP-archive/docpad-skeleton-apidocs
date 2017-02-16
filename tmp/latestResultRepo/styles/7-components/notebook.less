@@ -1,0 +1,112 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// special mixins
+@import '../2-tools/_utilities';
+
+.notebook {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  .transition(all 0.3s ease-out 0s);
+
+  &__loader {
+    display: none;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 200;
+    .transition(all 0.3s ease-out 0s);
+  }
+
+  &__interactive-tutorial,
+  &__static-tutorial {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__static-tutorial {
+    padding: 1em;
+
+    .copy-code-block {
+      display: none;
+    }
+  }
+
+  &__interactive-tutorial {
+    display: none;
+  }
+
+  &-notification {
+    margin: 0 auto;
+    font-size: 15px;
+    position: fixed;
+    bottom: 60/15em;
+    right: 0;
+    left: 264px;
+    text-align: center;
+    visibility: hidden;
+    width: 100%;
+    max-width: 530/15em;
+    padding-right: 15px;
+    background: fade(@well-done-success, 80%);
+    -webkit-transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+    -moz-transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+    -o-transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+    -ms-transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+    transition: all .3s ease-out 0s, margin .25s ease-out 0s;
+    z-index: 200;
+    .opacity(0);
+
+    &--is-constantly-visible,
+    &--is-visible,
+    &:active,
+    &:focus,
+    &:hover {
+      visibility: visible;
+      .opacity(1);
+    }
+
+    &--is-constantly-visible {
+      bottom: 50%;
+      margin-bottom: -54/15em;
+    }
+
+    &--is-invisible {
+      visibility: hidden;
+      .opacity(0);
+      display: none !important;
+
+      &:active,
+      &:focus,
+      &:hover {
+        visibility: hidden;
+        .opacity(0);
+        display: none !important;
+      }
+    }
+
+    &--has-no-margin {
+      left: 0;
+    }
+
+    &__spinner {
+      margin: 0 auto 1em;
+    }
+    @media all and (max-width: @screen-xs-max) {
+      left: 0;
+      bottom: 105/15em;
+
+      &--is-constantly-visible {
+        bottom: 50%;
+        margin-bottom: -54/15em;
+      }
+    }
+  }
+}

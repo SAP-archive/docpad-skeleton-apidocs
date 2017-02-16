@@ -1,0 +1,70 @@
+@import '../3-vendor/_prefixer';
+
+#glossary {
+  .term-filter {
+    float: right;
+    // margin-top: -40px;
+  }
+
+  .search {
+    width: 200px;
+    padding-right: 36px;
+  }
+
+  .table-glossary {
+    td {
+      padding-top: 23px !important;
+      padding-bottom: 23px !important;
+    }
+
+    .sort {
+      cursor: pointer;
+    }
+  }
+
+  .clear-glossary-input {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin: 0;
+    .translate(0, -50%);
+    z-index: 1;
+    cursor: pointer;
+    opacity: .6;
+  }
+
+  .no-glossary-results {
+    display: none;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 749px) {
+  #glossary h1 {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  #glossary h1 {
+    margin-top: 0;
+  }
+
+  #glossary .term-filter {
+    float: none;
+    margin-top: 0;
+    display: block;
+    height: 40px;
+
+    .property {
+      display: block;
+      margin: 0 7px;
+    }
+
+    .search {
+      width: 100%;
+    }
+  }
+}

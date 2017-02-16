@@ -1,0 +1,209 @@
+---
+layout: 'apiconsole'
+title: API Console
+---
+
+<% metadata = @getFileAtPath(@document.relativeDirPath+'/meta-inf').attributes %>
+<% @document.title = metadata.name %>
+<% raml = @getFileAtPath(@document.relativeDirPath+'/api.raml') %>
+
+<% collectionName = 'services' %>
+<% contentCollectionName = 'servicesContent' %>
+
+<% dpServiceName = metadata.name %>
+<% dpServiceNameShort = metadata.shortName %>
+<% dpServiceVersion = if metadata.latest then 'latest' else metadata.version %>
+<% dpServiceVersionRAML = metadata.version %>
+<% dbServiceUri = metadata.baseUri %>
+<% rnCollectionName = 'releaseNotes' %>
+
+<% collection = @getCollection(contentCollectionName).findAll(relativeDirPath: @document.relativeDirPath) %>
+
+<% RNs = @getCollection(rnCollectionName).findAll(relativeDirPath: 'rn/services/' + dpServiceNameShort + '/' + dpServiceVersion, basename: {$nin: ['meta-inf', 'release_notes']}).toJSON() %>
+<% landingRN = @getFileAtPath('rn/services/' + dpServiceNameShort + '/' + dpServiceVersion + '/release_notes.html.eco') %>
+
+  <div id="sidebar" class="sidebar-offcanvas" role="navigation" >
+
+    <div class="api-nav left-nav" id="left_nav">
+
+      <nav class="bs-docs-sidebar">
+
+        <ul class="nav">
+          <li class="back-link"><a href="/services"> Back to API Docs</a></li>
+          <li class="nav-header"><%- dpServiceName %></li>
+            <% if collection.findAll(title:'Overview').toJSON().length: %>
+              <li><a href="index.html#overview">Overview <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a></li>
+            <% end %>
+
+            <!-- API Reference Generated Docu replaced by gulp-->
+            rightReferencePlaceholder
+
+            <% if collection.findAll(title:'Events', basename: { $ne: 'index' }).toJSON().length: %>
+              <li>
+                <a href="index.html#events"> Events <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+              </li>
+            <% end %>
+
+          <% details = collection.findAll(type: 'Details').toJSON() %>
+          <% if details.length: %>
+            <li>
+              <a href="index.html#details"> Details <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+              <ul class="nav nav-stacked">
+                <%for docu in details: %>
+                  <li>
+                    <a href="index.html#<%= @getTrimmedName(docu.title) %>"><%=docu.title%> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+
+          <% tutorial = collection.findAll(type:'Tutorial').toJSON() %>
+          <% if tutorial.length: %>
+            <li>
+              <a href="index.html#tutorial"> Tutorial <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                <ul class="nav nav-stacked">
+                <%for docu in tutorial: %>
+                  <li>
+                    <a href="index.html#<%= @getTrimmedName(docu.title) %>"><%=docu.title%> <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+                  </li>
+                <% end %>
+                </ul>
+            </li>
+          <% end %>
+
+          <% glossary = @getCollection('partials').findAll(topic: dpServiceName).toJSON() %>
+          <% if glossary.length: %>
+          <!-- GLOSSARY Docu-->
+            <li>
+              <a href="index.html#Glossary">Glossary <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a>
+            </li>
+          <% end %>
+        </ul>
+        <% if landingRN and landingRN.attributes and RNs.length: %>
+              <a href="/<%- landingRN.attributes.relativeOutPath %>" class="btn btn-primary">Release Notes</a>
+        <% end %>
+        <!-- end list of services  -->
+
+      </nav>
+
+    </div>
+
+  </div>
+
+
+    <div class="container-fluid">
+      <div class="container-wrapper has-nav">
+
+        <div class="content-wrapper">
+
+<div class="col-sm-12">
+
+    <div class="sticky-page-header m-sticky-header">
+
+      <div class="m-sticky-header__item m-sticky-header__item--left pull-left">
+
+      <h1 class="m-sticky-header__title"><%= dpServiceName %></h1>
+
+          <!-- this part enables version dropdown with links between versions if there are more then one versions -->
+      <% currentVersion %>
+      <% listofversions = [] %>
+        <% for docu in @getCollection(collectionName).findAll(service:dpServiceName,basename:'meta-inf',area:$exists:true).toJSON(): %>
+          <% if metadata.version == docu.version: %>
+            <% currentVersion = docu.latestVersion or docu.version %>
+          <% end %>
+          <% listofversions.push version: docu.version, latestVersion: docu.latestVersion  %>
+        <% end %>
+
+        <% if listofversions.length > 1 : %>
+            <% if currentVersion: %>
+                <% versionToDisplay = currentVersion %>
+            <% else: %>
+                <% versionToDisplay = 'Latest version' %>
+            <% end %>
+            <div class="m-sticky-header__subitem m-dropdown dropdown version-selector pull-left">
+                <a class="m-dropdown__selector a-link a-link--contextual dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  <%- versionToDisplay %><span class="m-dropdown__icon hyicon hyicon-arrow"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <% for version in listofversions : %>
+                    <% if version.version isnt dpServiceVersion : %>
+                      <li role="presentation"><a role="menuitem" class="hrefToPrefix" tabindex="-1" href="<%- dpServiceNameShort %>/<%- version.version %>/apiconsole.html"><%- version.latestVersion or version.version %></a></li>
+                    <% end %>
+                  <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <%- @partial('regionDropdown', {document: @document}) %>
+      </div>
+
+    <div class="m-sticky-header__form-container service-links service-links-api-console">
+
+      <!-- raml link dropdown -->
+      <% if raml: %>
+        <div class="m-sticky-header__form-element m-sticky-header__form-element--small-lg service-url raml-url hidden-xs">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" id="api-spec-btn" aria-expanded="false">
+                  <img src="/images/icons/icon--download.svg" width="19" height="16" />&nbsp;<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" id="api-spec-list">
+                  <li><a href="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" id="raml-download-link">Download RAML file</a></li>
+                  <!-- <li><a href="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/client.zip' %>" id="client-download-link">Download Generated JS Client</a></li> -->
+                </ul>
+              </div>
+            </span>
+          </div>
+        </div>
+
+        <div class="m-sticky-header__form-element m-sticky-header__form-element--large-lg service-url raml-url hidden-xs">
+          <div class="input-group">
+            <span class="m-sticky-header__form-label">RAML Url:</span>
+            <input type="text" class="form-control form-control--has-label" value="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>">
+            <span class="input-group-btn">
+              <button id="copy-api-spec" data-clipboard-text="<%- @getSiteUrl() %><%- '/services/'+dpServiceNameShort+'/'+dpServiceVersionRAML+'/api.raml' %>" class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy RAML URL">
+                <img src="/images/icons/icon--copy.svg" width="16" height="16" />
+              </button>
+            </span>
+          </div>
+        </div>
+      <% end %>
+
+          <!-- copy service url -->
+      <!--% if dbServiceUri.length > 10 : %-->
+      <div class="m-sticky-header__form-element m-sticky-header__form-element--large-lg service-url hidden-xs">
+        <div class="input-group">
+          <span class="m-sticky-header__form-label">Service Url:</span>
+          <input type="text" class="form-control form-control--has-label" value="<%- dbServiceUri %>">
+          <span class="input-group-btn">
+            <button id="copy-api-button" data-clipboard-text="<%- dbServiceUri %>" class="btn btn-default" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy Service URL">
+              <img src="/images/icons/icon--copy.svg" width="16" height="16" />
+            </button>
+          </span>
+        </div>
+      </div>
+      <!-- % end %-->
+
+    </div>
+
+    </div>
+
+    <%- @partial('left-nav-collapse-control') %>
+
+<div ng-app="ramlConsoleApp" ng-cloak class="raml-console-body">
+  <section class="group">
+    <h2>API Console</h2>
+  </section>
+  <div>
+    <raml-console src="/services/<%- dpServiceNameShort %>/<%- dpServiceVersionRAML %>/api.raml" with-root-documentation="" class="ng-isolate-scope"></raml-console>
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>

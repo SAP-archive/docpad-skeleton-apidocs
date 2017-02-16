@@ -1,0 +1,436 @@
+// prefixer library
+@import '../3-vendor/_prefixer';
+
+// devportal specific variables
+@import '../1-settings/_variables';
+
+// devportal specific variables
+@import '../2-tools/_utilities';
+
+// General styles and design elements shared across pages
+// MAIN
+
+body,
+html {
+  position: relative;
+}
+
+body {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  color: @typography-main;
+  margin: 0;
+  background-color: #fff;
+  padding-top: 0;
+  min-height: 100%;
+  -ms-overflow-style: scrollbar;
+  .u-font-smoothing;
+  padding-right: 0 !important;
+  @media print {
+    overflow: visible;
+  }
+}
+@media all and (max-width: @screen-xs-max) {
+  .wrapper,
+  body,
+  html {
+    overflow-x: visible;
+  }
+}
+
+.main-content {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  table-layout: inherit;
+  /* equal to negative footer height */
+  margin-bottom: -@footer-height;
+  /* pseudo-element to ensure that footer always stays on bottom */
+  &:after {
+    content: '';
+    display: block;
+    /* equal to footer height */
+    height: @footer-height;
+  }
+}
+
+.navbar-super {
+  z-index: 2000;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 36px;
+  color: @blue-tuna;
+}
+
+h2 {
+  font-weight: 200;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: @blue-tuna;
+}
+
+a {
+  color: @blue-lochmara;
+}
+
+.subheadline {
+  padding: 15px 0;
+}
+
+.lt-grey-bg {
+  background: @gray-athens-400;
+}
+
+.grey-bg {
+  background: @blue-aqua-haze;
+}
+
+.lt-blue-bg {
+  background: @blue-seagull!important;
+}
+
+.font-dosis {
+  font-family: 'Dosis';
+}
+
+.circle {
+  border: 5px solid #fff;
+  display: block;
+  transition: box-shadow .2s;
+  margin: 0 auto 20px;
+  width: 100%;
+  height: 0;
+  padding: 50% 0;
+  border-radius: 50%;
+  background: @blue-regal;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+
+  img {
+    top: 20%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  .single-line {
+    margin-top: -24px;
+  }
+}
+
+.no-connector:after {
+  display: none;
+}
+
+.number {
+  font-family: 'Dosis';
+  background: @blue-seagull;
+  display: block;
+  font-size: 30px;
+  font-weight: 500;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  text-align: center;
+  padding-top: 7px;
+  margin: 30px auto 10px;
+  border-radius: 50%;
+}
+
+.blue-check {
+  border: 2px solid @blue-picton;
+  background: #fff;
+  position: relative;
+  margin-bottom: 35px;
+
+  span {
+    color: @blue-picton;
+    position: absolute;
+    top: 4px;
+    left: 8px;
+  }
+}
+
+// general styles for overall page content
+.content-wrapper {
+  h1 {
+    font-weight: 300;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    padding-bottom: 0;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 24px;
+    color: @typography-main;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 19px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    color: @typography-main;
+  }
+
+  h4 {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    color: @typography-main;
+  }
+
+  h5 {
+    font-weight: 600;
+    font-size: 16px;
+    color: @gray-shady-lady;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    margin-top: 30px;
+    color: @typography-main;
+  }
+
+  h6 {
+    margin-bottom: 8px;
+    margin-top: 30px;
+    color: @typography-main;
+  }
+
+  li,
+  ul {
+    margin-bottom: 20px;
+  }
+
+  li {
+    margin-bottom: 0;
+    word-wrap: break-word;
+  }
+
+  li p {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  hr {
+    border-top-color: #939ca7;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  // pre {
+  //   padding: 10px 0;
+  //   display: block;
+  //   width: 100%;
+  //   code {
+  //     padding: 20px;
+  //     border-radius: 0;
+  //     background: @gray-solitude;
+  //   }
+  // }
+  // code {
+  //   background: @gray-solitude;
+  //   h3 {
+  //     border-bottom: 1px solid @gray-silver;
+  //     padding: 15px;
+  //     margin: -20px -20px 0;
+  //     font-weight: 500;
+  //   }
+  // }
+
+  img {
+    .calc(max-width;  "100% - 4em");
+    margin: 2em;
+    height: auto;
+  }
+
+  .group {
+    table {
+      td,
+      th {
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.internal-wrapper {
+  min-height: 1200px!important;
+}
+
+.overview-content {
+  padding: 40px;
+
+  h1 {
+    margin-top: 0;
+  }
+
+  h3 {
+    margin-top: -90px;
+    padding-top: 120px;
+  }
+}
+
+.navbar-super-holder {
+  height: 100px;
+}
+
+.api-wrapper,
+.tools-wrapper,
+.blogs-wrapper {
+  padding: 0 20px 20px 40px;
+}
+
+.api-wrapper {
+  max-width: 2000px;
+}
+
+.img-click-modal {
+  cursor: pointer;
+}
+
+.internal-content-banner {
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  display: block;
+  color: #fff;
+  background: @orange-red-600;
+  box-shadow: 0 5px 5px @red-mahogany inset;
+}
+
+.form-group label > .help-block {
+  font-weight: normal;
+  color: #bfc7d0;
+}
+
+code {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  text-align: left;
+  margin-right: -4px;
+}
+
+// techne fixes
+ul.nav-tabs {
+  margin-bottom: 0;
+}
+
+.alert {
+  box-shadow: 0 0 3px #000;
+  border-radius: 0;
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+
+.yaas-hiring {
+  margin: 20px 0 10px;
+  text-align: center;
+
+  img {
+    margin: 0 auto;
+  }
+}
+
+.internal-label {
+  font-size: 16px;
+  display: inline-block;
+  padding: 14px 14px 14px 20px;
+  color: rgba(255,255,255,.65);
+  float: left;
+}
+
+.btn-default {
+  color: #fff;
+  background-color: #3f5875;
+  border-color: #24364c;
+  -webkit-box-shadow: 0 3px 0 #2d3f54;
+  box-shadow: 0 3px 0 #2d3f54;
+}
+
+.nav-super li.account:hover .account-overlay,
+.nav-super li.yg-dropdown-node:hover .yg-dropdown {
+  z-index: 1800;
+}
+
+// Better antialiasing for SVG
+svg {
+  ellipse,
+  line,
+  path,
+  polygon,
+  polyline,
+  rect {
+    shape-rendering: geometricprecision;
+  }
+
+  path {
+    @media print {
+      fill: #000 !important;
+    }
+  }
+}
+
+// Fix for links with anchors scrolling and top nav header overlapping
+:target {
+  &:before {
+    content: '';
+    display: block;
+    height: 175px;
+    margin: -175px 0 0;
+  }
+}
+
+header,
+iframe {
+  @media print {
+    .u-hide-permanently;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+ol,
+p,
+ul {
+  &:empty {
+    display: none;
+  }
+}
