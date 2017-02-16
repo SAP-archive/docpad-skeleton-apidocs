@@ -22,4 +22,6 @@ gulp.task('getDependencyInteractiveDocu', gulpTasks.getDependencyInteractiveDocu
 
 gulp.task('prepareInteractiveDocuToDeploy', gulpTasks.prepareInteractiveDocuToDeploy);
 
+gulp.task('fixLinks', gulpTasks.fixLinks);
+
 gulp.task('preparePushResult', gulpTasks.preparePushResult);

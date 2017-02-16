@@ -174,7 +174,7 @@ function prepareInteractiveDocuToDeploy(cb) {
     `${BUILD_PATH}/plugins/embed-hash-persistence.js`,
     /TO_REPLACE_URL=[^,]*/, 
     `TO_REPLACE_URL="${config.docuUrl}/build"`, 
-    `${BUILD_PATH}/plugins/`
+    `${BUILD_PATH}/plugins`
   );
 
   chewie.replacer.replaceInFile(
@@ -191,6 +191,19 @@ function prepareInteractiveDocuToDeploy(cb) {
     `${BUILD_PATH}/scripts/vendor`
   );
 
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/plugins/tokenValidator.js`,
+    /TO_REPLACE_REDIR_URL=[^,]*/, 
+    `TO_REPLACE_REDIR_URL="${config.docuUrl}/auth.html"`, 
+    `${BUILD_PATH}/plugins`
+  );
+
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/plugins/chooseApp.js`,
+    /TO_REPLACE_REDIR_URL=[^,]*/, 
+    `TO_REPLACE_REDIR_URL="${config.docuUrl}/auth.html"`, 
+    `${BUILD_PATH}/plugins`
+  );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/scripts/bundle.js`,

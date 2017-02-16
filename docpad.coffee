@@ -254,7 +254,7 @@ docpadConfig = {
 
     functions:
       writeAfter: [gulpFunctions.replaceApiReferences]
-      generateAfter: [gulpFunctions.fixTables, gulpFunctions.fixLinks, gulpFunctions.serviceLatest]
+      generateAfter: [gulpFunctions.fixTables, gulpFunctions.serviceLatest]
       docpadReady: [validate]
 
     # customize marked to use mermaid diagrams
