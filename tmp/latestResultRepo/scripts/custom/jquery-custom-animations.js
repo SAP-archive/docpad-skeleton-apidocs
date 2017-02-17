@@ -1,1 +1,0 @@
-'use strict';(function(){$.fn.slideFadeIn=function(speed,easing,callback){return this.animate({opacity:'show',height:'show'},speed,easing,callback);};$.fn.slideFadeOut=function(speed,easing,callback){return this.animate({opacity:'hide',height:'hide'},speed,easing,callback);};})();
