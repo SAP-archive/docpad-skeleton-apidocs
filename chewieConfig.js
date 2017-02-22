@@ -4,7 +4,7 @@ const config = {
   skeletonDestination: './src',
   skeletonOutDestination: './out',
   placeholdersLocation: './src/raw/placeholders',
-  docuUrl: process.env.docuURL || 'http://yaas.github.io/chewie-sample-result',
+  docuUrl: process.env.docuURL || 'https://yaas.github.io/chewie-sample-result',
   notClonedRepositoriesFile: 'notClonedRepositories.json',
   indepenedentDocuRepositoriesFile: 'indepenedentDocuRepositories.json',
 
@@ -52,7 +52,7 @@ const config = {
     'services'
   ],
 
-  defaultBaseUriDomain: 'localhost'
+  defaultBaseUriDomain: 'https://your.api.proxy'
 };
 
 const out = config.skeletonOutDestination;

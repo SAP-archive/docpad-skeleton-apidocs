@@ -13,7 +13,7 @@ install:
 - npm run prepare
 script:
 - npm run init
-- npm run compile
+- npm run prepare-deploy
 - npm run preparePushResult
 - npm run pushResult
 env:

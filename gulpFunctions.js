@@ -20,6 +20,7 @@ const gulp = require('gulp'),
   log = require('./node_modules/chewie/src/helpers/logger'),
   unzip = require('gulp-unzip'),
   download = require('gulp-download'),
+  replace = require('gulp-replace'),
   async = require('async'),
   path = require('path'),
   INTERACTIVE_DOCU_SRC_LOC = 'https://devportal.yaas.io/build.zip';
@@ -100,12 +101,12 @@ function fixTables(cb) {
 
 function fixLinks(cb) {
   async.series({
-      hrefSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href='/`, `href='${config.docuUrl}/`, './out'),
-      hrefDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href="/`, `href="${config.docuUrl}/`, './out'),
-      srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src='/`, `src='${config.docuUrl}/`, './out'),
-      srcDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out'),
-      urlSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url('/`, `url('${config.docuUrl}/`, './out'),
-      urlDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url("/`, `url("${config.docuUrl}/`, './out')
+    hrefSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href='/`, `href='${config.docuUrl}/`, './out'),
+    hrefDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href="/`, `href="${config.docuUrl}/`, './out'),
+    srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src='/`, `src='${config.docuUrl}/`, './out'),
+    srcDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out'),
+    urlSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url('/`, `url('${config.docuUrl}/`, './out'),
+    urlDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url("/`, `url("${config.docuUrl}/`, './out')
   }, cb);
 }
 
@@ -145,11 +146,74 @@ function pushResult(cb) {
 }
 
 function getDependencyInteractiveDocu(cb) {
-
   download(INTERACTIVE_DOCU_SRC_LOC)
     .pipe(unzip())
     .pipe(gulp.dest('./src/raw'))
     .on('end', cb);
+}
+
+function prepareInteractiveDocuToDeploy(cb) {
+  
+  const BUILD_PATH = 'out/build';
+  
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/plugins/custom-location-persistence.js`,
+    /TO_REPLACE_URL=[^,]*/, 
+    `TO_REPLACE_URL="${config.docuUrl}/build"`, 
+    `${BUILD_PATH}/plugins`,
+    () => {
+      chewie.replacer.replaceInFile(
+        `${BUILD_PATH}/plugins/custom-location-persistence.js`,
+        /TO_REPLACE_ORIGIN=[^;]*/, 
+        `TO_REPLACE_ORIGIN="${config.docuUrl}"`, 
+        `${BUILD_PATH}/plugins`
+      );
+    }
+  );
+
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/plugins/embed-hash-persistence.js`,
+    /TO_REPLACE_URL=[^,]*/, 
+    `TO_REPLACE_URL="${config.docuUrl}/build"`, 
+    `${BUILD_PATH}/plugins`
+  );
+
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/scripts/embed.js`,
+    /TO_REPLACE_URL=[^,]*/, 
+    `TO_REPLACE_URL="${config.docuUrl}/build"`, 
+    `${BUILD_PATH}/scripts`
+  );
+
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/scripts/vendor/loadStyles.js`,
+    /TO_REPLACE_URL=[^,]*/, 
+    `TO_REPLACE_URL="${config.docuUrl}"`, 
+    `${BUILD_PATH}/scripts/vendor`
+  );
+
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/plugins/tokenValidator.js`,
+    /TO_REPLACE_REDIR_URL=[^,]*/, 
+    `TO_REPLACE_REDIR_URL="${config.docuUrl}/auth.html"`, 
+    `${BUILD_PATH}/plugins`
+  );
+
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/plugins/chooseApp.js`,
+    /TO_REPLACE_REDIR_URL=[^,]*/, 
+    `TO_REPLACE_REDIR_URL="${config.docuUrl}/auth.html"`, 
+    `${BUILD_PATH}/plugins`
+  );
+
+  chewie.replacer.replaceInFile(
+    `${BUILD_PATH}/scripts/bundle.js`,
+    '/images/icons/pencil.svg', 
+    `${config.docuUrl}/images/icons/pencil.svg`, 
+    `${BUILD_PATH}/scripts`
+  );
+
+  cb();
 }
 
 function preparePushResult(cb) {
@@ -216,5 +280,6 @@ module.exports = {
   clean,
   pushResult,
   preparePushResult,
-  getDependencyInteractiveDocu
+  getDependencyInteractiveDocu,
+  prepareInteractiveDocuToDeploy
 };
