@@ -52,7 +52,7 @@ const config = {
     'services'
   ],
 
-  defaultBaseUriDomain: 'localhost'
+  defaultBaseUriDomain: 'https://your.api.proxy'
 };
 
 const out = config.skeletonOutDestination;
