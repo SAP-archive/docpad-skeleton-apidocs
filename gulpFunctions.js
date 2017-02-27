@@ -220,7 +220,7 @@ function preparePushResult(cb) {
 
   const topics = _getTopics(argv.topics);
   const opt = {
-    'src': `${config.skeletonOutDestination}/**`,
+    'src': [`${config.skeletonOutDestination}/**`, `${config.skeletonOutDestination}/**/.nojekyll`],
     'dest': config.generationResult.clonedResultFolderPath,
     'branch': config.generationResult.branch,
     'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for ${argv.topics}`,
