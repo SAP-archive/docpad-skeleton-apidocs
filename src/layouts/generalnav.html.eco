@@ -21,7 +21,7 @@ layout: default
           <li> <a href="/" property="dc:title" id="home-topNav">Home</a></li>
           <li> <a href="/solutions/" property="dc:title" id="solutions-topNav">Solutions</a></li>
           <li> <a href="/services/" property="dc:title" id="apis-topNav">API Docs</a></li>
-          <li> <a href="/rn/" property="dc:title">Release Notes</a></li>
+          <li> <a href="/rn/" property="dc:title" id="rn-topNav">Release Notes</a></li>
         </ul>
 
       <% end %>

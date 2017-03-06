@@ -206,6 +206,48 @@ function _asyncCb() {
   };
 }
 
+/////////////////////////////////////////
+///            TESTS                  ///
+/////////////////////////////////////////
+
+function test(cb) {
+
+  const nightwatch = require('gulp-nightwatch');
+  const helper = require('./tests/helpers/helper');
+  const innerConfig = require('./tests/helpers/variables');
+  const jsonTransform = require('gulp-json-transform');
+  const os = require('os');
+
+  const enviroment = helper.determineEnviroment(argv.b, argv.p);
+
+  log.info(`Running tests against nightwatch envroment(s): ${enviroment} `, argv.a ? 'Test will be run on Sauce Labs (parameter s is present)' : 'Test will be run on localhost');
+
+  gulp.src('./nightwatch.json')
+    .pipe(jsonTransform((data) => {
+      data.test_settings.default.launch_url = innerConfig.launchUrl;
+
+      data.src_folders = argv.y ? [`tests/test-cases/${argv.y}`] : ['tests/test-cases'];
+
+      data.test_settings.default.selenium_port = argv.a ? 80 : 4450;
+      data.test_settings.default.selenium_host = argv.a ? 'ondemand.saucelabs.com' : 'localhost';
+      data.selenium.start_process = argv.a ? false : true;
+
+      data.test_settings.default.username = innerConfig.username;
+      data.test_settings.default.access_key = innerConfig.accessKey;
+
+      return data;
+    }), 4)
+    .pipe(gulp.dest('./'))
+    .pipe(nightwatch({
+      configFile: 'nightwatch.json',
+      cliArgs: {
+        env: enviroment,
+        retries: 3
+      }
+    }))
+    .on('error', cb);
+}
+
 module.exports = {
   serviceLatest,
   replaceApiReferences,
@@ -216,5 +258,6 @@ module.exports = {
   clean,
   pushResult,
   preparePushResult,
-  getDependencyInteractiveDocu
+  getDependencyInteractiveDocu,
+  test
 };
