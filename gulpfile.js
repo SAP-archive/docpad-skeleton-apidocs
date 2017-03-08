@@ -15,6 +15,8 @@ gulp.task('minify', gulpTasks.minify);
 // mind that rn and partials are not sections anymore, they are deleted per service!
 gulp.task('clean', gulpTasks.clean);
 
+gulp.task('preparePushResult', gulpTasks.preparePushResult);
+
 // task pushes latest results to remote repo that keeps results.
 gulp.task('pushResult', gulpTasks.pushResult);
 
@@ -24,4 +26,4 @@ gulp.task('prepareInteractiveDocuToDeploy', gulpTasks.prepareInteractiveDocuToDe
 
 gulp.task('fixLinks', gulpTasks.fixLinks);
 
-gulp.task('preparePushResult', gulpTasks.preparePushResult);
+gulp.task('test', gulpTasks.test);

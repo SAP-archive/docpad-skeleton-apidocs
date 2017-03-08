@@ -51,6 +51,8 @@
     "config": "^1.19.0",
     "express": "4.13.4",
     "gulp": "^3.9.0",
+    "gulp-json-transform": "^0.3.0",
+    "gulp-nightwatch": "^0.2.7",
     "yargs": "^4.2.0"
   },
   "main": "node_modules/docpad/bin/docpad-server",
@@ -68,6 +70,8 @@
     "prepare": "npm run install-deps && npm run copy:modernizr && npm run copy:zeroclipboard && npm run build:lunrplugin && gulp getDependencyInteractiveDocu && del-cli src/raw/bower_components/list.js/docs",
     "compile": "node --max-old-space-size=8192 --max-semi-space-size=512 --nouse-idle-notification node_modules/docpad/out/bin/docpad-compile.js && gulp minify",
     "start": "del-cli out -f && npm run compile && node server.js",
-    "prepare-deploy": "del-cli out -f && DEPLOY=true npm run compile && gulp fixLinks && gulp prepareInteractiveDocuToDeploy"
+    "prepare-deploy": "del-cli out -f && DEPLOY=true npm run compile && gulp fixLinks && gulp prepareInteractiveDocuToDeploy",
+    "test": "gulp test",
+    "test:ui": "NODE_CONFIG_DIR=./tests/config gulp test -b chrome --sauce && NODE_CONFIG_DIR=./tests/config gulp test -b firefox --sauce"
   }
 }
