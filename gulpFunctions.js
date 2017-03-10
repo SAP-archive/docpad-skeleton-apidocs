@@ -1,7 +1,6 @@
 /* eslint camelcase: 0 */
 'use strict';
 
-
 const gulp = require('gulp'),
 
   //below is not explicitly used in the gulpfile but is triggered by the docpad.coffee
@@ -23,11 +22,9 @@ const gulp = require('gulp'),
   replace = require('gulp-replace'),
   async = require('async'),
   path = require('path'),
-  INTERACTIVE_DOCU_SRC_LOC = 'https://devportal.yaas.io/build.zip';
-
+  appConfig = require('./config/default');
 
 const LOCAL_REGISTRY_PATH = '../sample_data';
-
 
 const localValue = argv.local;
 
@@ -100,13 +97,14 @@ function fixTables(cb) {
 }
 
 function fixLinks(cb) {
+  const docuUrl = config.docuUrl;
   async.series({
-    hrefSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href='/`, `href='${config.docuUrl}/`, './out'),
-    hrefDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href="/`, `href="${config.docuUrl}/`, './out'),
-    srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src='/`, `src='${config.docuUrl}/`, './out'),
-    srcDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src="/`, `src="${config.docuUrl}/`, './out'),
-    urlSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url('/`, `url('${config.docuUrl}/`, './out'),
-    urlDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url("/`, `url("${config.docuUrl}/`, './out')
+    hrefSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href='/`, `href='${docuUrl}/`, './out'),
+    hrefDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href="/`, `href="${docuUrl}/`, './out'),
+    srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src='/`, `src='${docuUrl}/`, './out'),
+    srcDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src="/`, `src="${docuUrl}/`, './out'),
+    urlSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url('/`, `url('${docuUrl}/`, './out'),
+    urlDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url("/`, `url("${docuUrl}/`, './out')
   }, cb);
 }
 
@@ -146,7 +144,7 @@ function pushResult(cb) {
 }
 
 function getDependencyInteractiveDocu(cb) {
-  download(INTERACTIVE_DOCU_SRC_LOC)
+  download(appConfig.interactiveDocuSrcUrl)
     .pipe(unzip())
     .pipe(gulp.dest('./src/raw'))
     .on('end', cb);
@@ -155,17 +153,18 @@ function getDependencyInteractiveDocu(cb) {
 function prepareInteractiveDocuToDeploy(cb) {
   
   const BUILD_PATH = 'out/build';
-  
+  const docuUrl = config.docuUrl;
+
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/plugins/custom-location-persistence.js`,
     /TO_REPLACE_URL=[^,]*/, 
-    `TO_REPLACE_URL="${config.docuUrl}/build"`, 
+    `TO_REPLACE_URL="${docuUrl}/build"`, 
     `${BUILD_PATH}/plugins`,
     () => {
       chewie.replacer.replaceInFile(
         `${BUILD_PATH}/plugins/custom-location-persistence.js`,
         /TO_REPLACE_ORIGIN=[^;]*/, 
-        `TO_REPLACE_ORIGIN="${config.docuUrl}"`, 
+        `TO_REPLACE_ORIGIN="${docuUrl}"`, 
         `${BUILD_PATH}/plugins`
       );
     }
@@ -174,42 +173,42 @@ function prepareInteractiveDocuToDeploy(cb) {
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/plugins/embed-hash-persistence.js`,
     /TO_REPLACE_URL=[^,]*/, 
-    `TO_REPLACE_URL="${config.docuUrl}/build"`, 
+    `TO_REPLACE_URL="${docuUrl}/build"`, 
     `${BUILD_PATH}/plugins`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/scripts/embed.js`,
     /TO_REPLACE_URL=[^,]*/, 
-    `TO_REPLACE_URL="${config.docuUrl}/build"`, 
+    `TO_REPLACE_URL="${docuUrl}/build"`, 
     `${BUILD_PATH}/scripts`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/scripts/vendor/loadStyles.js`,
     /TO_REPLACE_URL=[^,]*/, 
-    `TO_REPLACE_URL="${config.docuUrl}"`, 
+    `TO_REPLACE_URL="${docuUrl}"`, 
     `${BUILD_PATH}/scripts/vendor`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/plugins/tokenValidator.js`,
     /TO_REPLACE_REDIR_URL=[^,]*/, 
-    `TO_REPLACE_REDIR_URL="${config.docuUrl}/auth.html"`, 
+    `TO_REPLACE_REDIR_URL="${docuUrl}/auth.html"`, 
     `${BUILD_PATH}/plugins`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/plugins/chooseApp.js`,
     /TO_REPLACE_REDIR_URL=[^,]*/, 
-    `TO_REPLACE_REDIR_URL="${config.docuUrl}/auth.html"`, 
+    `TO_REPLACE_REDIR_URL="${docuUrl}/auth.html"`, 
     `${BUILD_PATH}/plugins`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/scripts/bundle.js`,
     '/images/icons/pencil.svg', 
-    `${config.docuUrl}/images/icons/pencil.svg`, 
+    `${docuUrl}/images/icons/pencil.svg`, 
     `${BUILD_PATH}/scripts`
   );
 
