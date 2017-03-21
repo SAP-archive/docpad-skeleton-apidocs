@@ -33,3 +33,5 @@ Start using this documentation template by following below tutorial:
 - [Overview](docs/overview.md)
 - [Prerequisites](docs/prerequisites.md)
 - [Set up and publishing](docs/using_docu_tool.md)
+
+Automate documentation building by following [Set up documentation continuous delivery pipeline](docs/automation.md)
