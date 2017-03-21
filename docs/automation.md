@@ -41,18 +41,6 @@ Modify `gulpFunctions.js` file by:
 Modify `chewieConfig.js` file by changing `srcLocation` accordingly:
 `process.env.RESULT_LOC || 'https://github.com/{{your_github_user}}/{{your_github_user}}.github.io.git'`
 
-### Sign in
-
-TravisCI log in is integrated with GitHub login. Therefore make sure you are logged in to GitHub first.
-
-1. Go to https://travis-ci.org/
-2. Sign in with GitHub account
-
-### Enable TravisCI for your project
-
-1. Go to https://travis-ci.org/profile/{{you_github_login}}
-2. Enable TravisCI on the `docpad-skeleton-apidocs`
-
 ### Add configuration file
 
 1. Create in `docpad-skeleton-apidocs` repository file with name `.travis.yml` (yes, there is a dot at the beginning of the file name)
@@ -62,7 +50,7 @@ node_js: 6.9.2
 before_install:
 - git config --global user.name "Travis CI"
 - git config --global user.email "travis@travis-ci.org"
-- export RESULT_LOC='https://'$DEPLOY_TOKEN'@github.com/lukasz-lab/lukasz-lab.github.io.git'
+- export RESULT_LOC='https://'$DEPLOY_TOKEN'@github.com/{{your_github_user}}/{{your_github_user}}.github.io.git'
 - export NODE_ENV=prod
 install:
 - npm run prepare
@@ -99,6 +87,18 @@ You might have it already, check by calling `ruby -v` in the terminal. If there 
 secure: "Dwv24THGFtqBEYAvSAyTqsSxEzKG2hofb1jHsPhjCW7KyOC6mb6cdBaOk06ILIaqR2sRzkW8HZYgXNx2f8b9fnpwPZ/diheDMZ39V0eypr+JnaRJmYEQ43lRqPkELQAoas+zWHM6Rmfbg4X65nJvHXjVCy7p0ZXqOCAp4P9LM1XV520ltnr9eS+53vQzr7ZhT8vuYenovIiZ2zY6saDPC6HgO84eOgwtEKRBsQ2tTBbb/e9bI8cMUcUQZ+E3n+166+XU+qk7VvjLIKfzo1VRj9AISOS7gFu0X9fb+ao2w+gje6ArTneBMvBO63NNNWeN4yJVdU8kfRJ0ViYN/DHKlaO3ulYTY+YVcer1vZJhKfLjL8/ucXRcOdNhKWjpdKsWs2OaGTt8Wp7z8nGUUY0zt7S54oDHpYaRwyTdH7kLNNcoyH0cCHqOnWUZ4sRoEhzhjHVE9HPKil19rD3KFgRBP6YVAbYo1GlzYgYu4Tc9YrfCifayyCOw45jd+58557M0hzgUUtD5KX49rPZoJiXJ0mCvDCaBvhGjzqqZnrHmyodZ1t7JBXNdBZOgTFsEb80OY3md04xL3AyEhYDeljwMNYWbIGMj7YspoYtkk/OpagVHnelO03rag9MboWcF3v7IvMTV/A+aiIaJYDVtSrvIsChwn1eNr4Yvbqg5tV9bULI="
 ```
 2. Copy the value and save as new `secure` value in the `.travis.yml` file in `docpad-skeleton-apidocs` in GitHub
+
+### Sign in
+
+TravisCI log in is integrated with GitHub login. Therefore make sure you are logged in to GitHub first.
+
+1. Go to https://travis-ci.org/
+2. Sign in with GitHub account
+
+### Enable TravisCI for your project
+
+1. Go to https://travis-ci.org/profile/{{you_github_login}}
+2. Enable TravisCI on the `docpad-skeleton-apidocs`
 
 ## Check the Pipeline
 
