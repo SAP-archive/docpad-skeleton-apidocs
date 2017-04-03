@@ -41,28 +41,7 @@ Modify `gulpFunctions.js` file by:
 Modify `chewieConfig.js` file by changing `srcLocation` accordingly:
 `process.env.RESULT_LOC || 'https://github.com/{{your_github_user}}/{{your_github_user}}.github.io.git'`
 
-### Add configuration file
-
-1. Create in `docpad-skeleton-apidocs` repository file with name `.travis.yml` (yes, there is a dot at the beginning of the file name)
-```
-language: node_js
-node_js: 6.9.2
-before_install:
-- git config --global user.name "Travis CI"
-- git config --global user.email "travis@travis-ci.org"
-- export RESULT_LOC='https://'$DEPLOY_TOKEN'@github.com/{{your_github_user}}/{{your_github_user}}.github.io.git'
-- export NODE_ENV=prod
-install:
-- npm run prepare
-script:
-- npm run init
-- npm run compile
-- npm run preparePushResult
-- npm run pushResult
-env:
-  global:
-    secure: empty
-```
+Modify `package.json` file by changing `chewie` attribute accordingly: "chewie": "^0.1.3",
 
 ### Install Travis CLI tool for key generation
 
@@ -70,23 +49,7 @@ Travis needs access rights to commit to another repository. There is a Travis CL
 
 1. Install Ruby: https://www.ruby-lang.org/en/documentation/installation/ (Windows: https://rubyinstaller.org/downloads/). Make sure to select option to install proper scripts in the environment variables (PATH).
 You might have it already, check by calling `ruby -v` in the terminal. If there is an information about ruby version, it means you have it.
-2. Install Travis CLI by calling `gem install travis -v 1.8.8 --no-rdoc --no-ri` in the terminal (you need to have admin rights you your machine). Windows may have some certificate issues (http://guides.rubygems.org/ssl-certificate-update/)
-
-### Get the private key
-
-1. Go to `https://github.com/settings/tokens`
-2. Click the `Generate new token` button
-3. Select first `repo` option and click the `Generate token` button
-4. You see the key, save it as you need it for travis encryption, for next steps
-
-### Generate key
-
-1. Call `travis encrypt -r {{your_github_user}}/docpad-skeleton-apidocs DEPLOY_TOKEN=my_token` in the terminal. For example `travis encrypt -r lukasz-lab/docpad-skeleton-apidocs DEPLOY_TOKEN=my_token`. This is what you should see in the terminal after few seconds:
-
-```
-secure: "Dwv24THGFtqBEYAvSAyTqsSxEzKG2hofb1jHsPhjCW7KyOC6mb6cdBaOk06ILIaqR2sRzkW8HZYgXNx2f8b9fnpwPZ/diheDMZ39V0eypr+JnaRJmYEQ43lRqPkELQAoas+zWHM6Rmfbg4X65nJvHXjVCy7p0ZXqOCAp4P9LM1XV520ltnr9eS+53vQzr7ZhT8vuYenovIiZ2zY6saDPC6HgO84eOgwtEKRBsQ2tTBbb/e9bI8cMUcUQZ+E3n+166+XU+qk7VvjLIKfzo1VRj9AISOS7gFu0X9fb+ao2w+gje6ArTneBMvBO63NNNWeN4yJVdU8kfRJ0ViYN/DHKlaO3ulYTY+YVcer1vZJhKfLjL8/ucXRcOdNhKWjpdKsWs2OaGTt8Wp7z8nGUUY0zt7S54oDHpYaRwyTdH7kLNNcoyH0cCHqOnWUZ4sRoEhzhjHVE9HPKil19rD3KFgRBP6YVAbYo1GlzYgYu4Tc9YrfCifayyCOw45jd+58557M0hzgUUtD5KX49rPZoJiXJ0mCvDCaBvhGjzqqZnrHmyodZ1t7JBXNdBZOgTFsEb80OY3md04xL3AyEhYDeljwMNYWbIGMj7YspoYtkk/OpagVHnelO03rag9MboWcF3v7IvMTV/A+aiIaJYDVtSrvIsChwn1eNr4Yvbqg5tV9bULI="
-```
-2. Copy the value and save as new `secure` value in the `.travis.yml` file in `docpad-skeleton-apidocs` in GitHub
+2. Install Travis CLI by calling `gem install travis` in the terminal (you need to have admin rights you your machine). Windows may have some certificate issues (http://guides.rubygems.org/ssl-certificate-update/)
 
 ### Sign in
 
@@ -99,6 +62,75 @@ TravisCI log in is integrated with GitHub login. Therefore make sure you are log
 
 1. Go to https://travis-ci.org/profile/{{you_github_login}}
 2. Enable TravisCI on the `docpad-skeleton-apidocs`
+
+### Setup SSH for your repository
+
+1. Clone your `docpad-skeleton-apidocs` fork using terminal and access the clone:
+```
+git clone docpad-skeleton-apidocs
+cd docpad-skeleton-apidocs
+```
+2. Generate SSH keys:
+ * For MacOS or Linux do the following in the terminal:
+```
+ssh-keygen -t rsa -b 4096 -C "{{you_github_login}}" -f deploy-key
+```
+ * For Windows you need to open `Git Bash` that supports `ssh-keygen`
+```
+ssh-keygen -t rsa -b 4096 -C "{{you_github_login}}" -f deploy-key
+```
+3. In the terminal, in the context of the `docpad-skeleton-apidocs` folder encrypt the ssh key for travis:
+```
+travis encrypt-file deploy-key
+```
+The result of the terminal call is important for next steps.
+4. Add configuration file. Create in `docpad-skeleton-apidocs` repository file with name `.travis.yml` (yes, there is a dot at the beginning of the file name).
+Replace `openssl_info` entry with what you see in the terminal after previous step.
+```
+language: node_js
+node_js: 6.9.2
+before_install:
+- git config --global user.name "Travis CI"
+- git config --global user.email "travis@travis-ci.org"
+- export RESULT_LOC='git@github.com:{{you_github_login}}/{{you_github_login}}.github.io.git'
+- export NODE_ENV=prod
+install:
+- npm run prepare
+script:
+- {{openssl_info}}
+- chmod 600 deploy-key
+- eval `ssh-agent -s`
+- ssh-add deploy-key
+- npm run init
+- npm run compile
+- npm run preparePushResult
+- npm run pushResult
+```
+
+### Add Deploy Key in GitHub
+
+You need to add the deployment key to the repository you use for GitHub Pages hosting.
+
+1. Open file `deploy-key.pub` located in `docpad-skeleton-apidocs` folder and copy its content.
+2. Open this page https://github.com/{{you_github_login}}/{{you_github_login}}.github.io/settings/keys
+3. Click `Add deploy key`:
+ * **Title**: It should be `deploy-key`
+ * **Key**: Paste here the key you copied in previous step
+ 4. Select `Allow write access` and click the `Add key` button
+
+ ### Push all changes to the server
+
+ You created 2 new files that you need to push to your repository:
+ * `.travis.yml`
+ * `deploy-key.enc`
+ There are also other files but you do not want to push them, `deploy-key` with private key for example. You should add them to `.gitignore` file to not push them by mistake.
+
+ Push this 2 files using terminal:
+ ```
+ git add .travis.yml deploy-key.enc
+ git commit -m "travis config and ssh key"
+ git push origin master
+ ```
 
 ## Check the Pipeline
 
