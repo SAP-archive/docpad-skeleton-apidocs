@@ -73,11 +73,11 @@ cd docpad-skeleton-apidocs
 2. Generate SSH keys:
  * For MacOS or Linux do the following in the terminal:
 ```
-ssh-keygen -t rsa -b 4096 -C "{{you_github_login}}" -f deploy-key
+ssh-keygen -t rsa -b 4096 -C "{{you_github_email}}" -f deploy-key
 ```
  * For Windows you need to open `Git Bash` that supports `ssh-keygen`
 ```
-ssh-keygen -t rsa -b 4096 -C "{{you_github_login}}" -f deploy-key
+ssh-keygen -t rsa -b 4096 -C "{{you_github_email}}" -f deploy-key
 ```
 3. In the terminal, in the context of the `docpad-skeleton-apidocs` folder encrypt the ssh key for travis:
 ```
