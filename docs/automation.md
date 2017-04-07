@@ -84,6 +84,7 @@ ssh-keygen -t rsa -b 4096 -C "{{you_github_email}}" -f deploy-key
 travis encrypt-file deploy-key
 ```
 The result of the terminal call is important for next steps.
+
 4. Add configuration file. Create in `docpad-skeleton-apidocs` repository file with name `.travis.yml` (yes, there is a dot at the beginning of the file name).
 Replace `openssl_info` entry with what you see in the terminal after previous step.
 ```
@@ -116,7 +117,7 @@ You need to add the deployment key to the repository you use for GitHub Pages ho
 3. Click `Add deploy key`:
  * **Title**: It should be `deploy-key`
  * **Key**: Paste here the key you copied in previous step
- 4. Select `Allow write access` and click the `Add key` button
+4. Select `Allow write access` and click the `Add key` button
 
  ### Push all changes to the server
 
