@@ -2,7 +2,6 @@ node_modules
 /out
 src/raw/bower_components
 tmp
-deploy-key
 
 src/raw/scripts/general/modernizr.js
 src/raw/scripts/general/ZeroClipboard.js
