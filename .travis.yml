@@ -7,7 +7,7 @@ before_install:
 - git config --global user.email "test@test.com"
 - export docuBranch='master'
 - export NODE_ENV=prod
-- export RESULT_LOC='git@github.com:yaas/chewie-sample-result.github.io.git'
+- export RESULT_LOC='https://'$DEPLOY_TOKEN'@github.com/yaas/chewie-sample-result.git'
 - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 install:
 - npm run prepare
