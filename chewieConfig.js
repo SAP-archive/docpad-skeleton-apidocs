@@ -30,7 +30,7 @@ const config = {
   },
 
   generationResult: {
-    srcLocation: process.env.RESULT_LOC || 'https://github.com/YaaS/chewie-sample-result.github.io.git',
+    srcLocation: process.env.RESULT_LOC || 'https://github.com/YaaS/chewie-sample-result.git',
     branch: process.env.docuBranch || 'master',
     cloneLocation: 'latestResultRepo'
   },

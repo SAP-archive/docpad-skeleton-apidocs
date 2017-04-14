@@ -5,6 +5,9 @@ node_js:
 before_install:
 - git config --global user.name "Travis CI Test"
 - git config --global user.email "test@test.com"
+- export docuBranch='master'
+- export NODE_ENV=prod
+- export RESULT_LOC='git@github.com:YaaS/chewie-sample-result.git'
 - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 install:
 - npm run prepare
@@ -20,10 +23,6 @@ script:
 - npm run test:ui
 env:
   global:
-  - docuBranch: master
-  - NODE_ENV: prod
-  - REGISTRY_PATH: git@github.com:YaaS/docpad-skeleton-apidocs.git
-  - RESULT_LOC: git@github.com:YaaS/chewie-sample-result.github.io.git
   - secure: h8ZiTEO8/4WFYyKz9S0H2Q5/KpGEqOz7ZndGznzbaYxSADWQ7Dycb4JD22PvSKRVK7E1mwBgUv758kkIw5HHRhxDMFTTFLrkh8mdbL4ZhqNJodMx33Xz4NRoKDEiSABOqfltk7w4JTO8ZFWRHlAPNSgd+97dq9x3iWhgmfkHRQwusVnPL8lBXxy/ELKI2ENEi4sIm/8t6EmfX+kVPO1hMPHs5ojo2BRZga7QScxVExPSAomw8pUdhnNaUXDquunL47b/r4O4thO1ljozIm4To6h6cGAQKDZehIIkewCwtAPQMr15RBu2lkte2uqrnOju+4c2R8bGxgL/YqpsVgj3bnJ+zRdvSgNLg7i1O/8nfX/ntZ7rWv0aX/m6guHR5NjMIhCXQ7niFwhb8qp/8kxBJ9I56OYtxGkhnMlOHuABrowKXmZOpKrRdXu2KRrz7stBApdPp9ZhtczqIn/VPkUcWbARPF350E+n0Kxtm6W+jB+MLkg774Ct3CAg/GDaBuWtE51i0bDGwdavTu11GVaab4jWoIckP16pINQycxgHZ5uZFMbDpbnf0PkKB4hXkteiTikVKj+WJIvDwtDsIAdMwGV9+T97Xff66DexNd1PGPV6TSlSSlIW6DfKrGO0/2SnUhA7YEa35D/4vttwD8o6HnO2ZYclBx0fiXQvMJMgT8o=
   - secure: d9ES4496LFRkXfJHCnPYnmIunLj6Y8jnTm4tp0nvAXeaK8BAWAEx0NCGL3HkjVkS8VrlCYg9fb00507WAsJFfjMqhM/ribgMgCMo+6VAfxWxyK/jy4RRUS/RK78vzm87iAm1SoPD8+87ydkU8tmM/FsepthGmG0ZyGTyGstQd+C6FIcKRWcbjUbfTJtWCRDB+fGkNRxxeDhL9SxSNE3lQ1bE6+OOGaKqnV//hdnX4d/TZI5Iw7Xh9UsoBlr19lfRYi6qW4ddRh6SOiEs1IfkvUIXpL6q6GIwCcOvZiXIRERbXHxc/49n1zK4qVofjbGHgoRCHJst1uNKDC33uGuHbMUywnttfDn5u5bfblRMC52o+cm4HWkC1xyQjqcaWgDtc+ZiRs0LrbO+HoFkdeWUBJrKa0EFo0LxhNKkP12ct5jiOO9fJTbEzLv8ANt+WlfloP7Ax56UTifJnQozZI3GOpnmQMAFeqHznvxkoNkxlJeUDFaCBEK3HJgE1AaLAZyIaCENpnt3uVLsezfZxTCzCynKndvvZz0JgXcBW/xhEjx+YsvkT2/hrp0Tgri9vqmwkJbbqFnsgBk1k+RJsGAvtJ8z7GFhVbxVqZ/zJi5SqMzcQlOoyhB18WTN/qjGSJ/7Bo/Tvkwx7M9744XZOihjwBdD+EbReg4XCRzcBvLfZeI=
 branches:

@@ -22,8 +22,7 @@ const gulp = require('gulp'),
   replace = require('gulp-replace'),
   async = require('async'),
   path = require('path'),
-  appConfig = require('./config/default'),
-  INTERACTIVE_DOCU_SRC_LOC = 'https://api.us.yaas.io/hybris/media/v2/public/files/58c27eb6ec8589001d059398';
+  appConfig = require('./config/default');
 
 const LOCAL_REGISTRY_PATH = '../sample_data';
 
