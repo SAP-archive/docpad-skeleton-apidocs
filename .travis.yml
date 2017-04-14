@@ -10,7 +10,7 @@ before_install:
 - export RESULT_LOC='git@github.com:YaaS/chewie-sample-result.github.io.git'
 - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
 install:
-- npm run prepare
+- npm run prepare 
 script:
 - openssl aes-256-cbc -K $encrypted_321fb9daba18_key -iv $encrypted_321fb9daba18_iv -in deploy-key.enc -out deploy-key -d
 - chmod 600 deploy-key
