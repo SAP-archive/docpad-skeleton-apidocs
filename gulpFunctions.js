@@ -229,7 +229,7 @@ function preparePushResult(cb) {
     'indepenedentDocuRepositoriesFile': config.indepenedentDocuRepositoriesFile
   };
 
-  chewie.preparePushResult(config, opt, (err) => {
+  chewie.preparePushResult(opt, (err) => {
     if (err) {
       log.error(err);
       return cb();
