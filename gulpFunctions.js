@@ -151,20 +151,20 @@ function getDependencyInteractiveDocu(cb) {
 }
 
 function prepareInteractiveDocuToDeploy(cb) {
-  
+
   const BUILD_PATH = 'out/build';
   const docuUrl = config.docuUrl;
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/plugins/custom-location-persistence.js`,
-    /TO_REPLACE_URL=[^,]*/, 
-    `TO_REPLACE_URL="${docuUrl}/build"`, 
+    /TO_REPLACE_URL=[^,]*/,
+    `TO_REPLACE_URL="${docuUrl}/build"`,
     `${BUILD_PATH}/plugins`,
     () => {
       chewie.replacer.replaceInFile(
         `${BUILD_PATH}/plugins/custom-location-persistence.js`,
-        /TO_REPLACE_ORIGIN=[^;]*/, 
-        `TO_REPLACE_ORIGIN="${docuUrl}"`, 
+        /TO_REPLACE_ORIGIN=[^;]*/,
+        `TO_REPLACE_ORIGIN="${docuUrl}"`,
         `${BUILD_PATH}/plugins`
       );
     }
@@ -172,43 +172,43 @@ function prepareInteractiveDocuToDeploy(cb) {
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/plugins/embed-hash-persistence.js`,
-    /TO_REPLACE_URL=[^,]*/, 
-    `TO_REPLACE_URL="${docuUrl}/build"`, 
+    /TO_REPLACE_URL=[^,]*/,
+    `TO_REPLACE_URL="${docuUrl}/build"`,
     `${BUILD_PATH}/plugins`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/scripts/embed.js`,
-    /TO_REPLACE_URL=[^,]*/, 
-    `TO_REPLACE_URL="${docuUrl}/build"`, 
+    /TO_REPLACE_URL=[^,]*/,
+    `TO_REPLACE_URL="${docuUrl}/build"`,
     `${BUILD_PATH}/scripts`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/scripts/vendor/loadStyles.js`,
-    /TO_REPLACE_URL=[^,]*/, 
-    `TO_REPLACE_URL="${docuUrl}"`, 
+    /TO_REPLACE_URL=[^,]*/,
+    `TO_REPLACE_URL="${docuUrl}"`,
     `${BUILD_PATH}/scripts/vendor`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/plugins/tokenValidator.js`,
-    /TO_REPLACE_REDIR_URL=[^,]*/, 
-    `TO_REPLACE_REDIR_URL="${docuUrl}/auth.html"`, 
+    /TO_REPLACE_REDIR_URL=[^,]*/,
+    `TO_REPLACE_REDIR_URL="${docuUrl}/auth.html"`,
     `${BUILD_PATH}/plugins`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/plugins/chooseApp.js`,
-    /TO_REPLACE_REDIR_URL=[^,]*/, 
-    `TO_REPLACE_REDIR_URL="${docuUrl}/auth.html"`, 
+    /TO_REPLACE_REDIR_URL=[^,]*/,
+    `TO_REPLACE_REDIR_URL="${docuUrl}/auth.html"`,
     `${BUILD_PATH}/plugins`
   );
 
   chewie.replacer.replaceInFile(
     `${BUILD_PATH}/scripts/bundle.js`,
-    '/images/icons/pencil.svg', 
-    `${docuUrl}/images/icons/pencil.svg`, 
+    '/images/icons/pencil.svg',
+    `${docuUrl}/images/icons/pencil.svg`,
     `${BUILD_PATH}/scripts`
   );
 
@@ -229,7 +229,7 @@ function preparePushResult(cb) {
     'indepenedentDocuRepositoriesFile': config.indepenedentDocuRepositoriesFile
   };
 
-  chewie.preparePushResult(opt, (err) => {
+  chewie.preparePushResult(config, opt, (err) => {
     if (err) {
       log.error(err);
       return cb();
