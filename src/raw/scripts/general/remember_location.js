@@ -18,7 +18,7 @@ $(window).on('load', function() {
   //works for remembering elements from left nav and top nav
   $('#left_nav a').each( function(){
     var $_this = $(this);
-    var locations = ['/gettingstarted/', '/internal/gettingstarted/', '/internal/docu_guide/', '/overview/', '/internal/overview/', '/services/', '/internal/services/', '/rn/', '/internal/rn/', '/tools/', '/internal/tools/'];
+    var locations = ['/solutions/', '/services/', '/rn/'];
     if(locations.indexOf(location.pathname)!== -1)
       return false;
     if( pathMatchWithIndex.test($_this[0].href) || pathMatchNoIndex.test($_this[0].href) ){
