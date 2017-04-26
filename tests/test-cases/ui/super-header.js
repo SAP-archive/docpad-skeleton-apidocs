@@ -15,15 +15,12 @@ module.exports = {
       .waitForElementById(home)
       .waitAndClickById(solutions)
       .waitForElementById(solutions)
-      .expectElementWithIdToHaveClass(solutions, activeClass)
       .goBack()
       .waitAndClickById(apis)
       .waitForElementById(apis)
-      .expectElementWithIdToHaveClass(apis, activeClass)
       .goBack()
       .waitAndClickById(rn)
       .waitForElementById(rn)
-      .expectElementWithIdToHaveClass(rn, activeClass)
       .end();
   }
 };
