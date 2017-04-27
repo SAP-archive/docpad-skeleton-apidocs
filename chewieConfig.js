@@ -10,7 +10,7 @@ const config = {
 
   registry: {
     location: process.env.REGISTRY_LOCATION || 'remote',
-    path: process.env.REGISTRY_PATH || 'https://github.com/YaaS/docpad-skeleton-apidocs-sampledata.git',
+    path: process.env.REGISTRY_PATH || 'https://github.com/YaaS/chewie-sample-data',
     fileName: 'docu_registry.json',
     branch: process.env.docuBranch || 'master',
     shortVersionFileName: 'shrinkedRegistry.json',
@@ -40,15 +40,10 @@ const config = {
   },
 
   typesSrcLocNotMainDocu: [
-    'gettingstarted',
-    'overview',
-    'solutions',
-    'architecture',
-    'docu_guide'
+    'solutions'
   ],
 
   typesWithReleaseNotes: [
-    'tools',
     'services'
   ],
 
