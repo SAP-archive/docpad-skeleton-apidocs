@@ -40,7 +40,6 @@ const config = {
   },
 
   typesSrcLocNotMainDocu: [
-    'overview',
     'solutions'
   ],
 
