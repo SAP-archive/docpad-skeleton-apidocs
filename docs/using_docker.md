@@ -6,7 +6,7 @@ Docker makes is easy to simulate locally the same behavior you expect on the ser
 
 Open the terminal and start documentation portal container with the following:
 ```
-docker run -it --name api-doc-sample ~/mylocal:/mylocal -p 9778:9778 derberg/dsa-quickstart /bin/bash
+docker run -it --name api-doc-sample -v ~/mylocal:/mylocal -p 9778:9778 derberg/dsa-quickstart /bin/bash
 # On Windows, you need to replace ~/mylocal with //C/Users/{your user name}
 npm run start
 ```
@@ -46,11 +46,10 @@ Now you know how to fill the template with your own content. Examine the forked 
 
 Modifications in files inside images require you to use a terminal based editor.
 
-1. Install **nano** inside container: `apk update && apk add nano`
-2. Navigate to `/src/documents/index.html.eco`
-3. Edit file by calling `nano index.html.eco`
-4. Modify descriptions without touching HTML elements
-5. Save with ctrl+o and exit with ctrl+x
+1. Navigate to `/src/documents/index.html.eco`
+2. Edit file by calling `nano index.html.eco`
+3. Modify descriptions without touching HTML elements
+4. Save with ctrl+o and exit with ctrl+x
 
 ## Publish generated content
 
@@ -110,9 +109,8 @@ npm run start
 
 Once you are happy with your changes to the template, and you have the whole setup ready, create your own Docker image so other people in your organization can work with it easily:
 
-1. Modify [Docker](../Dockerfile) file used to create **derberg/dsa-quickstart** image. Just make sure link to the skeleton points to your fork/copy
-2. Get a Docker account: https://hub.docker.com/
-3. Call `docker login` to authorize
-4. Build the image from directory where **Dockerfile** is located: `docker build -t my-dsa-quickstart .`
-5. Tag the image: `docker tag my-dsa-quickstart {DOCKER_ID_USER}/my-dsa-quickstart`
-6. Push the image to the hub: `docker push {DOCKER_ID_USER}/my-dsa-quickstart`
+1. Get a Docker account: https://hub.docker.com/
+2. Call `docker login` to authorize
+3. Build the image from directory where **Dockerfile** is located: `docker build -t my-dsa-quickstart .`
+4. Tag the image: `docker tag my-dsa-quickstart {DOCKER_ID_USER}/my-dsa-quickstart`
+5. Push the image to the hub: `docker push {DOCKER_ID_USER}/my-dsa-quickstart`
