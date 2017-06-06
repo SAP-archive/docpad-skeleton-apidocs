@@ -65,7 +65,7 @@ git config --global user.name "Your Name"
 3. Now add 2 more configurations before you build docu again:
 ```
 export docuURL=https://{your_github_username}.github.io
-export RESULT_LOC=https://github.com/{your_github_username}/lukasz-lab.github.io
+export RESULT_LOC=https://github.com/{your_github_username}/{your_github_username}.github.io
 npm run init
 NODE_ENV=prod npm run compile
 npm run preparePushResult
