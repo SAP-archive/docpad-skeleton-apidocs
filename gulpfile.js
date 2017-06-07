@@ -27,3 +27,13 @@ gulp.task('prepareInteractiveDocuToDeploy', gulpTasks.prepareInteractiveDocuToDe
 gulp.task('fixLinks', gulpTasks.fixLinks);
 
 gulp.task('test', gulpTasks.test);
+
+/*
+* Errors handling
+*/
+function onError(err){
+  console.error('Unhandled error: ', err);
+  process.exit(1);
+}
+process.on('uncaughtException', onError);
+process.on('unhandledRejection', onError);
