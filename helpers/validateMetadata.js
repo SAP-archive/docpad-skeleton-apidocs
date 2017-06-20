@@ -1,67 +1,52 @@
-/* eslint no-var: 0 prefer-arrow-callback: 0, prefer-template: 0, no-inner-declarations: 0 */
+'use strict';
 
-var gulp = require('gulp');
-var fs = require('fs');
-var mkmeta = require('marked-metadata');
-var tap = require('gulp-tap');
-var path = require('path');
-var ysYaml = require('js-yaml');
+require('babel-core/register');
+require('babel-polyfill');
+const gulp = require('gulp');
+const fs = require('fs');
+const tap = require('gulp-tap');
+const path = require('path');
+const ysYaml = require('yamljs');
+const logger = require('wookiee-utils').logger;
 
 
 function validateMetadata(path) {
+  const content = fs.readFileSync(path, 'utf8');
 
-  var valid = true;
-  var content = fs.readFileSync(path, 'utf8');
-  var occurences = allIndexOf(content, '---');
-  var metaData = content.substring(occurences[0] + 3, occurences[1]);
+  //in case of any questions about regex:
+  //https://github.com/docpad/docpad/blob/master/src/lib/models/document.coffee
 
+  const normalizedContent = content.replace(/\r\n?/gm, '\n');
+  const regex = /^\s*[^\n]*?(([^\s\d\w])\2{2,})(?:\x20*([a-z]+))?([\s\S]*?)[^\n]*?\1[^\n]*/;
+  const result = regex.exec(content);
+  
+  if(!result) return true; //doesnt have metadata, shouldnt be erased
+  const metaData = result[4].trim();
+  const normalizedMetaData = metaData.replace(/\t/g, '    '); //YAML doesn't support tabs that well
   try {
-    ysYaml.safeLoad(metaData);
+    ysYaml.parse(normalizedMetaData);
   }
   catch (e) {
-    valid = false;
+    logger.warn(`File ${path} has been excluded from build due to invalid metadata.`, e);
+    return false;
   }
 
-  return valid;
-}
-
-
-function allIndexOf(str, strToSearch) {
-
-  var indices = [];
-  var pos;
-
-  for(pos = str.indexOf(strToSearch); pos !== -1; pos = str.indexOf(strToSearch, pos + 1)) {
-    indices.push(pos);
-  }
-
-  return indices;
+  return true;
 }
 
 function validateMetaDataByPath(next) {
-  var url = './src/documents/**/*.*';
+  const url = './src/documents/**/*.*';
 
   gulp.src(url)
-    .pipe(tap(function(file, t){
+    .pipe(tap((file, t) => {
 
-      var ext = path.extname(file.path);
+      const ext = path.extname(file.path);
       if(ext !== '.md' && ext !== '.eco' && ext !== '.html') return;
 
-      var md = new mkmeta(file.path);
-      try {
-        md = md.metadata();
-
-        if(!validateMetadata(file.path)) {
-          fs.unlink(file.path);
-          console.log('File '  + file.path + ' has been excluded from build due to invalid metadata.');
-        }
-
+      if(!validateMetadata(file.path)) {
+        fs.unlink(file.path);
       }
-      catch(e) {
 
-        //it means that we process file which doesnt have metadata
-        return t;
-      }
       return t;
     }))
     .on('end', next);
