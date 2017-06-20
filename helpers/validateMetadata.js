@@ -1,13 +1,10 @@
 'use strict';
 
-require('babel-core/register');
-require('babel-polyfill');
 const gulp = require('gulp');
 const fs = require('fs');
 const tap = require('gulp-tap');
 const path = require('path');
 const ysYaml = require('yamljs');
-const logger = require('wookiee-utils').logger;
 
 
 function validateMetadata(path) {
@@ -27,7 +24,7 @@ function validateMetadata(path) {
     ysYaml.parse(normalizedMetaData);
   }
   catch (e) {
-    logger.warn(`File ${path} has been excluded from build due to invalid metadata.`, e);
+    console.log(`File ${path} has been excluded from build due to invalid metadata.`, e);
     return false;
   }
 
