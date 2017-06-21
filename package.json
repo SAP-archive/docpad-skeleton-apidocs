@@ -41,7 +41,8 @@
     "docpad-plugin-winston": "~2.0.0",
     "gulp-download": "0.0.1",
     "gulp-unzip": "^0.1.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "yamljs": "~0.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
