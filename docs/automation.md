@@ -1,92 +1,97 @@
-## Continuous Integration in Theory
+## Continuous integration in theory
 
-Continuous integration practice comes from software engineering world. When a team of developers creates an application, they want to assure it is properly tested, follows coding best practices and that it is production ready. Therefore on a server side they use special tools that enable them to do continuous integration. The most popular tools are Jenkins, Team City, TravisCI or Bamboo.
+Continuous integration practice comes from the software engineering world. When a team of developers creates an application, they want to ensure it is properly tested, follows coding best practices, and that it is production-ready. Therefore, on the server side, developers use special tools that allow them to perform continuous integration. The most popular tools are Jenkins, TeamCity, Travis CI, and Bamboo.
 
-This pattern also applies to documentation generation and publishing:
-* Thanks to static site generators and their command line interfaces you can also easily automate documentation generation
-* Thanks to free solutions like GitHub Pages you can also easily automate documentation publishing
+This practice also applies to documentation generation and publishing with the following benefits:
+* Thanks to static site generators and their command line interfaces (CLI), you can easily automate documentation generation.
+* Thanks to free solutions like GitHub Pages, you can also easily automate documentation publishing.
 
-The docpad-skeleton-apidocs is a documentation portal template based on static site generator called DocPad and you can fully automate its usage through continuous integration.
+The <b>docpad-skeleton-apidocs</b> repository is a documentation portal template based on a static site generator called DocPad, and you can fully automate its usage through continuous integration.
 
-## Why Automate
+## Why automate
 
-We believe that all dev team members should contribute to the content to get a good technical documentation. This means that once you scale up your organization and get many different authors, you need an automated generation and publishing process in place.
+All dev team members should contribute to the content to get good technical documentation. This means that when you scale up your organization and consequently have many different authors, you need an automated generation and publishing process in place.
 
-You do not want everybody to install docpad-skeleton-apidocs on their machines. For small updates, you want to go directly to your repository, make a change and push immediately to the server.
+You do not want everybody to install the <b>docpad-skeleton-apidocs</b> repository on their machines. For small updates, you want to go directly to your repository, make a change, and push it to the server immediately.
 
-Thanks to the automation, you do not need to call manually, from your local machine all those commands like `npm run compile` or `npm run preparePushResult` or `npm run pushResult`. You can configure them once in the CI tool and then push the red button.
+Thanks to automation, you do not need to call manually, from your local machine, commands like `npm run compile`, `npm run preparePushResult`, or `npm run pushResult`. You can configure these calls once in a CI tool and then push the red button for subsequent document generation and publishing tasks.
 
-## [TravisCI](https://travis-ci.org)
+## [Travis CI](https://travis-ci.org)
 
-A continuous integration tool integrated with GitHub. You can automate any operation on your projects that you trigger manually on your local machine.
+Travis CI is a continuous integration tool integrated with GitHub. You can automate any operation on your projects that you trigger manually on your local machine.
 
-What differs the tool from other CIs is the configuration approach. You configure your jobs on a project level by adding a proper configuration file, instead of doing it in the TravisCI user interface.
+What differs in Travis CI from other CIs is the configuration approach. You configure your jobs on a project level, by adding a proper configuration file in the Travis CI user interface, instead of configuring projects twice.
 
 ## [GitHub Pages](https://pages.github.com/)
 
-Free hosting service for static sites. Part of GitHub and obviously closely integrated with GitHub. You just enable your project to be hosted on GitHub pages, and as long as your project is a static site, it is automatically published.
+GitHub Pages is a free hosting service for static sites. It is part of, and closely integrated with, GitHub. You can enable your project for hosting on GitHub Pages, and, as long as your project is a static site, automatically publish it.
 
-## Start Using TravisCI
+## Start using Travis CI
 
-Below you have instruction on how to start using TravisCI with docpad-skeleton-apidocs to have your documentation published to GitHub pages automatically.
+The following instructions describe how to start using Travis CI with <b>docpad-skeleton-apidocs</b> to publish your documentation to GitHub Pages automatically.
 
 ### Upgrade your fork
 
-For older versions of the `docpad-skeleton-apidocs` you need to change the following values:
+For older versions of the <b>docpad-skeleton-apidocs</b> repository, change the following values:
 
-Modify `gulpFunctions.js` file by:
-* Changing line 25 to: `INTERACTIVE_DOCU_SRC_LOC = 'https://api.us.yaas.io/hybris/media/v2/public/files/58c27eb6ec8589001d059398';`
-* Replacing line `chewie.preparePushResult(opt, (err) => {` with `chewie.preparePushResult(config, opt, (err) => {`
+1. Modify the <b>gulpFunctions.js</b> file by:
+* Changing line 25 to `INTERACTIVE_DOCU_SRC_LOC = 'https://api.us.yaas.io/hybris/media/v2/public/files/58c27eb6ec8589001d059398';`
+* Replacing the line `chewie.preparePushResult(opt, (err) => {` with `chewie.preparePushResult(config, opt, (err) => {`
 
-Modify `chewieConfig.js` file by changing `srcLocation` accordingly:
+2. Modify the <b>chewieConfig.js</b> file by changing `srcLocation` accordingly:
 `process.env.RESULT_LOC || 'https://github.com/{{your_github_user}}/{{your_github_user}}.github.io.git'`
 
-Modify `package.json` file by changing `chewie` attribute accordingly: "chewie": "^0.1.3",
+3. Modify the <b>package.json</b> file by changing the `chewie` attribute accordingly: 
+`"chewie": "^0.1.3",`
 
-### Install Travis CLI tool for key generation
+### Install the Travis CLI tool for key generation
 
-Travis needs access rights to commit to another repository. There is a Travis CLI that you can use locally to generate a proper access key to enable push to GitHub repo.
+Travis CI needs access rights to commit to another repository. You can use the Travis CLI client locally to generate a proper access key to enable push capabilities to a GitHub repo. 
 
-1. Install Ruby: https://www.ruby-lang.org/en/documentation/installation/ (Windows: https://rubyinstaller.org/downloads/). Make sure to select option to install proper scripts in the environment variables (PATH).
-You might have it already, check by calling `ruby -v` in the terminal. If there is an information about ruby version, it means you have it.
-2. Install Travis CLI by calling `gem install travis` in the terminal (you need to have admin rights you your machine). Windows may have some certificate issues (http://guides.rubygems.org/ssl-certificate-update/)
+1. Install Ruby: For MacOS or Linux, https://www.ruby-lang.org/en/documentation/installation/ or on Windows, https://rubyinstaller.org/downloads/). 
+ * Select the option to install the proper scripts in the environment variables (PATH).
+ * To check whether you already have Ruby, call `ruby -v` in the terminal. If information about a Ruby version appears, you have a Ruby distribution and can skip this step.
+2. Install Travis CLI by calling `gem install travis` in the terminal. 
+ * You must have admin rights to your machine. Windows users might experience certificate issues. Follow these [instructions](http://guides.rubygems.org/ssl-certificate-update/) to update certificates if necessary.
 
 ### Sign in
 
-TravisCI log in is integrated with GitHub login. Therefore make sure you are logged in to GitHub first.
+Because the Travis CI login is integrated with GitHub, sign in using the following instructions.
 
-1. Go to https://travis-ci.org/
-2. Sign in with GitHub account
+1. Go to https://travis-ci.org/.
+2. Sign in with your GitHub account.
 
-### Enable TravisCI for your project
+### Enable Travis CI for your project
 
-1. Go to https://travis-ci.org/profile/{{you_github_login}}
-2. Enable TravisCI on the `docpad-skeleton-apidocs`
+1. Go to https://travis-ci.org/profile/{{you_github_login}}.
+2. Enable Travis CI on the <b>docpad-skeleton-apidocs</b> repository.
 
-### Setup SSH for your repository
+### Set up SSH for your repository
 
-1. Clone your `docpad-skeleton-apidocs` fork using terminal and access the clone:
+1. Clone your <b>docpad-skeleton-apidocs</b> fork using a terminal. To access the clone:
 ```
 git clone docpad-skeleton-apidocs
 cd docpad-skeleton-apidocs
 ```
-2. Generate SSH keys:
- * For MacOS or Linux do the following in the terminal:
+2. Generate the SSH keys:
+ * For MacOS or Linux, run the following command in the terminal:
 ```
 ssh-keygen -t rsa -b 4096 -C "{{you_github_email}}" -f deploy-key
 ```
- * For Windows you need to open `Git Bash` that supports `ssh-keygen`
+ * For Windows, open `Git Bash` that supports `ssh-keygen` and run:
 ```
 ssh-keygen -t rsa -b 4096 -C "{{you_github_email}}" -f deploy-key
 ```
-3. In the terminal, in the context of the `docpad-skeleton-apidocs` folder encrypt the ssh key for travis:
+3. In the terminal, in the context of the <b>docpad-skeleton-apidocs<b> folder, encrypt the ssh key for Travis CI:
+
 ```
 travis encrypt-file deploy-key
 ```
-The result of the terminal call is important for next steps.
+Take note of the result of the terminal call for the following steps.
 
-4. Add configuration file. Create in `docpad-skeleton-apidocs` repository file with name `.travis.yml` (yes, there is a dot at the beginning of the file name).
-Replace `openssl_info` entry with what you see in the terminal after previous step.
+4. Create a configuration file in the <b>docpad-skeleton-apidocs</b> repository with the name <b>.travis.yml<b>, including the dot at the beginning of the file name.
+
+5. Replace the `openssl_info` entry with the terminal results you received in step 3.
 ```
 language: node_js
 node_js: 6.9.2
@@ -108,35 +113,36 @@ script:
 - npm run pushResult
 ```
 
-### Add Deploy Key in GitHub
+### Add a deploy key in GitHub
 
-You need to add the deployment key to the repository you use for GitHub Pages hosting.
+Add the deployment key to the repository you use for GitHub Pages hosting.
 
-1. Open file `deploy-key.pub` located in `docpad-skeleton-apidocs` folder and copy its content.
-2. Open this page https://github.com/{{you_github_login}}/{{you_github_login}}.github.io/settings/keys
-3. Click `Add deploy key`:
- * **Title**: It should be `deploy-key`
- * **Key**: Paste here the key you copied in previous step
-4. Select `Allow write access` and click the `Add key` button
+1. Open the file <b>deploy-key.pub</b>, located in the <b>docpad-skeleton-apidocs</b> folder and copy its contents.
+2. Open the page https://github.com/{{you_github_login}}/{{you_github_login}}.github.io/settings/keys.
+3. Click <b>Add deploy key</b> and apply these values:
+ * **Title**: `deploy-key`
+ * **Key**: Paste the key you copied in step 1.
+4. Select <b>Allow write access</b> and click <b>Add key</b>.
 
  ### Push all changes to the server
 
- You created 2 new files that you need to push to your repository:
- * `.travis.yml`
- * `deploy-key.enc`
- There are also other files but you do not want to push them, `deploy-key` with private key for example. You should add them to `.gitignore` file to not push them by mistake.
+ Now you must push these files that you created to your repository:
+ * <b>.travis.yml</b>
+ * <b>deploy-key.enc</b>
+ 
+<b>Note:</b>Do not push the other files you created, such as <b>deploy-key</b> with the private key. Instead, add these files to the <b>.gitignore</b> file so you do not mistakenly push them.
 
- Push this 2 files using terminal:
+ Push <b>.travis.yml</b> and <b>deploy-key.enc</b> using the terminal commands:
  ```
  git add .travis.yml deploy-key.enc
  git commit -m "travis config and ssh key"
  git push origin master
  ```
 
-## Check the Pipeline
+## Check the pipeline
 
-Congratulations! You have your first documentation continuous delivery pipeline. Now you can make a change to your documentation and then go and trigger the Travis job to rebuild your documentation portal on production.
+Congratulations! You have your first documentation continuous delivery pipeline. Now you can make a change to your documentation and then trigger the Travis CI job to rebuild your documentation portal on production.
 
-1. Make a change in documentation in your fork of `minerva` service
-2. Go to https://travis-ci.org/ and rerun last build
-3. In 3min you can see a change in your portal https://{{your_github_user}}.github.io/
+1. Make a change to the documentation in your fork of the `minerva` service.
+2. Go to https://travis-ci.org/ and rerun the most recent build.
+3. Within a few minutes, you can verify that the changes are visible in your portal, https://{{your_github_user}}.github.io/.
