@@ -9,8 +9,6 @@ COPY . /docpad-skeleton-apidocs/
 WORKDIR /docpad-skeleton-apidocs
 # install dependencies of the skeleton
 RUN npm run prepare
-# initialize your skeleton with sample data
-RUN npm run init
 
 EXPOSE 9778
 
