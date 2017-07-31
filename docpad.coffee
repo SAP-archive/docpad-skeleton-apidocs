@@ -2,7 +2,7 @@ require('./helpers/objectsPrototypes.js');
 gulpFunctions = require('./gulpFunctions.js');
 validate = require('./helpers/validateMetadata.js')
 config = require('./chewieConfig');
-
+customization = require('./helpers/customization.js')(config);
 
 #variables used many times in docpad.coffee that can be stored like this
 deployment = {
@@ -175,6 +175,8 @@ docpadConfig = {
         return content
       return '\n' + content.substr(findMeta + 3) + '\n' # add because indexOf returns index of first character, we need to trim to last
                                                         # added \n at the begining and end so it will render properly
+
+    getGeneralNavItems: customization.getGeneralNavItems
 
   # =================================
   # Collections

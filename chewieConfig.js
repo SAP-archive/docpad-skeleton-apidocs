@@ -47,7 +47,10 @@ const config = {
     'services'
   ],
 
-  defaultBaseUriDomain: 'https://your.api.proxy'
+  defaultBaseUriDomain: 'https://your.api.proxy',
+  customization: {
+    dirPath: './customization'
+  }
 };
 
 const out = config.skeletonOutDestination;
