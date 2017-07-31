@@ -61,7 +61,6 @@ function replaceApiReferences(cb) {
 
 function start(cb) {
 
-  const customizedIndex = argv.index;
   const shouldCustomize = Boolean(config.customization && config.customization.dirPath);
   
   chewie.removeClonedRepositories(argv.force, config, () => {
