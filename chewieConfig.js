@@ -47,7 +47,12 @@ const config = {
     'services'
   ],
 
-  defaultBaseUriDomain: 'https://your.api.proxy'
+  defaultBaseUriDomain: 'https://your.api.proxy',
+
+  customization: {
+    dirPath: process.env.customizationDirPath || false,
+    landingPageIndexPath: './src/documents/index.html.eco'
+  }
 };
 
 const out = config.skeletonOutDestination;
