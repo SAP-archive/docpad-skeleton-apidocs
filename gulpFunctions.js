@@ -15,6 +15,7 @@ const gulp = require('gulp'),
   .alias('a', 'sauce')
   .alias('y', 'type')
   .alias('f', 'force')
+  .alias('i', 'index')
   .argv,
   log = require('./node_modules/chewie/src/helpers/logger'),
   unzip = require('gulp-unzip'),
@@ -60,6 +61,8 @@ function replaceApiReferences(cb) {
 
 function start(cb) {
 
+  const shouldCustomize = Boolean(config.customization && config.customization.dirPath);
+  
   chewie.removeClonedRepositories(argv.force, config, () => {
 
     let registry;
@@ -78,6 +81,7 @@ function start(cb) {
 
       async.series({
         cloneDocuSources: _asyncCb(chewie.cloneDocuSources, registry, config, topics),
+        customize: shouldCustomize ? _asyncCb(chewie.customize, config.customization) : (cb) => cb(),
         rewriteRAML: _asyncCb(chewie.rewriteRAML, registry, config, argv.r),
         copyTutorials: _asyncCb(chewie.copyTutorials, registry, config),
         preparePlaceholders: _asyncCb(chewie.preparePlaceholders, registry, config),
@@ -99,12 +103,12 @@ function fixTables(cb) {
 function fixLinks(cb) {
   const docuUrl = config.docuUrl;
   async.series({
-    hrefSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href='/`, `href='${docuUrl}/`, './out'),
-    hrefDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `href="/`, `href="${docuUrl}/`, './out'),
-    srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src='/`, `src='${docuUrl}/`, './out'),
-    srcDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', `src="/`, `src="${docuUrl}/`, './out'),
-    urlSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url('/`, `url('${docuUrl}/`, './out'),
-    urlDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', `url("/`, `url("${docuUrl}/`, './out')
+    hrefSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', 'href=\'/', `href='${docuUrl}/`, './out'),
+    hrefDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', 'href="/', `href="${docuUrl}/`, './out'),
+    srcSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', 'src=\'/', `src='${docuUrl}/`, './out'),
+    srcDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.html', 'src="/', `src="${docuUrl}/`, './out'),
+    urlSingleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', 'url(\'/', `url('${docuUrl}/`, './out'),
+    urlDoubleQuotes: _asyncCb(chewie.replacer.replaceInFile, './out/**/*.css', 'url("/', `url("${docuUrl}/`, './out')
   }, cb);
 }
 
@@ -129,7 +133,7 @@ function pushResult(cb) {
     'src': `${config.skeletonOutDestination}/**`,
     'dest': config.generationResult.clonedResultFolderPath,
     'branch': config.generationResult.branch,
-    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for ${argv.topics}`,
+    'message': !argv.topics ? 'Push operation for the whole Dev Portal' : `Push operation for ${argv.topics}`,
     'independent': Boolean(argv.topics)
   };
 
@@ -222,7 +226,7 @@ function preparePushResult(cb) {
     'src': [`${config.skeletonOutDestination}/**`, `${config.skeletonOutDestination}/**/.nojekyll`],
     'dest': config.generationResult.clonedResultFolderPath,
     'branch': config.generationResult.branch,
-    'message': Boolean(!argv.topics) ? 'Push operation for the whole Dev Portal' : `Push operation for ${argv.topics}`,
+    'message': !argv.topics ? 'Push operation for the whole Dev Portal' : `Push operation for ${argv.topics}`,
     'independent': Boolean(argv.topics),
     'tempLocation': config.tempLocation,
     'notClonedRepositoriesFile': config.notClonedRepositoriesFile,
@@ -243,7 +247,7 @@ function preparePushResult(cb) {
 function _getTopics(topics) {
 
   if(topics === true){
-    throw new Error(`You must provide list of topics split with comma while using --topics flags. For example "'services:Cart','tools':'Builder SDK','services':'Events'"`);
+    throw new Error('You must provide list of topics split with comma while using --topics flags. For example "\'services:Cart\',\'tools\':\'Builder SDK\',\'services\':\'Events\'"');
   }
   return topics && topics.split(',').map((topic) => {
     const values = topic.split(':');
