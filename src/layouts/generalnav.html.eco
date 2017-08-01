@@ -18,10 +18,9 @@ layout: default
         </button>
 
         <ul role="menu" class="nav nav-pills hidden-xs" id="desktop-menu">
-          <li> <a href="/" property="dc:title" id="home-topNav">Home</a></li>
-          <li> <a href="/solutions/" property="dc:title" id="solutions-topNav">Solutions</a></li>
-          <li> <a href="/services/" property="dc:title" id="apis-topNav">API Docs</a></li>
-          <li> <a href="/rn/" property="dc:title" id="rn-topNav">Release Notes</a></li>
+          <% for item in @getGeneralNavItems():%>
+            <li><a href="<%= item.href %>" property="dc:title" id="<%= item.id || '' %>"><%= item.name %></a></li>
+          <% end %>
         </ul>
 
       <% end %>
@@ -33,6 +32,9 @@ layout: default
   <div class="content-offcanvas" id="content">
 
     <div class="container-fluid">
+      <!-- load mobile nav  -->
+      <%- @partial('no-sidebar-mobile-nav') %>
+      
       <%- @content %>
     </div>
 
