@@ -1,5 +1,7 @@
 ## Customization
 
+Customization dir (by default `customization`) can be overwritten by set environment variable `CUSTOMIZATION_DIR_PATH`.
+
 ### Configuration file
 
 You can customize your page in file `customization/config.json` (by default, you can set path to dir contains `config.json` in `chewieConfig.js` - *customization.dirPath*).

@@ -49,7 +49,7 @@ const config = {
 
   defaultBaseUriDomain: 'https://your.api.proxy',
   customization: {
-    dirPath: './customization'
+    dirPath: process.env.CUSTOMIZATION_DIR_PATH || './customization'
   }
 };
 
