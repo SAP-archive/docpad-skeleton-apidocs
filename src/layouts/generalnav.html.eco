@@ -32,6 +32,9 @@ layout: default
   <div class="content-offcanvas" id="content">
 
     <div class="container-fluid">
+      <!-- load mobile nav  -->
+      <%- @partial('no-sidebar-mobile-nav') %>
+      
       <%- @content %>
     </div>
 

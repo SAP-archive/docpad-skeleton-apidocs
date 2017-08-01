@@ -55,3 +55,7 @@ Example configuration file:
   ]
 }
 ```
+
+### Landing page
+
+To customize your landing page, you can create file `index.html` in `customization` dir, it will replace default landing page.

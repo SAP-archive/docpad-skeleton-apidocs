@@ -178,6 +178,8 @@ docpadConfig = {
 
     getGeneralNavItems: customization.getGeneralNavItems
 
+    getCustomLandingPage: customization.getCustomLandingPage
+
   # =================================
   # Collections
   # These are special collections that our website makes available to us
