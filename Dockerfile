@@ -1,7 +1,7 @@
 FROM node:7.9.0-alpine
-MAINTAINER Lukasz Gornicki <derberg@wp.pl>
+MAINTAINER Team Wookiee <team-wookiee@sap.com>
 # add bash and git
-RUN apk update && apk add --no-cache git openssh nano && \
+RUN apk update && apk add --no-cache git openssh && \
     rm -rf /var/lib/apt/lists/* && \
     rm /var/cache/apk/*
 # set what needs to be included in the image
@@ -12,4 +12,4 @@ RUN npm run prepare
 
 EXPOSE 9778
 
-CMD ["sh"]
+CMD ["sh", "docker_start.sh"]

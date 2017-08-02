@@ -123,7 +123,59 @@ function clean(cb) {
 }
 
 function pushResult(cb) {
+  switch(config.docuProvider) {
+  case 'S3':
+    pushResultToS3(cb);
+    break;
+  case 'GIT':
+    pushResultToStash(cb);
+    break;
+  default:
+    log.error('docuProvider is not correct!');
+    throw new Error(`${config.docuProvider} is not a valid content provider.`);
+  }
+}
 
+// Push generated data to S3
+function pushResultToS3(cb) {
+
+  if(!config.generationResult.s3.credentials.accessKeyId || !config.generationResult.s3.credentials.secretAccessKey || !config.registry.branch){ 
+    log.warning('AWS credentials were not exported.');
+    return cb(new Error('Missing AWS credentials'));
+  }
+
+  chewie.s3.upload(config.registry.branch, config.generationResult.s3.credentials, config.generationResult.s3.bucket, config.generationResult.clonedResultFolderPath, (client) => log.info(config.registry.branch))
+  .then( () => {
+    log.info('Push operation completed');
+    return cb();
+  })
+  .catch((err) => {
+    log.error(err);
+    return cb(err);
+  });
+}
+
+// Push generated data to S3
+function backupResultInS3(cb) {
+
+  if(!config.docuProvider === 'S3' || !process.env.bamboo_buildResultKey) return cb();
+
+  const backupPath = `backup/${config.registry.branch}/${process.env.bamboo_buildResultKey}`;
+
+  chewie.s3.upload(backupPath, config.generationResult.s3.credentials, config.generationResult.s3.bucket, config.generationResult.clonedResultFolderPath, (client) => log.info(backupPath))
+  .then( () => {
+    log.info('Backup operation completed');
+    return cb();
+  })
+  .catch((err) => {
+    log.error(err);
+    return cb(err);
+  });
+}
+
+
+// Push generated data to STASH repository
+function pushResultToStash(cb) {
   const topics = _getTopics(argv.topics);
   const opt = {
     'src': `${config.skeletonOutDestination}/**`,
@@ -136,7 +188,7 @@ function pushResult(cb) {
   chewie.pushResult(opt, (err) => {
     if (err) {
       log.error(err);
-      return cb();
+      return cb(err);
     }
     log.info('Push operation completed');
     cb();
@@ -321,6 +373,7 @@ module.exports = {
   clean,
   pushResult,
   preparePushResult,
+  backupResultInS3,
   getDependencyInteractiveDocu,
   prepareInteractiveDocuToDeploy,
   test

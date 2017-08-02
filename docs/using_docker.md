@@ -63,7 +63,7 @@ git config --global user.name "Your Name"
 ```
 2. Create a new repository with the name <b>your_github_username.github.io</b>. 
 3. Set the repository to `public` and initialize it with a readme file.
-3. Add the following configurations before you build the documentation again:
+4. Add the following configurations before you build the documentation again:
 ```
 export docuURL=https://{your_github_username}.github.io
 export RESULT_LOC=https://github.com/{your_github_username}/{your_github_username}.github.io
