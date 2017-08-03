@@ -7,6 +7,7 @@ const config = {
   docuUrl: process.env.docuURL || 'https://yaas.github.io/chewie-sample-result',
   notClonedRepositoriesFile: 'notClonedRepositories.json',
   indepenedentDocuRepositoriesFile: 'indepenedentDocuRepositories.json',
+  docuProvider: process.env.DOCU_PROVIDER || 'GIT',
 
   registry: {
     location: process.env.REGISTRY_LOCATION || 'remote',
@@ -32,7 +33,15 @@ const config = {
   generationResult: {
     srcLocation: process.env.RESULT_LOC || 'https://github.com/YaaS/chewie-sample-result.git',
     branch: process.env.docuBranch || 'master',
-    cloneLocation: 'latestResultRepo'
+    cloneLocation: 'latestResultRepo',
+    s3: {
+      bucket: process.env.S3_BUCKET,
+      credentials: {
+        accessKeyId: process.env.AWS_ID,
+        secretAccessKey: process.env.AWS_SECRET,
+        region: process.env.AWS_REGION || 'us-east-1'
+      }
+    }
   },
   constantLocations: {
     apinotebooksLocation: './src/documents/apinotebooks',

@@ -20,6 +20,9 @@ gulp.task('preparePushResult', gulpTasks.preparePushResult);
 // task pushes latest results to remote repo that keeps results.
 gulp.task('pushResult', gulpTasks.pushResult);
 
+// task makes a backup of repo that keeps results.
+gulp.task('backupResultInS3', gulpTasks.backupResultInS3);
+
 gulp.task('getDependencyInteractiveDocu', gulpTasks.getDependencyInteractiveDocu);
 
 gulp.task('prepareInteractiveDocuToDeploy', gulpTasks.prepareInteractiveDocuToDeploy);
