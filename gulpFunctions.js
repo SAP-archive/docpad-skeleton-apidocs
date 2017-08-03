@@ -157,8 +157,9 @@ function pushResultToS3(cb) {
 
 // Push generated data to S3
 function backupResultInS3(cb) {
+  const versionId = process.env.versionId || process.env.bamboo_buildResultKey;
 
-  if(!config.docuProvider === 'S3' || !process.env.bamboo_buildResultKey) return cb();
+  if(!config.docuProvider === 'S3' || !versionId) return cb();
 
   const backupPath = `backup/${config.registry.branch}/${process.env.bamboo_buildResultKey}`;
 
