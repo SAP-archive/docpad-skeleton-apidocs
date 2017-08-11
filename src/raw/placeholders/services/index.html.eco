@@ -79,6 +79,10 @@ layout: generalnav
             <% end %>
           <% end %>
 
+          <% if collection.findAll(title: 'Security').toJSON().length: %>
+            <li><a href="#Security">Security <span class="left-nav__icon hyicon hyicon-chevron u-hide-permanently"></span> <img class="left-nav__play-button svg u-hide-permanently" src="/images/icons/ico_interactive.svg" width="26" height="26" alt=""></a></li>
+          <% end %>
+
           <% glossary = @getCollection('partials').findAll(topic: dpServiceName).toJSON() %>
           <% if glossary.length: %>
           <!-- GLOSSARY Docu-->
@@ -256,6 +260,17 @@ layout: generalnav
       <hr>
     <% end %>
   </section>
+
+<!-- Security Document-->
+  <% for docu in collection.findAll(title: 'Security').toJSON(): %>
+    <section id="<%= @getTrimmedName(docu.title) %>" class="group">
+      <h2><%=docu.title%></h2>
+      <p>
+        <%-docu.contentRenderedWithoutLayouts%>
+      </p>
+    </section>
+    <hr>
+  <% end %>
 
   <% glossary = @getCollection('partials').findAll(topic: dpServiceName).toJSON() %>
   <% if glossary.length: %>
