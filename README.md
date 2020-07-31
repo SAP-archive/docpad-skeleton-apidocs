@@ -1,3 +1,8 @@
+![](https://img.shields.io/badge/STATUS-NOT%20CURRENTLY%20MAINTAINED-red.svg?longCache=true&style=flat)
+
+# Important Notice
+We have decided to stop the maintenance of this public GitHub repository.
+
 [![Build Status](https://travis-ci.org/YaaS/docpad-skeleton-apidocs.svg?branch=master)](https://travis-ci.org/YaaS/docpad-skeleton-apidocs)
 
 ## Quick try out in terminal
